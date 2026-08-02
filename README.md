@@ -2,6 +2,35 @@
 
 Quellen: https://opendata.muenchen.de (Suche "stadtbibliothek") + https://blog.muenchner-stadtbibliothek.de/open-meta-data/
 
+**Live:** https://openbibmuc.de · **Repo:** https://github.com/heibie/openbibmuc.de
+
+## Deployment
+
+GitHub-Repo `heibie/openbibmuc.de`, Branch `main`. Jeder Push auf `main` löst automatisch
+`.github/workflows/deploy.yml` aus (rsync über SSH nach All-Inkl, Muster identisch zu
+rathausmuc.de/data.parkraumwende.de). Ausgeschlossen vom Deploy: `.git`, `.github`,
+`__pycache__`, `*.py`, `*.bak-*`, `scripts/retired`, `variants`, `cron/_cfg.php`.
+
+Nötige GitHub-Secrets (Repo-Settings → Secrets and variables → Actions):
+- `SSH_PRIVATE_KEY`, `DEPLOY_HOST`, `DEPLOY_USER`, `DEPLOY_PATH` — für den Deploy-Workflow
+- `GOOGLE_BOOKS_API_KEY` — für den naechtlichen Neuzugänge-Fetch (siehe unten)
+
+`cron/_cfg.php` (Cron-Token + GitHub Fine-grained PAT für `check_sources.php`, siehe unten)
+ist gitignored und liegt nur lokal + manuell hochgeladen auf dem Server, niemals im Repo.
+
+### Zwei nächtliche Automatisierungen
+
+1. **Neuzugänge abholen** (`.github/workflows/neuzugaenge.yml`, taeglich 3 Uhr UTC):
+   läuft als GitHub-Actions-Workflow (nicht auf All-Inkl, da dort kein Python verfügbar ist —
+   deshalb ist `check_sources.php` ja überhaupt erst in PHP portiert worden). Ruft
+   `scripts/fetch_neuzugaenge.py` ohne Argument auf (= "gestern"), committet das Ergebnis
+   nach `data/neuzugaenge/`, was automatisch den Deploy-Workflow anstößt.
+2. **Quellen-Status-Check** (`cron/check_sources.php`): läuft SERVERSEITIG auf All-Inkl per
+   KAS-Cronjob (im All-Inkl-Kundenmenü selbst einzurichten, empfohlen wöchentlich), URL:
+   `https://openbibmuc.de/cron/check_sources.php?token=<CRON_TOKEN>`. Committet
+   `data/source-status.json` bei Änderung per GitHub-Git-Data-API — stößt ebenfalls
+   automatisch den Deploy-Workflow an.
+
 ## Datensätze (`data/`)
 
 - **standorte.csv** — 26 Standorte (2 Zentralbibliotheken, 22 Stadtteilbibliotheken, 2 Sonderbibliotheken: Juristische Bibliothek, Monacensia). Ursprüngliche OpenData-Spalten: `bib_type, bib_name, bib_abkuerzung, bib_strasse, bib_plz, lat, lon, publikumsflaeche, anzahl_arbeitsplaetze, webseite, open_library, barrierefreiheit`. Stand 02.06.2025. Lizenz: DL-DE-BY 2.0.
@@ -58,13 +87,40 @@ Zusätzlich gibt's pro Standort-Unterseite eine variable Liste an Detail-Informa
 
 **Zusammenführungsregel (Fund am Beispiel Riem, 2026-08-02):** Icon-Klicktexte und Akkordeon-Einträge behandeln teils dasselbe Thema mit unterschiedlicher Ausführlichkeit (z.B. Icon "international" oft leer, Akkordeon "Fremdsprachige Medien" nennt die Sprachen aus). Prinzip: **der Icon-Text ist immer die Basis, ein passender Akkordeon-Eintrag ergänzt sie** (`enrich_standorte.py::merge_text()`, hängt an statt zu überschreiben). `VOR_ORT_MERGE_TITLES` ist dafür generisch für alle 7 Service-Kategorien angelegt (nicht nur die zwei tatsächlich gefundenen Fälle) — falls ein Standort mal einen Akkordeon-Titel wie "Cafeteria" oder "WLAN" bekommt, wird der automatisch mit `service_cafeteria`/`service_wlan` zusammengeführt statt eine redundante `vor_ort_*`-Spalte anzulegen.
 
-## Katalogdaten (nicht heruntergeladen, API)
+## Katalogdaten & Neuzugänge (OAI-PMH-API, `neuzugaenge.html`)
 
-OAI-PMH-Schnittstelle: `https://data-bib.muenchen.de/oai-pmh` — komplette bibliographische Metadaten (MARC21 oder Dublin Core), CC0-Lizenz, `verb=ListRecords`/`GetRecord`/Sets nach ISIL (6 Teilbestände: Gesamt, Musik, Jura, Philatelie, Monacensia, ...). Pagination per Resumption-Token (Limit 50/Request, Token läuft nach 1h Inaktivität ab). Datumsfilter via `from`/`until`. Doku: https://data-bib.muenchen.de/swagger-ui/index.html, GitHub: MunichMetaHub.
+OAI-PMH-Schnittstelle: `https://data-bib.muenchen.de/oai-pmh` — komplette bibliographische Metadaten (MARC21 oder Dublin Core), CC0-Lizenz, `verb=ListRecords`/`GetRecord`/Sets nach ISIL (6 Teilbestände: Gesamt `DE-M36`, Musik `DE-M36b`, Jura `DE-M36c`, Philatelie `DE-M36d`, Monacensia `DE-M36e`). Pagination per Resumption-Token (Token läuft nach 1h Inaktivität ab). Datumsfilter via `from`/`until`. Offizielle Doku: https://blog.muenchner-stadtbibliothek.de/open-meta-data/, Swagger: https://data-bib.muenchen.de/swagger-ui/index.html.
 
-`verb=Identify` funktioniert; `verb=ListRecords` lieferte beim ersten Testen (2026-07-30) kurzzeitig eine "Zefix! Temporarily Not available"-Fehlerseite (WAF oder temporärer Ausfall), lief beim erneuten Versuch mit Browser-User-Agent + kurzer Pause aber fehlerfrei durch — vor produktivem Einsatz erneut prüfen.
+**Kein Such-API, nur Harvesting:** `GetRecord` holt genau einen Datensatz, aber nur über eine bereits bekannte ID (aDIS-Identifier wie `AK02384786` oder OAI-UUID) — keine Suche nach Titel/ISBN/Autor möglich. Man muss den Titel erst im normalen Online-Katalog finden, um an die ID zu kommen.
 
-**Fund beim Sichten:** Die Katalog-Metadaten (`setSpec`) unterscheiden nur die 4-5 Spezialbibliotheken (Musik, Jura, Philatelie, Monacensia) vom Gesamtbestand — keine Zuordnung auf Ebene der 22 Stadtteilbibliotheken, kein MARC-Holdings-Feld (852/910-919) vorhanden. "Welches Buch liegt in welcher Filiale" lässt sich mit den offenen Daten NICHT beantworten.
+**`oai_dc` vs. `marc_xml`:** Bei identischer `from`/`until`/`set`-Abfrage liefert `oai_dc` nachweislich WENIGER Treffer als `marc_xml` für denselben Tag (Test 2026-08-02, 31.07.: `oai_dc` 95 Treffer, `marc_xml` 478 Treffer) — vermutlich zwei nicht ganz synchrone Backend-Pipelines. `marc_xml` ist daher die verlässlichere Quelle, wird überall verwendet.
+
+**`complete=true`:** Ohne diesen Zusatzparameter fehlen die digitalen Onleihe/Overdrive-Angebote (E-Books, eAudio) komplett (Test: 478 vs. 536 Treffer für denselben Tag). Immer mitgeben.
+
+**Katalog-Sets sind riesig:** Gesamtbestand 1.159.366 Datensätze, selbst der kleinste Sonderbestand (Jura) hat 25.344 — "live durchblättern" für eine Sonderbestand-Ansicht ist damit keine Option (>500 Requests). Die Katalog-Metadaten (`setSpec`) unterscheiden zudem nur die 4-5 Spezialbibliotheken vom Gesamtbestand, keine Zuordnung auf Ebene der 22 Stadtteilbibliotheken (kein MARC-Holdings-Feld 852/910-919) — "welches Buch liegt in welcher Filiale" lässt sich mit den offenen Daten nicht beantworten.
+
+### Neuzugänge-Feature (`neuzugaenge.html` + `scripts/fetch_neuzugaenge.py`)
+
+Zeigt neu katalogisierte Medien, ein Tag pro Archiv-Datei (`data/neuzugaenge/<TAG>.csv`, Liste der Tage in `data/neuzugaenge/index.json`). **BETA-Status** (Badge im Header + Hinweis im Intro-Text) — bewusst so gekennzeichnet, kann kaputtgehen oder Datenfehler enthalten.
+
+**Warum ein Tag statt eines rollierenden Fensters:** ein 7-Tage-Fenster über den Gesamtbestand ergibt schon 900+ Treffer, jedes Mal alles neu abzurufen wäre Verschwendung. Ein Tag pro Lauf + Archivierung baut stattdessen mit der Zeit eine vollständige lokale Historie auf, ohne je einen Tag doppelt abzufragen (`fetch_neuzugaenge.py` prüft `data/neuzugaenge/<TAG>.csv` auf Existenz, idempotent).
+
+**Medienart kommt aus MARC-Feld `245$h`** (allgemeine Materialbenennung, z.B. "[Buch + CD]", "[DVD-Video]"), nicht aus dem MARC-Leader-Code — deutlich feinkörniger. Der MSB-OPAC selbst übersetzt diese Rohwerte nochmal in freundlichere Labels (z.B. "Druckschrift" → "Buch", "Buch + CD" → "Medienkombination") — per Stichprobe an 11 Datensätzen manuell im OPAC nachgeschaut und in `GMD_DISPLAY_LABELS` nachgebaut. MARC-Leader-Code bleibt nur Fallback für den seltenen Fall, dass `245$h` mal fehlt.
+
+**OPAC-Link je Eintrag:** aus MARC-Feld 001 (Format `AK<Nummer>`) lässt sich der Link zum Original-Katalogeintrag ableiten: Nummer auf 8 Stellen mit führenden Nullen auffüllen, `S` voranstellen → `https://ssl.muenchen.de/aDISWeb/app/opac?sp=SAK<Nummer>` (empirisch bestätigt). Reine URL-Konstruktion aus schon vorhandenen Daten, kein zusätzlicher Request nötig — wichtig, weil `ssl.muenchen.de/robots.txt` `/aDISWeb/` fürs Crawlen verbietet (gilt aber nicht fürs bloße Verlinken, das der Nutzer selbst anklickt).
+
+**Cover-Bilder über die ISBN, in dieser Reihenfolge (erster Treffer gewinnt):**
+1. **ekz.de** (`https://cover.ekz.de/<ISBN>.jpg`) — Einkaufszentrale für Bibliotheken, deutscher Medienlieferant. Mit Abstand beste Trefferquote für den stark deutschsprachigen MSB-Bestand (~91-94% der ISBN-Treffer). Kein `robots.txt` auf `cover.ekz.de`, Haupt-Domain erlaubt Crawling ausdrücklich.
+2. **Open Library** — schwache deutsche Abdeckung (Test: nur 18 von 384 ISBN-Treffern, ~4.7%).
+3. **Google Books** — braucht eigenen API-Key in `scripts/_secrets.py` (gitignored, siehe `_secrets.example.py`). Backend antwortet öfter mit transientem 503, deshalb mit Retry-Logik (`GOOGLE_BOOKS_RETRIES`).
+
+**Bewusst NICHT genutzt:**
+- **isbn.de** — `robots.txt` verbietet ClaudeBot/automatisierte Datenerhebung explizit, inkl. Crawl-Policy-Hinweis mit Rechtsfolgen-Androhung.
+- **ssl.muenchen.de/vlb/cover/** (MSB-eigener OPAC-Cover-Link) — `robots.txt` verbietet den Pfad explizit, Direktzugriff liefert zudem HTTP 403.
+- **Goodreads** — seit 2020 keine offene API mehr, Scraping der Amazon-Tochter (auch über Wrapper-APIs wie `bookcover-api`, die intern genau das tun) bewusst nicht umgesetzt.
+- **DNB** (Deutsche Nationalbibliothek) — liefert über die offizielle SRU-Schnittstelle (`services.dnb.de/sru/dnb`) saubere Metadaten, aber keine Cover-Bilder (weder im `oai_dc`- noch im `MARC21`-Schema, einziger Link-Datensatz ist ein Klappentext-Link).
+
+**Nächtlicher Cron:** `.github/workflows/neuzugaenge.yml`, siehe Abschnitt "Deployment" oben.
 
 ## Prototyp (`index.html`)
 
@@ -75,3 +131,16 @@ Lokale Karten-Anwendung: Leaflet-Karte mit den 24 Standorten (22 Stadtteilbiblio
 Lokal starten: `python3 -m http.server <port>` im Projektordner, dann `http://localhost:<port>/` öffnen (funktioniert nicht über `file://`, da die Seite die CSV-Dateien per `fetch()` lädt).
 
 **Daten aktualisieren:** `python3 scripts/enrich_standorte.py` neu laufen lassen (holt Kontakt, Öffnungszeiten, Services, Ausstattung und #aktuell-Meldungen neu von der MSB-Website) — kein weiterer Schritt nötig, `index.html` liest beim nächsten Laden automatisch den neuen Stand aus `standorte.csv`.
+
+**Marker-Farbe** (seit 2026-08-02): richtet sich nach dem live berechneten Geöffnet/Geschlossen-Status (grün/rot/beige für unbekannt) statt nach dem Bibliothekstyp. Größe bleibt nach Typ gestaffelt (HP8/Motorama = Zentralbibliotheken, größerer Radius). Beim Öffnen eines Steckbriefs bekommt der zugehörige Marker zusätzlich einen dicken gelben Ring (`setActiveMarker()`/`clearActiveMarker()` in `index.html`), wird beim Zurück-zur-Liste oder Anzeigen eines anderen Standorts zurückgesetzt.
+
+**Mobil-Optimierung** (`@media (max-width: 720px)` in `index.html`): Karte ist auf schmalen Viewports die Hauptansicht (volle Breite/Höhe), die rechte Leiste (Liste/Steckbrief) wird zum Bottom-Sheet — standardmäßig eingeklappt (nur eine 44px-Griffleiste mit Chevron-Icon sichtbar, Karte bleibt im Fokus), klappt bei Markerklick/Listenklick automatisch auf (`renderDetail()` setzt `sheet-open`), klappt bei Klick auf die Karte selbst wieder zu (`map.on('click', ...)` — Leaflet stoppt die Event-Propagation für Marker-Klicks selbst, daher kein Konflikt mit dem Auto-Aufklappen). Chevron-Icon statt reinem Wisch-Strich, weil nur Tap (kein Drag-Gesture) implementiert ist. Header verliert auf Mobil den Untertitel, damit Titel + Nav-Links in eine Zeile passen.
+
+## Impressum & Daten-Seiten
+
+Drei Unterseiten neben `index.html`, alle mit identischer Header-Navigation (Neuzugänge / Daten & FAQ / Impressum, rechts oben, auf allen vier Seiten gleich und die eigene Seite eingeschlossen):
+
+- **`impressum.html`** — schlankes Standard-Impressum (§5 TMG, Kontakt, §18 MStV, Haftung Inhalte/Links, Datenschutz, Urheberrecht). Bewusst getrennt von der Datenquellen-Tabelle gehalten (war kurzzeitig in einer Datei zusammengefasst, auf Wunsch wieder aufgeteilt).
+- **`daten.html`** (hieß zunächst `quellen.html`, dann kurz `impressum.html` mit-drin, jetzt eigenständig) — "Daten und FAQ": Datenquellen-Tabelle mit Live-Check-Status (aus `data/source-registry.json` + `data/source-status.json`, siehe `cron/check_sources.php`), Lizenzhinweise, Technologie-Attribution, Link zu `data/datapackage.json`. Der Name impliziert eine noch fehlende FAQ-Sektion (bisher nicht gebaut, nur der Titel ist schon so gewählt).
+
+**Bugfix 2026-08-02:** `check_sources.php`s `check_ckan()`-Methode liefert nur `source_modified` (Datum laut OpenData-Portal), nie `local_updated` (das gibt's nur bei den 4 manuell gepflegten MSB-Quellen). Die Tabelle in `daten.html` hat ursprünglich nur nach `local_updated` geschaut, daher blieb die Spalte "Zuletzt aktualisiert" bei allen 4 CKAN-Quellen leer — jetzt fällt sie korrekt auf `source_modified` zurück.
