@@ -1,0 +1,43 @@
+name: Neuzugänge abholen
+
+on:
+  schedule:
+    # 3:00 Uhr UTC = 4/5 Uhr MEZ/MESZ - nachts, wenn der Katalog-Tag
+    # (gestern) sicher komplett durchkatalogisiert ist.
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Google-Books-API-Key einrichten
+        env:
+          GOOGLE_BOOKS_API_KEY: ${{ secrets.GOOGLE_BOOKS_API_KEY }}
+        run: |
+          echo "GOOGLE_BOOKS_API_KEY = \"$GOOGLE_BOOKS_API_KEY\"" > scripts/_secrets.py
+
+      - name: Neuzugänge von gestern holen
+        run: python3 scripts/fetch_neuzugaenge.py
+
+      - name: Ergebnis committen und pushen
+        run: |
+          rm -f scripts/_secrets.py
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/neuzugaenge/
+          if git diff --staged --quiet; then
+            echo "Keine neuen Daten (Tag evtl. schon archiviert oder noch keine Treffer)."
+          else
+            git commit -m "data: Neuzugänge $(date -u -d 'yesterday' +%Y-%m-%d) archiviert"
+            git push
+          fi
