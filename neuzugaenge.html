@@ -123,20 +123,19 @@
 <body>
 
 <header>
-  <h1 class="display">Münchner Stadtbibliothek</h1>
-  <span>Neuzugänge im Katalog</span>
-  <span class="proto-badge">Prototyp – lokal, nicht live</span>
+  <a href="index.html" style="display:flex;align-items:center;gap:.7rem;text-decoration:none;color:inherit">
+    <h1 class="display">Münchner Stadtbibliothek</h1>
+    <span>Neuzugänge im Katalog</span>
+  </a>
+  <span class="proto-badge">BETA</span>
 </header>
 
 <main>
   <p class="intro">
-    Neu katalogisierte Medien, <strong>eine CSV pro Tag</strong>, über den <strong>gesamten Bestand</strong>
-    (alle Standorte + Sonderbibliotheken, inkl. digitaler Onleihe/Overdrive-Angebote). Quelle:
-    OAI-PMH-Katalogschnittstelle (<a href="https://data-bib.muenchen.de/oai-pmh" target="_blank" rel="noopener">data-bib.muenchen.de</a>,
-    Format <code>marc_xml</code>), CC0. Cover-Bilder über die ISBN, primär von
-    <a href="https://www.ekz.de" target="_blank" rel="noopener">ekz.de</a> (Fallback: Open Library, Google Books).
-    Karten verlinken zum Original-Katalogeintrag im MSB-OPAC.
-    Lokal per <code>scripts/fetch_neuzugaenge.py</code> vorab abgerufen, nicht live bei jedem Seitenaufruf.
+    Neu katalogisierte Medien nach Tagen. Die Übersicht ist ein erster Beta-Test. Hier kann immer mal wieder
+    was kaputt gehen oder Daten stimmen nicht.
+    <br><br>
+    Quelle: OAI-PMH-Katalogschnittstelle: <a href="https://blog.muenchner-stadtbibliothek.de/open-meta-data/" target="_blank" rel="noopener">https://blog.muenchner-stadtbibliothek.de/open-meta-data/</a>
   </p>
 
   <div class="day-nav">

@@ -63,8 +63,9 @@
     }
     header h1 { font-size: 1.05rem; letter-spacing: .01em; text-transform: uppercase; }
     header span { font-size: .78rem; opacity: .9; }
-    header .sources-link { margin-left: auto; font-size: .75rem; color: #fff; opacity: .85; text-decoration: none; white-space: nowrap; }
-    header .sources-link:hover { opacity: 1; text-decoration: underline; }
+    header .nav-links { margin-left: auto; display: flex; gap: 1rem; }
+    header .nav-links a { font-size: .75rem; color: #fff; opacity: .85; text-decoration: none; white-space: nowrap; }
+    header .nav-links a:hover { opacity: 1; text-decoration: underline; }
 
     .layout {
       display: flex;
@@ -260,7 +261,54 @@
     }
 
     @media (max-width: 720px) {
-      #panel { position: absolute; right: 0; top: var(--header-h); bottom: 0; width: 100%; max-width: 100%; z-index: 1000; }
+      header { gap: .4rem; padding: 0 .8rem; }
+      header span { display: none; } /* Untertitel entfaellt, sonst kein Platz fuer Titel + Nav */
+      header h1 { font-size: .92rem; }
+      header .nav-links { gap: .6rem; }
+      header .nav-links a { font-size: .68rem; }
+
+      .layout { position: relative; }
+      #map { width: 100%; height: 100%; }
+
+      /* Panel wird zum Bottom-Sheet: eingeklappt nur die Griff-Leiste sichtbar
+         (Karte bleibt Hauptelement), per Tap auf den Griff oder automatisch bei
+         renderDetail() (Marker-/Listenklick) ausgeklappt - siehe Skript unten. */
+      #panel {
+        position: fixed; left: 0; right: 0; bottom: 0; top: auto;
+        width: 100%; max-width: 100%;
+        height: 72vh; max-height: 72vh;
+        border-left: none;
+        border-top: 4px solid var(--magenta);
+        border-radius: 16px 16px 0 0;
+        box-shadow: 0 -6px 24px rgba(0,0,0,.22);
+        transform: translateY(calc(100% - 92px));
+        transition: transform .3s cubic-bezier(.4,0,.2,1);
+        z-index: 900;
+      }
+      #panel.sheet-open { transform: translateY(0); }
+      #panel-inner { padding-bottom: calc(1.6rem + env(safe-area-inset-bottom, 0px)); }
+
+      /* 44px Tap-Flaeche (Touch-Target-Mindestmass). Chevron statt Strich, weil
+         nur Tap (kein Drag) implementiert ist - ein Pfeil sagt klarer "hier klicken"
+         als ein Wischgriff, der eine Drag-Geste suggerieren wuerde. */
+      #panel-dots { position: relative; flex-shrink: 0; height: 44px; cursor: pointer; background-image: none; }
+      #panel-dots::before {
+        content: '';
+        position: absolute; top: 50%; left: 50%;
+        width: 12px; height: 12px;
+        border-right: 3px solid var(--brand);
+        border-bottom: 3px solid var(--brand);
+        border-radius: 0 0 2px 0;
+        transform: translate(-50%, -50%) rotate(-135deg); /* Pfeil nach oben: "aufklappen" */
+        transition: transform .3s;
+      }
+      #panel.sheet-open #panel-dots::before {
+        transform: translate(-50%, -50%) rotate(45deg); /* Pfeil nach unten: "zuklappen" */
+      }
+
+      /* Leaflet-eigene Controls (Zoom etc.) sollen nicht ueber dem Sheet schweben */
+      .leaflet-top, .leaflet-bottom { z-index: 400 !important; }
+      .leaflet-bottom { margin-bottom: env(safe-area-inset-bottom, 0px); }
     }
   </style>
 </head>
@@ -269,7 +317,10 @@
   <header>
     <h1 class="display">Münchner Stadtbibliothek</h1>
     <span>Standorte, Besuche, Bestand &amp; Entleihungen · Jan 2024–Jun 2025</span>
-    <a class="sources-link" href="quellen.html">Datenquellen &amp; Lizenz</a>
+    <nav class="nav-links">
+      <a href="neuzugaenge.html">Neuzugänge</a>
+      <a href="impressum.html">Impressum &amp; Daten</a>
+    </nav>
   </header>
 
   <div class="layout">
@@ -300,9 +351,38 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 let charts = [];
 let allBibs = [];
 let markersByName = {};
+let activeMarkerName = null;
 let activeFilters = new Set();
 let sortBy = 'name';
 let sortDir = 'asc';
+
+// Sheet auf Mobil zuklappen, wenn man auf die Karte tippt (Marker-Klicks
+// loesen kein map-'click' aus, Leaflet stoppt die Propagation dafuer selbst).
+map.on('click', () => {
+  document.getElementById('panel').classList.remove('sheet-open');
+});
+
+function setActiveMarker(name) {
+  if (activeMarkerName && markersByName[activeMarkerName]) {
+    const prev = markersByName[activeMarkerName];
+    prev.setStyle({ radius: prev._baseRadius, color: '#fff', weight: 1.5 });
+  }
+  const marker = markersByName[name];
+  if (marker) {
+    // #FEF594 = --yellow (Leaflet setStyle kann keine CSS-Variablen aufloesen)
+    marker.setStyle({ radius: marker._baseRadius + 3, color: '#FEF594', weight: 3 });
+    marker.bringToFront();
+  }
+  activeMarkerName = name;
+}
+
+function clearActiveMarker() {
+  if (activeMarkerName && markersByName[activeMarkerName]) {
+    const prev = markersByName[activeMarkerName];
+    prev.setStyle({ radius: prev._baseRadius, color: '#fff', weight: 1.5 });
+  }
+  activeMarkerName = null;
+}
 
 function latestValue(series) {
   return series && series.length ? series[series.length - 1].wert : null;
@@ -590,6 +670,7 @@ window.toggleFilter = toggleFilter;
 
 function renderList() {
   destroyCharts();
+  clearActiveMarker();
   const inner = document.getElementById('panel-inner');
   const openCount = allBibs.filter(b => getStatus(b).open === true).length;
 
@@ -662,6 +743,10 @@ function renderDetail(bib) {
   destroyCharts();
   const inner = document.getElementById('panel-inner');
   const status = getStatus(bib);
+  setActiveMarker(bib.name);
+  // Mobil: Bottom-Sheet automatisch ausklappen, damit der Steckbrief sichtbar ist
+  // (ohne das haette man nach Markerklick nur den eingeklappten Griff gesehen).
+  document.getElementById('panel').classList.add('sheet-open');
 
   let html = `
     <button class="back-link" onclick="renderList()">← Alle Standorte</button>
@@ -788,6 +873,12 @@ function renderDetail(bib) {
 }
 window.renderList = renderList;
 
+// Mobil: Tap auf den Sheet-Griff klappt das Panel auf/zu (nur innerhalb der
+// @media(max-width:720px)-Regel sichtbar/wirksam, auf Desktop folgenlos).
+document.getElementById('panel-dots').addEventListener('click', () => {
+  document.getElementById('panel').classList.toggle('sheet-open');
+});
+
 loadData()
   .then(data => {
     allBibs = data;
@@ -802,6 +893,7 @@ loadData()
         fillOpacity: 0.95,
       }).addTo(map);
 
+      marker._baseRadius = isZentral ? 9 : 6;
       marker.bindTooltip(bib.name, { direction: 'top', offset: [0, -6] });
       marker.on('click', () => renderDetail(bib));
       markersByName[bib.name] = marker;
