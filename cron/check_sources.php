@@ -8,7 +8,7 @@
  * Analog zu data.parkraumwende.de/cron/check_sources.php und rathausmuc.de/cron/check_sources.php:
  *
  *   1. data/source-status.json wird bei JEDEM Lauf neu berechnet und automatisch direkt
- *      nach main committet (rein informative Ampel auf impressum.html, ändert keine
+ *      nach main committet (rein informative Ampel auf daten.html, ändert keine
  *      Kartendaten, daher unkritisch für Auto-Commit).
  *   2. Erkennt der Check bei einer "ckan"-Quelle eine echte Änderung gegenüber dem letzten
  *      bekannten Stand, wird zusätzlich ein GitHub Issue angelegt ("Quelle X hat sich
@@ -153,7 +153,7 @@ function issue_body(array $c): string
     return "Automatischer Wochen-Check hat eine Änderung an der Quelle **{$c['title']}** erkannt.\n\n"
          . "- Zuletzt bekannt: `{$old}`\n"
          . "- Jetzt laut Portal: `{$new}`\n\n"
-         . "Bitte in der [Quellen-Übersicht](https://openbibmuc.de/impressum.html) gegenprüfen "
+         . "Bitte in der [Quellen-Übersicht](https://openbibmuc.de/daten.html) gegenprüfen "
          . "und die betroffene CSV bei Bedarf manuell aktualisieren. Dieses Issue danach schließen.\n\n"
          . "_Automatisch erstellt von `cron/check_sources.php`._";
 }

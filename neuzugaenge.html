@@ -33,9 +33,12 @@
   header h1 { font-size: 1.05rem; letter-spacing: .01em; text-transform: uppercase; }
   header span { font-size: .78rem; opacity: .9; }
   header .proto-badge {
-    margin-left: auto; font-size: .68rem; font-weight: 700; text-transform: uppercase;
-    letter-spacing: .04em; background: rgba(255,255,255,.2); padding: 3px 9px; border-radius: 20px;
+    font-size: .62rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .04em; background: rgba(255,255,255,.2); padding: 2px 8px; border-radius: 20px;
   }
+  header .nav-links { margin-left: auto; display: flex; align-items: center; gap: 1rem; }
+  header .nav-links a { font-size: .68rem; color: #fff; opacity: .85; text-decoration: none; white-space: nowrap; }
+  header .nav-links a:hover { opacity: 1; text-decoration: underline; }
 
   main { max-width: 1100px; margin: 0 auto; padding: 1.8rem 1.2rem 4rem; }
 
@@ -126,8 +129,13 @@
   <a href="index.html" style="display:flex;align-items:center;gap:.7rem;text-decoration:none;color:inherit">
     <h1 class="display">Münchner Stadtbibliothek</h1>
     <span>Neuzugänge im Katalog</span>
+    <span class="proto-badge">BETA</span>
   </a>
-  <span class="proto-badge">BETA</span>
+  <nav class="nav-links">
+    <a href="neuzugaenge.html">Neuzugänge</a>
+    <a href="daten.html">Daten &amp; FAQ</a>
+    <a href="impressum.html">Impressum</a>
+  </nav>
 </header>
 
 <main>
