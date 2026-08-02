@@ -1,0 +1,65 @@
+{
+    "generated_at": "2026-08-02T17:45:39+02:00",
+    "sources": {
+        "standorte-basis": {
+            "status": "ok",
+            "source_modified": "2025-06-03T06:08:23.993138",
+            "detail": "Laut Portal zuletzt geändert am 2025-06-03T06:08:23.993138 (resource last_modified/created), keine Änderung seit letzter Prüfung.",
+            "method": "ckan",
+            "checked_at": "2026-08-02T17:45:39+02:00",
+            "local_updated": null
+        },
+        "besucherzahlen": {
+            "status": "ok",
+            "source_modified": "2025-09-01T09:59:48.866425",
+            "detail": "Laut Portal zuletzt geändert am 2025-09-01T09:59:48.866425 (resource last_modified/created), keine Änderung seit letzter Prüfung.",
+            "method": "ckan",
+            "checked_at": "2026-08-02T17:45:39+02:00",
+            "local_updated": null
+        },
+        "bestand": {
+            "status": "ok",
+            "source_modified": "2025-09-01T08:55:37.726745",
+            "detail": "Laut Portal zuletzt geändert am 2025-09-01T08:55:37.726745 (resource last_modified/created), keine Änderung seit letzter Prüfung.",
+            "method": "ckan",
+            "checked_at": "2026-08-02T17:45:39+02:00",
+            "local_updated": null
+        },
+        "entleihungen": {
+            "status": "ok",
+            "source_modified": "2025-09-01T10:01:31.864180",
+            "detail": "Laut Portal zuletzt geändert am 2025-09-01T10:01:31.864180 (resource last_modified/created), keine Änderung seit letzter Prüfung.",
+            "method": "ckan",
+            "checked_at": "2026-08-02T17:45:39+02:00",
+            "local_updated": null
+        },
+        "oeffnungszeiten-kontakt": {
+            "status": "manual",
+            "local_updated": null,
+            "detail": "Kein automatischer Änderungscheck möglich (keine Live-API, kein fester Turnus). Turnus: manuell (Re-Run von scripts/enrich_standorte.py bei Bedarf)",
+            "method": "heuristic",
+            "checked_at": "2026-08-02T17:45:39+02:00"
+        },
+        "services": {
+            "status": "manual",
+            "local_updated": null,
+            "detail": "Kein automatischer Änderungscheck möglich (keine Live-API, kein fester Turnus). Turnus: manuell (Re-Run von scripts/enrich_standorte.py bei Bedarf)",
+            "method": "heuristic",
+            "checked_at": "2026-08-02T17:45:39+02:00"
+        },
+        "vor-ort": {
+            "status": "manual",
+            "local_updated": null,
+            "detail": "Kein automatischer Änderungscheck möglich (keine Live-API, kein fester Turnus). Turnus: manuell (Re-Run von scripts/enrich_standorte.py bei Bedarf)",
+            "method": "heuristic",
+            "checked_at": "2026-08-02T17:45:39+02:00"
+        },
+        "aktuell": {
+            "status": "manual",
+            "local_updated": null,
+            "detail": "Kein automatischer Änderungscheck möglich (keine Live-API, kein fester Turnus). Turnus: manuell, bei Verdacht auf neue/behobene Schließung erneut laufen lassen",
+            "method": "heuristic",
+            "checked_at": "2026-08-02T17:45:39+02:00"
+        }
+    }
+}
