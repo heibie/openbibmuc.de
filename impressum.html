@@ -69,6 +69,22 @@
       main { padding: 24px 16px 60px; }
     }
   </style>
+
+  <!-- Matomo -->
+  <script>
+    var _paq = window._paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="https://piwik.bielinski.de/";
+      _paq.push(['setTrackerUrl', u+'matomo.php']);
+      _paq.push(['setSiteId', '14']);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+  <!-- End Matomo Code -->
 </head>
 <body>
 
@@ -127,9 +143,21 @@
 
   <h3>Datenschutz</h3>
   <p>
-    Diese Website bindet keine Analyse- oder Tracking-Dienste ein und setzt keine Cookies. Es werden
-    keine personenbezogenen Daten erhoben.
+    Diese Website nutzt Matomo, eine datenschutzfreundliche Open-Source-Software zur Analyse von
+    Websitezugriffen. Matomo wird selbst gehostet unter
+    <a href="https://piwik.bielinski.de" target="_blank" rel="noopener">piwik.bielinski.de</a>; es werden
+    keine Daten an Dritte übermittelt.
   </p>
+  <p>
+    Matomo erhebt anonymisierte Nutzungsdaten (aufgerufene Seiten, ungefährer Standort auf
+    Länderebene, Browser, Gerät). IP-Adressen werden vor der Speicherung vollständig anonymisiert.
+    Es werden keine Cookies ohne Einwilligung gesetzt. Die Verarbeitung erfolgt auf Basis von
+    Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Reichweitenmessung).
+  </p>
+  <p>Der Verarbeitung kann jederzeit widersprochen werden:</p>
+  <div style="margin-top:8px;font-size:13px">
+    <iframe style="border:0;height:150px;width:100%" src="https://piwik.bielinski.de/index.php?module=CoreAdminHome&action=optOut&language=de&backgroundColor=ffffff&fontColor=74788a&fontSize=13px&fontFamily=sans-serif"></iframe>
+  </div>
 
   <h3>Urheberrecht</h3>
   <p>
