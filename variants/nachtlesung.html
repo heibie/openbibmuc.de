@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nachtlesung — Münchner Stadtbibliothek</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+
+<style>
+  :root {
+    --bg:        #0e1417;
+    --surface:   rgba(24,32,38,.82);
+    --surface-2: rgba(255,255,255,.04);
+    --text:      #ece5d4;
+    --text-dim:  #8b9296;
+    --accent:    #FFEC00;
+    --accent-dim:#7d7314;
+    --border:    rgba(255,255,255,.09);
+  }
+
+  * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    height: 100vh; height: 100dvh;
+    overflow: hidden;
+  }
+
+  .display { font-family: 'Fira Sans Condensed', Tahoma, sans-serif; font-weight: 700; }
+
+  #map { position: absolute; inset: 0; }
+  .leaflet-control-attribution { background: rgba(14,20,23,.7) !important; color: #8b9296 !important; }
+  .leaflet-control-attribution a { color: #b7bdc0 !important; }
+  .leaflet-control-zoom a { background: var(--surface) !important; color: var(--text) !important; border-color: var(--border) !important; }
+
+  .wordmark {
+    position: absolute; top: 20px; left: 20px; z-index: 1000;
+    display: flex; align-items: center; gap: .6rem;
+    background: var(--surface);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: .6rem .9rem;
+  }
+  .wordmark .lamp { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px 2px var(--accent); }
+  .wordmark h1 { font-size: .95rem; letter-spacing: .01em; }
+  .wordmark span { display:block; font-size: .66rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: .07em; margin-top:.1rem;}
+
+  .marker-glow {
+    filter: drop-shadow(0 0 4px rgba(255,236,0,.85)) drop-shadow(0 0 10px rgba(255,236,0,.35));
+  }
+  .marker-glow-central {
+    filter: drop-shadow(0 0 6px rgba(255,236,0,1)) drop-shadow(0 0 16px rgba(255,236,0,.55));
+  }
+
+  #panel {
+    position: absolute; top: 20px; right: -420px; bottom: 20px; width: 380px;
+    background: var(--surface);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    z-index: 999;
+    padding: 1.3rem 1.4rem;
+    overflow-y: auto;
+    transition: right .35s cubic-bezier(.2,.7,.3,1);
+    box-shadow: 0 20px 60px rgba(0,0,0,.45);
+  }
+  #panel.open { right: 20px; }
+
+  #panel .close-btn {
+    float: right; background: none; border: none; color: var(--text-dim);
+    font-size: 1.3rem; cursor: pointer; line-height: 1;
+  }
+  #panel .close-btn:hover { color: var(--text); }
+
+  #panel h2 { font-size: 1.2rem; margin-bottom: .2rem; }
+  #panel .typ { font-size: .78rem; color: var(--text-dim); margin-bottom: 1.1rem; }
+
+  .facts { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; margin-bottom: 1.3rem; }
+  .facts div { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: .5rem .65rem; font-size: .8rem; }
+  .facts .label { font-size: .66rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-dim); }
+  .facts .value { font-weight: 600; margin-top: .15rem; }
+
+  .metric { margin-bottom: 1.4rem; }
+  .metric h3 { font-size: .78rem; font-weight: 600; color: var(--text-dim); margin-bottom: .3rem; text-transform: uppercase; letter-spacing: .04em; }
+  .metric .latest { font-size: 1.35rem; font-weight: 700; color: var(--accent); margin-bottom: .35rem; text-shadow: 0 0 14px rgba(255,236,0,.25); }
+  .metric .latest span { font-size: .68rem; color: var(--text-dim); font-weight: 400; text-shadow:none; }
+  .metric canvas { max-height: 100px; }
+
+  a.website-link { display: inline-block; margin-top: .2rem; font-size: .84rem; color: var(--accent); text-decoration: none; }
+  a.website-link:hover { text-decoration: underline; }
+
+  @media (max-width: 720px) {
+    #panel { left: 12px; right: -100vw; width: auto; }
+    #panel.open { right: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<div class="wordmark">
+  <span class="lamp"></span>
+  <div>
+    <h1 class="display">Nachtlesung</h1>
+    <span>MSB · Standorte bei Kerzenlicht</span>
+  </div>
+</div>
+
+<div id="panel"></div>
+
+<script>
+const map = L.map('map', { zoomControl: true, attributionControl: true }).setView([48.1372, 11.5756], 12);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; OpenStreetMap &copy; CARTO',
+  maxZoom: 19,
+}).addTo(map);
+
+let charts = [];
+function destroyCharts() { charts.forEach(c => c.destroy()); charts = []; }
+function fmt(n) { return n.toLocaleString('de-DE'); }
+function monthLabel(ym) {
+  const [y,m] = ym.split('-');
+  const names = ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];
+  return names[parseInt(m,10)-1] + ' ' + y.slice(2);
+}
+
+const METRICS = [
+  { key: 'besuche', label: 'Besuche / Monat' },
+  { key: 'bestand', label: 'Bestand' },
+  { key: 'entleihungen', label: 'Entleihungen / Monat' },
+];
+
+function renderPanel(bib) {
+  destroyCharts();
+  const panel = document.getElementById('panel');
+  panel.classList.add('open');
+
+  let html = `
+    <button class="close-btn" onclick="closePanel()">&times;</button>
+    <h2 class="display">${bib.name}</h2>
+    <div class="typ">${bib.typ} · ${bib.strasse}, ${bib.plz} München</div>
+    <div class="facts">
+      <div><div class="label">Fläche</div><div class="value">${bib.publikumsflaeche ? bib.publikumsflaeche.toLocaleString('de-DE') + ' m²' : '–'}</div></div>
+      <div><div class="label">Arbeitsplätze</div><div class="value">${bib.arbeitsplaetze ?? '–'}</div></div>
+      <div><div class="label">Open Library</div><div class="value">${bib.open_library ? 'Ja' : 'Nein'}</div></div>
+      <div><div class="label">Barrierefrei</div><div class="value">${bib.barrierefreiheit ? 'Ja' : 'Nein'}</div></div>
+    </div>
+  `;
+
+  METRICS.forEach(m => {
+    const series = bib[m.key];
+    if (!series || !series.length) return;
+    const latest = series[series.length - 1];
+    html += `
+      <div class="metric">
+        <h3>${m.label}</h3>
+        <div class="latest">${fmt(latest.wert)}<span> · ${monthLabel(latest.monat)}</span></div>
+        <canvas id="chart-${m.key}"></canvas>
+      </div>`;
+  });
+
+  if (bib.webseite) html += `<a class="website-link" href="${bib.webseite}" target="_blank" rel="noopener">Zur Bibliothekswebseite →</a>`;
+
+  panel.innerHTML = html;
+
+  METRICS.forEach(m => {
+    const series = bib[m.key];
+    if (!series || !series.length) return;
+    const ctx = document.getElementById(`chart-${m.key}`);
+    const chart = new Chart(ctx, {
+      type: 'line',
+      data: { labels: series.map(s => monthLabel(s.monat)), datasets: [{
+        data: series.map(s => s.wert), borderColor: '#FFEC00', borderWidth: 2,
+        pointRadius: 0, pointHoverRadius: 4, pointHoverBackgroundColor: '#FFEC00',
+        fill: true, backgroundColor: 'rgba(255,236,0,.08)', tension: .25,
+      }]},
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: { legend: { display:false }, tooltip: { callbacks: { label: i => fmt(i.parsed.y) } } },
+        scales: {
+          x: { grid: { display:false }, ticks: { maxTicksLimit:6, font:{size:9}, color:'#6f7679' } },
+          y: { grid: { color:'rgba(255,255,255,.06)' }, ticks: { font:{size:9}, color:'#6f7679' }, beginAtZero:true },
+        },
+      },
+    });
+    charts.push(chart);
+  });
+}
+
+function closePanel() { destroyCharts(); document.getElementById('panel').classList.remove('open'); }
+window.closePanel = closePanel;
+
+fetch('bibliotheken.json').then(r => r.json()).then(data => {
+  data.forEach(bib => {
+    const isZentral = bib.typ === 'Zentralbibliothek';
+    const marker = L.circleMarker([bib.lat, bib.lon], {
+      radius: isZentral ? 8 : 5,
+      fillColor: '#FFEC00', color: '#0e1417', weight: 1.2, fillOpacity: .95,
+      className: isZentral ? 'marker-glow-central' : 'marker-glow',
+    }).addTo(map);
+    marker.bindTooltip(bib.name, { direction:'top', offset:[0,-6] });
+    marker.on('click', () => renderPanel(bib));
+  });
+});
+</script>
+</body>
+</html>

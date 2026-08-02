@@ -1,0 +1,391 @@
+#!/usr/bin/env python3
+"""
+Verknuepft standorte.csv (Geodaten, Adresse, ...) mit den drei
+Kennzahlen-Dateien (Besuche, Bestand, Entleihungen) sowie den
+Oeffnungszeiten zu einer einzigen data/bibliotheken.json fuer das Frontend.
+
+Nur Zentralbibliotheken + Stadtteilbibliotheken (24 Standorte) - Sonder-
+bibliotheken (Jura, Monacensia) und Buecherbusse haben keine sinnvolle
+1:1-Zuordnung fuer diese Karte.
+
+Fallstrick: Standortnamen unterscheiden sich zwischen den Dateien
+("Stadtteilbibliothek Bogenhausen" vs. nur "Bogenhausen"), es gibt keinen
+gemeinsamen Schluessel (bibliothekssigel fehlt in standorte.csv) - Join
+laeuft daher ueber den normalisierten Namen. Die Zentralbibliotheken
+("Stadtbibliothek im Motorama"/"...im HP8") behalten dagegen ihren vollen
+Namen in den Kennzahlen-Dateien - Praefix nur fuer "Stadtteilbibliothek"
+strippen, nicht fuer "Stadtbibliothek im".
+
+Oeffnungszeiten kommen NICHT vom offiziellen OpenData-Portal (dort nicht
+vorhanden), sondern von einem oeffentlichen, unauthentifizierten AJAX-
+Endpunkt der MSB-Website selbst (`/?type=951&uids=...`), der die Karte auf
+muenchner-stadtbibliothek.de speist. Freitext-Format je Standort
+("Di – Fr: 10.00 – 19.00 Uhr" etc.), wird hier in {tage:[0=Mo..6=So], von,
+bis} geparst. Deckt genau unsere 24 Standorte sauber ab (getestet); fuer
+andere MSB-Standorttypen (Jura, Monacensia, Klinikbibliotheken) reicht der
+Parser NICHT (Sonderformate mit Komma-Tageslisten, <br>, Zusatztexten) -
+daher robust mit try/except, damit ein einzelner unparsable Standort nicht
+den ganzen Build bricht.
+
+email/telefon/rueckgabezeiten/service_* kommen NICHT mehr aus einem eigenen
+Fetch hier, sondern direkt aus standorte.csv - die wurden per
+scripts/enrich_standorte.py bereits einmalig in die CSV geschrieben (siehe
+README.md). Services aendern sich selten, "vor Ort" (variable Ausstattungs-
+liste) und "#aktuell" dagegen potenziell oefter - deshalb bleiben nur die
+beiden Letzteren live bei jedem Build-Lauf abgerufen.
+
+Ad-hoc-Schliessungen/Abweichungen (Wasserschaden, Personalmangel-bedingte
+Sa-Reduzierung o.ae.) stehen weder im OpenData-Datensatz noch im AJAX-
+Kartenendpunkt (dessen "info"-Feld bleibt dafuer leer) - nur auf der
+jeweiligen Standort-Unterseite selbst, im "#aktuell"-Abschnitt. Wird hier
+pro Standort einzeln von der `webseite`-URL aus standorte.csv abgerufen und
+als Freitext (Titel + Text) mitgegeben, NICHT versucht algorithmisch in den
+Oeffnungszeiten-Status einzurechnen (z.B. "nur jedes 2. Wochenende" laesst
+sich nicht zuverlaessig aus Prosa parsen) - wird im Frontend stattdessen als
+Warnhinweis angezeigt, damit Nutzer:innen den Original-Text sehen.
+
+Ausnahme: eine VOLLSTAENDIGE, unbefristete Schliessung (z.B. Wasserschaden)
+wirkt sich schon auf den Status aus - dafuer aber KEIN Text-Heuristik-Versuch
+("bis auf Weiteres geschlossen" erkennen o.ae.), sondern manuell in
+PERMANENT_CLOSURES eingetragen (siehe unten) - robuster als Prosa-Parsing,
+muss aber von Hand wieder entfernt werden, sobald der Standort wieder
+regulaer oeffnet.
+
+Aufruf: python3 scripts/build_data.py
+"""
+import csv
+import json
+import re
+import ssl
+import time
+import urllib.request
+from pathlib import Path
+
+ROOT = Path(__file__).parent.parent
+DATA = ROOT / "data"
+
+INCLUDED_TYPES = {"Zentralbibliothek", "Stadtteilbibliothek"}
+
+PREFIXES = ["Stadtteilbibliothek "]
+HOURS_PREFIXES = ["Stadtteilbibliothek ", "Stadtbibliothek im ", "Stadtbibliothek "]
+
+HOURS_URL = (
+    "https://www.muenchner-stadtbibliothek.de/?type=951&uids="
+    "29,30,31,34,32,33,23,1,3,4,5,6,8,7,9,39,38,10,11,12,13,14,24,15,16,17,18,27,19,20,21,22"
+)
+
+# Manuell gepflegte Liste vollstaendig/unbefristet geschlossener Standorte
+# (bib_name aus standorte.csv). Ueberschreibt den Status auf "geschlossen",
+# unabhaengig von den reguleren Oeffnungszeiten. Von Hand nachfuehren, sobald
+# ein Standort wieder oeffnet oder ein neuer dazukommt (Quelle: jeweilige
+# #aktuell-Meldung, siehe extract_aktuell_notice()).
+PERMANENT_CLOSURES = {
+    "Stadtteilbibliothek Berg am Laim",  # seit 2026: Wasserschaden, "bis auf Weiteres geschlossen"
+}
+
+DAYS = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]
+
+
+def normalize(name):
+    for p in PREFIXES:
+        if name.startswith(p):
+            return name[len(p):]
+    return name
+
+
+def normalize_hours_name(name):
+    for p in HOURS_PREFIXES:
+        if name.startswith(p):
+            return name[len(p):]
+    return name
+
+
+def read_csv(path):
+    with open(path, encoding="utf-8-sig", newline="") as f:
+        return list(csv.DictReader(f))
+
+
+def fetch_hours_raw():
+    ctx = ssl.create_default_context()
+    ctx.load_verify_locations("/etc/ssl/cert.pem")
+    req = urllib.request.Request(HOURS_URL, headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(req, context=ctx, timeout=20) as resp:
+        text = resp.read().decode("utf-8")
+
+    # Die MSB-eigene map.js repariert das zurueckgegebene Pseudo-JSON genauso:
+    # "coordinates" kommt als String statt Array, und es gibt ein "}}}" zuviel.
+    text = (
+        text.replace('"coordinates":"', '"coordinates":[')
+        .replace('","properties"', ']},"properties"')
+        .replace("}}}", "}}")
+    )
+    return json.loads(text)
+
+
+def parse_hours_field(raw, default_day=None):
+    """Parst z.B. 'Di – Fr: 10.00 – 19.00 Uhr' -> [{tage:[1,2,3,4], von, bis}]."""
+    if not raw:
+        return []
+    rules = []
+    for part in raw.split(";"):
+        part = part.strip()
+        if not part:
+            continue
+        m = re.match(
+            r"^([^0-9]*?):?\s*(\d{1,2})[.:](\d{2})\s*[–-]\s*(\d{1,2})[.:](\d{2})\s*(?:Uhr)?$",
+            part,
+        )
+        if not m:
+            raise ValueError(f"unparsable: {part!r}")
+        daypart, h1, m1, h2, m2 = m.groups()
+        daypart = daypart.strip().rstrip(":").strip()
+
+        if not daypart:
+            if default_day is None:
+                raise ValueError(f"kein Tag und kein default_day: {part!r}")
+            days = [default_day]
+        elif "–" in daypart or "-" in daypart:
+            start, end = re.split(r"[–-]", daypart)
+            i1, i2 = DAYS.index(start.strip()), DAYS.index(end.strip())
+            days = list(range(i1, i2 + 1)) if i1 <= i2 else list(range(i1, 7)) + list(range(0, i2 + 1))
+        else:
+            days = [DAYS.index(x.strip()) for x in daypart.split(",")]
+
+        rules.append({"tage": days, "von": f"{int(h1):02d}:{m1}", "bis": f"{int(h2):02d}:{m2}"})
+    return rules
+
+
+def fetch_page(url):
+    ctx = ssl.create_default_context()
+    ctx.load_verify_locations("/etc/ssl/cert.pem")
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(req, context=ctx, timeout=20) as resp:
+        return resp.read().decode("utf-8")
+
+
+CLOSURE_KEYWORDS = [
+    "geschlossen", "schließ", "schliess", "öffnungszeiten", "personalmangel",
+    "wasserschaden", "kalenderwoche", "eingeschränkt", "sanierung", "umbau",
+    "ausfall", "vorübergehend", "ausnahmsweise", "geändert", "verkürzt",
+]
+
+
+def extract_aktuell_notice(html):
+    """
+    Sucht den "#aktuell"-Abschnitt einer Standort-Unterseite. Struktur (getestet
+    an mehreren Standorten): <h2>#aktuell</h2> gefolgt von einem <h3>Titel</h3>
+    + einem/mehreren <p>-Absaetzen, dann IMMER <h3>Feiertage ...</h3> als
+    Boilerplate-Abschluss (auch wenn kein aktueller Hinweis vorliegt - dann
+    kommt "Feiertage" direkt nach "#aktuell" ohne Titel/Text dazwischen).
+
+    ACHTUNG: "#aktuell" ist ein allgemeiner News-Block der jeweiligen Biblio-
+    thek (auch Ehrenamts-Aufrufe, Umbau-Ankuendigungen o.ae.), keine reine
+    Schliessungs-Meldung. Nur Treffer mit Schliessungs-/Oeffnungszeiten-
+    Schluesselwoertern (CLOSURE_KEYWORDS) werden zurueckgegeben, alles andere
+    wird hier bewusst verworfen, um keine falschen Warnhinweise anzuzeigen.
+    """
+    m = re.search(r'<h2 class="">\s*#aktuell\s*</h2>(.*?)<h3 class="">\s*Feiertage', html, re.S)
+    if not m:
+        return None
+    block = m.group(1)
+    title_m = re.search(r'<h3 class="">\s*(.*?)\s*</h3>', block, re.S)
+    if not title_m:
+        return None
+    title = re.sub(r"<[^>]+>", " ", title_m.group(1))
+    title = re.sub(r"\s+", " ", title).strip()
+    paras = re.findall(r"<p>(.*?)</p>", block, re.S)
+    text = " ".join(re.sub(r"<[^>]+>", " ", p) for p in paras)
+    text = re.sub(r"\s+", " ", text).strip()
+    if not title and not text:
+        return None
+
+    haystack = (title + " " + text).lower()
+    if not any(kw in haystack for kw in CLOSURE_KEYWORDS):
+        return None
+
+    return {"titel": title, "text": text}
+
+
+# Muss zum SERVICE_COLUMNS-Mapping in scripts/enrich_standorte.py passen.
+# slug -> (CSV-Spaltenname, deutsches Anzeigelabel). "wheelchair" bewusst
+# ausgelassen, deckt sich fast immer mit der vorhandenen `barrierefreiheit`-
+# Spalte (siehe README.md).
+SERVICE_CSV_COLUMNS = {
+    "wifi":         ("service_wlan", "W-Lan"),
+    "print":        ("service_drucker", "Drucker"),
+    "gamepad":      ("service_gaming", "Gaming"),
+    "coffee":       ("service_cafeteria", "Cafeteria"),
+    "globe":        ("service_international", "International"),
+    "battery-full": ("service_ladestation", "Handy-Ladestation"),
+    "parking":      ("service_parkplaetze", "Parkplätze"),
+}
+
+
+def services_from_row(row):
+    """Baut die services-Liste (wie frueher extract_services()) aus den
+    service_*-Spalten von standorte.csv statt per Live-Fetch."""
+    results = []
+    for slug, (col, label) in SERVICE_CSV_COLUMNS.items():
+        value = row.get(col, "")
+        if not value:
+            continue
+        text = "" if value == "ja" else value
+        results.append({"slug": slug, "label": label, "text": text})
+    return results
+
+
+
+# "vor Ort"-Titel, die seit 2026-08-02 in standorte.csv zusammengefuehrt
+# werden (service_international bzw. barrierefreiheit_detail, siehe
+# scripts/enrich_standorte.py::VOR_ORT_MERGE_TITLES) und deshalb hier
+# rausgefiltert werden, damit sie im Steckbrief nicht doppelt auftauchen.
+VOR_ORT_SKIP_TITLES = {"Fremdsprachige Medien", "Barrierefreiheit"}
+
+
+def extract_vor_ort(html):
+    """
+    "vor Ort"-Akkordeon: variable, standortspezifische Liste von Titel+Text-
+    Bloecken (Bargeldlose Bibliothek, Arbeitsplaetze, Lastenfahrrad, aber auch
+    Einzelstuecke wie "Naschgarten" oder "Kreislaufschrank"). KEIN festes
+    Schema - anders als extract_services() nicht zum Filtern gedacht, nur zur
+    Anzeige im Steckbrief. "Fremdsprachige Medien" und "Barrierefreiheit"
+    werden ausgefiltert, weil sie in standorte.csv zusammengefuehrt sind
+    (siehe VOR_ORT_SKIP_TITLES).
+    """
+    m = re.search(r'<h2 class="">\s*vor Ort\s*</h2>(.*?)<h2 class="">', html, re.S)
+    if not m:
+        return []
+    block = m.group(1)
+    items = []
+    for hm in re.finditer(
+        r'<h3 class="">\s*(.*?)\s*</h3>(.*?)(?=<div id="c\d+"|</section>)', block, re.S
+    ):
+        title = re.sub(r"\s+", " ", hm.group(1)).strip()
+        if title in VOR_ORT_SKIP_TITLES:
+            continue
+        paras = re.findall(r"<p[^>]*>(.*?)</p>", hm.group(2), re.S)
+        text = " ".join(re.sub(r"<[^>]+>", " ", p) for p in paras)
+        text = re.sub(r"&nbsp;", " ", text)
+        text = re.sub(r"\s+", " ", text).strip()
+        if title or text:
+            items.append({"titel": title, "text": text})
+    return items
+
+
+def build_hours_by_name():
+    by_name = {}
+    try:
+        raw = fetch_hours_raw()
+    except Exception as e:
+        print(f"WARNUNG: Oeffnungszeiten konnten nicht geladen werden: {e}")
+        return by_name
+
+    for feature in raw:
+        props = feature["properties"]
+        name = normalize_hours_name(props["name"])
+        try:
+            rules = parse_hours_field(props.get("hoursWeekdays", ""))
+            rules += parse_hours_field(props.get("hoursSaturday", ""), default_day=5)
+        except ValueError:
+            # Sonderformate (Monacensia, Jura, Klinikbibliotheken) - nicht Teil unserer 24 Standorte
+            continue
+        by_name[name] = rules
+    return by_name
+
+
+def main():
+    standorte = read_csv(DATA / "standorte.csv")
+    besuche = read_csv(DATA / "besucherzahlen.csv")
+    bestand = read_csv(DATA / "bestand.csv")
+    entleihungen = read_csv(DATA / "entleihungen.csv")
+    hours_by_name = build_hours_by_name()
+
+    def series_by_name(rows, value_col):
+        by_name = {}
+        for r in rows:
+            by_name.setdefault(r["bibliothek"], []).append(
+                {"monat": r["jahr_monat"], "wert": int(r[value_col])}
+            )
+        for v in by_name.values():
+            v.sort(key=lambda x: x["monat"])
+        return by_name
+
+    besuche_by_name = series_by_name(besuche, "anzahl_besuche")
+    bestand_by_name = series_by_name(bestand, "anzahl_exemplare")
+    entleihungen_by_name = series_by_name(entleihungen, "anzahl_entleihungen")
+
+    result = []
+    unmatched = []
+    unmatched_hours = []
+
+    for row in standorte:
+        if row["bib_type"] not in INCLUDED_TYPES:
+            continue
+
+        norm = normalize(row["bib_name"])
+        hours_key = normalize_hours_name(row["bib_name"])
+
+        entry = {
+            "name": row["bib_name"],
+            "typ": row["bib_type"],
+            "kuerzel": row["bib_abkuerzung"],
+            "strasse": row["bib_strasse"],
+            "plz": row["bib_plz"],
+            "lat": float(row["lat"]),
+            "lon": float(row["lon"]),
+            "publikumsflaeche": int(row["publikumsflaeche"]) if row["publikumsflaeche"] else None,
+            "arbeitsplaetze": int(row["anzahl_arbeitsplaetze"]) if row["anzahl_arbeitsplaetze"] else None,
+            "webseite": row["webseite"],
+            "open_library": row["open_library"] == "JA",
+            "barrierefreiheit": row["barrierefreiheit"],
+            "barrierefreiheit_detail": row.get("barrierefreiheit_detail", ""),
+            "email": row.get("email", ""),
+            "telefon": row.get("telefon", ""),
+            "rueckgabezeiten": row.get("rueckgabezeiten", ""),
+            "services": services_from_row(row),
+            "dauerhaft_geschlossen": row["bib_name"] in PERMANENT_CLOSURES,
+            "besuche": besuche_by_name.get(norm),
+            "bestand": bestand_by_name.get(norm),
+            "entleihungen": entleihungen_by_name.get(norm),
+            "oeffnungszeiten": hours_by_name.get(hours_key),
+        }
+
+        if entry["besuche"] is None:
+            unmatched.append(row["bib_name"])
+        if entry["oeffnungszeiten"] is None:
+            unmatched_hours.append(row["bib_name"])
+
+        result.append(entry)
+
+    print(f"Hole Zusatzinfos (#aktuell-Meldungen, Ausstattung) von {len(result)} Standort-Unterseiten ...")
+    notices = []
+    for entry in result:
+        entry["aktuelle_meldung"] = None
+        entry["ausstattung"] = []
+        if not entry["webseite"]:
+            continue
+        try:
+            html = fetch_page(entry["webseite"])
+            entry["aktuelle_meldung"] = extract_aktuell_notice(html)
+            entry["ausstattung"] = extract_vor_ort(html)
+            if entry["aktuelle_meldung"]:
+                notices.append(entry["name"])
+        except Exception as e:
+            print(f"WARNUNG: Standort-Unterseite fuer {entry['name']} nicht abrufbar: {e}")
+        time.sleep(0.3)
+
+    out_path = DATA / "bibliotheken.json"
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump(result, f, ensure_ascii=False, indent=2)
+
+    print(f"{len(result)} Standorte geschrieben nach {out_path.relative_to(ROOT)}")
+    if unmatched:
+        print(f"WARNUNG: keine Kennzahlen gefunden fuer: {unmatched}")
+    if unmatched_hours:
+        print(f"WARNUNG: keine Oeffnungszeiten gefunden fuer: {unmatched_hours}")
+    if notices:
+        print(f"Aktuelle Meldungen gefunden fuer: {notices}")
+
+
+if __name__ == "__main__":
+    main()

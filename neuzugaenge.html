@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neuzugänge – Münchner Stadtbibliothek [Prototyp]</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --magenta:   #DD0244;
+    --orange:    #E84E0D;
+    --teal:      #63B7AA;
+    --brand:     #D14900;
+    --ink:       #241705;
+    --ink-dim:   #7a6a4a;
+    --bg:        #faf8f2;
+    --surface:   #ffffff;
+    --border:    #ece5d2;
+  }
+  body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.5; }
+  .display { font-family: 'Fira Sans Condensed', Tahoma, sans-serif; font-weight: 700; }
+
+  header {
+    background: var(--brand); color: #fff;
+    padding: 0 1.1rem; height: 58px;
+    display: flex; align-items: center; gap: .7rem;
+  }
+  header h1 { font-size: 1.05rem; letter-spacing: .01em; text-transform: uppercase; }
+  header span { font-size: .78rem; opacity: .9; }
+  header .proto-badge {
+    margin-left: auto; font-size: .68rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .04em; background: rgba(255,255,255,.2); padding: 3px 9px; border-radius: 20px;
+  }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 1.8rem 1.2rem 4rem; }
+
+  .intro { color: var(--ink-dim); font-size: .88rem; max-width: 700px; margin-bottom: 1.4rem; }
+  .intro strong { color: var(--ink); }
+  .intro code { background: #f1efe6; padding: 1px 5px; border-radius: 3px; font-size: .85em; }
+
+  .stats-row { display: flex; gap: .7rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
+  .stat-card {
+    background: var(--surface); border: 1px solid var(--border);
+    padding: .7rem 1rem; min-width: 110px;
+  }
+  .stat-card .num { font-family: 'Fira Sans Condensed', sans-serif; font-weight: 700; font-size: 1.5rem; line-height: 1; }
+  .stat-card .lbl { font-size: .68rem; color: var(--ink-dim); text-transform: uppercase; letter-spacing: .03em; margin-top: .25rem; }
+
+  .day-nav {
+    display: flex; align-items: center; gap: .8rem; margin-bottom: 1.2rem;
+    padding: .7rem 1rem; background: var(--surface); border: 1px solid var(--border);
+  }
+  .day-nav button {
+    font-size: .78rem; font-weight: 600; padding: 6px 12px; border-radius: 20px;
+    background: var(--bg); border: 1px solid var(--border); color: var(--ink);
+    cursor: pointer;
+  }
+  .day-nav button:hover:not(:disabled) { border-color: var(--teal); }
+  .day-nav button:disabled { opacity: .35; cursor: default; }
+  .day-current {
+    font-family: 'Fira Sans Condensed', sans-serif; font-weight: 700; font-size: 1rem;
+    flex: 1 1 auto; text-align: center;
+  }
+  .day-current .pos { display: block; font-family: inherit; font-weight: 600; font-size: .68rem; color: var(--ink-dim); text-transform: uppercase; letter-spacing: .03em; margin-top: 2px; }
+
+  .filter-bar { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; margin-bottom: 1.4rem; }
+  .filter-bar .spacer { flex: 1 1 auto; }
+  .chip {
+    font-size: .76rem; padding: 5px 12px; border-radius: 20px;
+    background: var(--surface); border: 1px solid var(--border); color: var(--ink-dim);
+    cursor: pointer; white-space: nowrap; user-select: none;
+  }
+  .chip:hover { border-color: var(--teal); }
+  .chip.active { background: var(--teal); border-color: var(--teal); color: #fff; }
+  .toggle {
+    font-size: .76rem; color: var(--ink-dim); display: flex; align-items: center; gap: .4rem; cursor: pointer;
+  }
+
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .8rem;
+  }
+
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    display: flex; flex-direction: column; overflow: hidden;
+    text-decoration: none; color: inherit;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  a.card:hover { border-color: var(--teal); box-shadow: 0 2px 8px rgba(99,183,170,.25); }
+  .card-cover {
+    aspect-ratio: 2/3; background: #f1efe6; display: flex; align-items: center; justify-content: center;
+    overflow: hidden; position: relative;
+  }
+  .card-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .card-cover .placeholder {
+    font-size: 1.6rem; color: var(--border); font-family: 'Fira Sans Condensed', sans-serif; font-weight: 700;
+    text-align: center; padding: .5rem;
+  }
+  .card-type {
+    position: absolute; top: 6px; left: 6px; font-size: .6rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .03em; padding: 2px 7px; border-radius: 4px; background: rgba(255,255,255,.9); color: var(--ink-dim);
+  }
+  .card-type.t-buch                { color: var(--magenta); }
+  .card-type.t-cd,
+  .card-type.t-mp,
+  .card-type.t-noten               { color: #1c7d6d; }
+  .card-type.t-dvd,
+  .card-type.t-bluraydisc          { color: var(--orange); }
+
+  .card-body { padding: .5rem .6rem .6rem; flex: 1 1 auto; display: flex; flex-direction: column; }
+  .card-title { font-weight: 700; font-size: .78rem; line-height: 1.25; }
+  .card-meta { font-size: .68rem; color: var(--ink-dim); margin-top: .25rem; }
+  .card-extra { font-size: .64rem; color: var(--ink-dim); opacity: .75; margin-top: .2rem; font-variant-numeric: tabular-nums; }
+
+  #empty-hint { text-align: center; color: var(--ink-dim); padding: 2rem; font-size: .85rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1 class="display">Münchner Stadtbibliothek</h1>
+  <span>Neuzugänge im Katalog</span>
+  <span class="proto-badge">Prototyp – lokal, nicht live</span>
+</header>
+
+<main>
+  <p class="intro">
+    Neu katalogisierte Medien, <strong>eine CSV pro Tag</strong>, über den <strong>gesamten Bestand</strong>
+    (alle Standorte + Sonderbibliotheken, inkl. digitaler Onleihe/Overdrive-Angebote). Quelle:
+    OAI-PMH-Katalogschnittstelle (<a href="https://data-bib.muenchen.de/oai-pmh" target="_blank" rel="noopener">data-bib.muenchen.de</a>,
+    Format <code>marc_xml</code>), CC0. Cover-Bilder über die ISBN, primär von
+    <a href="https://www.ekz.de" target="_blank" rel="noopener">ekz.de</a> (Fallback: Open Library, Google Books).
+    Karten verlinken zum Original-Katalogeintrag im MSB-OPAC.
+    Lokal per <code>scripts/fetch_neuzugaenge.py</code> vorab abgerufen, nicht live bei jedem Seitenaufruf.
+  </p>
+
+  <div class="day-nav">
+    <button id="day-prev">← Vorheriger Tag</button>
+    <span class="day-current" id="day-current"></span>
+    <button id="day-next">Nächster Tag →</button>
+  </div>
+
+  <div class="stats-row" id="stats-row"></div>
+  <div class="filter-bar" id="filter-bar"></div>
+  <div id="list"></div>
+</main>
+
+<script>
+const TYPE_SLUG = t => (t || 'unbekannt').toLowerCase().replace(/[^a-z]/g, '');
+
+function fmtDay(iso) {
+  const d = new Date(iso + 'T00:00:00');
+  return d.toLocaleDateString('de-DE', { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' });
+}
+
+let ALL = [];
+let DAYS = [];
+let dayIndex = -1;
+let activeType = null;
+let onlyWithCover = false;
+
+function card(r) {
+  const tag = r.opac_url ? 'a' : 'div';
+  const attrs = r.opac_url ? `href="${r.opac_url}" target="_blank" rel="noopener"` : '';
+  return `
+    <${tag} class="card" ${attrs}>
+      <div class="card-cover">
+        ${r.cover_url
+          ? `<img src="${r.cover_url}" alt="Cover: ${r.title}" loading="lazy">`
+          : `<div class="placeholder">${(r.title || '?').slice(0, 30)}</div>`}
+        ${r.type ? `<span class="card-type t-${TYPE_SLUG(r.type)}">${r.type}</span>` : ''}
+      </div>
+      <div class="card-body">
+        <div class="card-title">${r.title || '(ohne Titel)'}${r.subtitle ? `. ${r.subtitle}` : ''}</div>
+        <div class="card-meta">${[r.creator, r.year].filter(Boolean).join(' · ') || '–'}</div>
+        <div class="card-extra">${[r.isbn ? `ISBN ${r.isbn}` : null, r.language && r.language !== 'ger' ? r.language : null].filter(Boolean).join(' · ')}</div>
+      </div>
+    </${tag}>
+  `;
+}
+
+function render() {
+  const list = document.getElementById('list');
+  let rows = activeType !== null ? ALL.filter(r => r.type === activeType) : ALL;
+  if (onlyWithCover) rows = rows.filter(r => r.cover_url);
+
+  if (!rows.length) {
+    list.innerHTML = '<div id="empty-hint">Keine Treffer für diesen Filter.</div>';
+    return;
+  }
+
+  list.innerHTML = `<div class="grid">${rows.map(card).join('')}</div>`;
+}
+
+function updateDayNav() {
+  const day = DAYS[dayIndex];
+  document.getElementById('day-current').innerHTML = `
+    ${fmtDay(day)}
+    <span class="pos">Tag ${dayIndex + 1} von ${DAYS.length} archivierten Tagen</span>
+  `;
+  document.getElementById('day-prev').disabled = dayIndex <= 0;
+  document.getElementById('day-next').disabled = dayIndex >= DAYS.length - 1;
+}
+
+function loadDay(day) {
+  document.getElementById('list').innerHTML = '<div id="empty-hint">Lade …</div>';
+  Papa.parse(`data/neuzugaenge/${day}.csv`, {
+    download: true,
+    header: true,
+    skipEmptyLines: true,
+    complete: (res) => {
+      ALL = res.data;
+      activeType = null;
+      onlyWithCover = false;
+      updateDayNav();
+
+      const withCover = ALL.filter(r => r.cover_url).length;
+      const withIsbn = ALL.filter(r => r.isbn).length;
+      const stats = document.getElementById('stats-row');
+      stats.innerHTML = `
+        <div class="stat-card"><div class="num">${ALL.length}</div><div class="lbl">Neuzugänge an diesem Tag</div></div>
+        <div class="stat-card"><div class="num">${withCover} / ${withIsbn}</div><div class="lbl">Cover gefunden (von ISBN-Treffern)</div></div>
+      `;
+
+      const types = {};
+      ALL.forEach(r => { types[r.type || 'unbekannt'] = (types[r.type || 'unbekannt'] || 0) + 1; });
+      const filterBar = document.getElementById('filter-bar');
+      const chips = [['Alle', null]].concat(
+        Object.entries(types).sort((a, b) => b[1] - a[1]).map(([t, n]) => [`${t || 'unbekannt'} (${n})`, t === 'unbekannt' ? '' : t])
+      );
+      filterBar.innerHTML = chips.map(([label, val]) =>
+        `<span class="chip${val === activeType ? ' active' : ''}" data-val="${val ?? ''}">${label}</span>`
+      ).join('') + `
+        <span class="spacer"></span>
+        <label class="toggle"><input type="checkbox" id="cover-toggle"> Nur mit Cover</label>
+      `;
+      filterBar.querySelectorAll('.chip').forEach((el, i) => {
+        el.addEventListener('click', () => {
+          activeType = chips[i][1];
+          filterBar.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+          el.classList.add('active');
+          render();
+        });
+      });
+      filterBar.children[0].classList.add('active');
+      document.getElementById('cover-toggle').addEventListener('change', (e) => {
+        onlyWithCover = e.target.checked;
+        render();
+      });
+
+      render();
+    },
+    error: (err) => {
+      document.getElementById('list').innerHTML =
+        `<div id="empty-hint">Fehler beim Laden von ${day}: ${err.message}</div>`;
+    },
+  });
+}
+
+document.getElementById('day-prev').addEventListener('click', () => {
+  if (dayIndex > 0) { dayIndex--; loadDay(DAYS[dayIndex]); }
+});
+document.getElementById('day-next').addEventListener('click', () => {
+  if (dayIndex < DAYS.length - 1) { dayIndex++; loadDay(DAYS[dayIndex]); }
+});
+
+fetch('data/neuzugaenge/index.json')
+  .then(r => r.json())
+  .then(idx => {
+    DAYS = idx.days || [];
+    if (!DAYS.length) {
+      document.getElementById('list').innerHTML =
+        '<div id="empty-hint">Noch kein Tag archiviert. Erst scripts/fetch_neuzugaenge.py laufen lassen?</div>';
+      return;
+    }
+    dayIndex = DAYS.length - 1;
+    loadDay(DAYS[dayIndex]);
+  })
+  .catch(err => {
+    document.getElementById('list').innerHTML =
+      `<div id="empty-hint">Fehler beim Laden von index.json: ${err.message}</div>`;
+  });
+</script>
+
+</body>
+</html>

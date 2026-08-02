@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leihkarte — Münchner Stadtbibliothek</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+
+<style>
+  :root {
+    --paper:      #E7E0C8;
+    --paper-2:    #DED4AE;
+    --card:       #F1EBD6;
+    --ink:        #211d17;
+    --ink-dim:    #6b6250;
+    --stamp:      #B90F43;
+    --stamp-dim:  #7d0e33;
+    --rule:       #c3b688;
+    --brass:      #8a7239;
+    --brass-lt:   #b39a5c;
+  }
+
+  * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    height: 100vh; height: 100dvh;
+    overflow: hidden;
+  }
+
+  .display { font-family: 'Fira Sans Condensed', Tahoma, sans-serif; font-weight: 700; }
+  .mono { font-family: ui-monospace, "SF Mono", "Courier New", monospace; font-variant-numeric: tabular-nums; }
+
+  header {
+    height: 64px;
+    background: var(--ink);
+    color: var(--paper);
+    display: flex;
+    align-items: center;
+    gap: .9rem;
+    padding: 0 1.1rem;
+    border-bottom: 5px solid var(--brass);
+    position: relative;
+    z-index: 20;
+  }
+  header .tab {
+    width: 34px; height: 34px;
+    border: 2px solid var(--brass-lt);
+    border-radius: 3px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    color: var(--brass-lt);
+    flex-shrink: 0;
+  }
+  header .title-block { line-height: 1.15; }
+  header h1 { font-size: 1.15rem; letter-spacing: .01em; text-transform: uppercase; }
+  header .subtitle { font-size: .72rem; color: var(--brass-lt); text-transform: uppercase; letter-spacing: .06em; }
+
+  #map {
+    position: absolute; inset: 64px 0 0 0;
+    filter: sepia(.4) saturate(.75) contrast(1.04) brightness(1.03);
+  }
+
+  /* Kartei-Registerreiter am rechten Rand als dezente Legende */
+  .legend {
+    position: absolute; top: 84px; right: 20px; z-index: 15;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: .6rem .8rem;
+    font-size: .72rem;
+    box-shadow: 2px 3px 0 rgba(33,29,23,.12);
+  }
+  .legend div { display: flex; align-items: center; gap: .4rem; margin-top: .3rem; }
+  .legend div:first-child { margin-top: 0; }
+  .legend .dot { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid var(--ink); }
+
+  /* Karteikarte, die von unten hereingezogen wird */
+  #card {
+    position: absolute;
+    left: 24px; right: 24px; bottom: -520px;
+    max-width: 620px;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 3px 3px 0 0;
+    box-shadow: 0 -6px 24px rgba(33,29,23,.28);
+    transition: bottom .38s cubic-bezier(.2,.7,.3,1);
+    z-index: 30;
+    padding: 1.1rem 1.3rem 1.3rem;
+  }
+  #card.open { bottom: 24px; }
+
+  #card .perforation {
+    position: absolute; top: -1px; left: 14px; right: 14px; height: 1px;
+    border-top: 2px dashed var(--rule);
+  }
+
+  .card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+  .card-head h2 { font-size: 1.3rem; letter-spacing: .01em; }
+  .card-head .addr { font-size: .78rem; color: var(--ink-dim); margin-top: .15rem; }
+
+  .stamp-box {
+    flex-shrink: 0;
+    border: 2px solid var(--stamp);
+    color: var(--stamp);
+    border-radius: 3px;
+    padding: .3rem .6rem;
+    font-size: .62rem;
+    text-align: center;
+    letter-spacing: .05em;
+    transform: rotate(-3deg);
+    line-height: 1.3;
+  }
+  .stamp-box .big { font-size: .82rem; font-weight: 700; }
+
+  .close-btn {
+    position: absolute; top: .5rem; right: .6rem;
+    background: none; border: none; font-size: 1.2rem; color: var(--ink-dim); cursor: pointer;
+    line-height: 1; padding: .3rem;
+  }
+  .close-btn:hover { color: var(--ink); }
+
+  .facts-row {
+    display: flex; gap: 1.1rem; flex-wrap: wrap;
+    margin: .8rem 0 1rem;
+    font-size: .74rem;
+    color: var(--ink-dim);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: .5rem 0;
+  }
+  .facts-row b { color: var(--ink); font-weight: 700; }
+
+  .ledger { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .ledger-entry .label {
+    font-size: .66rem; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-dim);
+  }
+  .ledger-entry .value { font-size: 1.5rem; margin: .1rem 0 .2rem; }
+  .ledger-entry canvas { height: 34px !important; width: 100% !important; }
+
+  .card-foot { margin-top: .9rem; font-size: .78rem; }
+  .card-foot a { color: var(--stamp); text-decoration: none; font-weight: 600; }
+  .card-foot a:hover { text-decoration: underline; }
+
+  @media (max-width: 680px) {
+    .ledger { grid-template-columns: 1fr; }
+    #card { left: 10px; right: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="tab">M</div>
+  <div class="title-block">
+    <h1 class="display">Kartenkatalog</h1>
+    <div class="subtitle">Münchner Stadtbibliothek · Zweigstellen</div>
+  </div>
+</header>
+
+<div id="map"></div>
+
+<div class="legend mono">
+  <div><span class="dot" style="background:#2a2a2a"></span>Zentralbibliothek</div>
+  <div><span class="dot" style="background:#B90F43"></span>Stadtteilbibliothek</div>
+</div>
+
+<div id="card">
+  <div class="perforation"></div>
+  <button class="close-btn" onclick="closeCard()">&times;</button>
+  <div class="card-head">
+    <div>
+      <h2 class="display" id="c-name">–</h2>
+      <div class="addr" id="c-addr">–</div>
+    </div>
+    <div class="stamp-box mono">
+      STAND<br><span class="big" id="c-stamp">–</span>
+    </div>
+  </div>
+
+  <div class="facts-row">
+    <span>Fläche <b id="c-flaeche">–</b></span>
+    <span>Arbeitsplätze <b id="c-plaetze">–</b></span>
+    <span>Open Library <b id="c-ol">–</b></span>
+  </div>
+
+  <div class="ledger">
+    <div class="ledger-entry">
+      <div class="label">Besuche/Monat</div>
+      <div class="value mono" id="v-besuche">–</div>
+      <canvas id="s-besuche"></canvas>
+    </div>
+    <div class="ledger-entry">
+      <div class="label">Bestand</div>
+      <div class="value mono" id="v-bestand">–</div>
+      <canvas id="s-bestand"></canvas>
+    </div>
+    <div class="ledger-entry">
+      <div class="label">Entleihungen</div>
+      <div class="value mono" id="v-entleihungen">–</div>
+      <canvas id="s-entleihungen"></canvas>
+    </div>
+  </div>
+
+  <div class="card-foot"><a id="c-web" href="#" target="_blank" rel="noopener">Zur Bibliothekswebseite →</a></div>
+</div>
+
+<script>
+const map = L.map('map', { zoomControl: true, attributionControl: false }).setView([48.1372, 11.5756], 12);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(map);
+
+let sparks = [];
+function destroySparks() { sparks.forEach(c => c.destroy()); sparks = []; }
+
+function fmt(n) { return n.toLocaleString('de-DE'); }
+
+function openCard(bib) {
+  destroySparks();
+  document.getElementById('card').classList.add('open');
+  document.getElementById('c-name').textContent = bib.name;
+  document.getElementById('c-addr').textContent = bib.strasse + ', ' + bib.plz + ' München';
+  document.getElementById('c-flaeche').textContent = bib.publikumsflaeche ? bib.publikumsflaeche.toLocaleString('de-DE') + ' m²' : '–';
+  document.getElementById('c-plaetze').textContent = bib.arbeitsplaetze ?? '–';
+  document.getElementById('c-ol').textContent = bib.open_library ? 'Ja' : 'Nein';
+  document.getElementById('c-web').href = bib.webseite || '#';
+
+  const keys = [['besuche','v-besuche','s-besuche'], ['bestand','v-bestand','s-bestand'], ['entleihungen','v-entleihungen','s-entleihungen']];
+  let latestMonat = '';
+  keys.forEach(([key, valId, canvasId]) => {
+    const series = bib[key];
+    if (!series || !series.length) return;
+    const latest = series[series.length - 1];
+    latestMonat = latest.monat;
+    document.getElementById(valId).textContent = fmt(latest.wert);
+    const ctx = document.getElementById(canvasId);
+    const chart = new Chart(ctx, {
+      type: 'line',
+      data: { labels: series.map(s => s.monat), datasets: [{
+        data: series.map(s => s.wert), borderColor: '#B90F43', borderWidth: 1.6,
+        pointRadius: 0, fill: true, backgroundColor: 'rgba(185,15,67,.12)', tension: .2,
+      }]},
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display:false }, tooltip: { enabled:false } },
+        scales: { x: { display:false }, y: { display:false } },
+        elements: { point: { radius:0 } },
+      },
+    });
+    sparks.push(chart);
+  });
+
+  if (latestMonat) {
+    const [y,m] = latestMonat.split('-');
+    const names = ['JAN','FEB','MÄR','APR','MAI','JUN','JUL','AUG','SEP','OKT','NOV','DEZ'];
+    document.getElementById('c-stamp').textContent = names[parseInt(m,10)-1] + " '" + y.slice(2);
+  }
+}
+
+function closeCard() {
+  destroySparks();
+  document.getElementById('card').classList.remove('open');
+}
+window.closeCard = closeCard;
+
+fetch('bibliotheken.json').then(r => r.json()).then(data => {
+  data.forEach(bib => {
+    const isZentral = bib.typ === 'Zentralbibliothek';
+    const marker = L.circleMarker([bib.lat, bib.lon], {
+      radius: isZentral ? 8 : 5.5,
+      fillColor: isZentral ? '#2a2a2a' : '#B90F43',
+      color: '#F1EBD6', weight: 1.5, fillOpacity: .95,
+    }).addTo(map);
+    marker.bindTooltip(bib.name, { direction: 'top', offset: [0,-6] });
+    marker.on('click', () => openCard(bib));
+  });
+});
+</script>
+</body>
+</html>

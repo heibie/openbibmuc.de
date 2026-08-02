@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datenquellen & Lizenz – Münchner Stadtbibliothek</title>
+  <meta name="description" content="Übersicht aller Datenquellen und Lizenzen des Standort-Dashboards der Münchner Stadtbibliothek.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      /* Aus der Sommerferien-Leseclub-Kampagnengrafik der MSB, wie index.html */
+      --magenta:   #DD0244;
+      --teal:      #63B7AA;
+      --brand:     #D14900;
+
+      --bg: #faf8f2;
+      --surface: #fff;
+      --text: #241705;
+      --text-dim: #7a6a4a;
+      --border: #ece5d2;
+      --ok: #006a55;
+      --ok-bg: #f0faf6;
+      --warn: #8a5a00;
+      --warn-bg: #fff8ec;
+      --changed: #a01515;
+      --changed-bg: #fdf1f1;
+      --manual: #7a6a4a;
+      --manual-bg: #f1efe6;
+    }
+    body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .display { font-family: 'Fira Sans Condensed', Tahoma, sans-serif; font-weight: 700; }
+
+    header {
+      background: var(--brand); color: #fff;
+      padding: 0 24px; height: 58px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    header a  { display: flex; align-items: baseline; gap: 12px; text-decoration: none; color: inherit; }
+    header h1 { font-size: 1.15rem; }
+    header span { font-size: .8rem; opacity: .9; }
+
+    .back-nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 24px;
+      font-size: 0.8rem;
+    }
+    .back-nav a { color: var(--magenta); text-decoration: none; }
+    .back-nav a:hover { text-decoration: underline; }
+
+    main { max-width: 1200px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 6px; }
+    .page-intro { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 28px; max-width: 760px; }
+
+    .license-box {
+      background: #f0faf6;
+      border: 1px solid #b2ddc9;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+    }
+    .license-box h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; }
+    .license-box p  { font-size: 0.82rem; color: var(--text-dim); line-height: 1.55; }
+    .license-box a  { color: #006a55; }
+
+    .scrape-note {
+      background: var(--warn-bg);
+      border: 1px solid #ecd9ae;
+      padding: 18px 20px;
+      margin-bottom: 28px;
+    }
+    .scrape-note h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; color: var(--warn); }
+    .scrape-note p  { font-size: 0.82rem; color: var(--text-dim); line-height: 1.55; }
+    .scrape-note a  { color: var(--warn); }
+
+    /* Status-Legende */
+    .legend {
+      display: flex; flex-wrap: wrap; gap: 14px;
+      font-size: 0.75rem; color: var(--text-dim);
+      margin-bottom: 20px;
+      align-items: center;
+    }
+    .legend strong { color: var(--text); font-weight: 600; }
+    .legend .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; vertical-align: middle; }
+
+    .refresh-note {
+      font-size: 0.72rem; color: var(--text-dim); margin-bottom: 20px;
+      font-family: ui-monospace, monospace;
+    }
+
+    /* Tabelle */
+    .table-wrap { overflow-x: auto; margin-bottom: 12px; }
+    table.sources {
+      width: 100%; border-collapse: collapse;
+      background: var(--surface);
+      font-size: 0.82rem;
+      border: 1px solid var(--border);
+    }
+    table.sources th {
+      text-align: left; font-size: 0.68rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.04em;
+      color: var(--text-dim);
+      padding: 10px 14px;
+      border-bottom: 2px solid var(--border);
+      background: #fafaf5;
+      white-space: nowrap;
+      position: sticky; top: 0;
+    }
+    table.sources td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    table.sources tr:last-child td { border-bottom: none; }
+    table.sources tr:hover td { background: #fafaf5; }
+    table.sources tbody tr { scroll-margin-top: 48px; }
+    table.sources tbody tr:target td { background: #fff6da; }
+
+    tr.cat-row td {
+      background: #fbeee9;
+      font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.04em;
+      color: var(--brand);
+      padding: 8px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .src-title { font-weight: 700; font-size: 0.85rem; margin-bottom: 2px; }
+    .src-file  { font-family: ui-monospace, monospace; font-size: 0.68rem; color: var(--text-dim); }
+    .src-file a { color: inherit; text-decoration: none; }
+    .src-file a:hover { color: var(--magenta); text-decoration: underline; }
+    .src-note { font-size: 0.75rem; color: var(--text-dim); margin-top: 6px; max-width: 320px; }
+
+    .used-in-list { display: flex; flex-direction: column; gap: 3px; }
+    .used-in-list a { font-size: 0.78rem; color: var(--magenta); text-decoration: none; }
+    .used-in-list a:hover { text-decoration: underline; }
+
+    .orig-link { font-size: 0.8rem; color: var(--magenta); text-decoration: none; }
+    .orig-link:hover { text-decoration: underline; }
+    .orig-none { font-size: 0.78rem; color: var(--text-dim); font-style: italic; }
+
+    .updated-date { font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .turnus { display: block; font-size: 0.68rem; color: var(--text-dim); margin-top: 2px; }
+
+    .status-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.72rem; font-weight: 600;
+      padding: 4px 10px; border-radius: 20px;
+      white-space: nowrap;
+    }
+    .status-pill .dot { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+    .status-ok      { background: var(--ok-bg);      color: var(--ok); }
+    .status-ok .dot        { background: #1e9e7a; }
+    .status-check_due,
+    .status-manual  { background: var(--manual-bg);  color: var(--manual); }
+    .status-check_due .dot { background: #8a95a1; }
+    .status-manual .dot    { background: #8a95a1; }
+    .status-changed { background: var(--changed-bg); color: var(--changed); }
+    .status-changed .dot   { background: #c72e2e; }
+    .status-unknown { background: var(--warn-bg);    color: var(--warn); }
+    .status-unknown .dot   { background: #c98a1f; }
+    .status-detail { display: block; font-size: 0.68rem; color: var(--text-dim); margin-top: 4px; max-width: 220px; }
+
+    /* Technologie-Attribution */
+    h3.attr-heading { font-size: 1rem; font-weight: 700; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--border); }
+    .attr-list { display: flex; flex-direction: column; gap: 10px; }
+    .attr-item {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 12px 16px; font-size: 0.82rem;
+      display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+    }
+    .attr-item .attr-title { font-weight: 700; }
+    .attr-item .attr-note { color: var(--text-dim); font-size: 0.78rem; }
+    .attr-item a { color: var(--magenta); text-decoration: none; font-size: 0.78rem; }
+    .attr-item a:hover { text-decoration: underline; }
+
+    .download-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 14px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+      margin-top: 36px;
+    }
+    .download-box p { font-size: 0.82rem; color: var(--text-dim); }
+    .download-box a {
+      font-size: 0.78rem; font-weight: 600;
+      padding: 7px 16px;
+      background: var(--magenta); color: #fff;
+      text-decoration: none;
+    }
+    .download-box a:hover { background: #b30138; }
+
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 12px 24px;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: center;
+    }
+    footer a { color: var(--text-dim); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+    footer .copy { margin-right: auto; }
+
+    @media (max-width: 700px) {
+      main { padding: 24px 16px 60px; }
+      .download-box { flex-direction: column; align-items: flex-start; }
+      .status-detail { max-width: 160px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/">
+    <h1 class="display">Münchner Stadtbibliothek</h1>
+    <span>Datenquellen &amp; Lizenz</span>
+  </a>
+</header>
+
+<div class="back-nav">
+  <a href="/">← Zurück zur Karte</a>
+</div>
+
+<main>
+  <h2>Datenquellen &amp; Lizenz</h2>
+  <p class="page-intro">
+    Dieses Dashboard verbindet offizielle OpenData-Datensätze der Landeshauptstadt München mit
+    Ergänzungen von der Website der Münchner Stadtbibliothek (Öffnungszeiten, Services, Ausstattung).
+    Die Tabelle zeigt zu jeder Quelle, wo sie verwendet wird, wo das Original liegt und ob sich seit
+    dem letzten Check etwas geändert hat.
+  </p>
+
+  <div class="license-box">
+    <h4>OpenData-Datensätze: Datenlizenz Deutschland – Namensnennung 2.0 (DL-DE-BY 2.0)</h4>
+    <p>
+      Standortliste und Kennzahlen (Besuche, Bestand, Entleihungen) stammen von
+      <a href="https://opendata.muenchen.de" target="_blank" rel="noopener">opendata.muenchen.de</a>
+      und stehen unter der
+      <a href="https://www.govdata.de/dl-de/by-2-0" target="_blank" rel="noopener">Datenlizenz Deutschland – Namensnennung 2.0</a>.
+      Eigene Zusammenstellungen (Joins, Aufbereitung) sind unter
+      <a href="https://creativecommons.org/licenses/by/4.0/deed.de">CC BY 4.0</a> nutzbar.
+    </p>
+  </div>
+
+  <div class="scrape-note">
+    <h4>Anreicherungen von muenchner-stadtbibliothek.de: kein offener Datensatz</h4>
+    <p>
+      Öffnungszeiten, Kontaktdaten, Services und die "vor Ort"-Ausstattung stammen von der Website der
+      Münchner Stadtbibliothek selbst – dort gibt es keinen offiziellen OpenData-Export dafür. Diese
+      Inhalte werden für dieses nicht-kommerzielle Dashboard genutzt und bleiben Eigentum der
+      <a href="https://www.muenchner-stadtbibliothek.de" target="_blank" rel="noopener">Münchner Stadtbibliothek</a>;
+      im Zweifel gilt immer der Stand auf der jeweiligen Original-Unterseite (siehe Link in der Tabelle).
+      Fehler gerne an <a href="mailto:kontakt@bielinski.de">kontakt@bielinski.de</a> melden.
+    </p>
+  </div>
+
+  <div class="legend" id="legend"></div>
+  <p class="refresh-note" id="refresh-note">Prüfstatus wird geladen …</p>
+
+  <div class="table-wrap">
+    <table class="sources">
+      <thead>
+        <tr>
+          <th>Quelle</th>
+          <th>Verwendet in</th>
+          <th>Original-Quelle</th>
+          <th>Zuletzt aktualisiert</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="sources-body">
+        <tr><td colspan="5" style="text-align:center; color: var(--text-dim); padding: 30px;">Lade Datenquellen …</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="attr-heading">Kartendarstellung &amp; Technologie</h3>
+  <div class="attr-list" id="attr-list"></div>
+
+  <div class="download-box">
+    <p>Alle Datensätze sind im Frictionless Data Standard (datapackage.json) beschrieben.</p>
+    <a href="data/datapackage.json">datapackage.json ↓</a>
+  </div>
+</main>
+
+<footer>
+  <span class="copy">© 2026 Münchner Stadtbibliothek – Standort-Dashboard</span>
+  <a href="/">Karte</a>
+</footer>
+
+<script>
+const STATUS_META = {
+  ok:        { label: 'aktuell',           order: 0 },
+  changed:   { label: 'Änderung erkannt',  order: 3 },
+  check_due: { label: 'Prüfung fällig',    order: 2 },
+  manual:    { label: 'manuell gepflegt',  order: 1 },
+  unknown:   { label: 'Check fehlgeschlagen', order: 4 },
+};
+
+const GITHUB_REPO = 'heibie/openbibmuc.de';
+
+function fmtDate(iso) {
+  if (!iso) return '–';
+  const d = iso.length === 10 ? new Date(iso + 'T00:00:00') : new Date(iso);
+  if (isNaN(d)) return iso;
+  return d.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
+}
+
+function fmtDateTime(iso) {
+  if (!iso) return '–';
+  const d = new Date(iso.includes(' ') ? iso.replace(' ', 'T') : iso);
+  if (isNaN(d)) return iso;
+  return d.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' })
+    + ', ' + d.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) + ' Uhr';
+}
+
+function githubFileLink(path) {
+  return { href: `https://github.com/${GITHUB_REPO}/blob/main/${path}`, label: path };
+}
+
+function statusPill(status, detail) {
+  const meta = STATUS_META[status] || { label: status };
+  const span = document.createElement('span');
+  span.className = 'status-pill status-' + status;
+  span.innerHTML = '<span class="dot"></span>' + meta.label;
+  const wrap = document.createElement('div');
+  wrap.appendChild(span);
+  if (detail) {
+    const d = document.createElement('span');
+    d.className = 'status-detail';
+    d.textContent = detail;
+    wrap.appendChild(d);
+  }
+  return wrap;
+}
+
+async function init() {
+  const [registry, statusData] = await Promise.all([
+    fetch('data/source-registry.json').then(r => r.json()),
+    fetch('data/source-status.json').then(r => r.json()).catch(() => ({ sources: {} })),
+  ]);
+
+  const statuses = statusData.sources || {};
+  const tbody = document.getElementById('sources-body');
+  tbody.innerHTML = '';
+
+  registry.categories.forEach(cat => {
+    const catRow = document.createElement('tr');
+    catRow.className = 'cat-row';
+    catRow.innerHTML = `<td colspan="5">${cat.title}</td>`;
+    tbody.appendChild(catRow);
+
+    cat.sources.forEach(src => {
+      const st = statuses[src.id] || {};
+      const tr = document.createElement('tr');
+      tr.id = src.id;
+
+      const tdTitle = document.createElement('td');
+      const titleDiv = document.createElement('div');
+      titleDiv.className = 'src-title';
+      titleDiv.textContent = src.title;
+      tdTitle.appendChild(titleDiv);
+      const fileDiv = document.createElement('div');
+      fileDiv.className = 'src-file';
+      (src.files || []).forEach((path, i) => {
+        if (i > 0) fileDiv.appendChild(document.createTextNode(' · '));
+        const link = githubFileLink(path);
+        const a = document.createElement('a');
+        a.href = link.href;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.textContent = link.label;
+        fileDiv.appendChild(a);
+      });
+      tdTitle.appendChild(fileDiv);
+      if (src.note) {
+        const noteDiv = document.createElement('div');
+        noteDiv.className = 'src-note';
+        noteDiv.textContent = src.note;
+        tdTitle.appendChild(noteDiv);
+      }
+      tr.appendChild(tdTitle);
+
+      const tdUsed = document.createElement('td');
+      const usedWrap = document.createElement('div');
+      usedWrap.className = 'used-in-list';
+      (src.used_in || []).forEach(u => {
+        const a = document.createElement('a');
+        a.href = u.href;
+        a.textContent = u.label;
+        usedWrap.appendChild(a);
+      });
+      tdUsed.appendChild(usedWrap);
+      tr.appendChild(tdUsed);
+
+      const tdOrig = document.createElement('td');
+      if (src.original_source && src.original_source.href) {
+        const a = document.createElement('a');
+        a.className = 'orig-link';
+        a.href = src.original_source.href;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.textContent = src.original_source.label + ' ↗';
+        tdOrig.appendChild(a);
+      } else {
+        const span = document.createElement('span');
+        span.className = 'orig-none';
+        span.textContent = (src.original_source && src.original_source.label) || '–';
+        tdOrig.appendChild(span);
+      }
+      tr.appendChild(tdOrig);
+
+      const tdDate = document.createElement('td');
+      const dateSpan = document.createElement('span');
+      dateSpan.className = 'updated-date';
+      dateSpan.textContent = st.local_updated_precise ? fmtDateTime(st.local_updated) : fmtDate(st.local_updated);
+      tdDate.appendChild(dateSpan);
+      if (src.turnus) {
+        const turnusSpan = document.createElement('span');
+        turnusSpan.className = 'turnus';
+        turnusSpan.textContent = 'Turnus: ' + src.turnus;
+        tdDate.appendChild(turnusSpan);
+      }
+      tr.appendChild(tdDate);
+
+      const tdStatus = document.createElement('td');
+      tdStatus.appendChild(statusPill(st.status || 'unknown', st.detail));
+      tr.appendChild(tdStatus);
+
+      tbody.appendChild(tr);
+    });
+  });
+
+  // Legende
+  const legend = document.getElementById('legend');
+  legend.innerHTML = '<strong>Status:</strong> ' + Object.entries(STATUS_META)
+    .sort((a, b) => a[1].order - b[1].order)
+    .map(([key, meta]) => `<span class="status-pill status-${key}"><span class="dot"></span>${meta.label}</span>`)
+    .join('');
+
+  const note = document.getElementById('refresh-note');
+  if (statusData.generated_at) {
+    note.textContent = 'Zuletzt geprüft: ' + fmtDateTime(statusData.generated_at);
+  } else {
+    note.textContent = 'Prüfstatus konnte nicht geladen werden.';
+  }
+
+  // Technologie-Attribution
+  const attrList = document.getElementById('attr-list');
+  (registry.attribution || []).forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'attr-item';
+    div.innerHTML = `
+      <div><span class="attr-title">${item.title}</span> <span class="attr-note">${item.note || ''}</span></div>
+      <a href="${item.href}" target="_blank" rel="noopener">Quelle ↗</a>
+    `;
+    attrList.appendChild(div);
+  });
+
+  if (location.hash) {
+    const target = document.getElementById(location.hash.slice(1));
+    if (target) target.scrollIntoView();
+  }
+}
+
+init().catch(err => {
+  document.getElementById('sources-body').innerHTML =
+    `<tr><td colspan="5" style="text-align:center; color: var(--changed); padding: 30px;">Fehler beim Laden der Datenquellen: ${err.message}</td></tr>`;
+});
+</script>
+
+</body>
+</html>

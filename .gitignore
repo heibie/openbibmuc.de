@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# Backups
+*.bak-*
+
+# Cron-Konfiguration mit Secrets (manuell auf den Server hochgeladen)
+cron/_cfg.php
+
+# API-Keys fuer lokale Skripte
+scripts/_secrets.py

@@ -1,0 +1,541 @@
+﻿jahr_monat,bibliothekssigel,bibliothek,anzahl_entleihungen
+2024-01,19,Stadtbibliothek im Motorama,63178
+2024-02,19,Stadtbibliothek im Motorama,63115
+2024-03,19,Stadtbibliothek im Motorama,65582
+2024-04,19,Stadtbibliothek im Motorama,62284
+2024-05,19,Stadtbibliothek im Motorama,62430
+2024-06,19,Stadtbibliothek im Motorama,54956
+2024-07,19,Stadtbibliothek im Motorama,60551
+2024-08,19,Stadtbibliothek im Motorama,57835
+2024-09,19,Stadtbibliothek im Motorama,59575
+2024-10,19,Stadtbibliothek im Motorama,66186
+2024-11,19,Stadtbibliothek im Motorama,64093
+2024-12,19,Stadtbibliothek im Motorama,59641
+2025-01,19,Stadtbibliothek im Motorama,67780
+2025-02,19,Stadtbibliothek im Motorama,59223
+2025-03,19,Stadtbibliothek im Motorama,65121
+2025-04,19,Stadtbibliothek im Motorama,60312
+2025-05,19,Stadtbibliothek im Motorama,61018
+2025-06,19,Stadtbibliothek im Motorama,53149
+2024-01,51,Stadtbibliothek im HP8,34443
+2024-02,51,Stadtbibliothek im HP8,32206
+2024-03,51,Stadtbibliothek im HP8,32765
+2024-04,51,Stadtbibliothek im HP8,32434
+2024-05,51,Stadtbibliothek im HP8,32284
+2024-06,51,Stadtbibliothek im HP8,28959
+2024-07,51,Stadtbibliothek im HP8,30878
+2024-08,51,Stadtbibliothek im HP8,28743
+2024-09,51,Stadtbibliothek im HP8,30153
+2024-10,51,Stadtbibliothek im HP8,33024
+2024-11,51,Stadtbibliothek im HP8,31501
+2024-12,51,Stadtbibliothek im HP8,30181
+2025-01,51,Stadtbibliothek im HP8,32702
+2025-02,51,Stadtbibliothek im HP8,29742
+2025-03,51,Stadtbibliothek im HP8,30287
+2025-04,51,Stadtbibliothek im HP8,27973
+2025-05,51,Stadtbibliothek im HP8,28455
+2025-06,51,Stadtbibliothek im HP8,24739
+2024-01,111,Berg am Laim,15117
+2024-02,111,Berg am Laim,15296
+2024-03,111,Berg am Laim,15290
+2024-04,111,Berg am Laim,15270
+2024-05,111,Berg am Laim,15043
+2024-06,111,Berg am Laim,7994
+2024-07,111,Berg am Laim,1100
+2024-08,111,Berg am Laim,81
+2024-09,111,Berg am Laim,107
+2024-10,111,Berg am Laim,53
+2024-11,111,Berg am Laim,8492
+2024-12,111,Berg am Laim,10377
+2025-01,111,Berg am Laim,12146
+2025-02,111,Berg am Laim,10963
+2025-03,111,Berg am Laim,11757
+2025-04,111,Berg am Laim,12494
+2025-05,111,Berg am Laim,12377
+2025-06,111,Berg am Laim,11017
+2024-01,112,Waldtrudering,34250
+2024-02,112,Waldtrudering,33939
+2024-03,112,Waldtrudering,36227
+2024-04,112,Waldtrudering,36063
+2024-05,112,Waldtrudering,36788
+2024-06,112,Waldtrudering,31241
+2024-07,112,Waldtrudering,36426
+2024-08,112,Waldtrudering,35446
+2024-09,112,Waldtrudering,32266
+2024-10,112,Waldtrudering,39453
+2024-11,112,Waldtrudering,34801
+2024-12,112,Waldtrudering,31285
+2025-01,112,Waldtrudering,41162
+2025-02,112,Waldtrudering,37027
+2025-03,112,Waldtrudering,38641
+2025-04,112,Waldtrudering,37712
+2025-05,112,Waldtrudering,36180
+2025-06,112,Waldtrudering,30117
+2024-01,115,Riem,17982
+2024-02,115,Riem,17518
+2024-03,115,Riem,18063
+2024-04,115,Riem,17408
+2024-05,115,Riem,17774
+2024-06,115,Riem,15451
+2024-07,115,Riem,17534
+2024-08,115,Riem,18594
+2024-09,115,Riem,17323
+2024-10,115,Riem,6646
+2024-11,115,Riem,291
+2024-12,115,Riem,213
+2025-01,115,Riem,169
+2025-02,115,Riem,104
+2025-03,115,Riem,64
+2025-04,115,Riem,117
+2025-05,115,Riem,15483
+2025-06,115,Riem,14286
+2024-01,117,Moosach,28505
+2024-02,117,Moosach,27933
+2024-03,117,Moosach,28798
+2024-04,117,Moosach,28834
+2024-05,117,Moosach,29446
+2024-06,117,Moosach,24894
+2024-07,117,Moosach,30764
+2024-08,117,Moosach,28035
+2024-09,117,Moosach,29652
+2024-10,117,Moosach,34216
+2024-11,117,Moosach,29868
+2024-12,117,Moosach,28223
+2025-01,117,Moosach,33950
+2025-02,117,Moosach,30734
+2025-03,117,Moosach,32146
+2025-04,117,Moosach,31606
+2025-05,117,Moosach,32394
+2025-06,117,Moosach,27969
+2024-01,118,Westend,16678
+2024-02,118,Westend,16360
+2024-03,118,Westend,17130
+2024-04,118,Westend,15831
+2024-05,118,Westend,16182
+2024-06,118,Westend,13240
+2024-07,118,Westend,15458
+2024-08,118,Westend,14842
+2024-09,118,Westend,14546
+2024-10,118,Westend,16799
+2024-11,118,Westend,14484
+2024-12,118,Westend,14063
+2025-01,118,Westend,18504
+2025-02,118,Westend,16246
+2025-03,118,Westend,16332
+2025-04,118,Westend,15528
+2025-05,118,Westend,15747
+2025-06,118,Westend,13415
+2024-01,123,Fürstenried,39260
+2024-02,123,Fürstenried,37806
+2024-03,123,Fürstenried,40897
+2024-04,123,Fürstenried,40829
+2024-05,123,Fürstenried,40979
+2024-06,123,Fürstenried,35572
+2024-07,123,Fürstenried,39803
+2024-08,123,Fürstenried,38144
+2024-09,123,Fürstenried,38827
+2024-10,123,Fürstenried,43157
+2024-11,123,Fürstenried,38213
+2024-12,123,Fürstenried,36852
+2025-01,123,Fürstenried,45697
+2025-02,123,Fürstenried,40371
+2025-03,123,Fürstenried,42396
+2025-04,123,Fürstenried,41659
+2025-05,123,Fürstenried,42209
+2025-06,123,Fürstenried,36136
+2024-01,125,Am Westkreuz,22000
+2024-02,125,Am Westkreuz,21064
+2024-03,125,Am Westkreuz,22765
+2024-04,125,Am Westkreuz,22019
+2024-05,125,Am Westkreuz,23097
+2024-06,125,Am Westkreuz,21289
+2024-07,125,Am Westkreuz,24200
+2024-08,125,Am Westkreuz,23349
+2024-09,125,Am Westkreuz,23631
+2024-10,125,Am Westkreuz,27909
+2024-11,125,Am Westkreuz,25737
+2024-12,125,Am Westkreuz,23039
+2025-01,125,Am Westkreuz,27170
+2025-02,125,Am Westkreuz,24772
+2025-03,125,Am Westkreuz,26008
+2025-04,125,Am Westkreuz,25075
+2025-05,125,Am Westkreuz,25067
+2025-06,125,Am Westkreuz,21743
+2024-01,126,Maxvorstadt,19949
+2024-02,126,Maxvorstadt,19123
+2024-03,126,Maxvorstadt,19926
+2024-04,126,Maxvorstadt,19623
+2024-05,126,Maxvorstadt,19697
+2024-06,126,Maxvorstadt,17174
+2024-07,126,Maxvorstadt,19901
+2024-08,126,Maxvorstadt,17759
+2024-09,126,Maxvorstadt,19119
+2024-10,126,Maxvorstadt,20589
+2024-11,126,Maxvorstadt,610
+2024-12,126,Maxvorstadt,719
+2025-01,126,Maxvorstadt,20753
+2025-02,126,Maxvorstadt,18136
+2025-03,126,Maxvorstadt,19213
+2025-04,126,Maxvorstadt,14624
+2025-05,126,Maxvorstadt,12614
+2025-06,126,Maxvorstadt,16138
+2024-01,128,Bogenhausen,44289
+2024-02,128,Bogenhausen,43776
+2024-03,128,Bogenhausen,44010
+2024-04,128,Bogenhausen,45527
+2024-05,128,Bogenhausen,45383
+2024-06,128,Bogenhausen,40461
+2024-07,128,Bogenhausen,45185
+2024-08,128,Bogenhausen,43402
+2024-09,128,Bogenhausen,40391
+2024-10,128,Bogenhausen,46903
+2024-11,128,Bogenhausen,44799
+2024-12,128,Bogenhausen,39096
+2025-01,128,Bogenhausen,48909
+2025-02,128,Bogenhausen,41986
+2025-03,128,Bogenhausen,43023
+2025-04,128,Bogenhausen,43100
+2025-05,128,Bogenhausen,42514
+2025-06,128,Bogenhausen,37028
+2024-01,129,Neuperlach,24614
+2024-02,129,Neuperlach,24027
+2024-03,129,Neuperlach,24256
+2024-04,129,Neuperlach,24106
+2024-05,129,Neuperlach,24670
+2024-06,129,Neuperlach,21320
+2024-07,129,Neuperlach,24040
+2024-08,129,Neuperlach,23557
+2024-09,129,Neuperlach,22995
+2024-10,129,Neuperlach,27544
+2024-11,129,Neuperlach,23334
+2024-12,129,Neuperlach,21145
+2025-01,129,Neuperlach,25939
+2025-02,129,Neuperlach,23938
+2025-03,129,Neuperlach,24025
+2025-04,129,Neuperlach,24148
+2025-05,129,Neuperlach,23634
+2025-06,129,Neuperlach,21124
+2024-01,130,Milbertshofen,17623
+2024-02,130,Milbertshofen,18192
+2024-03,130,Milbertshofen,17992
+2024-04,130,Milbertshofen,18301
+2024-05,130,Milbertshofen,18032
+2024-06,130,Milbertshofen,14819
+2024-07,130,Milbertshofen,16664
+2024-08,130,Milbertshofen,15873
+2024-09,130,Milbertshofen,16562
+2024-10,130,Milbertshofen,17967
+2024-11,130,Milbertshofen,17736
+2024-12,130,Milbertshofen,16665
+2025-01,130,Milbertshofen,18619
+2025-02,130,Milbertshofen,17053
+2025-03,130,Milbertshofen,17700
+2025-04,130,Milbertshofen,17118
+2025-05,130,Milbertshofen,17469
+2025-06,130,Milbertshofen,14679
+2024-01,132,Hadern,19512
+2024-02,132,Hadern,18440
+2024-03,132,Hadern,18657
+2024-04,132,Hadern,19849
+2024-05,132,Hadern,18906
+2024-06,132,Hadern,17458
+2024-07,132,Hadern,19141
+2024-08,132,Hadern,18493
+2024-09,132,Hadern,17319
+2024-10,132,Hadern,20623
+2024-11,132,Hadern,18776
+2024-12,132,Hadern,17076
+2025-01,132,Hadern,21436
+2025-02,132,Hadern,19181
+2025-03,132,Hadern,18901
+2025-04,132,Hadern,19478
+2025-05,132,Hadern,19063
+2025-06,132,Hadern,16466
+2024-01,133,Allach-Untermenzing,25196
+2024-02,133,Allach-Untermenzing,23997
+2024-03,133,Allach-Untermenzing,25981
+2024-04,133,Allach-Untermenzing,24944
+2024-05,133,Allach-Untermenzing,25356
+2024-06,133,Allach-Untermenzing,22564
+2024-07,133,Allach-Untermenzing,7712
+2024-08,133,Allach-Untermenzing,173
+2024-09,133,Allach-Untermenzing,775
+2024-10,133,Allach-Untermenzing,76
+2024-11,133,Allach-Untermenzing,67
+2024-12,133,Allach-Untermenzing,109
+2025-01,133,Allach-Untermenzing,38
+2025-02,133,Allach-Untermenzing,10
+2025-03,133,Allach-Untermenzing,4
+2025-04,133,Allach-Untermenzing,15
+2025-05,133,Allach-Untermenzing,4
+2025-06,133,Allach-Untermenzing,4275
+2024-01,134,Hasenbergl,24421
+2024-02,134,Hasenbergl,23822
+2024-03,134,Hasenbergl,24041
+2024-04,134,Hasenbergl,23628
+2024-05,134,Hasenbergl,24453
+2024-06,134,Hasenbergl,20216
+2024-07,134,Hasenbergl,22920
+2024-08,134,Hasenbergl,22140
+2024-09,134,Hasenbergl,23561
+2024-10,134,Hasenbergl,26281
+2024-11,134,Hasenbergl,24830
+2024-12,134,Hasenbergl,21052
+2025-01,134,Hasenbergl,26394
+2025-02,134,Hasenbergl,23120
+2025-03,134,Hasenbergl,25032
+2025-04,134,Hasenbergl,23547
+2025-05,134,Hasenbergl,25309
+2025-06,134,Hasenbergl,21067
+2024-01,141,Schwabing,35688
+2024-02,141,Schwabing,36322
+2024-03,141,Schwabing,39190
+2024-04,141,Schwabing,36925
+2024-05,141,Schwabing,37028
+2024-06,141,Schwabing,32870
+2024-07,141,Schwabing,36554
+2024-08,141,Schwabing,35119
+2024-09,141,Schwabing,34522
+2024-10,141,Schwabing,40963
+2024-11,141,Schwabing,39160
+2024-12,141,Schwabing,33935
+2025-01,141,Schwabing,41649
+2025-02,141,Schwabing,36918
+2025-03,141,Schwabing,37870
+2025-04,141,Schwabing,36246
+2025-05,141,Schwabing,36942
+2025-06,141,Schwabing,30907
+2024-01,143,Sendling,48757
+2024-02,143,Sendling,47453
+2024-03,143,Sendling,48312
+2024-04,143,Sendling,46647
+2024-05,143,Sendling,47301
+2024-06,143,Sendling,41352
+2024-07,143,Sendling,46118
+2024-08,143,Sendling,41839
+2024-09,143,Sendling,43535
+2024-10,143,Sendling,50176
+2024-11,143,Sendling,42110
+2024-12,143,Sendling,38798
+2025-01,143,Sendling,49163
+2025-02,143,Sendling,43843
+2025-03,143,Sendling,44289
+2025-04,143,Sendling,46050
+2025-05,143,Sendling,44104
+2025-06,143,Sendling,39400
+2024-01,144,Ramersdorf,12861
+2024-02,144,Ramersdorf,12080
+2024-03,144,Ramersdorf,11927
+2024-04,144,Ramersdorf,12592
+2024-05,144,Ramersdorf,12811
+2024-06,144,Ramersdorf,11472
+2024-07,144,Ramersdorf,12910
+2024-08,144,Ramersdorf,11814
+2024-09,144,Ramersdorf,12814
+2024-10,144,Ramersdorf,15221
+2024-11,144,Ramersdorf,12471
+2024-12,144,Ramersdorf,12679
+2025-01,144,Ramersdorf,14927
+2025-02,144,Ramersdorf,13474
+2025-03,144,Ramersdorf,13769
+2025-04,144,Ramersdorf,13530
+2025-05,144,Ramersdorf,13410
+2025-06,144,Ramersdorf,8416
+2024-01,145,Giesing,51922
+2024-02,145,Giesing,52042
+2024-03,145,Giesing,51820
+2024-04,145,Giesing,50929
+2024-05,145,Giesing,52309
+2024-06,145,Giesing,43593
+2024-07,145,Giesing,51451
+2024-08,145,Giesing,49192
+2024-09,145,Giesing,48110
+2024-10,145,Giesing,55235
+2024-11,145,Giesing,48943
+2024-12,145,Giesing,48079
+2025-01,145,Giesing,57810
+2025-02,145,Giesing,50845
+2025-03,145,Giesing,51839
+2025-04,145,Giesing,49981
+2025-05,145,Giesing,50198
+2025-06,145,Giesing,44282
+2024-01,146,Pasing,39863
+2024-02,146,Pasing,39463
+2024-03,146,Pasing,40154
+2024-04,146,Pasing,39823
+2024-05,146,Pasing,40179
+2024-06,146,Pasing,13004
+2024-07,146,Pasing,25820
+2024-08,146,Pasing,41214
+2024-09,146,Pasing,39188
+2024-10,146,Pasing,39062
+2024-11,146,Pasing,23751
+2024-12,146,Pasing,33903
+2025-01,146,Pasing,45225
+2025-02,146,Pasing,40196
+2025-03,146,Pasing,40131
+2025-04,146,Pasing,42081
+2025-05,146,Pasing,40602
+2025-06,146,Pasing,35145
+2024-01,147,Isarvorstadt,20871
+2024-02,147,Isarvorstadt,20939
+2024-03,147,Isarvorstadt,21716
+2024-04,147,Isarvorstadt,19971
+2024-05,147,Isarvorstadt,19233
+2024-06,147,Isarvorstadt,17659
+2024-07,147,Isarvorstadt,20586
+2024-08,147,Isarvorstadt,18874
+2024-09,147,Isarvorstadt,18645
+2024-10,147,Isarvorstadt,20984
+2024-11,147,Isarvorstadt,19733
+2024-12,147,Isarvorstadt,17025
+2025-01,147,Isarvorstadt,21049
+2025-02,147,Isarvorstadt,19604
+2025-03,147,Isarvorstadt,19451
+2025-04,147,Isarvorstadt,19309
+2025-05,147,Isarvorstadt,18941
+2025-06,147,Isarvorstadt,15316
+2024-01,148,Neuhausen,52374
+2024-02,148,Neuhausen,53324
+2024-03,148,Neuhausen,54024
+2024-04,148,Neuhausen,52720
+2024-05,148,Neuhausen,53015
+2024-06,148,Neuhausen,45106
+2024-07,148,Neuhausen,53327
+2024-08,148,Neuhausen,50330
+2024-09,148,Neuhausen,49111
+2024-10,148,Neuhausen,57047
+2024-11,148,Neuhausen,52085
+2024-12,148,Neuhausen,45274
+2025-01,148,Neuhausen,58439
+2025-02,148,Neuhausen,51390
+2025-03,148,Neuhausen,51793
+2025-04,148,Neuhausen,52346
+2025-05,148,Neuhausen,52496
+2025-06,148,Neuhausen,31789
+2024-01,150,Laim,39405
+2024-02,150,Laim,37704
+2024-03,150,Laim,37669
+2024-04,150,Laim,37113
+2024-05,150,Laim,37786
+2024-06,150,Laim,33052
+2024-07,150,Laim,37191
+2024-08,150,Laim,35842
+2024-09,150,Laim,34747
+2024-10,150,Laim,38860
+2024-11,150,Laim,33165
+2024-12,150,Laim,31430
+2025-01,150,Laim,39204
+2025-02,150,Laim,34465
+2025-03,150,Laim,35862
+2025-04,150,Laim,34770
+2025-05,150,Laim,35314
+2025-06,150,Laim,27542
+2024-01,170,Bücherbusse,303
+2024-02,170,Bücherbusse,371
+2024-03,170,Bücherbusse,380
+2024-04,170,Bücherbusse,381
+2024-05,170,Bücherbusse,358
+2024-06,170,Bücherbusse,283
+2024-07,170,Bücherbusse,267
+2024-08,170,Bücherbusse,159
+2024-09,170,Bücherbusse,271
+2024-10,170,Bücherbusse,391
+2024-11,170,Bücherbusse,414
+2024-12,170,Bücherbusse,260
+2025-01,170,Bücherbusse,387
+2025-02,170,Bücherbusse,463
+2025-03,170,Bücherbusse,511
+2025-04,170,Bücherbusse,443
+2025-05,170,Bücherbusse,381
+2025-06,170,Bücherbusse,373
+2024-01,171,Bücherbus 1 Bunt,10006
+2024-02,171,Bücherbus 1 Bunt,10431
+2024-03,171,Bücherbus 1 Bunt,10162
+2024-04,171,Bücherbus 1 Bunt,10279
+2024-05,171,Bücherbus 1 Bunt,7451
+2024-06,171,Bücherbus 1 Bunt,9824
+2024-07,171,Bücherbus 1 Bunt,7567
+2024-08,171,Bücherbus 1 Bunt,464
+2024-09,171,Bücherbus 1 Bunt,6251
+2024-10,171,Bücherbus 1 Bunt,10131
+2024-11,171,Bücherbus 1 Bunt,12157
+2024-12,171,Bücherbus 1 Bunt,8633
+2025-01,171,Bücherbus 1 Bunt,3412
+2025-02,171,Bücherbus 1 Bunt,10998
+2025-03,171,Bücherbus 1 Bunt,9753
+2025-04,171,Bücherbus 1 Bunt,6702
+2025-05,171,Bücherbus 1 Bunt,9759
+2025-06,171,Bücherbus 1 Bunt,5875
+2024-01,172,Bücherbus 2 Gold,13026
+2024-02,172,Bücherbus 2 Gold,8851
+2024-03,172,Bücherbus 2 Gold,11739
+2024-04,172,Bücherbus 2 Gold,13124
+2024-05,172,Bücherbus 2 Gold,8297
+2024-06,172,Bücherbus 2 Gold,11897
+2024-07,172,Bücherbus 2 Gold,9109
+2024-08,172,Bücherbus 2 Gold,604
+2024-09,172,Bücherbus 2 Gold,9117
+2024-10,172,Bücherbus 2 Gold,11969
+2024-11,172,Bücherbus 2 Gold,15285
+2024-12,172,Bücherbus 2 Gold,10924
+2025-01,172,Bücherbus 2 Gold,15041
+2025-02,172,Bücherbus 2 Gold,13164
+2025-03,172,Bücherbus 2 Gold,8739
+2025-04,172,Bücherbus 2 Gold,10136
+2025-05,172,Bücherbus 2 Gold,12263
+2025-06,172,Bücherbus 2 Gold,8146
+2024-01,173,Bücherbus 3 Rot,13028
+2024-02,173,Bücherbus 3 Rot,9172
+2024-03,173,Bücherbus 3 Rot,11202
+2024-04,173,Bücherbus 3 Rot,13392
+2024-05,173,Bücherbus 3 Rot,6798
+2024-06,173,Bücherbus 3 Rot,11434
+2024-07,173,Bücherbus 3 Rot,6977
+2024-08,173,Bücherbus 3 Rot,132
+2024-09,173,Bücherbus 3 Rot,5768
+2024-10,173,Bücherbus 3 Rot,15340
+2024-11,173,Bücherbus 3 Rot,14466
+2024-12,173,Bücherbus 3 Rot,7415
+2025-01,173,Bücherbus 3 Rot,15383
+2025-02,173,Bücherbus 3 Rot,14486
+2025-03,173,Bücherbus 3 Rot,10294
+2025-04,173,Bücherbus 3 Rot,9829
+2025-05,173,Bücherbus 3 Rot,14698
+2025-06,173,Bücherbus 3 Rot,8708
+2024-01,174,Bücherbus 4 Dunkelrot,10794
+2024-02,174,Bücherbus 4 Dunkelrot,10046
+2024-03,174,Bücherbus 4 Dunkelrot,8950
+2024-04,174,Bücherbus 4 Dunkelrot,10225
+2024-05,174,Bücherbus 4 Dunkelrot,6820
+2024-06,174,Bücherbus 4 Dunkelrot,10670
+2024-07,174,Bücherbus 4 Dunkelrot,8110
+2024-08,174,Bücherbus 4 Dunkelrot,330
+2024-09,174,Bücherbus 4 Dunkelrot,8070
+2024-10,174,Bücherbus 4 Dunkelrot,11538
+2024-11,174,Bücherbus 4 Dunkelrot,11240
+2024-12,174,Bücherbus 4 Dunkelrot,7336
+2025-01,174,Bücherbus 4 Dunkelrot,10401
+2025-02,174,Bücherbus 4 Dunkelrot,11056
+2025-03,174,Bücherbus 4 Dunkelrot,9172
+2025-04,174,Bücherbus 4 Dunkelrot,7343
+2025-05,174,Bücherbus 4 Dunkelrot,11107
+2025-06,174,Bücherbus 4 Dunkelrot,5905
+2024-01,175,Bücherbus 5 Grün,14033
+2024-02,175,Bücherbus 5 Grün,9672
+2024-03,175,Bücherbus 5 Grün,11122
+2024-04,175,Bücherbus 5 Grün,13375
+2024-05,175,Bücherbus 5 Grün,9280
+2024-06,175,Bücherbus 5 Grün,11915
+2024-07,175,Bücherbus 5 Grün,8493
+2024-08,175,Bücherbus 5 Grün,370
+2024-09,175,Bücherbus 5 Grün,9730
+2024-10,175,Bücherbus 5 Grün,14195
+2024-11,175,Bücherbus 5 Grün,9966
+2024-12,175,Bücherbus 5 Grün,11223
+2025-01,175,Bücherbus 5 Grün,14254
+2025-02,175,Bücherbus 5 Grün,12840
+2025-03,175,Bücherbus 5 Grün,7880
+2025-04,175,Bücherbus 5 Grün,8962
+2025-05,175,Bücherbus 5 Grün,10283
+2025-06,175,Bücherbus 5 Grün,7912

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leitsystem — Münchner Stadtbibliothek</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+
+<style>
+  :root {
+    --bg:      #F1F2ED;
+    --surface: #ffffff;
+    --ink:     #14181c;
+    --ink-dim: #5c6560;
+    --accent:  #336e98;
+    --accent-2:#7f9c6e;
+    --line:    #d7d9d1;
+    --header-h: 56px;
+    --strip-h: 96px;
+  }
+
+  * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    height: 100vh; height: 100dvh;
+    overflow: hidden;
+  }
+
+  .display { font-family: 'Fira Sans Condensed', Tahoma, sans-serif; font-weight: 700; }
+
+  header {
+    height: var(--header-h);
+    background: var(--ink);
+    color: #fff;
+    display: flex; align-items: center; gap: .7rem;
+    padding: 0 1.1rem;
+  }
+  header .linebadge {
+    background: var(--accent); color: #fff;
+    font-family: 'Fira Sans Condensed', sans-serif; font-weight: 700;
+    font-size: .95rem; letter-spacing: .03em;
+    padding: .25rem .55rem; border-radius: 3px;
+  }
+  header h1 { font-size: 1rem; text-transform: uppercase; letter-spacing: .04em; }
+  header .sub { font-size: .72rem; color: #b7bdc0; margin-left: auto; }
+
+  #map { position: absolute; top: var(--header-h); left: 0; right: 0; bottom: calc(var(--strip-h) + 1px); }
+
+  /* Detail-Drawer schiebt sich zwischen Karte und Streifen */
+  #drawer {
+    position: absolute;
+    left: 0; right: 0;
+    bottom: calc(var(--strip-h) + 1px);
+    max-height: 0;
+    overflow: hidden;
+    background: var(--surface);
+    border-top: 3px solid var(--accent);
+    transition: max-height .32s cubic-bezier(.2,.7,.3,1);
+    z-index: 15;
+    box-shadow: 0 -8px 20px rgba(20,24,28,.08);
+  }
+  #drawer.open { max-height: 46vh; }
+  #drawer-inner { padding: 1.1rem 1.4rem 1.3rem; overflow-y: auto; max-height: 46vh; }
+
+  .drawer-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+  .drawer-head h2 { font-size: 1.25rem; }
+  .drawer-head .addr { font-size: .8rem; color: var(--ink-dim); margin-top: .15rem; }
+  .drawer-head .close-btn { background: none; border: none; font-size: 1.3rem; color: var(--ink-dim); cursor: pointer; line-height: 1; }
+  .drawer-head .close-btn:hover { color: var(--ink); }
+
+  .drawer-facts { display: flex; gap: 1.4rem; flex-wrap: wrap; margin: .7rem 0 1.1rem; font-size: .78rem; color: var(--ink-dim); }
+  .drawer-facts b { color: var(--ink); }
+
+  .drawer-metrics { display: grid; grid-template-columns: repeat(3, minmax(160px,1fr)); gap: 1.2rem; }
+  .drawer-metrics h3 { font-size: .74rem; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-dim); margin-bottom: .3rem; }
+  .drawer-metrics .val { font-size: 1.4rem; font-weight: 700; margin-bottom: .3rem; font-variant-numeric: tabular-nums; }
+  .drawer-metrics canvas { max-height: 80px; }
+
+  .drawer-foot { margin-top: 1rem; font-size: .82rem; }
+  .drawer-foot a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .drawer-foot a:hover { text-decoration: underline; }
+
+  /* Stationsstreifen unten - immer sichtbar */
+  #strip {
+    position: absolute; left: 0; right: 0; bottom: 0; height: var(--strip-h);
+    background: var(--surface);
+    border-top: 1px solid var(--line);
+    display: flex; align-items: stretch;
+    overflow-x: auto;
+    z-index: 20;
+    scrollbar-width: thin;
+  }
+  .station {
+    flex: 0 0 auto;
+    width: 116px;
+    border-right: 1px solid var(--line);
+    padding: .5rem .65rem .4rem;
+    cursor: pointer;
+    display: flex; flex-direction: column;
+    transition: background .15s;
+  }
+  .station:hover { background: #f7f8f5; }
+  .station.active { background: var(--accent); }
+  .station.active .st-name, .station.active .st-num { color: #fff; }
+  .station.active .st-dot { border-color: #fff; }
+
+  .st-top { display: flex; align-items: center; gap: .35rem; flex: 0 0 auto; }
+  .st-num { font-family: 'Fira Sans Condensed', sans-serif; font-weight: 700; font-size: .78rem; color: var(--accent); }
+  .st-dot { width: 7px; height: 7px; border-radius: 50%; border: 1.5px solid var(--ink); flex-shrink:0; }
+  .st-name {
+    flex: 0 0 26px;
+    font-size: .68rem; line-height: 1.15; margin-top: .25rem; color: var(--ink); font-weight: 600;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .st-spark-wrap { flex: 0 0 22px; margin-top: .2rem; position: relative; }
+  .st-spark-wrap canvas { position: absolute; inset: 0; width: 100% !important; height: 100% !important; }
+
+  #empty-drawer-hint {
+    display:flex; align-items:center; justify-content:center; height:100%;
+    color: var(--ink-dim); font-size:.85rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="linebadge display">M1</div>
+  <h1>Netzplan · Stadtbibliothek</h1>
+  <div class="sub">24 Standorte · Besuche · Bestand · Entleihungen</div>
+</header>
+
+<div id="map"></div>
+
+<div id="drawer">
+  <div id="drawer-inner"></div>
+</div>
+
+<div id="strip"></div>
+
+<script>
+let map, markers = {}, charts = [], activeId = null, stationData = [];
+
+map = L.map('map', { zoomControl: true, attributionControl: true }).setView([48.1372, 11.5756], 12);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap',
+  maxZoom: 19,
+}).addTo(map);
+
+function destroyCharts() { charts.forEach(c => c.destroy()); charts = []; }
+function fmt(n) { return n.toLocaleString('de-DE'); }
+function monthLabel(ym) {
+  const [y,m] = ym.split('-');
+  const names = ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];
+  return names[parseInt(m,10)-1] + ' ' + y.slice(2);
+}
+
+const METRICS = [
+  { key: 'besuche', label: 'Besuche / Monat', color: '#336e98' },
+  { key: 'bestand', label: 'Bestand', color: '#7f9c6e' },
+  { key: 'entleihungen', label: 'Entleihungen / Monat', color: '#a8763f' },
+];
+
+function selectStation(id) {
+  activeId = id;
+  const bib = stationData.find(b => b.id === id);
+  document.querySelectorAll('.station').forEach(el => el.classList.toggle('active', el.dataset.id === String(id)));
+  if (markers[id]) map.panTo(markers[id].getLatLng());
+  openDrawer(bib);
+}
+
+function openDrawer(bib) {
+  destroyCharts();
+  const drawer = document.getElementById('drawer');
+  drawer.classList.add('open');
+
+  let html = `
+    <div class="drawer-head">
+      <div>
+        <h2 class="display">${bib.name}</h2>
+        <div class="addr">${bib.strasse}, ${bib.plz} München · ${bib.typ}</div>
+      </div>
+      <button class="close-btn" onclick="closeDrawer()">&times;</button>
+    </div>
+    <div class="drawer-facts">
+      <span>Fläche <b>${bib.publikumsflaeche ? bib.publikumsflaeche.toLocaleString('de-DE') + ' m²' : '–'}</b></span>
+      <span>Arbeitsplätze <b>${bib.arbeitsplaetze ?? '–'}</b></span>
+      <span>Open Library <b>${bib.open_library ? 'Ja' : 'Nein'}</b></span>
+      <span>Barrierefrei <b>${bib.barrierefreiheit ? 'Ja' : 'Nein'}</b></span>
+    </div>
+    <div class="drawer-metrics">
+  `;
+  METRICS.forEach(m => {
+    const series = bib[m.key];
+    if (!series || !series.length) return;
+    const latest = series[series.length - 1];
+    html += `<div><h3>${m.label}</h3><div class="val">${fmt(latest.wert)}</div><canvas id="d-${m.key}"></canvas></div>`;
+  });
+  html += `</div>`;
+  if (bib.webseite) html += `<div class="drawer-foot"><a href="${bib.webseite}" target="_blank" rel="noopener">Zur Bibliothekswebseite →</a></div>`;
+
+  document.getElementById('drawer-inner').innerHTML = html;
+
+  METRICS.forEach(m => {
+    const series = bib[m.key];
+    if (!series || !series.length) return;
+    const ctx = document.getElementById(`d-${m.key}`);
+    const chart = new Chart(ctx, {
+      type: 'line',
+      data: { labels: series.map(s => monthLabel(s.monat)), datasets: [{
+        data: series.map(s => s.wert), borderColor: m.color, borderWidth: 2,
+        pointRadius: 0, pointHoverRadius: 3, fill: true, backgroundColor: m.color + '18', tension: .2,
+      }]},
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        interaction: { mode:'index', intersect:false },
+        plugins: { legend:{display:false}, tooltip:{ callbacks:{ label: i => fmt(i.parsed.y) } } },
+        scales: {
+          x: { grid:{display:false}, ticks:{ maxTicksLimit:5, font:{size:9}, color:'#9aa19c' } },
+          y: { grid:{ color:'#eceee8' }, ticks:{ font:{size:9}, color:'#9aa19c' }, beginAtZero:true },
+        },
+      },
+    });
+    charts.push(chart);
+  });
+}
+
+function closeDrawer() {
+  destroyCharts();
+  document.getElementById('drawer').classList.remove('open');
+  document.querySelectorAll('.station').forEach(el => el.classList.remove('active'));
+  activeId = null;
+}
+window.closeDrawer = closeDrawer;
+window.selectStation = selectStation;
+
+fetch('bibliotheken.json').then(r => r.json()).then(data => {
+  stationData = data.map((bib, i) => ({ ...bib, id: i }));
+
+  const strip = document.getElementById('strip');
+  stationData.forEach(bib => {
+    const isZentral = bib.typ === 'Zentralbibliothek';
+    const marker = L.circleMarker([bib.lat, bib.lon], {
+      radius: isZentral ? 8 : 5.5,
+      fillColor: isZentral ? '#336e98' : '#7f9c6e',
+      color: '#fff', weight: 1.5, fillOpacity: .95,
+    }).addTo(map);
+    marker.bindTooltip(bib.name, { direction: 'top', offset: [0,-6] });
+    marker.on('click', () => selectStation(bib.id));
+    markers[bib.id] = marker;
+
+    const tile = document.createElement('div');
+    tile.className = 'station';
+    tile.dataset.id = bib.id;
+    tile.innerHTML = `
+      <div class="st-top">
+        <span class="st-num display">${String(bib.id + 1).padStart(2,'0')}</span>
+        <span class="st-dot" style="background:${isZentral ? '#336e98' : '#7f9c6e'}"></span>
+      </div>
+      <div class="st-name">${bib.name.replace(/^Stadtteilbibliothek /,'').replace(/^Stadtbibliothek im /,'')}</div>
+      <div class="st-spark-wrap"><canvas></canvas></div>
+    `;
+    tile.addEventListener('click', () => selectStation(bib.id));
+    strip.appendChild(tile);
+
+    requestAnimationFrame(() => {
+      const c = tile.querySelector('canvas');
+      if (bib.besuche && bib.besuche.length) {
+        new Chart(c, {
+          type: 'line',
+          data: { labels: bib.besuche.map(s=>s.monat), datasets: [{ data: bib.besuche.map(s=>s.wert), borderColor:'#336e98', borderWidth:1.3, pointRadius:0, fill:false, tension:.2 }] },
+          options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false},tooltip:{enabled:false}}, scales:{x:{display:false},y:{display:false}} },
+        });
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>

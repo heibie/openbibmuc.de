@@ -1,0 +1,128 @@
+{
+  "_comment": "Registry aller Datenquellen für quellen.html. 'used_in' verlinkt auf Kartenbereiche, 'check' definiert wie cron/check_sources.php Live-Änderungen der Originalquelle prüft. Status-Ergebnisse landen in data/source-status.json (von check_sources.php generiert, nicht manuell pflegen).",
+  "categories": [
+    {
+      "title": "Standorte",
+      "sources": [
+        {
+          "id": "standorte-basis",
+          "title": "Standortliste der Münchner Stadtbibliothek",
+          "files": ["data/standorte.csv"],
+          "used_in": [
+            { "label": "Karte", "href": "index.html#map" },
+            { "label": "Standortliste", "href": "index.html#list-head" },
+            { "label": "Steckbrief", "href": "index.html#panel" }
+          ],
+          "original_source": { "label": "OpenData LHM – Standortliste der Münchner Stadtbibliothek", "href": "https://opendata.muenchen.de/dataset/standortliste-der-muenchner-stadtbibliothek" },
+          "license": "DL-DE-BY 2.0",
+          "turnus": "unregelmäßig",
+          "check": { "method": "ckan", "dataset": "standortliste-der-muenchner-stadtbibliothek" },
+          "note": "Liefert bib_type, bib_name, bib_abkuerzung, bib_strasse, bib_plz, lat, lon, publikumsflaeche, anzahl_arbeitsplaetze, webseite, open_library, barrierefreiheit. Alle übrigen Spalten in standorte.csv sind Anreicherungen aus der MSB-Website (siehe unten)."
+        }
+      ]
+    },
+    {
+      "title": "Kennzahlen",
+      "sources": [
+        {
+          "id": "besucherzahlen",
+          "title": "Bibliothekskennzahlen – Besucherzahlen",
+          "files": ["data/besucherzahlen.csv"],
+          "used_in": [
+            { "label": "Steckbrief: Trend-Chart Besuche", "href": "index.html#panel" }
+          ],
+          "original_source": { "label": "OpenData LHM – Bibliothekskennzahlen: Besucherzahlen", "href": "https://opendata.muenchen.de/dataset/bibliothekskennzahlen-der-muenchner-stadtbibliothek-besucherzahlen" },
+          "license": "DL-DE-BY 2.0",
+          "turnus": "monatlich",
+          "check": { "method": "ckan", "dataset": "bibliothekskennzahlen-der-muenchner-stadtbibliothek-besucherzahlen" }
+        },
+        {
+          "id": "bestand",
+          "title": "Bibliothekskennzahlen – Bestand",
+          "files": ["data/bestand.csv"],
+          "used_in": [
+            { "label": "Steckbrief: Trend-Chart Bestand", "href": "index.html#panel" }
+          ],
+          "original_source": { "label": "OpenData LHM – Bibliothekskennzahlen: Bestand", "href": "https://opendata.muenchen.de/dataset/bibliothekskennzahlen-der-muenchner-stadtbibliothek-bestand" },
+          "license": "DL-DE-BY 2.0",
+          "turnus": "monatlich",
+          "check": { "method": "ckan", "dataset": "bibliothekskennzahlen-der-muenchner-stadtbibliothek-bestand" }
+        },
+        {
+          "id": "entleihungen",
+          "title": "Bibliothekskennzahlen – Entleihungen",
+          "files": ["data/entleihungen.csv"],
+          "used_in": [
+            { "label": "Steckbrief: Trend-Chart Entleihungen", "href": "index.html#panel" }
+          ],
+          "original_source": { "label": "OpenData LHM – Bibliothekskennzahlen: Entleihungen", "href": "https://opendata.muenchen.de/dataset/bibliothekskennzahlen-der-muenchner-stadtbibliothek-entleihungen" },
+          "license": "DL-DE-BY 2.0",
+          "turnus": "monatlich",
+          "check": { "method": "ckan", "dataset": "bibliothekskennzahlen-der-muenchner-stadtbibliothek-entleihungen" }
+        }
+      ]
+    },
+    {
+      "title": "Von der MSB-Website angereichert (nicht im offiziellen OpenData-Portal)",
+      "sources": [
+        {
+          "id": "oeffnungszeiten-kontakt",
+          "title": "Öffnungszeiten, Kontakt & Rückgabezeiten",
+          "files": ["data/standorte.csv"],
+          "used_in": [
+            { "label": "Live-Geöffnet/Geschlossen-Status", "href": "index.html#list-head" },
+            { "label": "Steckbrief: Kontakt & Öffnungszeiten", "href": "index.html#panel" }
+          ],
+          "original_source": { "label": "muenchner-stadtbibliothek.de – interne AJAX-Karten-API (?type=951)", "href": "https://www.muenchner-stadtbibliothek.de" },
+          "turnus": "manuell (Re-Run von scripts/enrich_standorte.py bei Bedarf)",
+          "check": { "method": "heuristic" },
+          "note": "Unauthentifizierter, undokumentierter Endpunkt (gefunden über map.js der MSB-Website), speist deren eigene interaktive Karte. Kein offizieller OpenData-Datensatz, daher kein automatischer Änderungscheck."
+        },
+        {
+          "id": "services",
+          "title": "Services (WLAN, Drucker, Gaming, Cafeteria, Ladestation, Parkplätze, ...)",
+          "files": ["data/standorte.csv"],
+          "used_in": [
+            { "label": "Service-Filter", "href": "index.html#filter-bar" },
+            { "label": "Steckbrief: Services", "href": "index.html#panel" }
+          ],
+          "original_source": { "label": "muenchner-stadtbibliothek.de – 24 Standort-Unterseiten (Icon-Bereich)", "href": "https://www.muenchner-stadtbibliothek.de" },
+          "turnus": "manuell (Re-Run von scripts/enrich_standorte.py bei Bedarf)",
+          "check": { "method": "heuristic" },
+          "note": "Extrahiert aus dem FontAwesome-Icon-Bereich jeder Standort-Unterseite. Icon-Klicktexte sind die Basis, passende Akkordeon-Einträge unter 'vor Ort' ergänzen sie (siehe README, 'Icon = Basis, Akkordeon ergänzt')."
+        },
+        {
+          "id": "vor-ort",
+          "title": "\"vor Ort\"-Ausstattung & Barrierefreiheit-Detail",
+          "files": ["data/standorte.csv"],
+          "used_in": [
+            { "label": "Steckbrief: Ausstattung vor Ort", "href": "index.html#panel" }
+          ],
+          "original_source": { "label": "muenchner-stadtbibliothek.de – 24 Standort-Unterseiten (Akkordeon \"vor Ort\")", "href": "https://www.muenchner-stadtbibliothek.de" },
+          "turnus": "manuell (Re-Run von scripts/enrich_standorte.py bei Bedarf)",
+          "check": { "method": "heuristic" },
+          "note": "14 feste vor_ort_*-Spalten für alle bislang gefundenen Akkordeon-Titel, siehe README für die Sonderfälle Fremdsprachige Medien und Barrierefreiheit (mit bestehenden Feldern zusammengeführt statt eigener Spalte)."
+        },
+        {
+          "id": "aktuell",
+          "title": "Ad-hoc-Meldungen (#aktuell, z.B. Wasserschaden, Personalmangel)",
+          "files": ["data/standorte.csv"],
+          "used_in": [
+            { "label": "Steckbrief: Warnhinweis-Box", "href": "index.html#panel" }
+          ],
+          "original_source": { "label": "muenchner-stadtbibliothek.de – 24 Standort-Unterseiten (Abschnitt #aktuell)", "href": "https://www.muenchner-stadtbibliothek.de" },
+          "turnus": "manuell, bei Verdacht auf neue/behobene Schließung erneut laufen lassen",
+          "check": { "method": "heuristic" },
+          "note": "Zeigt den Stand vom letzten Skript-Lauf, keinen echten Live-Zustand. Vollständige, unbefristete Schließungen stehen zusätzlich in der manuell gepflegten Spalte dauerhaft_geschlossen."
+        }
+      ]
+    }
+  ],
+  "attribution": [
+    { "title": "OpenStreetMap – Kartenmaterial", "href": "https://www.openstreetmap.org/copyright", "note": "© OpenStreetMap contributors" },
+    { "title": "Leaflet.js – Kartenrenderer", "href": "https://leafletjs.com", "note": "Open-Source-Bibliothek" },
+    { "title": "Chart.js – Trend-Diagramme", "href": "https://www.chartjs.org", "note": "Besuche/Bestand/Entleihungen im Steckbrief" },
+    { "title": "PapaParse – CSV-Parsing im Browser", "href": "https://www.papaparse.com", "note": "Lädt alle CSV-Dateien direkt clientseitig, kein Build-Schritt" },
+    { "title": "Fira Sans Condensed – Headline-Font", "href": "https://fonts.google.com/specimen/Fira+Sans+Condensed", "note": "Offizielle MSB-Schrift, via Google Fonts" }
+  ]
+}

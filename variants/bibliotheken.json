@@ -1,0 +1,5666 @@
+[
+  {
+    "name": "Stadtbibliothek im Motorama",
+    "typ": "Zentralbibliothek",
+    "kuerzel": "MOT",
+    "strasse": "Rosenheimer Str. 30-32",
+    "plz": "81669",
+    "lat": 48.129840896735296,
+    "lon": 11.591276751174135,
+    "publikumsflaeche": 2835,
+    "arbeitsplaetze": 150,
+    "webseite": "https://www.muenchner-stadtbibliothek.de/stadtbibliothek-im-motorama",
+    "open_library": true,
+    "barrierefreiheit": "für Rollstuhlfahrer*innen geeignet",
+    "besuche": [
+      {
+        "monat": "2024-01",
+        "wert": 76155
+      },
+      {
+        "monat": "2024-02",
+        "wert": 76155
+      },
+      {
+        "monat": "2024-03",
+        "wert": 76155
+      },
+      {
+        "monat": "2024-04",
+        "wert": 82837
+      },
+      {
+        "monat": "2024-05",
+        "wert": 78247
+      },
+      {
+        "monat": "2024-06",
+        "wert": 76423
+      },
+      {
+        "monat": "2024-07",
+        "wert": 76731
+      },
+      {
+        "monat": "2024-08",
+        "wert": 69572
+      },
+      {
+        "monat": "2024-09",
+        "wert": 66392
+      },
+      {
+        "monat": "2024-10",
+        "wert": 76606
+      },
+      {
+        "monat": "2024-11",
+        "wert": 61403
+      },
+      {
+        "monat": "2024-12",
+        "wert": 72513
+      },
+      {
+        "monat": "2025-01",
+        "wert": 84280
+      },
+      {
+        "monat": "2025-02",
+        "wert": 84721
+      },
+      {
+        "monat": "2025-03",
+        "wert": 77733
+      },
+      {
+        "monat": "2025-04",
+        "wert": 80677
+      },
+      {
+        "monat": "2025-05",
+        "wert": 92400
+      },
+      {
+        "monat": "2025-06",
+        "wert": 74191
+      }
+    ],
+    "bestand": [
+      {
+        "monat": "2024-01",
+        "wert": 82955
+      },
+      {
+        "monat": "2024-02",
+        "wert": 82489
+      },
+      {
+        "monat": "2024-03",
+        "wert": 82858
+      },
+      {
+        "monat": "2024-04",
+        "wert": 82711
+      },
+      {
+        "monat": "2024-05",
+        "wert": 83111
+      },
+      {
+        "monat": "2024-06",
+        "wert": 81884
+      },
+      {
+        "monat": "2024-07",
+        "wert": 82006
+      },
+      {
+        "monat": "2024-08",
+        "wert": 82574
+      },
+      {
+        "monat": "2024-09",
+        "wert": 81817
+      },
+      {
+        "monat": "2024-10",
+        "wert": 83550
+      },
+      {
+        "monat": "2024-11",
+        "wert": 83881
+      },
+      {
+        "monat": "2024-12",
+        "wert": 84060
+      },
+      {
+        "monat": "2025-01",
+        "wert": 83491
+      },
+      {
+        "monat": "2025-02",
+        "wert": 82878
+      },
+      {
+        "monat": "2025-03",
+        "wert": 81785
+      },
+      {
+        "monat": "2025-04",
+        "wert": 80920
+      },
+      {
+        "monat": "2025-05",
+        "wert": 80981
+      },
+      {
+        "monat": "2025-06",
+        "wert": 78973
+      }
+    ],
+    "entleihungen": [
+      {
+        "monat": "2024-01",
+        "wert": 63178
+      },
+      {
+        "monat": "2024-02",
+        "wert": 63115
+      },
+      {
+        "monat": "2024-03",
+        "wert": 65582
+      },
+      {
+        "monat": "2024-04",
+        "wert": 62284
+      },
+      {
+        "monat": "2024-05",
+        "wert": 62430
+      },
+      {
+        "monat": "2024-06",
+        "wert": 54956
+      },
+      {
+        "monat": "2024-07",
+        "wert": 60551
+      },
+      {
+        "monat": "2024-08",
+        "wert": 57835
+      },
+      {
+        "monat": "2024-09",
+        "wert": 59575
+      },
+      {
+        "monat": "2024-10",
+        "wert": 66186
+      },
+      {
+        "monat": "2024-11",
+        "wert": 64093
+      },
+      {
+        "monat": "2024-12",
+        "wert": 59641
+      },
+      {
+        "monat": "2025-01",
+        "wert": 67780
+      },
+      {
+        "monat": "2025-02",
+        "wert": 59223
+      },
+      {
+        "monat": "2025-03",
+        "wert": 65121
+      },
+      {
+        "monat": "2025-04",
+        "wert": 60312
+      },
+      {
+        "monat": "2025-05",
+        "wert": 61018
+      },
+      {
+        "monat": "2025-06",
+        "wert": 53149
+      }
+    ]
+  },
+  {
+    "name": "Stadtbibliothek im HP8",
+    "typ": "Zentralbibliothek",
+    "kuerzel": "HP8",
+    "strasse": "Hans-Preisinger-Straße 8",
+    "plz": "81379",
+    "lat": 48.111897633744356,
+    "lon": 11.55394900122587,
+    "publikumsflaeche": 1800,
+    "arbeitsplaetze": 90,
+    "webseite": "https://www.muenchner-stadtbibliothek.de/stadtbibliothek-im-hp8",
+    "open_library": true,
+    "barrierefreiheit": "für Rollstuhlfahrer*innen geeignet",
+    "besuche": [
+      {
+        "monat": "2024-01",
+        "wert": 29757
+      },
+      {
+        "monat": "2024-02",
+        "wert": 29757
+      },
+      {
+        "monat": "2024-03",
+        "wert": 29757
+      },
+      {
+        "monat": "2024-04",
+        "wert": 30000
+      },
+      {
+        "monat": "2024-05",
+        "wert": 32832
+      },
+      {
+        "monat": "2024-06",
+        "wert": 40728
+      },
+      {
+        "monat": "2024-07",
+        "wert": 44745
+      },
+      {
+        "monat": "2024-08",
+        "wert": 15820
+      },
+      {
+        "monat": "2024-09",
+        "wert": 31065
+      },
+      {
+        "monat": "2024-10",
+        "wert": 43258
+      },
+      {
+        "monat": "2024-11",
+        "wert": 36219
+      },
+      {
+        "monat": "2024-12",
+        "wert": 30537
+      },
+      {
+        "monat": "2025-01",
+        "wert": 72681
+      },
+      {
+        "monat": "2025-02",
+        "wert": 38291
+      },
+      {
+        "monat": "2025-03",
+        "wert": 46377
+      },
+      {
+        "monat": "2025-04",
+        "wert": 58123
+      },
+      {
+        "monat": "2025-05",
+        "wert": 70171
+      },
+      {
+        "monat": "2025-06",
+        "wert": 54565
+      }
+    ],
+    "bestand": [
+      {
+        "monat": "2024-01",
+        "wert": 73884
+      },
+      {
+        "monat": "2024-02",
+        "wert": 73913
+      },
+      {
+        "monat": "2024-03",
+        "wert": 74359
+      },
+      {
+        "monat": "2024-04",
+        "wert": 73751
+      },
+      {
+        "monat": "2024-05",
+        "wert": 74072
+      },
+      {
+        "monat": "2024-06",
+        "wert": 73738
+      },
+      {
+        "monat": "2024-07",
+        "wert": 73124
+      },
+      {
+        "monat": "2024-08",
+        "wert": 73380
+      },
+      {
+        "monat": "2024-09",
+        "wert": 74000
+      },
+      {
+        "monat": "2024-10",
+        "wert": 75154
+      },
+      {
+        "monat": "2024-11",
+        "wert": 75421
+      },
+      {
+        "monat": "2024-12",
+        "wert": 75498
+      },
+      {
+        "monat": "2025-01",
+        "wert": 74045
+      },
+      {
+        "monat": "2025-02",
+        "wert": 72357
+      },
+      {
+        "monat": "2025-03",
+        "wert": 71310
+      },
+      {
+        "monat": "2025-04",
+        "wert": 67571
+      },
+      {
+        "monat": "2025-05",
+        "wert": 67329
+      },
+      {
+        "monat": "2025-06",
+        "wert": 66902
+      }
+    ],
+    "entleihungen": [
+      {
+        "monat": "2024-01",
+        "wert": 34443
+      },
+      {
+        "monat": "2024-02",
+        "wert": 32206
+      },
+      {
+        "monat": "2024-03",
+        "wert": 32765
+      },
+      {
+        "monat": "2024-04",
+        "wert": 32434
+      },
+      {
+        "monat": "2024-05",
+        "wert": 32284
+      },
+      {
+        "monat": "2024-06",
+        "wert": 28959
+      },
+      {
+        "monat": "2024-07",
+        "wert": 30878
+      },
+      {
+        "monat": "2024-08",
+        "wert": 28743
+      },
+      {
+        "monat": "2024-09",
+        "wert": 30153
+      },
+      {
+        "monat": "2024-10",
+        "wert": 33024
+      },
+      {
+        "monat": "2024-11",
+        "wert": 31501
+      },
+      {
+        "monat": "2024-12",
+        "wert": 30181
+      },
+      {
+        "monat": "2025-01",
+        "wert": 32702
+      },
+      {
+        "monat": "2025-02",
+        "wert": 29742
+      },
+      {
+        "monat": "2025-03",
+        "wert": 30287
+      },
+      {
+        "monat": "2025-04",
+        "wert": 27973
+      },
+      {
+        "monat": "2025-05",
+        "wert": 28455
+      },
+      {
+        "monat": "2025-06",
+        "wert": 24739
+      }
+    ]
+  },
+  {
+    "name": "Stadtteilbibliothek Berg am Laim",
+    "typ": "Stadtteilbibliothek",
+    "kuerzel": "BAL",
+    "strasse": "Schlüsselbergstr. 4",
+    "plz": "81673",
+    "lat": 48.129553538726036,
+    "lon": 11.622333094525215,
+    "publikumsflaeche": 265,
+    "arbeitsplaetze": 10,
+    "webseite": "https://www.muenchner-stadtbibliothek.de/stadtbibliothek-berg-am-laim",
+    "open_library": false,
+    "barrierefreiheit": "nur Erdgeschoss",
+    "besuche": [
+      {
+        "monat": "2024-01",
+        "wert": 8464
+      },
+      {
+        "monat": "2024-02",
+        "wert": 9470
+      },
+      {
+        "monat": "2024-03",
+        "wert": 7805
+      },
+      {
+        "monat": "2024-04",
+        "wert": 8575
+      },
+      {
+        "monat": "2024-05",
+        "wert": 8529
+      },
+      {
+        "monat": "2024-06",
+        "wert": 7700
+      },
+      {
+        "monat": "2024-07",
+        "wert": 0
+      },
+      {
+        "monat": "2024-08",
+        "wert": 0
+      },
+      {
+        "monat": "2024-09",
+        "wert": 0
+      },
+      {
+        "monat": "2024-10",
+        "wert": 0
+      },
+      {
+        "monat": "2024-11",
+        "wert": 6007
+      },
+      {
+        "monat": "2024-12",
+        "wert": 6374
+      },
+      {
+        "monat": "2025-01",
+        "wert": 7553
+      },
+      {
+        "monat": "2025-02",
+        "wert": 0
+      },
+      {
+        "monat": "2025-03",
+        "wert": 0
+      },
+      {
+        "monat": "2025-04",
+        "wert": 7452
+      },
+      {
+        "monat": "2025-05",
+        "wert": 7437
+      },
+      {
+        "monat": "2025-06",
+        "wert": 6780
+      }
+    ],
+    "bestand": [
+      {
+        "monat": "2024-01",
+        "wert": 18783
+      },
+      {
+        "monat": "2024-02",
+        "wert": 18712
+      },
+      {
+        "monat": "2024-03",
+        "wert": 18733
+      },
+      {
+        "monat": "2024-04",
+        "wert": 18973
+      },
+      {
+        "monat": "2024-05",
+        "wert": 19032
+      },
+      {
+        "monat": "2024-06",
+        "wert": 19248
+      },
+      {
+        "monat": "2024-07",
+        "wert": 19246
+      },
+      {
+        "monat": "2024-08",
+        "wert": 19347
+      },
+      {
+        "monat": "2024-09",
+        "wert": 19496
+      },
+      {
+        "monat": "2024-10",
+        "wert": 19680
+      },
+      {
+        "monat": "2024-11",
+        "wert": 19372
+      },
+      {
+        "monat": "2024-12",
+        "wert": 17543
+      },
+      {
+        "monat": "2025-01",
+        "wert": 17525
+      },
+      {
+        "monat": "2025-02",
+        "wert": 16573
+      },
+      {
+        "monat": "2025-03",
+        "wert": 15101
+      },
+      {
+        "monat": "2025-04",
+        "wert": 15156
+      },
+      {
+        "monat": "2025-05",
+        "wert": 14757
+      },
+      {
+        "monat": "2025-06",
+        "wert": 14804
+      }
+    ],
+    "entleihungen": [
+      {
+        "monat": "2024-01",
+        "wert": 15117
+      },
+      {
+        "monat": "2024-02",
+        "wert": 15296
+      },
+      {
+        "monat": "2024-03",
+        "wert": 15290
+      },
+      {
+        "monat": "2024-04",
+        "wert": 15270
+      },
+      {
+        "monat": "2024-05",
+        "wert": 15043
+      },
+      {
+        "monat": "2024-06",
+        "wert": 7994
+      },
+      {
+        "monat": "2024-07",
+        "wert": 1100
+      },
+      {
+        "monat": "2024-08",
+        "wert": 81
+      },
+      {
+        "monat": "2024-09",
+        "wert": 107
+      },
+      {
+        "monat": "2024-10",
+        "wert": 53
+      },
+      {
+        "monat": "2024-11",
+        "wert": 8492
+      },
+      {
+        "monat": "2024-12",
+        "wert": 10377
+      },
+      {
+        "monat": "2025-01",
+        "wert": 12146
+      },
+      {
+        "monat": "2025-02",
+        "wert": 10963
+      },
+      {
+        "monat": "2025-03",
+        "wert": 11757
+      },
+      {
+        "monat": "2025-04",
+        "wert": 12494
+      },
+      {
+        "monat": "2025-05",
+        "wert": 12377
+      },
+      {
+        "monat": "2025-06",
+        "wert": 11017
+      }
+    ]
+  },
+  {
+    "name": "Stadtteilbibliothek Waldtrudering",
+    "typ": "Stadtteilbibliothek",
+    "kuerzel": "WAL",
+    "strasse": "Wasserburger Landstr. 241",
+    "plz": "81827",
+    "lat": 48.112259715099796,
+    "lon": 11.70651043512925,
+    "publikumsflaeche": 310,
+    "arbeitsplaetze": 6,
+    "webseite": "https://www.muenchner-stadtbibliothek.de/stadtbibliothek-waldtrudering",
+    "open_library": false,
+    "barrierefreiheit": "barrierefrei",
+    "besuche": [
+      {
+        "monat": "2024-01",
+        "wert": 8370
+      },
+      {
+        "monat": "2024-02",
+        "wert": 8732
+      },
+      {
+        "monat": "2024-03",
+        "wert": 8616
+      },
+      {
+        "monat": "2024-04",
+        "wert": 9211
+      },
+      {
+        "monat": "2024-05",
+        "wert": 8789
+      },
+      {
+        "monat": "2024-06",
+        "wert": 9261
+      },
+      {
+        "monat": "2024-07",
+        "wert": 9465
+      },
+      {
+        "monat": "2024-08",
+        "wert": 8991
+      },
+      {
+        "monat": "2024-09",
+        "wert": 8089
+      },
+      {
+        "monat": "2024-10",
+        "wert": 10011
+      },
+      {
+        "monat": "2024-11",
+        "wert": 8969
+      },
+      {
+        "monat": "2024-12",
+        "wert": 7915
+      },
+      {
+        "monat": "2025-01",
+        "wert": 10250
+      },
+      {
+        "monat": "2025-02",
+        "wert": 9180
+      },
+      {
+        "monat": "2025-03",
+        "wert": 9963
+      },
+      {
+        "monat": "2025-04",
+        "wert": 9915
+      },
+      {
+        "monat": "2025-05",
+        "wert": 9225
+      },
+      {
+        "monat": "2025-06",
+        "wert": 7723
+      }
+    ],
+    "bestand": [
+      {
+        "monat": "2024-01",
+        "wert": 38223
+      },
+      {
+        "monat": "2024-02",
+        "wert": 38428
+      },
+      {
+        "monat": "2024-03",
+        "wert": 38648
+      },
+      {
+        "monat": "2024-04",
+        "wert": 38855
+      },
+      {
+        "monat": "2024-05",
+        "wert": 39274
+      },
+      {
+        "monat": "2024-06",
+        "wert": 39138
+      },
+      {
+        "monat": "2024-07",
+        "wert": 39062
+      },
+      {
+        "monat": "2024-08",
+        "wert": 38864
+      },
+      {
+        "monat": "2024-09",
+        "wert": 38859
+      },
+      {
+        "monat": "2024-10",
+        "wert": 39057
+      },
+      {
+        "monat": "2024-11",
+        "wert": 38867
+      },
+      {
+        "monat": "2024-12",
+        "wert": 38283
+      },
+      {
+        "monat": "2025-01",
+        "wert": 37637
+      },
+      {
+        "monat": "2025-02",
+        "wert": 37678
+      },
+      {
+        "monat": "2025-03",
+        "wert": 37550
+      },
+      {
+        "monat": "2025-04",
+        "wert": 36611
+      },
+      {
+        "monat": "2025-05",
+        "wert": 36620
+      },
+      {
+        "monat": "2025-06",
+        "wert": 36235
+      }
+    ],
+    "entleihungen": [
+      {
+        "monat": "2024-01",
+        "wert": 34250
+      },
+      {
+        "monat": "2024-02",
+        "wert": 33939
+      },
+      {
+        "monat": "2024-03",
+        "wert": 36227
+      },
+      {
+        "monat": "2024-04",
+        "wert": 36063
+      },
+      {
+        "monat": "2024-05",
+        "wert": 36788
+      },
+      {
+        "monat": "2024-06",
+        "wert": 31241
+      },
+      {
+        "monat": "2024-07",
+        "wert": 36426
+      },
+      {
+        "monat": "2024-08",
+        "wert": 35446
+      },
+      {
+        "monat": "2024-09",
+        "wert": 32266
+      },
+      {
+        "monat": "2024-10",
+        "wert": 39453
+      },
+      {
+        "monat": "2024-11",
+        "wert": 34801
+      },
+      {
+        "monat": "2024-12",
+        "wert": 31285
+      },
+      {
+        "monat": "2025-01",
+        "wert": 41162
+      },
+      {
+        "monat": "2025-02",
+        "wert": 37027
+      },
+      {
+        "monat": "2025-03",
+        "wert": 38641
+      },
+      {
+        "monat": "2025-04",
+        "wert": 37712
+      },
+      {
+        "monat": "2025-05",
+        "wert": 36180
+      },
+      {
+        "monat": "2025-06",
+        "wert": 30117
+      }
+    ]
+  },
+  {
+    "name": "Stadtteilbibliothek Riem",
+    "typ": "Stadtteilbibliothek",
+    "kuerzel": "RIE",
+    "strasse": "Elisabeth-Castonier-Platz 19",
+    "plz": "81829",
+    "lat": 48.13273036929666,
+    "lon": 11.704447808208412,
+    "publikumsflaeche": 784,
+    "arbeitsplaetze": 30,
+    "webseite": "https://www.muenchner-stadtbibliothek.de/stadtbibliothek-riem",
+    "open_library": true,
+    "barrierefreiheit": "barrierefrei",
+    "besuche": [
+      {
+        "monat": "2024-01",
+        "wert": 7215
+      },
+      {
+        "monat": "2024-02",
+        "wert": 6898
+      },
+      {
+        "monat": "2024-03",
+        "wert": 7310
+      },
+      {
+        "monat": "2024-04",
+        "wert": 10158
+      },
+      {
+        "monat": "2024-05",
+        "wert": 9663
+      },
+      {
+        "monat": "2024-06",
+        "wert": 8516
+      },
+      {
+        "monat": "2024-07",
+        "wert": 8556
+      },
+      {
+        "monat": "2024-08",
+        "wert": 8963
+      },
+      {
+        "monat": "2024-09",
+        "wert": 6505
+      },
+      {
+        "monat": "2024-10",
+        "wert": 0
+      },
+      {
+        "monat": "2024-11",
+        "wert": 0
+      },
+      {
+        "monat": "2024-12",
+        "wert": 0
+      },
+      {
+        "monat": "2025-01",
+        "wert": 0
+      },
+      {
+        "monat": "2025-02",
+        "wert": 0
+      },
+      {
+        "monat": "2025-03",
+        "wert": 0
+      },
+      {
+        "monat": "2025-04",
+        "wert": 0
+      },
+      {
+        "monat": "2025-05",
+        "wert": 8983
+      },
+      {
+        "monat": "2025-06",
+        "wert": 8271
+      }
+    ],
+    "bestand": [
+      {
+        "monat": "2024-01",
+        "wert": 18280
+      },
+      {
+        "monat": "2024-02",
+        "wert": 18083
+      },
+      {
+        "monat": "2024-03",
+        "wert": 18294
+      },
+      {
+        "monat": "2024-04",
+        "wert": 18297
+      },
+      {
+        "monat": "2024-05",
+        "wert": 18413
+      },
+      {
+        "monat": "2024-06",
+        "wert": 17757
+      },
+      {
+        "monat": "2024-07",
+        "wert": 17551
+      },
+      {
+        "monat": "2024-08",
+        "wert": 17705
+      },
+      {
+        "monat": "2024-09",
+        "wert": 17379
+      },
+      {
+        "monat": "2024-10",
+        "wert": 17470
+      },
+      {
+        "monat": "2024-11",
+        "wert": 17340
+      },
+      {
+        "monat": "2024-12",
+        "wert": 17400
+      },
+      {
+        "monat": "2025-01",
+        "wert": 17738
+      },
+      {
+        "monat": "2025-02",
+        "wert": 17822
+      },
+      {
+        "monat": "2025-03",
+        "wert": 17831
+      },
+      {
+        "monat": "2025-04",
+        "wert": 16097
+      },
+      {
+        "monat": "2025-05",
+        "wert": 15458
+      },
+      {
+        "monat": "2025-06",
+        "wert": 15523
+      }
+    ],
+    "entleihungen": [
+      {
+        "monat": "2024-01",
+        "wert": 17982
+      },
+      {
+        "monat": "2024-02",
+        "wert": 17518
+      },
+      {
+        "monat": "2024-03",
+        "wert": 18063
+      },
+      {
+        "monat": "2024-04",
+        "wert": 17408
+      },
+      {
+        "monat": "2024-05",
+        "wert": 17774
+      },
+      {
+        "monat": "2024-06",
+        "wert": 15451
+      },
+      {
+        "monat": "2024-07",
+        "wert": 17534
+      },
+      {
+        "monat": "2024-08",
+        "wert": 18594
+      },
+      {
+        "monat": "2024-09",
+        "wert": 17323
+      },
+      {
+        "monat": "2024-10",
+        "wert": 6646
+      },
+      {
+        "monat": "2024-11",
+        "wert": 291
+      },
+      {
+        "monat": "2024-12",
+        "wert": 213
+      },
+      {
+        "monat": "2025-01",
+        "wert": 169
+      },
+      {
+        "monat": "2025-02",
+        "wert": 104
+      },
+      {
+        "monat": "2025-03",
+        "wert": 64
+      },
+      {
+        "monat": "2025-04",
+        "wert": 117
+      },
+      {
+        "monat": "2025-05",
+        "wert": 15483
+      },
+      {
+        "monat": "2025-06",
+        "wert": 14286
+      }
+    ]
+  },
+  {
+    "name": "Stadtteilbibliothek Moosach",
+    "typ": "Stadtteilbibliothek",
+    "kuerzel": "MOO",
+    "strasse": "Hanauer Str. 61a",
+    "plz": "80992",
+    "lat": 48.18188107869979,
+    "lon": 11.528721360719754,
+    "publikumsflaeche": 600,
+    "arbeitsplaetze": 23,
+    "webseite": "https://www.muenchner-stadtbibliothek.de/stadtbibliothek-moosach",
+    "open_library": true,
+    "barrierefreiheit": "ebenerdig",
+    "besuche": [
+      {
+        "monat": "2024-01",
+        "wert": 13605
+      },
+      {
+        "monat": "2024-02",
+        "wert": 13162
+      },
+      {
+        "monat": "2024-03",
+        "wert": 13502
+      },
+      {
+        "monat": "2024-04",
+        "wert": 13882
+      },
+      {
+        "monat": "2024-05",
+        "wert": 13938
+      },
+      {
+        "monat": "2024-06",
+        "wert": 12999
+      },
+      {
+        "monat": "2024-07",
+        "wert": 15946
+      },
+      {
+        "monat": "2024-08",
+        "wert": 14273
+      },
+      {
+        "monat": "2024-09",
+        "wert": 13144
+      },
+      {
+        "monat": "2024-10",
+        "wert": 9762
+      },
+      {
+        "monat": "2024-11",
+        "wert": 8543
+      },
+      {
+        "monat": "2024-12",
+        "wert": 11847
+      },
+      {
+        "monat": "2025-01",
+        "wert": 11604
+      },
+      {
+        "monat": "2025-02",
+        "wert": 11906
+      },
+      {
+        "monat": "2025-03",
+        "wert": 11347
+      },
+      {
+        "monat": "2025-04",
+        "wert": 11372
+      },
+      {
+        "monat": "2025-05",
+        "wert": 11311
+      },
+      {
+        "monat": "2025-06",
+        "wert": 10290
+      }
+    ],
+    "bestand": [
+      {
+        "monat": "2024-01",
+        "wert": 35898
+      },
+      {
+        "monat": "2024-02",
+        "wert": 35709
+      },
+      {
+        "monat": "2024-03",
+        "wert": 35789
+      },
+      {
+        "monat": "2024-04",
+        "wert": 36064
+      },
+      {
+        "monat": "2024-05",
+        "wert": 35906
+      },
+      {
+        "monat": "2024-06",
+        "wert": 36095
+      },
+      {
+        "monat": "2024-07",
+        "wert": 35578
+      },
+      {
+        "monat": "2024-08",
+        "wert": 35574
+      },
+      {
+        "monat": "2024-09",
+        "wert": 35544
+      },
+      {
+        "monat": "2024-10",
+        "wert": 35715
+      },
+      {
+        "monat": "2024-11",
+        "wert": 35870
+      },
+      {
+        "monat": "2024-12",
+        "wert": 35225
+      },
+      {
+        "monat": "2025-01",
+        "wert": 35349
+      },
+      {
+        "monat": "2025-02",
+        "wert": 35255
+      },
+      {
+        "monat": "2025-03",
+        "wert": 35027
+      },
+      {
+        "monat": "2025-04",
+        "wert": 34957
+      },
+      {
+        "monat": "2025-05",
+        "wert": 34635
+      },
+      {
+        "monat": "2025-06",
+        "wert": 34571
+      }
+    ],
+    "entleihungen": [
+      {
+        "monat": "2024-01",
+        "wert": 28505
+      },
+      {
+        "monat": "2024-02",
+        "wert": 27933
+      },
+      {
+        "monat": "2024-03",
+        "wert": 28798
+      },
+      {
+        "monat": "2024-04",
+        "wert": 28834
+      },
+      {
+        "monat": "2024-05",
+        "wert": 29446
+      },
+      {
+        "monat": "2024-06",
+        "wert": 24894
+      },
+      {
+        "monat": "2024-07",
+        "wert": 30764
+      },
+      {
+        "monat": "2024-08",
+        "wert": 28035
+      },
+      {
+        "monat": "2024-09",
+        "wert": 29652
+      },
+      {
+        "monat": "2024-10",
+        "wert": 34216
+      },
+      {
+        "monat": "2024-11",
+        "wert": 29868
+      },
+      {
+        "monat": "2024-12",
+        "wert": 28223
+      },
+      {
+        "monat": "2025-01",
+        "wert": 33950
+      },
+      {
+        "monat": "2025-02",
+        "wert": 30734
+      },
+      {
+        "monat": "2025-03",
+        "wert": 32146
+      },
+      {
+        "monat": "2025-04",
+        "wert": 31606
+      },
+      {
+        "monat": "2025-05",
+        "wert": 32394
+      },
+      {
+        "monat": "2025-06",
+        "wert": 27969
+      }
+    ]
+  },
+  {
+    "name": "Stadtteilbibliothek Westend",
+    "typ": "Stadtteilbibliothek",
+    "kuerzel": "WES",
+    "strasse": "Schießstättstr. 20C",
+    "plz": "80339",
+    "lat": 48.1365185570048,
+    "lon": 11.545037324250773,
+    "publikumsflaeche": 635,
+    "arbeitsplaetze": 30,
+    "webseite": "https://www.muenchner-stadtbibliothek.de/stadtbibliothek-westend",
+    "open_library": false,
+    "barrierefreiheit": "ebenerdiger Eingang, Aufzug",
+    "besuche": [
+      {
+        "monat": "2024-01",
+        "wert": 10982
+      },
+      {
+        "monat": "2024-02",
+        "wert": 9736
+      },
+      {
+        "monat": "2024-03",
+        "wert": 9580
+      },
+      {
+        "monat": "2024-04",
+        "wert": 10285
+      },
+      {
+        "monat": "2024-05",
+        "wert": 9030
+      },
+      {
+        "monat": "2024-06",
+        "wert": 8047
+      },
+      {
+        "monat": "2024-07",
+        "wert": 9679
+      },
+      {
+        "monat": "2024-08",
+        "wert": 9163
+      },
+      {
+        "monat": "2024-09",
+        "wert": 8697
+      },
+      {
+        "monat": "2024-10",
+        "wert": 10400
+      },
+      {
+        "monat": "2024-11",
+        "wert": 9880
+      },
+      {
+        "monat": "2024-12",
+        "wert": 7346
+      },
+      {
+        "monat": "2025-01",
+        "wert": 10992
+      },
+      {
+        "monat": "2025-02",
+        "wert": 10959
+      },
+      {
+        "monat": "2025-03",
+        "wert": 10862
+      },
+      {
+        "monat": "2025-04",
+        "wert": 9761
+      },
+      {
+        "monat": "2025-05",
+        "wert": 9708
+      },
+      {
+        "monat": "2025-06",
+        "wert": 8424
+      }
+    ],
+    "bestand": [
+      {
+        "monat": "2024-01",
+        "wert": 23639
+      },
+      {
+        "monat": "2024-02",
+        "wert": 23327
+      },
+      {
+        "monat": "2024-03",
+        "wert": 23189
+      },
+      {
+        "monat": "2024-04",
+        "wert": 23477
+      },
+      {
+        "monat": "2024-05",
+        "wert": 23643
+      },
+      {
+        "monat": "2024-06",
+        "wert": 23626
+      },
+      {
+        "monat": "2024-07",
+        "wert": 23584
+      },
+      {
+        "monat": "2024-08",
+        "wert": 23543
+      },
+      {
+        "monat": "2024-09",
+        "wert": 23826
+      },
+      {
+        "monat": "2024-10",
+        "wert": 24151
+      },
+      {
+        "monat": "2024-11",
+        "wert": 24273
+      },
+      {
+        "monat": "2024-12",
+        "wert": 23740
+      },
+      {
+        "monat": "2025-01",
+        "wert": 23640
+      },
+      {
+        "monat": "2025-02",
+        "wert": 23819
+      },
+      {
+        "monat": "2025-03",
+        "wert": 23930
+      },
+      {
+        "monat": "2025-04",
+        "wert": 23984
+      },
+      {
+        "monat": "2025-05",
+        "wert": 24141
+      },
+      {
+        "monat": "2025-06",
+        "wert": 24215
+      }
+    ],
+    "entleihungen": [
+      {
+        "monat": "2024-01",
+        "wert": 16678
+      },
+      {
+        "monat": "2024-02",
+        "wert": 16360
+      },
+      {
+        "monat": "2024-03",
+        "wert": 17130
+      },
+      {
+        "monat": "2024-04",
+        "wert": 15831
+      },
+      {
+        "monat": "2024-05",
+        "wert": 16182
+      },
+      {
+        "monat": "2024-06",
+        "wert": 13240
+      },
+      {
+        "monat": "2024-07",
+        "wert": 15458
+      },
+      {
+        "monat": "2024-08",
+        "wert": 14842
+      },
+      {
+        "monat": "2024-09",
+        "wert": 14546
+      },
+      {
+        "monat": "2024-10",
+        "wert": 16799
+      },
+      {
+        "monat": "2024-11",
+        "wert": 14484
+      },
+      {
+        "monat": "2024-12",
+        "wert": 14063
+      },
+      {
+        "monat": "2025-01",
+        "wert": 18504
+      },
+      {
+        "monat": "2025-02",
+        "wert": 16246
+      },
+      {
+        "monat": "2025-03",
+        "wert": 16332
+      },
+      {
+        "monat": "2025-04",
+        "wert": 15528
+      },
+      {
+        "monat": "2025-05",
+        "wert": 15747
+      },
+      {
+        "monat": "2025-06",
+        "wert": 13415
+      }
+    ]
+  },
+  {
+    "name": "Stadtteilbibliothek Fürstenried",
+    "typ": "Stadtteilbibliothek",
+    "kuerzel": "FÜR",
+    "strasse": "Berner Str. 4",
+    "plz": "81476",
+    "lat": 48.09580761825382,
+    "lon": 11.494604432474995,
+    "publikumsflaeche": 566,
+    "arbeitsplaetze": 34,
+    "webseite": "https://www.muenchner-stadtbibliothek.de/stadtbibliothek-fuerstenried",
+    "open_library": true,
+    "barrierefreiheit": "für Rollstuhlfahrer*innen geeignet",
+    "besuche": [
+      {
+        "monat": "2024-01",
+        "wert": 13639
+      },
+      {
+        "monat": "2024-02",
+        "wert": 12921
+      },
+      {
+        "monat": "2024-03",
+        "wert": 8458
+      },
+      {
+        "monat": "2024-04",
+        "wert": 9646
+      },
+      {
+        "monat": "2024-05",
+        "wert": 10443
+      },
+      {
+        "monat": "2024-06",
+        "wert": 10885
+      },
+      {
+        "monat": "2024-07",
+        "wert": 9646
+      },
+      {
+        "monat": "2024-08",
+        "wert": 11087
+      },
+      {
+        "monat": "2024-09",
+        "wert": 11543
+      },
+      {
+        "monat": "2024-10",
+        "wert": 13033
+      },
+      {
+        "monat": "2024-11",
+        "wert": 10638
+      },
+      {
+        "monat": "2024-12",
+        "wert": 10603
+      },
+      {
+        "monat": "2025-01",
+        "wert": 15623
+      },
+      {
+        "monat": "2025-02",
+        "wert": 11980
+      },
+      {
+        "monat": "2025-03",
+        "wert": 13522
+      },
+      {
+        "monat": "2025-04",
+        "wert": 13488
+      },
+      {
+        "monat": "2025-05",
+        "wert": 13154
+      },
+      {
+        "monat": "2025-06",
+        "wert": 11174
+      }
+    ],
+    "bestand": [
+      {
+        "monat": "2024-01",
+        "wert": 44135
+      },
+      {
+        "monat": "2024-02",
+        "wert": 44186
+      },
+      {
+        "monat": "2024-03",
+        "wert": 44002
+      },
+      {
+        "monat": "2024-04",
+        "wert": 44470
+      },
+      {
+        "monat": "2024-05",
+        "wert": 44824
+      },
+      {
+        "monat": "2024-06",
+        "wert": 44503
+      },
+      {
+        "monat": "2024-07",
+        "wert": 44773
+      },
+      {
+        "monat": "2024-08",
+        "wert": 44871
+      },
+      {
+        "monat": "2024-09",
+        "wert": 45422
+      },
+      {
+        "monat": "2024-10",
+        "wert": 46096
+      },
+      {
+        "monat": "2024-11",
+        "wert": 46260
+      },
+      {
+        "monat": "2024-12",
+        "wert": 46136
+      },
+      {
+        "monat": "2025-01",
+        "wert": 45910
+      },
+      {
+        "monat": "2025-02",
+        "wert": 45369
+      },
+      {
+        "monat": "2025-03",
+        "wert": 45416
+      },
+      {
+        "monat": "2025-04",
+        "wert": 45333
+      },
+      {
+        "monat": "2025-05",
+        "wert": 45231
+      },
+      {
+        "monat": "2025-06",
+        "wert": 45216
+      }
+    ],
+    "entleihungen": [
+      {
+        "monat": "2024-01",
+        "wert": 39260
+      },
+      {
+        "monat": "2024-02",
+        "wert": 37806
+      },
+      {
+        "monat": "2024-03",
+        "wert": 40897
+      },
+      {
+        "monat": "2024-04",
+        "wert": 40829
+      },
+      {
+        "monat": "2024-05",
+        "wert": 40979
+      },
+      {
+        "monat": "2024-06",
+        "wert": 35572
+      },
+      {
+        "monat": "2024-07",
+        "wert": 39803
+      },
+      {
+        "monat": "2024-08",
+        "wert": 38144
+      },
+      {
+        "monat": "2024-09",
+        "wert": 38827
+      },
+      {
+        "monat": "2024-10",
+        "wert": 43157
+      },
+      {
+        "monat": "2024-11",
+        "wert": 38213
+      },
+      {
+        "monat": "2024-12",
+        "wert": 36852
+      },
+      {
+        "monat": "2025-01",
+        "wert": 45697
+      },
+      {
+        "monat": "2025-02",
+        "wert": 40371
+      },
+      {
+        "monat": "2025-03",
+        "wert": 42396
+      },
+      {
+        "monat": "2025-04",
+        "wert": 41659
+      },
+      {
+        "monat": "2025-05",
+        "wert": 42209
+      },
+      {
+        "monat": "2025-06",
+        "wert": 36136
+      }
+    ]
+  },
+  {
+    "name": "Stadtteilbibliothek Am Westkreuz",
+    "typ": "Stadtteilbibliothek",
+    "kuerzel": "WKR",
+    "strasse": "Radolfzeller Str. 13",
+    "plz": "81243",
+    "lat": 48.149327875995105,
+    "lon": 11.435072211063341,
+    "publikumsflaeche": 386,
+    "arbeitsplaetze": 53,
+    "webseite": "https://www.muenchner-stadtbibliothek.de/stadtbibliothek-am-westkreuz",
+    "open_library": true,
+    "barrierefreiheit": "für Rollstuhlfahrer*innen geeignet",
+    "besuche": [
+      {
+        "monat": "2024-01",
+        "wert": 6587
+      },
+      {
+        "monat": "2024-02",
+        "wert": 6884
+      },
+      {
+        "monat": "2024-03",
+        "wert": 4417
+      },
+      {
+        "monat": "2024-04",
+        "wert": 9514
+      },
+      {
+        "monat": "2024-05",
+        "wert": 9887
+      },
+      {
+        "monat": "2024-06",
+        "wert": 10273
+      },
+      {
+        "monat": "2024-07",
+        "wert": 8972
+      },
+      {
+        "monat": "2024-08",
+        "wert": 7024
+      },
+      {
+        "monat": "2024-09",
+        "wert": 8166
+      },
+      {
+        "monat": "2024-10",
+        "wert": 10628
+      },
+      {
+        "monat": "2024-11",
+        "wert": 9725
+      },
+      {
+        "monat": "2024-12",
+        "wert": 2311
+      },
+      {
+        "monat": "2025-01",
+        "wert": 5877
+      },
+      {
+        "monat": "2025-02",
+        "wert": 8466
+      },
+      {
+        "monat": "2025-03",
+        "wert": 9852
+      },
+      {
+        "monat": "2025-04",
+        "wert": 19408
+      },
+      {
+        "monat": "2025-05",
+        "wert": 23186
+      },
+      {
+        "monat": "2025-06",
+        "wert": 9054
+      }
+    ],
+    "bestand": [
+      {
+        "monat": "2024-01",
+        "wert": 25204
+      },
+      {
+        "monat": "2024-02",
+        "wert": 25341
+      },
+      {
+        "monat": "2024-03",
+        "wert": 25290
+      },
+      {
+        "monat": "2024-04",
+        "wert": 25576
+      },
+      {
+        "monat": "2024-05",
+        "wert": 25739
+      },
+      {
+        "monat": "2024-06",
+        "wert": 25544
+      },
+      {
+        "monat": "2024-07",
+        "wert": 25584
+      },
+      {
+        "monat": "2024-08",
+        "wert": 25513
+      },
+      {
+        "monat": "2024-09",
+        "wert": 25591
+      },
+      {
+        "monat": "2024-10",
+        "wert": 25964
+      },
+      {
+        "monat": "2024-11",
+        "wert": 25812
+      },
+      {
+        "monat": "2024-12",
+        "wert": 25546
+      },
+      {
+        "monat": "2025-01",
+        "wert": 25322
+      },
+      {
+        "monat": "2025-02",
+        "wert": 25551
+      },
+      {
+        "monat": "2025-03",
+        "wert": 25637
+      },
+      {
+        "monat": "2025-04",
+        "wert": 25684
+      },
+      {
+        "monat": "2025-05",
+        "wert": 25859
+      },
+      {
+        "monat": "2025-06",
+        "wert": 25606
+      }
+    ],
+    "entleihungen": [
+      {
+        "monat": "2024-01",
+        "wert": 22000
+      },
+      {
+        "monat": "2024-02",
+        "wert": 21064
+      },
+      {
+        "monat": "2024-03",
+        "wert": 22765
+      },
+      {
+        "monat": "2024-04",
+        "wert": 22019
+      },
+      {
+        "monat": "2024-05",
+        "wert": 23097
+      },
+      {
+        "monat": "2024-06",
+        "wert": 21289
+      },
+      {
+        "monat": "2024-07",
+        "wert": 24200
+      },
+      {
+        "monat": "2024-08",
+        "wert": 23349
+      },
+      {
+        "monat": "2024-09",
+        "wert": 23631
+      },
+      {
+        "monat": "2024-10",
+        "wert": 27909
+      },
+      {
+        "monat": "2024-11",
+        "wert": 25737
+      },
+      {
+        "monat": "2024-12",
+        "wert": 23039
+      },
+      {
+        "monat": "2025-01",
+        "wert": 27170
+      },
+      {
+        "monat": "2025-02",
+        "wert": 24772
+      },
+      {
+        "monat": "2025-03",
+        "wert": 26008
+      },
+      {
+        "monat": "2025-04",
+        "wert": 25075
+      },
+      {
+        "monat": "2025-05",
+        "wert": 25067
+      },
+      {
+        "monat": "2025-06",
+        "wert": 21743
+      }
+    ]
+  },
+  {
+    "name": "Stadtteilbibliothek Maxvorstadt",
+    "typ": "Stadtteilbibliothek",
+    "kuerzel": "MAX",
+    "strasse": "Augustenstr. 92",
+    "plz": "80798",
+    "lat": 48.15180262623071,
+    "lon": 11.564820588145034,
+    "publikumsflaeche": 306,
+    "arbeitsplaetze": 16,
+    "webseite": "https://www.muenchner-stadtbibliothek.de/stadtbibliothek-maxvorstadt",
+    "open_library": false,
+    "barrierefreiheit": "Vor Eingang: Gitterrost mit leichter Steigung, Aufzug",
+    "besuche": [
+      {
+        "monat": "2024-01",
+        "wert": 10509
+      },
+      {
+        "monat": "2024-02",
+        "wert": 10238
+      },
+      {
+        "monat": "2024-03",
+        "wert": 10755
+      },
+      {
+        "monat": "2024-04",
+        "wert": 10568
+      },
+      {
+        "monat": "2024-05",
+        "wert": 10487
+      },
+      {
+        "monat": "2024-06",
+        "wert": 10290
+      },
+      {
+        "monat": "2024-07",
+        "wert": 10277
+      },
+      {
+        "monat": "2024-08",
+        "wert": 8705
+      },
+      {
+        "monat": "2024-09",
+        "wert": 10058
+      },
+      {
+        "monat": "2024-10",
+        "wert": 10666
+      },
+      {
+        "monat": "2024-11",
+        "wert": 0
+      },
+      {
+        "monat": "2024-12",
+        "wert": 0
+      },
+      {
+        "monat": "2025-01",
+        "wert": 8976
+      },
+      {
+        "monat": "2025-02",
+        "wert": 10847
+      },
+      {
+        "monat": "2025-03",
+        "wert": 10039
+      },
+      {
+        "monat": "2025-04",
+        "wert": 6432
+      },
+      {
+        "monat": "2025-05",
+        "wert": 5601
+      },
+      {
+        "monat": "2025-06",
+        "wert": 7598
+      }
+    ],
+    "bestand": [
+      {
+        "monat": "2024-01",
+        "wert": 19345
+      },
+      {
+        "monat": "2024-02",
+        "wert": 19477
+      },
+      {
+        "monat": "2024-03",
+        "wert": 19646
+      },
+      {
+        "monat": "2024-04",
+        "wert": 19847
+      },
+      {
+        "monat": "2024-05",
+        "wert": 20076
+      },
+      {
+        "monat": "2024-06",
+        "wert": 20322
+      },
+      {
+        "monat": "2024-07",
+        "wert": 20344
+      },
+      {
+        "monat": "2024-08",
+        "wert": 20569
+      },
+      {
+        "monat": "2024-09",
+        "wert": 20652
+      },
+      {
+        "monat": "2024-10",
+        "wert": 20281
+      },
+      {
+        "monat": "2024-11",
+        "wert": 19818
+      },
+      {
+        "monat": "2024-12",
+        "wert": 20118
+      },
+      {
+        "monat": "2025-01",
+        "wert": 20140
+      },
+      {
+        "monat": "2025-02",
+        "wert": 20166
+      },
+      {
+        "monat": "2025-03",
+        "wert": 20071
+      },
+      {
+        "monat": "2025-04",
+        "wert": 20160
+      },
+      {
+        "monat": "2025-05",
+        "wert": 20361
+      },
+      {
+        "monat": "2025-06",
+        "wert": 20305
+      }
+    ],
+    "entleihungen": [
+      {
+        "monat": "2024-01",
+        "wert": 19949
+      },
+      {
+        "monat": "2024-02",
+        "wert": 19123
+      },
+      {
+        "monat": "2024-03",
+        "wert": 19926
+      },
+      {
+        "monat": "2024-04",
+        "wert": 19623
+      },
+      {
+        "monat": "2024-05",
+        "wert": 19697
+      },
+      {
+        "monat": "2024-06",
+        "wert": 17174
+      },
+      {
+        "monat": "2024-07",
+        "wert": 19901
+      },
+      {
+        "monat": "2024-08",
+        "wert": 17759
+      },
+      {
+        "monat": "2024-09",
+        "wert": 19119
+      },
+      {
+        "monat": "2024-10",
+        "wert": 20589
+      },
+      {
+        "monat": "2024-11",
+        "wert": 610
+      },
+      {
+        "monat": "2024-12",
+        "wert": 719
+      },
+      {
+        "monat": "2025-01",
+        "wert": 20753
+      },
+      {
+        "monat": "2025-02",
+        "wert": 18136
+      },
+      {
+        "monat": "2025-03",
+        "wert": 19213
+      },
+      {
+        "monat": "2025-04",
+        "wert": 14624
+      },
+      {
+        "monat": "2025-05",
+        "wert": 12614
+      },
+      {
+        "monat": "2025-06",
+        "wert": 16138
+      }
+    ]
+  },
+  {
+    "name": "Stadtteilbibliothek Bogenhausen",
+    "typ": "Stadtteilbibliothek",
+    "kuerzel": "BOG",
+    "strasse": "Rosenkavalierplatz 16",
+    "plz": "81925",
+    "lat": 48.15190917003008,
+    "lon": 11.619871845997137,
+    "publikumsflaeche": 1077,
+    "arbeitsplaetze": 70,
+    "webseite": "https://www.muenchner-stadtbibliothek.de/stadtbibliothek-bogenhausen",
+    "open_library": false,
+    "barrierefreiheit": "eingeschränkt barrierefrei",
+    "besuche": [
+      {
+        "monat": "2024-01",
+        "wert": 18645
+      },
+      {
+        "monat": "2024-02",
+        "wert": 17539
+      },
+      {
+        "monat": "2024-03",
+        "wert": 18168
+      },
+      {
+        "monat": "2024-04",
+        "wert": 17539
+      },
+      {
+        "monat": "2024-05",
+        "wert": 17539
+      },
+      {
+        "monat": "2024-06",
+        "wert": 17670
+      },
+      {
+        "monat": "2024-07",
+        "wert": 17523
+      },
+      {
+        "monat": "2024-08",
+        "wert": 17123
+      },
+      {
+        "monat": "2024-09",
+        "wert": 14207
+      },
+      {
+        "monat": "2024-10",
+        "wert": 16717
+      },
+      {
+        "monat": "2024-11",
+        "wert": 16471
+      },
+      {
+        "monat": "2024-12",
+        "wert": 12447
+      },
+      {
+        "monat": "2025-01",
+        "wert": 16975
+      },
+      {
+        "monat": "2025-02",
+        "wert": 14053
+      },
+      {
+        "monat": "2025-03",
+        "wert": 18168
+      },
+      {
+        "monat": "2025-04",
+        "wert": 17539
+      },
+      {
+        "monat": "2025-05",
+        "wert": 17539
+      },
+      {
+        "monat": "2025-06",
+        "wert": 17670
+      }
+    ],
+    "bestand": [
+      {
+        "monat": "2024-01",
+        "wert": 43379
+      },
+      {
+        "monat": "2024-02",
+        "wert": 43823
+      },
+      {
+        "monat": "2024-03",
+        "wert": 44224
+      },
+      {
+        "monat": "2024-04",
+        "wert": 44463
+      },
+      {
+        "monat": "2024-05",
+        "wert": 44913
+      },
+      {
+        "monat": "2024-06",
+        "wert": 44746
+      },
+      {
+        "monat": "2024-07",
+        "wert": 44806
+      },
+      {
+        "monat": "2024-08",
+        "wert": 45238
+      },
+      {
+        "monat": "2024-09",
+        "wert": 44011
+      },
+      {
+        "monat": "2024-10",
+        "wert": 44121
+      },
+      {
+        "monat": "2024-11",
+        "wert": 44111
+      },
+      {
+        "monat": "2024-12",
+        "wert": 44512
+      },
+      {
+        "monat": "2025-01",
+        "wert": 44610
+      },
+      {
+        "monat": "2025-02",
+        "wert": 44183
+      },
+      {
+        "monat": "2025-03",
+        "wert": 43663
+      },
+      {
+        "monat": "2025-04",
+        "wert": 43418
+      },
+      {
+        "monat": "2025-05",
+        "wert": 43168
+      },
+      {
+        "monat": "2025-06",
+        "wert": 43205
+      }
+    ],
+    "entleihungen": [
+      {
+        "monat": "2024-01",
+        "wert": 44289
+      },
+      {
+        "monat": "2024-02",
+        "wert": 43776
+      },
+      {
+        "monat": "2024-03",
+        "wert": 44010
+      },
+      {
+        "monat": "2024-04",
+        "wert": 45527
+      },
+      {
+        "monat": "2024-05",
+        "wert": 45383
+      },
+      {
+        "monat": "2024-06",
+        "wert": 40461
+      },
+      {
+        "monat": "2024-07",
+        "wert": 45185
+      },
+      {
+        "monat": "2024-08",
+        "wert": 43402
+      },
+      {
+        "monat": "2024-09",
+        "wert": 40391
+      },
+      {
+        "monat": "2024-10",
+        "wert": 46903
+      },
+      {
+        "monat": "2024-11",
+        "wert": 44799
+      },
+      {
+        "monat": "2024-12",
+        "wert": 39096
+      },
+      {
+        "monat": "2025-01",
+        "wert": 48909
+      },
+      {
+        "monat": "2025-02",
+        "wert": 41986
+      },
+      {
+        "monat": "2025-03",
+        "wert": 43023
+      },
+      {
+        "monat": "2025-04",
+        "wert": 43100
+      },
+      {
+        "monat": "2025-05",
+        "wert": 42514
+      },
+      {
+        "monat": "2025-06",
+        "wert": 37028
+      }
+    ]
+  },
+  {
+    "name": "Stadtteilbibliothek Neuperlach",
+    "typ": "Stadtteilbibliothek",
+    "kuerzel": "NEP",
+    "strasse": "Charles-de-Gaulle-Str. 2A",
+    "plz": "81737",
+    "lat": 48.101881049133304,
+    "lon": 11.644242878456097,
+    "publikumsflaeche": 540,
+    "arbeitsplaetze": 20,
+    "webseite": "https://www.muenchner-stadtbibliothek.de/stadtbibliothek-neuperlach",
+    "open_library": false,
+    "barrierefreiheit": "barrierefrei",
+    "besuche": [
+      {
+        "monat": "2024-01",
+        "wert": 9599
+      },
+      {
+        "monat": "2024-02",
+        "wert": 9144
+      },
+      {
+        "monat": "2024-03",
+        "wert": 8943
+      },
+      {
+        "monat": "2024-04",
+        "wert": 9502
+      },
+      {
+        "monat": "2024-05",
+        "wert": 9296
+      },
+      {
+        "monat": "2024-06",
+        "wert": 8502
+      },
+      {
+        "monat": "2024-07",
+        "wert": 9795
+      },
+      {
+        "monat": "2024-08",
+        "wert": 8641
+      },
+      {
+        "monat": "2024-09",
+        "wert": 8504
+      },
+      {
+        "monat": "2024-10",
+        "wert": 10358
+      },
+      {
+        "monat": "2024-11",
+        "wert": 9345
+      },
+      {
+        "monat": "2024-12",
+        "wert": 7569
+      },
+      {
+        "monat": "2025-01",
+        "wert": 10336
+      },
+      {
+        "monat": "2025-02",
+        "wert": 9287
+      },
+      {
+        "monat": "2025-03",
+        "wert": 9558
+      },
+      {
+        "monat": "2025-04",
+        "wert": 10216
+      },
+      {
+        "monat": "2025-05",
+        "wert": 9313
+      },
+      {
+        "monat": "2025-06",
+        "wert": 8754
+      }
+    ],
+    "bestand": [
+      {
+        "monat": "2024-01",
+        "wert": 27057
+      },
+      {
+        "monat": "2024-02",
+        "wert": 27311
+      },
+      {
+        "monat": "2024-03",
+        "wert": 27618
+      },
+      {
+        "monat": "2024-04",
+        "wert": 27959
+      },
+      {
+        "monat": "2024-05",
+        "wert": 28240
+      },
+      {
+        "monat": "2024-06",
+        "wert": 28284
+      },
+      {
+        "monat": "2024-07",
+        "wert": 28343
+      },
+      {
+        "monat": "2024-08",
+        "wert": 28423
+      },
+      {
+        "monat": "2024-09",
+        "wert": 28506
+      },
+      {
+        "monat": "2024-10",
+        "wert": 28260
+      },
+      {
+        "monat": "2024-11",
+        "wert": 27822
+      },
+      {
+        "monat": "2024-12",
+        "wert": 27567
+      },
+      {
+        "monat": "2025-01",
+        "wert": 27492
+      },
+      {
+        "monat": "2025-02",
+        "wert": 27612
+      },
+      {
+        "monat": "2025-03",
+        "wert": 27721
+      },
+      {
+        "monat": "2025-04",
+        "wert": 27740
+      },
+      {
+        "monat": "2025-05",
+        "wert": 28088
+      },
+      {
+        "monat": "2025-06",
+        "wert": 28273
+      }
+    ],
+    "entleihungen": [
+      {
+        "monat": "2024-01",
+        "wert": 24614
+      },
+      {
+        "monat": "2024-02",
+        "wert": 24027
+      },
+      {
+        "monat": "2024-03",
+        "wert": 24256
+      },
+      {
+        "monat": "2024-04",
+        "wert": 24106
+      },
+      {
+        "monat": "2024-05",
+        "wert": 24670
+      },
+      {
+        "monat": "2024-06",
+        "wert": 21320
+      },
+      {
+        "monat": "2024-07",
+        "wert": 24040
+      },
+      {
+        "monat": "2024-08",
+        "wert": 23557
+      },
+      {
+        "monat": "2024-09",
+        "wert": 22995
+      },
+      {
+        "monat": "2024-10",
+        "wert": 27544
+      },
+      {
+        "monat": "2024-11",
+        "wert": 23334
+      },
+      {
+        "monat": "2024-12",
+        "wert": 21145
+      },
+      {
+        "monat": "2025-01",
+        "wert": 25939
+      },
+      {
+        "monat": "2025-02",
+        "wert": 23938
+      },
+      {
+        "monat": "2025-03",
+        "wert": 24025
+      },
+      {
+        "monat": "2025-04",
+        "wert": 24148
+      },
+      {
+        "monat": "2025-05",
+        "wert": 23634
+      },
+      {
+        "monat": "2025-06",
+        "wert": 21124
+      }
+    ]
+  },
+  {
+    "name": "Stadtteilbibliothek Milbertshofen",
+    "typ": "Stadtteilbibliothek",
+    "kuerzel": "MIL",
+    "strasse": "Schleißheimer Str. 340",
+    "plz": "80809",
+    "lat": 48.18302620215363,
+    "lon": 11.567038764997227,
+    "publikumsflaeche": 338,
+    "arbeitsplaetze": 17,
+    "webseite": "https://www.muenchner-stadtbibliothek.de/stadtbibliothek-milbertshofen",
+    "open_library": false,
+    "barrierefreiheit": "für Rollstuhlfahrer*innen geeignet",
+    "besuche": [
+      {
+        "monat": "2024-01",
+        "wert": 4456
+      },
+      {
+        "monat": "2024-02",
+        "wert": 5342
+      },
+      {
+        "monat": "2024-03",
+        "wert": 5172
+      },
+      {
+        "monat": "2024-04",
+        "wert": 5899
+      },
+      {
+        "monat": "2024-05",
+        "wert": 5242
+      },
+      {
+        "monat": "2024-06",
+        "wert": 5405
+      },
+      {
+        "monat": "2024-07",
+        "wert": 5555
+      },
+      {
+        "monat": "2024-08",
+        "wert": 4352
+      },
+      {
+        "monat": "2024-09",
+        "wert": 5134
+      },
+      {
+        "monat": "2024-10",
+        "wert": 5740
+      },
+      {
+        "monat": "2024-11",
+        "wert": 5710
+      },
+      {
+        "monat": "2024-12",
+        "wert": 4650
+      },
+      {
+        "monat": "2025-01",
+        "wert": 6296
+      },
+      {
+        "monat": "2025-02",
+        "wert": 5950
+      },
+      {
+        "monat": "2025-03",
+        "wert": 5615
+      },
+      {
+        "monat": "2025-04",
+        "wert": 6434
+      },
+      {
+        "monat": "2025-05",
+        "wert": 5603
+      },
+      {
+        "monat": "2025-06",
+        "wert": 5188
+      }
+    ],
+    "bestand": [
+      {
+        "monat": "2024-01",
+        "wert": 23740
+      },
+      {
+        "monat": "2024-02",
+        "wert": 23858
+      },
+      {
+        "monat": "2024-03",
+        "wert": 23941
+      },
+      {
+        "monat": "2024-04",
+        "wert": 24211
+      },
+      {
+        "monat": "2024-05",
+        "wert": 24265
+      },
+      {
+        "monat": "2024-06",
+        "wert": 24097
+      },
+      {
+        "monat": "2024-07",
+        "wert": 23785
+      },
+      {
+        "monat": "2024-08",
+        "wert": 23767
+      },
+      {
+        "monat": "2024-09",
+        "wert": 23617
+      },
+      {
+        "monat": "2024-10",
+        "wert": 22978
+      },
+      {
+        "monat": "2024-11",
+        "wert": 22642
+      },
+      {
+        "monat": "2024-12",
+        "wert": 21918
+      },
+      {
+        "monat": "2025-01",
+        "wert": 21255
+      },
+      {
+        "monat": "2025-02",
+        "wert": 21097
+      },
+      {
+        "monat": "2025-03",
+        "wert": 21206
+      },
+      {
+        "monat": "2025-04",
+        "wert": 21351
+      },
+      {
+        "monat": "2025-05",
+        "wert": 21229
+      },
+      {
+        "monat": "2025-06",
+        "wert": 21303
+      }
+    ],
+    "entleihungen": [
+      {
+        "monat": "2024-01",
+        "wert": 17623
+      },
+      {
+        "monat": "2024-02",
+        "wert": 18192
+      },
+      {
+        "monat": "2024-03",
+        "wert": 17992
+      },
+      {
+        "monat": "2024-04",
+        "wert": 18301
+      },
+      {
+        "monat": "2024-05",
+        "wert": 18032
+      },
+      {
+        "monat": "2024-06",
+        "wert": 14819
+      },
+      {
+        "monat": "2024-07",
+        "wert": 16664
+      },
+      {
+        "monat": "2024-08",
+        "wert": 15873
+      },
+      {
+        "monat": "2024-09",
+        "wert": 16562
+      },
+      {
+        "monat": "2024-10",
+        "wert": 17967
+      },
+      {
+        "monat": "2024-11",
+        "wert": 17736
+      },
+      {
+        "monat": "2024-12",
+        "wert": 16665
+      },
+      {
+        "monat": "2025-01",
+        "wert": 18619
+      },
+      {
+        "monat": "2025-02",
+        "wert": 17053
+      },
+      {
+        "monat": "2025-03",
+        "wert": 17700
+      },
+      {
+        "monat": "2025-04",
+        "wert": 17118
+      },
+      {
+        "monat": "2025-05",
+        "wert": 17469
+      },
+      {
+        "monat": "2025-06",
+        "wert": 14679
+      }
+    ]
+  },
+  {
+    "name": "Stadtteilbibliothek Hadern",
+    "typ": "Stadtteilbibliothek",
+    "kuerzel": "HAD",
+    "strasse": "Guardinistr. 90",
+    "plz": "81375",
+    "lat": 48.11863342640015,
+    "lon": 11.49093530614311,
+    "publikumsflaeche": 502,
+    "arbeitsplaetze": 14,
+    "webseite": "https://www.muenchner-stadtbibliothek.de/stadtbibliothek-hadern",
+    "open_library": false,
+    "barrierefreiheit": "ebenerdiger Eingang, Aufzug",
+    "besuche": [
+      {
+        "monat": "2024-01",
+        "wert": 5863
+      },
+      {
+        "monat": "2024-02",
+        "wert": 5814
+      },
+      {
+        "monat": "2024-03",
+        "wert": 5595
+      },
+      {
+        "monat": "2024-04",
+        "wert": 5696
+      },
+      {
+        "monat": "2024-05",
+        "wert": 5378
+      },
+      {
+        "monat": "2024-06",
+        "wert": 5317
+      },
+      {
+        "monat": "2024-07",
+        "wert": 5573
+      },
+      {
+        "monat": "2024-08",
+        "wert": 4895
+      },
+      {
+        "monat": "2024-09",
+        "wert": 5103
+      },
+      {
+        "monat": "2024-10",
+        "wert": 5854
+      },
+      {
+        "monat": "2024-11",
+        "wert": 5500
+      },
+      {
+        "monat": "2024-12",
+        "wert": 4936
+      },
+      {
+        "monat": "2025-01",
+        "wert": 6938
+      },
+      {
+        "monat": "2025-02",
+        "wert": 5795
+      },
+      {
+        "monat": "2025-03",
+        "wert": 5625
+      },
+      {
+        "monat": "2025-04",
+        "wert": 5583
+      },
+      {
+        "monat": "2025-05",
+        "wert": 6121
+      },
+      {
+        "monat": "2025-06",
+        "wert": 4820
+      }
+    ],
+    "bestand": [
+      {
+        "monat": "2024-01",
+        "wert": 26344
+      },
+      {
+        "monat": "2024-02",
+        "wert": 25876
+      },
+      {
+        "monat": "2024-03",
+        "wert": 25847
+      },
+      {
+        "monat": "2024-04",
+        "wert": 26031
+      },
+      {
+        "monat": "2024-05",
+        "wert": 26162
+      },
+      {
+        "monat": "2024-06",
+        "wert": 26219
+      },
+      {
+        "monat": "2024-07",
+        "wert": 26164
+      },
+      {
+        "monat": "2024-08",
+        "wert": 26245
+      },
+      {
+        "monat": "2024-09",
+        "wert": 26411
+      },
+      {
+        "monat": "2024-10",
+        "wert": 26620
+      },
+      {
+        "monat": "2024-11",
+        "wert": 26564
+      },
+      {
+        "monat": "2024-12",
+        "wert": 25174
+      },
+      {
+        "monat": "2025-01",
+        "wert": 24559
+      },
+      {
+        "monat": "2025-02",
+        "wert": 24648
+      },
+      {
+        "monat": "2025-03",
+        "wert": 24668
+      },
+      {
+        "monat": "2025-04",
+        "wert": 24975
+      },
+      {
+        "monat": "2025-05",
+        "wert": 25107
+      },
+      {
+        "monat": "2025-06",
+        "wert": 24933
+      }
+    ],
+    "entleihungen": [
+      {
+        "monat": "2024-01",
+        "wert": 19512
+      },
+      {
+        "monat": "2024-02",
+        "wert": 18440
+      },
+      {
+        "monat": "2024-03",
+        "wert": 18657
+      },
+      {
+        "monat": "2024-04",
+        "wert": 19849
+      },
+      {
+        "monat": "2024-05",
+        "wert": 18906
+      },
+      {
+        "monat": "2024-06",
+        "wert": 17458
+      },
+      {
+        "monat": "2024-07",
+        "wert": 19141
+      },
+      {
+        "monat": "2024-08",
+        "wert": 18493
+      },
+      {
+        "monat": "2024-09",
+        "wert": 17319
+      },
+      {
+        "monat": "2024-10",
+        "wert": 20623
+      },
+      {
+        "monat": "2024-11",
+        "wert": 18776
+      },
+      {
+        "monat": "2024-12",
+        "wert": 17076
+      },
+      {
+        "monat": "2025-01",
+        "wert": 21436
+      },
+      {
+        "monat": "2025-02",
+        "wert": 19181
+      },
+      {
+        "monat": "2025-03",
+        "wert": 18901
+      },
+      {
+        "monat": "2025-04",
+        "wert": 19478
+      },
+      {
+        "monat": "2025-05",
+        "wert": 19063
+      },
+      {
+        "monat": "2025-06",
+        "wert": 16466
+      }
+    ]
+  },
+  {
+    "name": "Stadtteilbibliothek Allach-Untermenzing",
+    "typ": "Stadtteilbibliothek",
+    "kuerzel": "ALU",
+    "strasse": "Pfarrer-Grimm-Str. 1",
+    "plz": "80999",
+    "lat": 48.17944938416466,
+    "lon": 11.463807255176816,
+    "publikumsflaeche": 447,
+    "arbeitsplaetze": 20,
+    "webseite": "https://www.muenchner-stadtbibliothek.de/stadtbibliothek-allach-untermenzing",
+    "open_library": false,
+    "barrierefreiheit": "ebenerdig",
+    "besuche": [
+      {
+        "monat": "2024-01",
+        "wert": 6386
+      },
+      {
+        "monat": "2024-02",
+        "wert": 6513
+      },
+      {
+        "monat": "2024-03",
+        "wert": 6331
+      },
+      {
+        "monat": "2024-04",
+        "wert": 6702
+      },
+      {
+        "monat": "2024-05",
+        "wert": 5962
+      },
+      {
+        "monat": "2024-06",
+        "wert": 6601
+      },
+      {
+        "monat": "2024-07",
+        "wert": 1073
+      },
+      {
+        "monat": "2024-08",
+        "wert": 0
+      },
+      {
+        "monat": "2024-09",
+        "wert": 0
+      },
+      {
+        "monat": "2024-10",
+        "wert": 0
+      },
+      {
+        "monat": "2024-11",
+        "wert": 0
+      },
+      {
+        "monat": "2024-12",
+        "wert": 0
+      },
+      {
+        "monat": "2025-01",
+        "wert": 0
+      },
+      {
+        "monat": "2025-02",
+        "wert": 0
+      },
+      {
+        "monat": "2025-03",
+        "wert": 0
+      },
+      {
+        "monat": "2025-04",
+        "wert": 0
+      },
+      {
+        "monat": "2025-05",
+        "wert": 0
+      },
+      {
+        "monat": "2025-06",
+        "wert": 1254
+      }
+    ],
+    "bestand": [
+      {
+        "monat": "2024-01",
+        "wert": 29133
+      },
+      {
+        "monat": "2024-02",
+        "wert": 29045
+      },
+      {
+        "monat": "2024-03",
+        "wert": 29081
+      },
+      {
+        "monat": "2024-04",
+        "wert": 29169
+      },
+      {
+        "monat": "2024-05",
+        "wert": 28857
+      },
+      {
+        "monat": "2024-06",
+        "wert": 28978
+      },
+      {
+        "monat": "2024-07",
+        "wert": 28877
+      },
+      {
+        "monat": "2024-08",
+        "wert": 28868
+      },
+      {
+        "monat": "2024-09",
+        "wert": 28958
+      },
+      {
+        "monat": "2024-10",
+        "wert": 29003
+      },
+      {
+        "monat": "2024-11",
+        "wert": 28990
+      },
+      {
+        "monat": "2024-12",
+        "wert": 28926
+      },
+      {
+        "monat": "2025-01",
+        "wert": 28981
+      },
+      {
+        "monat": "2025-02",
+        "wert": 28969
+      },
+      {
+        "monat": "2025-03",
+        "wert": 29037
+      },
+      {
+        "monat": "2025-04",
+        "wert": 29084
+      },
+      {
+        "monat": "2025-05",
+        "wert": 29111
+      },
+      {
+        "monat": "2025-06",
+        "wert": 29117
+      }
+    ],
+    "entleihungen": [
+      {
+        "monat": "2024-01",
+        "wert": 25196
+      },
+      {
+        "monat": "2024-02",
+        "wert": 23997
+      },
+      {
+        "monat": "2024-03",
+        "wert": 25981
+      },
+      {
+        "monat": "2024-04",
+        "wert": 24944
+      },
+      {
+        "monat": "2024-05",
+        "wert": 25356
+      },
+      {
+        "monat": "2024-06",
+        "wert": 22564
+      },
+      {
+        "monat": "2024-07",
+        "wert": 7712
+      },
+      {
+        "monat": "2024-08",
+        "wert": 173
+      },
+      {
+        "monat": "2024-09",
+        "wert": 775
+      },
+      {
+        "monat": "2024-10",
+        "wert": 76
+      },
+      {
+        "monat": "2024-11",
+        "wert": 67
+      },
+      {
+        "monat": "2024-12",
+        "wert": 109
+      },
+      {
+        "monat": "2025-01",
+        "wert": 38
+      },
+      {
+        "monat": "2025-02",
+        "wert": 10
+      },
+      {
+        "monat": "2025-03",
+        "wert": 4
+      },
+      {
+        "monat": "2025-04",
+        "wert": 15
+      },
+      {
+        "monat": "2025-05",
+        "wert": 4
+      },
+      {
+        "monat": "2025-06",
+        "wert": 4275
+      }
+    ]
+  },
+  {
+    "name": "Stadtteilbibliothek Hasenbergl",
+    "typ": "Stadtteilbibliothek",
+    "kuerzel": "HAS",
+    "strasse": "Blodigstr. 4",
+    "plz": "80933",
+    "lat": 48.213479919072924,
+    "lon": 11.557287570104723,
+    "publikumsflaeche": 1215,
+    "arbeitsplaetze": 52,
+    "webseite": "https://www.muenchner-stadtbibliothek.de/stadtbibliothek-hasenbergl",
+    "open_library": false,
+    "barrierefreiheit": "ebenerdig, Aufzüge",
+    "besuche": [
+      {
+        "monat": "2024-01",
+        "wert": 8521
+      },
+      {
+        "monat": "2024-02",
+        "wert": 8425
+      },
+      {
+        "monat": "2024-03",
+        "wert": 8162
+      },
+      {
+        "monat": "2024-04",
+        "wert": 9800
+      },
+      {
+        "monat": "2024-05",
+        "wert": 7539
+      },
+      {
+        "monat": "2024-06",
+        "wert": 8642
+      },
+      {
+        "monat": "2024-07",
+        "wert": 7070
+      },
+      {
+        "monat": "2024-08",
+        "wert": 5740
+      },
+      {
+        "monat": "2024-09",
+        "wert": 5376
+      },
+      {
+        "monat": "2024-10",
+        "wert": 8515
+      },
+      {
+        "monat": "2024-11",
+        "wert": 9174
+      },
+      {
+        "monat": "2024-12",
+        "wert": 8011
+      },
+      {
+        "monat": "2025-01",
+        "wert": 10200
+      },
+      {
+        "monat": "2025-02",
+        "wert": 8924
+      },
+      {
+        "monat": "2025-03",
+        "wert": 8559
+      },
+      {
+        "monat": "2025-04",
+        "wert": 9507
+      },
+      {
+        "monat": "2025-05",
+        "wert": 9166
+      },
+      {
+        "monat": "2025-06",
+        "wert": 8045
+      }
+    ],
+    "bestand": [
+      {
+        "monat": "2024-01",
+        "wert": 35126
+      },
+      {
+        "monat": "2024-02",
+        "wert": 35113
+      },
+      {
+        "monat": "2024-03",
+        "wert": 35327
+      },
+      {
+        "monat": "2024-04",
+        "wert": 35178
+      },
+      {
+        "monat": "2024-05",
+        "wert": 34852
+      },
+      {
+        "monat": "2024-06",
+        "wert": 34115
+      },
+      {
+        "monat": "2024-07",
+        "wert": 33794
+      },
+      {
+        "monat": "2024-08",
+        "wert": 33855
+      },
+      {
+        "monat": "2024-09",
+        "wert": 34195
+      },
+      {
+        "monat": "2024-10",
+        "wert": 34781
+      },
+      {
+        "monat": "2024-11",
+        "wert": 34970
+      },
+      {
+        "monat": "2024-12",
+        "wert": 34001
+      },
+      {
+        "monat": "2025-01",
+        "wert": 34296
+      },
+      {
+        "monat": "2025-02",
+        "wert": 33712
+      },
+      {
+        "monat": "2025-03",
+        "wert": 33573
+      },
+      {
+        "monat": "2025-04",
+        "wert": 33280
+      },
+      {
+        "monat": "2025-05",
+        "wert": 33569
+      },
+      {
+        "monat": "2025-06",
+        "wert": 33100
+      }
+    ],
+    "entleihungen": [
+      {
+        "monat": "2024-01",
+        "wert": 24421
+      },
+      {
+        "monat": "2024-02",
+        "wert": 23822
+      },
+      {
+        "monat": "2024-03",
+        "wert": 24041
+      },
+      {
+        "monat": "2024-04",
+        "wert": 23628
+      },
+      {
+        "monat": "2024-05",
+        "wert": 24453
+      },
+      {
+        "monat": "2024-06",
+        "wert": 20216
+      },
+      {
+        "monat": "2024-07",
+        "wert": 22920
+      },
+      {
+        "monat": "2024-08",
+        "wert": 22140
+      },
+      {
+        "monat": "2024-09",
+        "wert": 23561
+      },
+      {
+        "monat": "2024-10",
+        "wert": 26281
+      },
+      {
+        "monat": "2024-11",
+        "wert": 24830
+      },
+      {
+        "monat": "2024-12",
+        "wert": 21052
+      },
+      {
+        "monat": "2025-01",
+        "wert": 26394
+      },
+      {
+        "monat": "2025-02",
+        "wert": 23120
+      },
+      {
+        "monat": "2025-03",
+        "wert": 25032
+      },
+      {
+        "monat": "2025-04",
+        "wert": 23547
+      },
+      {
+        "monat": "2025-05",
+        "wert": 25309
+      },
+      {
+        "monat": "2025-06",
+        "wert": 21067
+      }
+    ]
+  },
+  {
+    "name": "Stadtteilbibliothek Schwabing",
+    "typ": "Stadtteilbibliothek",
+    "kuerzel": "SWA",
+    "strasse": "Hohenzollernstr. 16",
+    "plz": "80801",
+    "lat": 48.15979610774802,
+    "lon": 11.5836830764538,
+    "publikumsflaeche": 592,
+    "arbeitsplaetze": 31,
+    "webseite": "https://www.muenchner-stadtbibliothek.de/stadtbibliothek-schwabing",
+    "open_library": false,
+    "barrierefreiheit": "Rollstuhlgerechte Zugangsmöglichkeit nur während der Servicezeiten.",
+    "besuche": [
+      {
+        "monat": "2024-01",
+        "wert": 12110
+      },
+      {
+        "monat": "2024-02",
+        "wert": 12093
+      },
+      {
+        "monat": "2024-03",
+        "wert": 12557
+      },
+      {
+        "monat": "2024-04",
+        "wert": 13123
+      },
+      {
+        "monat": "2024-05",
+        "wert": 11089
+      },
+      {
+        "monat": "2024-06",
+        "wert": 11947
+      },
+      {
+        "monat": "2024-07",
+        "wert": 13352
+      },
+      {
+        "monat": "2024-08",
+        "wert": 12086
+      },
+      {
+        "monat": "2024-09",
+        "wert": 12002
+      },
+      {
+        "monat": "2024-10",
+        "wert": 14488
+      },
+      {
+        "monat": "2024-11",
+        "wert": 14863
+      },
+      {
+        "monat": "2024-12",
+        "wert": 11909
+      },
+      {
+        "monat": "2025-01",
+        "wert": 15567
+      },
+      {
+        "monat": "2025-02",
+        "wert": 13408
+      },
+      {
+        "monat": "2025-03",
+        "wert": 13690
+      },
+      {
+        "monat": "2025-04",
+        "wert": 12657
+      },
+      {
+        "monat": "2025-05",
+        "wert": 13043
+      },
+      {
+        "monat": "2025-06",
+        "wert": 10980
+      }
+    ],
+    "bestand": [
+      {
+        "monat": "2024-01",
+        "wert": 35479
+      },
+      {
+        "monat": "2024-02",
+        "wert": 35996
+      },
+      {
+        "monat": "2024-03",
+        "wert": 36313
+      },
+      {
+        "monat": "2024-04",
+        "wert": 36715
+      },
+      {
+        "monat": "2024-05",
+        "wert": 36923
+      },
+      {
+        "monat": "2024-06",
+        "wert": 37207
+      },
+      {
+        "monat": "2024-07",
+        "wert": 37112
+      },
+      {
+        "monat": "2024-08",
+        "wert": 37065
+      },
+      {
+        "monat": "2024-09",
+        "wert": 37243
+      },
+      {
+        "monat": "2024-10",
+        "wert": 37963
+      },
+      {
+        "monat": "2024-11",
+        "wert": 38158
+      },
+      {
+        "monat": "2024-12",
+        "wert": 38191
+      },
+      {
+        "monat": "2025-01",
+        "wert": 38600
+      },
+      {
+        "monat": "2025-02",
+        "wert": 38637
+      },
+      {
+        "monat": "2025-03",
+        "wert": 38460
+      },
+      {
+        "monat": "2025-04",
+        "wert": 38718
+      },
+      {
+        "monat": "2025-05",
+        "wert": 39078
+      },
+      {
+        "monat": "2025-06",
+        "wert": 39204
+      }
+    ],
+    "entleihungen": [
+      {
+        "monat": "2024-01",
+        "wert": 35688
+      },
+      {
+        "monat": "2024-02",
+        "wert": 36322
+      },
+      {
+        "monat": "2024-03",
+        "wert": 39190
+      },
+      {
+        "monat": "2024-04",
+        "wert": 36925
+      },
+      {
+        "monat": "2024-05",
+        "wert": 37028
+      },
+      {
+        "monat": "2024-06",
+        "wert": 32870
+      },
+      {
+        "monat": "2024-07",
+        "wert": 36554
+      },
+      {
+        "monat": "2024-08",
+        "wert": 35119
+      },
+      {
+        "monat": "2024-09",
+        "wert": 34522
+      },
+      {
+        "monat": "2024-10",
+        "wert": 40963
+      },
+      {
+        "monat": "2024-11",
+        "wert": 39160
+      },
+      {
+        "monat": "2024-12",
+        "wert": 33935
+      },
+      {
+        "monat": "2025-01",
+        "wert": 41649
+      },
+      {
+        "monat": "2025-02",
+        "wert": 36918
+      },
+      {
+        "monat": "2025-03",
+        "wert": 37870
+      },
+      {
+        "monat": "2025-04",
+        "wert": 36246
+      },
+      {
+        "monat": "2025-05",
+        "wert": 36942
+      },
+      {
+        "monat": "2025-06",
+        "wert": 30907
+      }
+    ]
+  },
+  {
+    "name": "Stadtteilbibliothek Sendling",
+    "typ": "Stadtteilbibliothek",
+    "kuerzel": "SEN",
+    "strasse": "Albert-Roßhaupter-Str. 8",
+    "plz": "81369",
+    "lat": 48.11714277210627,
+    "lon": 11.537866037310312,
+    "publikumsflaeche": 1163,
+    "arbeitsplaetze": 64,
+    "webseite": "https://www.muenchner-stadtbibliothek.de/stadtbibliothek-sendling",
+    "open_library": false,
+    "barrierefreiheit": "für Rollstuhlfahrer*innen geeignet",
+    "besuche": [
+      {
+        "monat": "2024-01",
+        "wert": 19000
+      },
+      {
+        "monat": "2024-02",
+        "wert": 19000
+      },
+      {
+        "monat": "2024-03",
+        "wert": 19000
+      },
+      {
+        "monat": "2024-04",
+        "wert": 20000
+      },
+      {
+        "monat": "2024-05",
+        "wert": 18000
+      },
+      {
+        "monat": "2024-06",
+        "wert": 18000
+      },
+      {
+        "monat": "2024-07",
+        "wert": 18922
+      },
+      {
+        "monat": "2024-08",
+        "wert": 11657
+      },
+      {
+        "monat": "2024-09",
+        "wert": 14116
+      },
+      {
+        "monat": "2024-10",
+        "wert": 15972
+      },
+      {
+        "monat": "2024-11",
+        "wert": 12883
+      },
+      {
+        "monat": "2024-12",
+        "wert": 12124
+      },
+      {
+        "monat": "2025-01",
+        "wert": 16127
+      },
+      {
+        "monat": "2025-02",
+        "wert": 13900
+      },
+      {
+        "monat": "2025-03",
+        "wert": 15956
+      },
+      {
+        "monat": "2025-04",
+        "wert": 12900
+      },
+      {
+        "monat": "2025-05",
+        "wert": 13911
+      },
+      {
+        "monat": "2025-06",
+        "wert": 11866
+      }
+    ],
+    "bestand": [
+      {
+        "monat": "2024-01",
+        "wert": 62818
+      },
+      {
+        "monat": "2024-02",
+        "wert": 63219
+      },
+      {
+        "monat": "2024-03",
+        "wert": 63577
+      },
+      {
+        "monat": "2024-04",
+        "wert": 63805
+      },
+      {
+        "monat": "2024-05",
+        "wert": 63885
+      },
+      {
+        "monat": "2024-06",
+        "wert": 64015
+      },
+      {
+        "monat": "2024-07",
+        "wert": 62838
+      },
+      {
+        "monat": "2024-08",
+        "wert": 62592
+      },
+      {
+        "monat": "2024-09",
+        "wert": 62894
+      },
+      {
+        "monat": "2024-10",
+        "wert": 61572
+      },
+      {
+        "monat": "2024-11",
+        "wert": 61327
+      },
+      {
+        "monat": "2024-12",
+        "wert": 59473
+      },
+      {
+        "monat": "2025-01",
+        "wert": 58322
+      },
+      {
+        "monat": "2025-02",
+        "wert": 58417
+      },
+      {
+        "monat": "2025-03",
+        "wert": 58149
+      },
+      {
+        "monat": "2025-04",
+        "wert": 58191
+      },
+      {
+        "monat": "2025-05",
+        "wert": 58434
+      },
+      {
+        "monat": "2025-06",
+        "wert": 58501
+      }
+    ],
+    "entleihungen": [
+      {
+        "monat": "2024-01",
+        "wert": 48757
+      },
+      {
+        "monat": "2024-02",
+        "wert": 47453
+      },
+      {
+        "monat": "2024-03",
+        "wert": 48312
+      },
+      {
+        "monat": "2024-04",
+        "wert": 46647
+      },
+      {
+        "monat": "2024-05",
+        "wert": 47301
+      },
+      {
+        "monat": "2024-06",
+        "wert": 41352
+      },
+      {
+        "monat": "2024-07",
+        "wert": 46118
+      },
+      {
+        "monat": "2024-08",
+        "wert": 41839
+      },
+      {
+        "monat": "2024-09",
+        "wert": 43535
+      },
+      {
+        "monat": "2024-10",
+        "wert": 50176
+      },
+      {
+        "monat": "2024-11",
+        "wert": 42110
+      },
+      {
+        "monat": "2024-12",
+        "wert": 38798
+      },
+      {
+        "monat": "2025-01",
+        "wert": 49163
+      },
+      {
+        "monat": "2025-02",
+        "wert": 43843
+      },
+      {
+        "monat": "2025-03",
+        "wert": 44289
+      },
+      {
+        "monat": "2025-04",
+        "wert": 46050
+      },
+      {
+        "monat": "2025-05",
+        "wert": 44104
+      },
+      {
+        "monat": "2025-06",
+        "wert": 39400
+      }
+    ]
+  },
+  {
+    "name": "Stadtteilbibliothek Ramersdorf",
+    "typ": "Stadtteilbibliothek",
+    "kuerzel": "RAM",
+    "strasse": "Führichstr. 43",
+    "plz": "81671",
+    "lat": 48.11769157110426,
+    "lon": 11.614597418985523,
+    "publikumsflaeche": 410,
+    "arbeitsplaetze": 17,
+    "webseite": "https://www.muenchner-stadtbibliothek.de/stadtbibliothek-ramersdorf",
+    "open_library": false,
+    "barrierefreiheit": "für Rollstuhlfahrer*innen geeignet",
+    "besuche": [
+      {
+        "monat": "2024-01",
+        "wert": 6665
+      },
+      {
+        "monat": "2024-02",
+        "wert": 7204
+      },
+      {
+        "monat": "2024-03",
+        "wert": 6719
+      },
+      {
+        "monat": "2024-04",
+        "wert": 7447
+      },
+      {
+        "monat": "2024-05",
+        "wert": 5768
+      },
+      {
+        "monat": "2024-06",
+        "wert": 6901
+      },
+      {
+        "monat": "2024-07",
+        "wert": 7717
+      },
+      {
+        "monat": "2024-08",
+        "wert": 5623
+      },
+      {
+        "monat": "2024-09",
+        "wert": 7436
+      },
+      {
+        "monat": "2024-10",
+        "wert": 8202
+      },
+      {
+        "monat": "2024-11",
+        "wert": 6757
+      },
+      {
+        "monat": "2024-12",
+        "wert": 5873
+      },
+      {
+        "monat": "2025-01",
+        "wert": 8229
+      },
+      {
+        "monat": "2025-02",
+        "wert": 7433
+      },
+      {
+        "monat": "2025-03",
+        "wert": 6733
+      },
+      {
+        "monat": "2025-04",
+        "wert": 3333
+      },
+      {
+        "monat": "2025-05",
+        "wert": 7635
+      },
+      {
+        "monat": "2025-06",
+        "wert": 4135
+      }
+    ],
+    "bestand": [
+      {
+        "monat": "2024-01",
+        "wert": 20223
+      },
+      {
+        "monat": "2024-02",
+        "wert": 20436
+      },
+      {
+        "monat": "2024-03",
+        "wert": 20543
+      },
+      {
+        "monat": "2024-04",
+        "wert": 20805
+      },
+      {
+        "monat": "2024-05",
+        "wert": 20909
+      },
+      {
+        "monat": "2024-06",
+        "wert": 20954
+      },
+      {
+        "monat": "2024-07",
+        "wert": 21271
+      },
+      {
+        "monat": "2024-08",
+        "wert": 21456
+      },
+      {
+        "monat": "2024-09",
+        "wert": 21490
+      },
+      {
+        "monat": "2024-10",
+        "wert": 21514
+      },
+      {
+        "monat": "2024-11",
+        "wert": 21613
+      },
+      {
+        "monat": "2024-12",
+        "wert": 20566
+      },
+      {
+        "monat": "2025-01",
+        "wert": 20054
+      },
+      {
+        "monat": "2025-02",
+        "wert": 20191
+      },
+      {
+        "monat": "2025-03",
+        "wert": 20259
+      },
+      {
+        "monat": "2025-04",
+        "wert": 20547
+      },
+      {
+        "monat": "2025-05",
+        "wert": 20570
+      },
+      {
+        "monat": "2025-06",
+        "wert": 20104
+      }
+    ],
+    "entleihungen": [
+      {
+        "monat": "2024-01",
+        "wert": 12861
+      },
+      {
+        "monat": "2024-02",
+        "wert": 12080
+      },
+      {
+        "monat": "2024-03",
+        "wert": 11927
+      },
+      {
+        "monat": "2024-04",
+        "wert": 12592
+      },
+      {
+        "monat": "2024-05",
+        "wert": 12811
+      },
+      {
+        "monat": "2024-06",
+        "wert": 11472
+      },
+      {
+        "monat": "2024-07",
+        "wert": 12910
+      },
+      {
+        "monat": "2024-08",
+        "wert": 11814
+      },
+      {
+        "monat": "2024-09",
+        "wert": 12814
+      },
+      {
+        "monat": "2024-10",
+        "wert": 15221
+      },
+      {
+        "monat": "2024-11",
+        "wert": 12471
+      },
+      {
+        "monat": "2024-12",
+        "wert": 12679
+      },
+      {
+        "monat": "2025-01",
+        "wert": 14927
+      },
+      {
+        "monat": "2025-02",
+        "wert": 13474
+      },
+      {
+        "monat": "2025-03",
+        "wert": 13769
+      },
+      {
+        "monat": "2025-04",
+        "wert": 13530
+      },
+      {
+        "monat": "2025-05",
+        "wert": 13410
+      },
+      {
+        "monat": "2025-06",
+        "wert": 8416
+      }
+    ]
+  },
+  {
+    "name": "Stadtteilbibliothek Giesing",
+    "typ": "Stadtteilbibliothek",
+    "kuerzel": "GIE",
+    "strasse": "Deisenhofener Str. 20",
+    "plz": "81539",
+    "lat": 48.1142958617843,
+    "lon": 11.5823006755745,
+    "publikumsflaeche": 900,
+    "arbeitsplaetze": 42,
+    "webseite": "https://www.muenchner-stadtbibliothek.de/stadtbibliothek-giesing",
+    "open_library": true,
+    "barrierefreiheit": "ebenerdiger Zugang, Aufzug",
+    "besuche": [
+      {
+        "monat": "2024-01",
+        "wert": 25145
+      },
+      {
+        "monat": "2024-02",
+        "wert": 23897
+      },
+      {
+        "monat": "2024-03",
+        "wert": 23301
+      },
+      {
+        "monat": "2024-04",
+        "wert": 24628
+      },
+      {
+        "monat": "2024-05",
+        "wert": 22609
+      },
+      {
+        "monat": "2024-06",
+        "wert": 21751
+      },
+      {
+        "monat": "2024-07",
+        "wert": 26953
+      },
+      {
+        "monat": "2024-08",
+        "wert": 25042
+      },
+      {
+        "monat": "2024-09",
+        "wert": 26630
+      },
+      {
+        "monat": "2024-10",
+        "wert": 30793
+      },
+      {
+        "monat": "2024-11",
+        "wert": 28033
+      },
+      {
+        "monat": "2024-12",
+        "wert": 26206
+      },
+      {
+        "monat": "2025-01",
+        "wert": 32620
+      },
+      {
+        "monat": "2025-02",
+        "wert": 28986
+      },
+      {
+        "monat": "2025-03",
+        "wert": 31446
+      },
+      {
+        "monat": "2025-04",
+        "wert": 31067
+      },
+      {
+        "monat": "2025-05",
+        "wert": 30722
+      },
+      {
+        "monat": "2025-06",
+        "wert": 26288
+      }
+    ],
+    "bestand": [
+      {
+        "monat": "2024-01",
+        "wert": 63218
+      },
+      {
+        "monat": "2024-02",
+        "wert": 63135
+      },
+      {
+        "monat": "2024-03",
+        "wert": 63215
+      },
+      {
+        "monat": "2024-04",
+        "wert": 63618
+      },
+      {
+        "monat": "2024-05",
+        "wert": 63804
+      },
+      {
+        "monat": "2024-06",
+        "wert": 63515
+      },
+      {
+        "monat": "2024-07",
+        "wert": 63750
+      },
+      {
+        "monat": "2024-08",
+        "wert": 63966
+      },
+      {
+        "monat": "2024-09",
+        "wert": 62923
+      },
+      {
+        "monat": "2024-10",
+        "wert": 62454
+      },
+      {
+        "monat": "2024-11",
+        "wert": 61651
+      },
+      {
+        "monat": "2024-12",
+        "wert": 61872
+      },
+      {
+        "monat": "2025-01",
+        "wert": 62087
+      },
+      {
+        "monat": "2025-02",
+        "wert": 61715
+      },
+      {
+        "monat": "2025-03",
+        "wert": 61477
+      },
+      {
+        "monat": "2025-04",
+        "wert": 61771
+      },
+      {
+        "monat": "2025-05",
+        "wert": 62147
+      },
+      {
+        "monat": "2025-06",
+        "wert": 62400
+      }
+    ],
+    "entleihungen": [
+      {
+        "monat": "2024-01",
+        "wert": 51922
+      },
+      {
+        "monat": "2024-02",
+        "wert": 52042
+      },
+      {
+        "monat": "2024-03",
+        "wert": 51820
+      },
+      {
+        "monat": "2024-04",
+        "wert": 50929
+      },
+      {
+        "monat": "2024-05",
+        "wert": 52309
+      },
+      {
+        "monat": "2024-06",
+        "wert": 43593
+      },
+      {
+        "monat": "2024-07",
+        "wert": 51451
+      },
+      {
+        "monat": "2024-08",
+        "wert": 49192
+      },
+      {
+        "monat": "2024-09",
+        "wert": 48110
+      },
+      {
+        "monat": "2024-10",
+        "wert": 55235
+      },
+      {
+        "monat": "2024-11",
+        "wert": 48943
+      },
+      {
+        "monat": "2024-12",
+        "wert": 48079
+      },
+      {
+        "monat": "2025-01",
+        "wert": 57810
+      },
+      {
+        "monat": "2025-02",
+        "wert": 50845
+      },
+      {
+        "monat": "2025-03",
+        "wert": 51839
+      },
+      {
+        "monat": "2025-04",
+        "wert": 49981
+      },
+      {
+        "monat": "2025-05",
+        "wert": 50198
+      },
+      {
+        "monat": "2025-06",
+        "wert": 44282
+      }
+    ]
+  },
+  {
+    "name": "Stadtteilbibliothek Pasing",
+    "typ": "Stadtteilbibliothek",
+    "kuerzel": "PAS",
+    "strasse": "Bäckerstr. 9",
+    "plz": "81241",
+    "lat": 48.14724628807562,
+    "lon": 11.461490047198131,
+    "publikumsflaeche": 854,
+    "arbeitsplaetze": 26,
+    "webseite": "https://www.muenchner-stadtbibliothek.de/stadtbibliothek-pasing",
+    "open_library": false,
+    "barrierefreiheit": "Aufzug vorhanden",
+    "besuche": [
+      {
+        "monat": "2024-01",
+        "wert": 27797
+      },
+      {
+        "monat": "2024-02",
+        "wert": 26667
+      },
+      {
+        "monat": "2024-03",
+        "wert": 26845
+      },
+      {
+        "monat": "2024-04",
+        "wert": 26757
+      },
+      {
+        "monat": "2024-05",
+        "wert": 26413
+      },
+      {
+        "monat": "2024-06",
+        "wert": 7950
+      },
+      {
+        "monat": "2024-07",
+        "wert": 12586
+      },
+      {
+        "monat": "2024-08",
+        "wert": 26106
+      },
+      {
+        "monat": "2024-09",
+        "wert": 27077
+      },
+      {
+        "monat": "2024-10",
+        "wert": 24327
+      },
+      {
+        "monat": "2024-11",
+        "wert": 13430
+      },
+      {
+        "monat": "2024-12",
+        "wert": 22615
+      },
+      {
+        "monat": "2025-01",
+        "wert": 28813
+      },
+      {
+        "monat": "2025-02",
+        "wert": 26098
+      },
+      {
+        "monat": "2025-03",
+        "wert": 28310
+      },
+      {
+        "monat": "2025-04",
+        "wert": 28989
+      },
+      {
+        "monat": "2025-05",
+        "wert": 29520
+      },
+      {
+        "monat": "2025-06",
+        "wert": 25588
+      }
+    ],
+    "bestand": [
+      {
+        "monat": "2024-01",
+        "wert": 55244
+      },
+      {
+        "monat": "2024-02",
+        "wert": 55058
+      },
+      {
+        "monat": "2024-03",
+        "wert": 55186
+      },
+      {
+        "monat": "2024-04",
+        "wert": 55578
+      },
+      {
+        "monat": "2024-05",
+        "wert": 55374
+      },
+      {
+        "monat": "2024-06",
+        "wert": 55089
+      },
+      {
+        "monat": "2024-07",
+        "wert": 55246
+      },
+      {
+        "monat": "2024-08",
+        "wert": 54767
+      },
+      {
+        "monat": "2024-09",
+        "wert": 55344
+      },
+      {
+        "monat": "2024-10",
+        "wert": 55346
+      },
+      {
+        "monat": "2024-11",
+        "wert": 54578
+      },
+      {
+        "monat": "2024-12",
+        "wert": 54318
+      },
+      {
+        "monat": "2025-01",
+        "wert": 54021
+      },
+      {
+        "monat": "2025-02",
+        "wert": 54189
+      },
+      {
+        "monat": "2025-03",
+        "wert": 54310
+      },
+      {
+        "monat": "2025-04",
+        "wert": 54361
+      },
+      {
+        "monat": "2025-05",
+        "wert": 53840
+      },
+      {
+        "monat": "2025-06",
+        "wert": 53511
+      }
+    ],
+    "entleihungen": [
+      {
+        "monat": "2024-01",
+        "wert": 39863
+      },
+      {
+        "monat": "2024-02",
+        "wert": 39463
+      },
+      {
+        "monat": "2024-03",
+        "wert": 40154
+      },
+      {
+        "monat": "2024-04",
+        "wert": 39823
+      },
+      {
+        "monat": "2024-05",
+        "wert": 40179
+      },
+      {
+        "monat": "2024-06",
+        "wert": 13004
+      },
+      {
+        "monat": "2024-07",
+        "wert": 25820
+      },
+      {
+        "monat": "2024-08",
+        "wert": 41214
+      },
+      {
+        "monat": "2024-09",
+        "wert": 39188
+      },
+      {
+        "monat": "2024-10",
+        "wert": 39062
+      },
+      {
+        "monat": "2024-11",
+        "wert": 23751
+      },
+      {
+        "monat": "2024-12",
+        "wert": 33903
+      },
+      {
+        "monat": "2025-01",
+        "wert": 45225
+      },
+      {
+        "monat": "2025-02",
+        "wert": 40196
+      },
+      {
+        "monat": "2025-03",
+        "wert": 40131
+      },
+      {
+        "monat": "2025-04",
+        "wert": 42081
+      },
+      {
+        "monat": "2025-05",
+        "wert": 40602
+      },
+      {
+        "monat": "2025-06",
+        "wert": 35145
+      }
+    ]
+  },
+  {
+    "name": "Stadtteilbibliothek Isarvorstadt",
+    "typ": "Stadtteilbibliothek",
+    "kuerzel": "IVO",
+    "strasse": "Kapuzinerstr. 28",
+    "plz": "80337",
+    "lat": 48.12556497101879,
+    "lon": 11.559664404758756,
+    "publikumsflaeche": 384,
+    "arbeitsplaetze": 10,
+    "webseite": "https://www.muenchner-stadtbibliothek.de/stadtbibliothek-isarvorstadt",
+    "open_library": false,
+    "barrierefreiheit": "ebenerdige Bibliothek",
+    "besuche": [
+      {
+        "monat": "2024-01",
+        "wert": 5714
+      },
+      {
+        "monat": "2024-02",
+        "wert": 6182
+      },
+      {
+        "monat": "2024-03",
+        "wert": 6216
+      },
+      {
+        "monat": "2024-04",
+        "wert": 6345
+      },
+      {
+        "monat": "2024-05",
+        "wert": 5912
+      },
+      {
+        "monat": "2024-06",
+        "wert": 5569
+      },
+      {
+        "monat": "2024-07",
+        "wert": 6446
+      },
+      {
+        "monat": "2024-08",
+        "wert": 5934
+      },
+      {
+        "monat": "2024-09",
+        "wert": 6893
+      },
+      {
+        "monat": "2024-10",
+        "wert": 7148
+      },
+      {
+        "monat": "2024-11",
+        "wert": 2351
+      },
+      {
+        "monat": "2024-12",
+        "wert": 5519
+      },
+      {
+        "monat": "2025-01",
+        "wert": 6920
+      },
+      {
+        "monat": "2025-02",
+        "wert": 6589
+      },
+      {
+        "monat": "2025-03",
+        "wert": 6218
+      },
+      {
+        "monat": "2025-04",
+        "wert": 6342
+      },
+      {
+        "monat": "2025-05",
+        "wert": 6314
+      },
+      {
+        "monat": "2025-06",
+        "wert": 5365
+      }
+    ],
+    "bestand": [
+      {
+        "monat": "2024-01",
+        "wert": 23090
+      },
+      {
+        "monat": "2024-02",
+        "wert": 23280
+      },
+      {
+        "monat": "2024-03",
+        "wert": 23511
+      },
+      {
+        "monat": "2024-04",
+        "wert": 23697
+      },
+      {
+        "monat": "2024-05",
+        "wert": 23949
+      },
+      {
+        "monat": "2024-06",
+        "wert": 23921
+      },
+      {
+        "monat": "2024-07",
+        "wert": 23272
+      },
+      {
+        "monat": "2024-08",
+        "wert": 23388
+      },
+      {
+        "monat": "2024-09",
+        "wert": 23159
+      },
+      {
+        "monat": "2024-10",
+        "wert": 23392
+      },
+      {
+        "monat": "2024-11",
+        "wert": 23372
+      },
+      {
+        "monat": "2024-12",
+        "wert": 22473
+      },
+      {
+        "monat": "2025-01",
+        "wert": 21843
+      },
+      {
+        "monat": "2025-02",
+        "wert": 21949
+      },
+      {
+        "monat": "2025-03",
+        "wert": 21974
+      },
+      {
+        "monat": "2025-04",
+        "wert": 22070
+      },
+      {
+        "monat": "2025-05",
+        "wert": 22336
+      },
+      {
+        "monat": "2025-06",
+        "wert": 22500
+      }
+    ],
+    "entleihungen": [
+      {
+        "monat": "2024-01",
+        "wert": 20871
+      },
+      {
+        "monat": "2024-02",
+        "wert": 20939
+      },
+      {
+        "monat": "2024-03",
+        "wert": 21716
+      },
+      {
+        "monat": "2024-04",
+        "wert": 19971
+      },
+      {
+        "monat": "2024-05",
+        "wert": 19233
+      },
+      {
+        "monat": "2024-06",
+        "wert": 17659
+      },
+      {
+        "monat": "2024-07",
+        "wert": 20586
+      },
+      {
+        "monat": "2024-08",
+        "wert": 18874
+      },
+      {
+        "monat": "2024-09",
+        "wert": 18645
+      },
+      {
+        "monat": "2024-10",
+        "wert": 20984
+      },
+      {
+        "monat": "2024-11",
+        "wert": 19733
+      },
+      {
+        "monat": "2024-12",
+        "wert": 17025
+      },
+      {
+        "monat": "2025-01",
+        "wert": 21049
+      },
+      {
+        "monat": "2025-02",
+        "wert": 19604
+      },
+      {
+        "monat": "2025-03",
+        "wert": 19451
+      },
+      {
+        "monat": "2025-04",
+        "wert": 19309
+      },
+      {
+        "monat": "2025-05",
+        "wert": 18941
+      },
+      {
+        "monat": "2025-06",
+        "wert": 15316
+      }
+    ]
+  },
+  {
+    "name": "Stadtteilbibliothek Neuhausen",
+    "typ": "Stadtteilbibliothek",
+    "kuerzel": "NEH",
+    "strasse": "Nymphenburger Str. 171a",
+    "plz": "80634",
+    "lat": 48.15534606466388,
+    "lon": 11.53202127956859,
+    "publikumsflaeche": 718,
+    "arbeitsplaetze": 65,
+    "webseite": "https://www.muenchner-stadtbibliothek.de/stadtbibliothek-neuhausen",
+    "open_library": false,
+    "barrierefreiheit": "Aufzug vorhanden",
+    "besuche": [
+      {
+        "monat": "2024-01",
+        "wert": 20238
+      },
+      {
+        "monat": "2024-02",
+        "wert": 19083
+      },
+      {
+        "monat": "2024-03",
+        "wert": 19271
+      },
+      {
+        "monat": "2024-04",
+        "wert": 20451
+      },
+      {
+        "monat": "2024-05",
+        "wert": 18634
+      },
+      {
+        "monat": "2024-06",
+        "wert": 18221
+      },
+      {
+        "monat": "2024-07",
+        "wert": 20342
+      },
+      {
+        "monat": "2024-08",
+        "wert": 17430
+      },
+      {
+        "monat": "2024-09",
+        "wert": 18089
+      },
+      {
+        "monat": "2024-10",
+        "wert": 21039
+      },
+      {
+        "monat": "2024-11",
+        "wert": 21645
+      },
+      {
+        "monat": "2024-12",
+        "wert": 16239
+      },
+      {
+        "monat": "2025-01",
+        "wert": 23150
+      },
+      {
+        "monat": "2025-02",
+        "wert": 21087
+      },
+      {
+        "monat": "2025-03",
+        "wert": 19631
+      },
+      {
+        "monat": "2025-04",
+        "wert": 20117
+      },
+      {
+        "monat": "2025-05",
+        "wert": 20621
+      },
+      {
+        "monat": "2025-06",
+        "wert": 12732
+      }
+    ],
+    "bestand": [
+      {
+        "monat": "2024-01",
+        "wert": 60949
+      },
+      {
+        "monat": "2024-02",
+        "wert": 59631
+      },
+      {
+        "monat": "2024-03",
+        "wert": 59605
+      },
+      {
+        "monat": "2024-04",
+        "wert": 59937
+      },
+      {
+        "monat": "2024-05",
+        "wert": 60161
+      },
+      {
+        "monat": "2024-06",
+        "wert": 60071
+      },
+      {
+        "monat": "2024-07",
+        "wert": 60193
+      },
+      {
+        "monat": "2024-08",
+        "wert": 60519
+      },
+      {
+        "monat": "2024-09",
+        "wert": 60482
+      },
+      {
+        "monat": "2024-10",
+        "wert": 60839
+      },
+      {
+        "monat": "2024-11",
+        "wert": 60550
+      },
+      {
+        "monat": "2024-12",
+        "wert": 58961
+      },
+      {
+        "monat": "2025-01",
+        "wert": 58907
+      },
+      {
+        "monat": "2025-02",
+        "wert": 58915
+      },
+      {
+        "monat": "2025-03",
+        "wert": 58933
+      },
+      {
+        "monat": "2025-04",
+        "wert": 58896
+      },
+      {
+        "monat": "2025-05",
+        "wert": 59196
+      },
+      {
+        "monat": "2025-06",
+        "wert": 59151
+      }
+    ],
+    "entleihungen": [
+      {
+        "monat": "2024-01",
+        "wert": 52374
+      },
+      {
+        "monat": "2024-02",
+        "wert": 53324
+      },
+      {
+        "monat": "2024-03",
+        "wert": 54024
+      },
+      {
+        "monat": "2024-04",
+        "wert": 52720
+      },
+      {
+        "monat": "2024-05",
+        "wert": 53015
+      },
+      {
+        "monat": "2024-06",
+        "wert": 45106
+      },
+      {
+        "monat": "2024-07",
+        "wert": 53327
+      },
+      {
+        "monat": "2024-08",
+        "wert": 50330
+      },
+      {
+        "monat": "2024-09",
+        "wert": 49111
+      },
+      {
+        "monat": "2024-10",
+        "wert": 57047
+      },
+      {
+        "monat": "2024-11",
+        "wert": 52085
+      },
+      {
+        "monat": "2024-12",
+        "wert": 45274
+      },
+      {
+        "monat": "2025-01",
+        "wert": 58439
+      },
+      {
+        "monat": "2025-02",
+        "wert": 51390
+      },
+      {
+        "monat": "2025-03",
+        "wert": 51793
+      },
+      {
+        "monat": "2025-04",
+        "wert": 52346
+      },
+      {
+        "monat": "2025-05",
+        "wert": 52496
+      },
+      {
+        "monat": "2025-06",
+        "wert": 31789
+      }
+    ]
+  },
+  {
+    "name": "Stadtteilbibliothek Laim",
+    "typ": "Stadtteilbibliothek",
+    "kuerzel": "LAI",
+    "strasse": "Fürstenrieder Str. 53",
+    "plz": "80686",
+    "lat": 48.13646051555934,
+    "lon": 11.503348139847592,
+    "publikumsflaeche": 752,
+    "arbeitsplaetze": 34,
+    "webseite": "https://www.muenchner-stadtbibliothek.de/stadtbibliothek-laim",
+    "open_library": false,
+    "barrierefreiheit": "behindertengerechter Zugang, Aufzug",
+    "besuche": [
+      {
+        "monat": "2024-01",
+        "wert": 16734
+      },
+      {
+        "monat": "2024-02",
+        "wert": 16171
+      },
+      {
+        "monat": "2024-03",
+        "wert": 15901
+      },
+      {
+        "monat": "2024-04",
+        "wert": 16287
+      },
+      {
+        "monat": "2024-05",
+        "wert": 15546
+      },
+      {
+        "monat": "2024-06",
+        "wert": 15410
+      },
+      {
+        "monat": "2024-07",
+        "wert": 14088
+      },
+      {
+        "monat": "2024-08",
+        "wert": 12674
+      },
+      {
+        "monat": "2024-09",
+        "wert": 12302
+      },
+      {
+        "monat": "2024-10",
+        "wert": 13869
+      },
+      {
+        "monat": "2024-11",
+        "wert": 11965
+      },
+      {
+        "monat": "2024-12",
+        "wert": 11023
+      },
+      {
+        "monat": "2025-01",
+        "wert": 14508
+      },
+      {
+        "monat": "2025-02",
+        "wert": 14134
+      },
+      {
+        "monat": "2025-03",
+        "wert": 13553
+      },
+      {
+        "monat": "2025-04",
+        "wert": 13037
+      },
+      {
+        "monat": "2025-05",
+        "wert": 13247
+      },
+      {
+        "monat": "2025-06",
+        "wert": 10811
+      }
+    ],
+    "bestand": [
+      {
+        "monat": "2024-01",
+        "wert": 42043
+      },
+      {
+        "monat": "2024-02",
+        "wert": 41674
+      },
+      {
+        "monat": "2024-03",
+        "wert": 41979
+      },
+      {
+        "monat": "2024-04",
+        "wert": 41959
+      },
+      {
+        "monat": "2024-05",
+        "wert": 42421
+      },
+      {
+        "monat": "2024-06",
+        "wert": 42656
+      },
+      {
+        "monat": "2024-07",
+        "wert": 42581
+      },
+      {
+        "monat": "2024-08",
+        "wert": 41970
+      },
+      {
+        "monat": "2024-09",
+        "wert": 42087
+      },
+      {
+        "monat": "2024-10",
+        "wert": 42622
+      },
+      {
+        "monat": "2024-11",
+        "wert": 42137
+      },
+      {
+        "monat": "2024-12",
+        "wert": 41911
+      },
+      {
+        "monat": "2025-01",
+        "wert": 41903
+      },
+      {
+        "monat": "2025-02",
+        "wert": 41708
+      },
+      {
+        "monat": "2025-03",
+        "wert": 41894
+      },
+      {
+        "monat": "2025-04",
+        "wert": 41526
+      },
+      {
+        "monat": "2025-05",
+        "wert": 41814
+      },
+      {
+        "monat": "2025-06",
+        "wert": 41217
+      }
+    ],
+    "entleihungen": [
+      {
+        "monat": "2024-01",
+        "wert": 39405
+      },
+      {
+        "monat": "2024-02",
+        "wert": 37704
+      },
+      {
+        "monat": "2024-03",
+        "wert": 37669
+      },
+      {
+        "monat": "2024-04",
+        "wert": 37113
+      },
+      {
+        "monat": "2024-05",
+        "wert": 37786
+      },
+      {
+        "monat": "2024-06",
+        "wert": 33052
+      },
+      {
+        "monat": "2024-07",
+        "wert": 37191
+      },
+      {
+        "monat": "2024-08",
+        "wert": 35842
+      },
+      {
+        "monat": "2024-09",
+        "wert": 34747
+      },
+      {
+        "monat": "2024-10",
+        "wert": 38860
+      },
+      {
+        "monat": "2024-11",
+        "wert": 33165
+      },
+      {
+        "monat": "2024-12",
+        "wert": 31430
+      },
+      {
+        "monat": "2025-01",
+        "wert": 39204
+      },
+      {
+        "monat": "2025-02",
+        "wert": 34465
+      },
+      {
+        "monat": "2025-03",
+        "wert": 35862
+      },
+      {
+        "monat": "2025-04",
+        "wert": 34770
+      },
+      {
+        "monat": "2025-05",
+        "wert": 35314
+      },
+      {
+        "monat": "2025-06",
+        "wert": 27542
+      }
+    ]
+  }
+]

@@ -1,0 +1,142 @@
+{
+  "name": "muenchner-stadtbibliothek-standorte",
+  "title": "Münchner Stadtbibliothek – Standorte & Kennzahlen",
+  "description": "Standortdaten, Öffnungszeiten, Services, Ausstattung und Kennzahlen (Besuche/Bestand/Entleihungen) der 24 Kartenstandorte der Münchner Stadtbibliothek. Zusammengestellt aus OpenData LHM und öffentlich zugänglichen Inhalten von muenchner-stadtbibliothek.de.",
+  "version": "1.0.0",
+  "homepage": "https://openbibmuc.de",
+  "contributors": [
+    { "title": "Heiko Bielinski", "email": "heiko@bielinski.de", "role": "author" }
+  ],
+  "licenses": [
+    {
+      "name": "DL-DE-BY-2.0",
+      "title": "Datenlizenz Deutschland – Namensnennung – Version 2.0",
+      "path": "https://www.govdata.de/dl-de/by-2-0"
+    }
+  ],
+  "keywords": ["bibliothek", "münchen", "opendata", "standorte", "kennzahlen"],
+  "spatial": "München, Bayern, Deutschland",
+  "resources": [
+    {
+      "name": "standorte",
+      "path": "standorte.csv",
+      "title": "Standorte der Münchner Stadtbibliothek",
+      "description": "24 Kartenstandorte (22 Stadtteilbibliotheken + 2 Zentralbibliotheken). Basisspalten (bib_* bis barrierefreiheit) stammen aus dem OpenData-Datensatz 'Standortliste der Münchner Stadtbibliothek'; alle übrigen Spalten sind Anreicherungen von muenchner-stadtbibliothek.de (siehe README.md, keine offizielle OpenData-Quelle dafür).",
+      "mediatype": "text/csv",
+      "encoding": "UTF-8",
+      "licenses": [{ "name": "DL-DE-BY-2.0", "path": "https://www.govdata.de/dl-de/by-2-0" }],
+      "sources": [
+        { "title": "OpenData LHM – Standortliste der Münchner Stadtbibliothek", "path": "https://opendata.muenchen.de/dataset/standortliste-der-muenchner-stadtbibliothek" },
+        { "title": "muenchner-stadtbibliothek.de – Standort-Unterseiten & Karten-API", "path": "https://www.muenchner-stadtbibliothek.de" }
+      ],
+      "schema": {
+        "fields": [
+          { "name": "bib_type",                          "type": "string",  "description": "Zentralbibliothek oder Stadtteilbibliothek" },
+          { "name": "bib_name",                           "type": "string",  "description": "Vollständiger Name des Standorts" },
+          { "name": "bib_abkuerzung",                     "type": "string",  "description": "Kurzbezeichnung" },
+          { "name": "bib_strasse",                        "type": "string",  "description": "Straße und Hausnummer" },
+          { "name": "bib_plz",                            "type": "string",  "description": "Postleitzahl" },
+          { "name": "lat",                                "type": "number",  "description": "Geographische Breite (WGS84)" },
+          { "name": "lon",                                "type": "number",  "description": "Geographische Länge (WGS84)" },
+          { "name": "publikumsflaeche",                   "type": "number",  "description": "Publikumsfläche in m²" },
+          { "name": "anzahl_arbeitsplaetze",               "type": "integer", "description": "Anzahl Arbeitsplätze" },
+          { "name": "webseite",                           "type": "string",  "description": "URL der Standort-Unterseite auf muenchner-stadtbibliothek.de" },
+          { "name": "open_library",                        "type": "string",  "description": "Open-Library-Standort (Ja/Nein), sofern zutreffend" },
+          { "name": "barrierefreiheit",                   "type": "string",  "description": "Offizielle OpenData-Kurzangabe zur Barrierefreiheit" },
+          { "name": "email",                              "type": "string",  "description": "Kontakt-E-Mail (von der MSB-Karten-API)" },
+          { "name": "telefon",                            "type": "string",  "description": "Telefonnummer (von der MSB-Karten-API)" },
+          { "name": "rueckgabezeiten",                    "type": "string",  "description": "Freitext Rückgabezeiten (von der MSB-Karten-API)" },
+          { "name": "service_wlan",                       "type": "string",  "description": "Klicktext des WLAN-Icons, sonst 'ja'" },
+          { "name": "service_drucker",                    "type": "string",  "description": "Klicktext des Drucker-Icons, sonst 'ja'" },
+          { "name": "service_gaming",                     "type": "string",  "description": "Klicktext des Gaming-Icons, sonst 'ja'" },
+          { "name": "service_cafeteria",                  "type": "string",  "description": "Klicktext des Cafeteria-Icons, sonst 'ja'" },
+          { "name": "service_international",              "type": "string",  "description": "Klicktext des International-Icons, sonst 'ja'" },
+          { "name": "service_ladestation",                "type": "string",  "description": "Klicktext des Ladestations-Icons, sonst 'ja'" },
+          { "name": "service_parkplaetze",                "type": "string",  "description": "Klicktext des Parkplatz-Icons, sonst 'ja'" },
+          { "name": "barrierefreiheit_detail",            "type": "string",  "description": "Langtext zur Barrierefreiheit: Basis ist der Klicktext des Rollstuhl-Icons, ergänzt um den 'vor Ort'-Akkordeon-Eintrag 'Barrierefreiheit'" },
+          { "name": "oeffnungszeiten_wochentags",          "type": "string",  "description": "Freitext Öffnungszeiten Mo-Fr (von der MSB-Karten-API), Parsing in index.html::parseHoursField()" },
+          { "name": "oeffnungszeiten_samstag",             "type": "string",  "description": "Freitext Öffnungszeiten Sa/So (von der MSB-Karten-API, Feldname teils irreführend), Parsing in index.html::parseHoursField()" },
+          { "name": "vor_ort_arbeitsplaetze",              "type": "string",  "description": "'vor Ort'-Akkordeon-Eintrag: Arbeitsplätze" },
+          { "name": "vor_ort_bargeldlose_bibliothek",      "type": "string",  "description": "'vor Ort'-Akkordeon-Eintrag: Bargeldlose Bibliothek" },
+          { "name": "vor_ort_klimaanlage",                "type": "string",  "description": "'vor Ort'-Akkordeon-Eintrag: Klimaanlage" },
+          { "name": "vor_ort_kreativ",                    "type": "string",  "description": "'vor Ort'-Akkordeon-Eintrag: Kreativangebote" },
+          { "name": "vor_ort_kreislaufschrank",            "type": "string",  "description": "'vor Ort'-Akkordeon-Eintrag: Kreislaufschrank" },
+          { "name": "vor_ort_lastenfahrrad",               "type": "string",  "description": "'vor Ort'-Akkordeon-Eintrag: Lastenfahrrad-Kooperation" },
+          { "name": "vor_ort_lese_naschgarten",            "type": "string",  "description": "'vor Ort'-Akkordeon-Eintrag: Lese-/Naschgarten" },
+          { "name": "vor_ort_lesegarten",                 "type": "string",  "description": "'vor Ort'-Akkordeon-Eintrag: Lesegarten" },
+          { "name": "vor_ort_musik",                      "type": "string",  "description": "'vor Ort'-Akkordeon-Eintrag: Musikangebot" },
+          { "name": "vor_ort_raeume",                     "type": "string",  "description": "'vor Ort'-Akkordeon-Eintrag: Veranstaltungs-/Gruppenräume" },
+          { "name": "vor_ort_stadtteilinfo",               "type": "string",  "description": "'vor Ort'-Akkordeon-Eintrag: Stadtteilinformationen" },
+          { "name": "vor_ort_studio",                     "type": "string",  "description": "'vor Ort'-Akkordeon-Eintrag: Studio/Aufnahmeraum" },
+          { "name": "vor_ort_wickeltisch",                "type": "string",  "description": "'vor Ort'-Akkordeon-Eintrag: Wickeltisch" },
+          { "name": "vor_ort_zum_mitnehmen",               "type": "string",  "description": "'vor Ort'-Akkordeon-Eintrag: Angebote zum Mitnehmen" },
+          { "name": "aktuell_titel",                      "type": "string",  "description": "Titel einer Ad-hoc-Meldung aus dem #aktuell-Abschnitt der Standort-Unterseite (nur bei Schließungs-/Zeiten-Keywords übernommen)" },
+          { "name": "aktuell_text",                       "type": "string",  "description": "Text der Ad-hoc-Meldung, siehe aktuell_titel" },
+          { "name": "dauerhaft_geschlossen",               "type": "string",  "description": "Ja/Nein, manuell gepflegt (nicht per Texterkennung), für vollständige unbefristete Schließungen" },
+          { "name": "vor_ort_konferenzraum",               "type": "string",  "description": "'vor Ort'-Akkordeon-Eintrag: Konferenzraum" },
+          { "name": "bild_url",                           "type": "string",  "description": "URL eines Fotos für den Steckbrief, manuell ausgewählt aus dem 'Impressionen'-Bilderslider der jeweiligen MSB-Standort-Unterseite (keine automatische Auswahl)" }
+        ]
+      }
+    },
+    {
+      "name": "besucherzahlen",
+      "path": "besucherzahlen.csv",
+      "title": "Bibliothekskennzahlen – Besucherzahlen",
+      "description": "Monatliche Besucherzahlen Jan 2024–Jun 2025, 29 Standorte (inkl. 5 Bücherbusse ohne feste Adresse).",
+      "mediatype": "text/csv",
+      "encoding": "UTF-8",
+      "licenses": [{ "name": "DL-DE-BY-2.0", "path": "https://www.govdata.de/dl-de/by-2-0" }],
+      "sources": [
+        { "title": "OpenData LHM – Bibliothekskennzahlen: Besucherzahlen", "path": "https://opendata.muenchen.de/dataset/bibliothekskennzahlen-der-muenchner-stadtbibliothek-besucherzahlen" }
+      ],
+      "schema": {
+        "fields": [
+          { "name": "jahr_monat",       "type": "string",  "description": "Format YYYY-MM" },
+          { "name": "bibliothekssigel", "type": "string",  "description": "Standort-Sigel, nicht in standorte.csv vorhanden - Join über normalisierten Namen (siehe index.html::normalizeName())" },
+          { "name": "bibliothek",       "type": "string",  "description": "Standortname, weicht teils von bib_name in standorte.csv ab (z.B. ohne Präfix 'Stadtteilbibliothek')" },
+          { "name": "anzahl_besuche",   "type": "integer", "description": "Besuche im jeweiligen Monat" }
+        ]
+      }
+    },
+    {
+      "name": "bestand",
+      "path": "bestand.csv",
+      "title": "Bibliothekskennzahlen – Bestand",
+      "description": "Monatlicher Medienbestand Jan 2024–Jun 2025, 29 Standorte (inkl. 5 Bücherbusse ohne feste Adresse).",
+      "mediatype": "text/csv",
+      "encoding": "UTF-8",
+      "licenses": [{ "name": "DL-DE-BY-2.0", "path": "https://www.govdata.de/dl-de/by-2-0" }],
+      "sources": [
+        { "title": "OpenData LHM – Bibliothekskennzahlen: Bestand", "path": "https://opendata.muenchen.de/dataset/bibliothekskennzahlen-der-muenchner-stadtbibliothek-bestand" }
+      ],
+      "schema": {
+        "fields": [
+          { "name": "jahr_monat",         "type": "string",  "description": "Format YYYY-MM" },
+          { "name": "bibliothekssigel",   "type": "string",  "description": "Standort-Sigel, nicht in standorte.csv vorhanden - Join über normalisierten Namen" },
+          { "name": "bibliothek",         "type": "string",  "description": "Standortname, weicht teils von bib_name in standorte.csv ab" },
+          { "name": "anzahl_exemplare",   "type": "integer", "description": "Medienbestand (Exemplare) im jeweiligen Monat" }
+        ]
+      }
+    },
+    {
+      "name": "entleihungen",
+      "path": "entleihungen.csv",
+      "title": "Bibliothekskennzahlen – Entleihungen",
+      "description": "Monatliche Entleihungen Jan 2024–Jun 2025, 29 Standorte (inkl. 5 Bücherbusse ohne feste Adresse).",
+      "mediatype": "text/csv",
+      "encoding": "UTF-8",
+      "licenses": [{ "name": "DL-DE-BY-2.0", "path": "https://www.govdata.de/dl-de/by-2-0" }],
+      "sources": [
+        { "title": "OpenData LHM – Bibliothekskennzahlen: Entleihungen", "path": "https://opendata.muenchen.de/dataset/bibliothekskennzahlen-der-muenchner-stadtbibliothek-entleihungen" }
+      ],
+      "schema": {
+        "fields": [
+          { "name": "jahr_monat",           "type": "string",  "description": "Format YYYY-MM" },
+          { "name": "bibliothekssigel",     "type": "string",  "description": "Standort-Sigel, nicht in standorte.csv vorhanden - Join über normalisierten Namen" },
+          { "name": "bibliothek",           "type": "string",  "description": "Standortname, weicht teils von bib_name in standorte.csv ab" },
+          { "name": "anzahl_entleihungen",  "type": "integer", "description": "Entleihungen im jeweiligen Monat" }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Münchner Stadtbibliothek – Standorte &amp; Kennzahlen</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Aus der Sommerferien-Leseclub-Kampagnengrafik der MSB */
+      --yellow:    #FEF594;
+      --magenta:   #DD0244;
+      --orange:    #E84E0D;
+      --teal:      #63B7AA;
+      --tan:       #C8A56C;
+      --brand:     #D14900;  /* offizielle MSB-Akzentfarbe (aus deren Website) */
+
+      --ink:       #241705;
+      --ink-dim:   #7a6a4a;
+      --bg:        #faf8f2;
+      --surface:   #ffffff;
+      --border:    #ece5d2;
+
+      --besuche:      var(--magenta);
+      --bestand:      var(--teal);
+      --entleihungen: var(--orange);
+
+      --status-open:   #1e8a52;
+      --status-closed: #c0272d;
+
+      --header-h:  58px;
+    }
+
+    body {
+      font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
+    }
+
+    .display { font-family: 'Fira Sans Condensed', Tahoma, sans-serif; font-weight: 700; }
+
+    header {
+      height: var(--header-h);
+      background: var(--brand);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      padding: 0 1.1rem;
+      gap: .7rem;
+    }
+    header h1 { font-size: 1.05rem; letter-spacing: .01em; text-transform: uppercase; }
+    header span { font-size: .78rem; opacity: .9; }
+    header .sources-link { margin-left: auto; font-size: .75rem; color: #fff; opacity: .85; text-decoration: none; white-space: nowrap; }
+    header .sources-link:hover { opacity: 1; text-decoration: underline; }
+
+    .layout {
+      display: flex;
+      height: calc(100vh - var(--header-h));
+      height: calc(100dvh - var(--header-h));
+    }
+
+    #map { flex: 1 1 auto; min-width: 0; }
+
+    /* Rechte Leiste: Liste + Steckbrief-Ausklapper */
+    #panel {
+      width: 400px;
+      max-width: 44vw;
+      background: var(--yellow);
+      border-left: 4px solid var(--magenta);
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    #panel-dots {
+      height: 10px;
+      flex: 0 0 auto;
+      background-image: radial-gradient(var(--orange) 1.1px, transparent 1.1px);
+      background-size: 9px 9px;
+      opacity: .55;
+    }
+
+    #panel-inner { padding: 1.3rem 1.4rem 1.6rem; overflow-y: auto; flex: 1 1 auto; min-height: 0; }
+
+    /* Listenansicht */
+    #list-head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      margin-bottom: .9rem;
+    }
+    #list-head h2 { font-size: 1.15rem; }
+    #list-head .count { font-size: .78rem; color: var(--ink-dim); }
+
+    #filter-bar {
+      display: flex; flex-wrap: wrap; gap: .4rem;
+      margin-bottom: 1rem;
+    }
+    .filter-chip {
+      display: inline-flex; align-items: center; gap: .3rem;
+      background: rgba(255,255,255,.5);
+      border: 1px solid rgba(36,23,5,.15);
+      border-radius: 20px;
+      padding: .3rem .65rem;
+      font-size: .74rem; font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+    }
+    .filter-chip:hover { background: rgba(255,255,255,.75); }
+    .filter-chip.active { background: var(--magenta); border-color: var(--magenta); color: #fff; }
+
+    #sort-bar {
+      display: flex; flex-wrap: wrap; align-items: center; gap: .4rem;
+      margin-bottom: .8rem;
+    }
+    #sort-bar .sort-label { font-size: .7rem; color: var(--ink-dim); margin-right: .1rem; }
+    .sort-chip {
+      display: inline-flex; align-items: center; gap: .25rem;
+      background: transparent;
+      border: 1px solid rgba(36,23,5,.15);
+      border-radius: 20px;
+      padding: .25rem .6rem;
+      font-size: .72rem; font-weight: 600;
+      color: var(--ink-dim);
+      cursor: pointer;
+      user-select: none;
+    }
+    .sort-chip:hover { background: rgba(255,255,255,.55); }
+    .sort-chip.active { background: var(--teal); border-color: var(--teal); color: #fff; }
+
+    .lib-row {
+      display: flex; align-items: center; gap: .7rem;
+      padding: .65rem .1rem;
+      border-bottom: 1px solid rgba(36,23,5,.1);
+      cursor: pointer;
+    }
+    .lib-row:hover { background: rgba(255,255,255,.35); }
+    .lib-row .lib-name { flex: 1 1 auto; min-width: 0; font-size: .88rem; font-weight: 600; line-height: 1.2; }
+    .lib-row .lib-name small { display: block; font-weight: 400; color: var(--ink-dim); font-size: .72rem; margin-top: .1rem; }
+
+    .status-pill {
+      flex: 0 0 auto;
+      font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .02em;
+      padding: .22rem .5rem; border-radius: 20px;
+      white-space: nowrap;
+    }
+    .status-pill.is-open   { background: rgba(30,138,82,.14); color: var(--status-open); }
+    .status-pill.is-closed { background: rgba(192,39,45,.12); color: var(--status-closed); }
+
+    .status-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+
+    .notice-badge {
+      flex: 0 0 auto;
+      font-size: .78rem;
+      color: var(--status-closed);
+    }
+
+    .notice-banner {
+      display: flex; gap: .55rem;
+      background: rgba(192,39,45,.09);
+      border: 1px solid rgba(192,39,45,.3);
+      border-radius: 8px;
+      padding: .7rem .8rem;
+      margin: .8rem 0 1rem;
+      font-size: .8rem;
+    }
+    .notice-banner .icon { flex: 0 0 auto; font-size: 1rem; line-height: 1.3; }
+    .notice-banner .title { font-weight: 700; color: var(--status-closed); margin-bottom: .2rem; }
+    .notice-banner .text { color: var(--ink); line-height: 1.4; }
+
+    /* Detailansicht (Steckbrief) */
+    .back-link {
+      display: inline-flex; align-items: center; gap: .3rem;
+      background: none; border: none; cursor: pointer;
+      font-size: .82rem; font-weight: 600; color: var(--ink-dim);
+      margin-bottom: 1rem; padding: 0;
+    }
+    .back-link:hover { color: var(--ink); }
+
+    .steckbrief-bild { display: block; width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 4px; margin-bottom: .9rem; }
+
+    #panel h2.name { font-size: 1.35rem; line-height: 1.15; margin-bottom: .3rem; }
+    #panel .typ-row { display: flex; align-items: center; gap: .5rem; margin-bottom: 1.1rem; }
+    #panel .typ { font-size: .8rem; color: var(--ink-dim); }
+    #panel .typ a { color: inherit; text-decoration: underline; text-decoration-color: rgba(122,106,74,.4); }
+    #panel .typ a:hover { color: var(--ink); }
+
+    .facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .55rem;
+      margin-bottom: 1.3rem;
+      font-size: .82rem;
+    }
+    .facts div { background: rgba(255,255,255,.55); border: 1px solid rgba(36,23,5,.08); border-radius: 8px; padding: .5rem .65rem; }
+    .facts .label { color: var(--ink-dim); font-size: .68rem; text-transform: uppercase; letter-spacing: .03em; }
+    .facts .value { font-weight: 700; margin-top: .1rem; overflow-wrap: break-word; }
+    .facts .value a { color: inherit; text-decoration: none; }
+    .facts .value a:hover { text-decoration: underline; }
+
+    .chart-block { margin-bottom: 1.5rem; }
+    .chart-block h3 {
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--ink-dim);
+      text-transform: uppercase;
+      letter-spacing: .03em;
+      margin-bottom: .35rem;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+    .chart-block h3 .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+    .chart-block .latest { font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: .35rem; font-variant-numeric: tabular-nums; }
+    .chart-block .latest span { font-size: .7rem; color: var(--ink-dim); font-weight: 400; }
+    .chart-block canvas { max-height: 110px; }
+
+.section-label {
+      font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+      color: var(--ink-dim); margin-bottom: .5rem;
+    }
+    .services-block { margin-bottom: 1.3rem; }
+    .service-item { margin-bottom: .6rem; font-size: .82rem; }
+    .service-item .titel { font-weight: 700; margin-bottom: .1rem; }
+    .service-item .text { color: var(--ink-dim); line-height: 1.4; }
+
+    .ausstattung-block { margin-bottom: 1.3rem; }
+    .ausstattung-item { margin-bottom: .6rem; font-size: .82rem; }
+    .ausstattung-item .titel { font-weight: 700; margin-bottom: .1rem; }
+    .ausstattung-item .text { color: var(--ink-dim); line-height: 1.4; }
+
+    a.website-link {
+      display: inline-block;
+      margin-top: .3rem;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--magenta);
+      text-decoration: none;
+    }
+    a.website-link:hover { text-decoration: underline; }
+
+    .leaflet-popup-content { font-size: .85rem; }
+
+    #empty-hint {
+      padding: 2rem 1.25rem;
+      color: var(--ink-dim);
+      font-size: .9rem;
+      text-align: center;
+    }
+
+    @media (max-width: 720px) {
+      #panel { position: absolute; right: 0; top: var(--header-h); bottom: 0; width: 100%; max-width: 100%; z-index: 1000; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1 class="display">Münchner Stadtbibliothek</h1>
+    <span>Standorte, Besuche, Bestand &amp; Entleihungen · Jan 2024–Jun 2025</span>
+    <a class="sources-link" href="quellen.html">Datenquellen &amp; Lizenz</a>
+  </header>
+
+  <div class="layout">
+    <div id="map"></div>
+    <div id="panel">
+      <div id="panel-dots"></div>
+      <div id="panel-inner"></div>
+    </div>
+  </div>
+
+<script>
+const METRICS = [
+  { key: 'besuche',       label: 'Besuche pro Monat',       color: getCssVar('--besuche') },
+  { key: 'bestand',       label: 'Bestand (Exemplare)',      color: getCssVar('--bestand') },
+  { key: 'entleihungen',  label: 'Entleihungen pro Monat',   color: getCssVar('--entleihungen') },
+];
+
+function getCssVar(name) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+const map = L.map('map', { zoomControl: true }).setView([48.1372, 11.5756], 12);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  maxZoom: 19,
+}).addTo(map);
+
+let charts = [];
+let allBibs = [];
+let markersByName = {};
+let activeFilters = new Set();
+let sortBy = 'name';
+let sortDir = 'asc';
+
+function latestValue(series) {
+  return series && series.length ? series[series.length - 1].wert : null;
+}
+
+// Reihenfolge bestimmt auch die Anzeige-Reihenfolge der Sortier-Chips.
+const SORT_OPTIONS = {
+  name:         { label: 'Name',         get: bib => bib.name.replace(/^Stadtteilbibliothek /,'').replace(/^Stadtbibliothek im /,'') },
+  flaeche:      { label: 'Fläche',       get: bib => bib.publikumsflaeche },
+  besuche:      { label: 'Besuche',      get: bib => latestValue(bib.besuche) },
+  bestand:      { label: 'Bestand',      get: bib => latestValue(bib.bestand) },
+  entleihungen: { label: 'Entleihungen', get: bib => latestValue(bib.entleihungen) },
+};
+
+function setSort(key) {
+  if (sortBy === key) {
+    sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+  } else {
+    sortBy = key;
+    sortDir = key === 'name' ? 'asc' : 'desc'; // Kennzahlen: sinnvollerweise groesster Wert zuerst
+  }
+  renderList();
+}
+window.setSort = setSort;
+
+function sortBibs(list) {
+  const { get } = SORT_OPTIONS[sortBy];
+  const dir = sortDir === 'asc' ? 1 : -1;
+  return [...list].sort((a, b) => {
+    const va = get(a), vb = get(b);
+    // Fehlende Werte (null) immer ans Ende, unabhaengig von der Richtung
+    if (va == null && vb == null) return 0;
+    if (va == null) return 1;
+    if (vb == null) return -1;
+    if (typeof va === 'string') return dir * va.localeCompare(vb, 'de');
+    return dir * (va - vb);
+  });
+}
+
+// Slug (aus dem FontAwesome-Icon-Klassennamen, siehe build_data.py::extract_services)
+// -> Emoji + Anzeigelabel. Fester Vokabular ueber alle 24 Standorte.
+const SERVICE_ICONS = {
+  'wifi':          { icon: '📶', label: 'W-Lan' },
+  'print':         { icon: '🖨️', label: 'Drucker' },
+  'wheelchair':    { icon: '♿', label: 'Barrierefrei' },
+  'gamepad':       { icon: '🎮', label: 'Gaming' },
+  'coffee':        { icon: '☕', label: 'Cafeteria' },
+  'globe':         { icon: '🌍', label: 'International' },
+  'battery-full':  { icon: '🔋', label: 'Handy-Ladestation' },
+  'parking':       { icon: '🅿️', label: 'Parkplätze' },
+};
+
+// ─── Datenladen (2026-08-02: direkt aus den CSVs, keine bibliotheken.json mehr) ──
+// Baut fuer jeden Standort exakt dieselbe Objektform, die vorher
+// scripts/build_data.py erzeugt hat - der ganze Rest von index.html
+// (getStatus/renderList/renderDetail) bleibt dadurch unveraendert.
+
+const INCLUDED_TYPES = new Set(['Zentralbibliothek', 'Stadtteilbibliothek']);
+const NAME_PREFIX = 'Stadtteilbibliothek ';
+
+// Muss zu SERVICE_COLUMNS in scripts/enrich_standorte.py passen.
+const SERVICE_CSV_COLUMNS = {
+  service_wlan:         { slug: 'wifi',         label: 'W-Lan' },
+  service_drucker:      { slug: 'print',        label: 'Drucker' },
+  service_gaming:       { slug: 'gamepad',      label: 'Gaming' },
+  service_cafeteria:    { slug: 'coffee',       label: 'Cafeteria' },
+  service_international:{ slug: 'globe',        label: 'International' },
+  service_ladestation:  { slug: 'battery-full', label: 'Handy-Ladestation' },
+  service_parkplaetze:  { slug: 'parking',      label: 'Parkplätze' },
+};
+
+// Muss zu VOR_ORT_COLUMNS in scripts/enrich_standorte.py passen.
+const VOR_ORT_COLUMNS = {
+  vor_ort_arbeitsplaetze:         'Arbeitsplätze',
+  vor_ort_bargeldlose_bibliothek: 'Bargeldlose Bibliothek',
+  vor_ort_klimaanlage:            'Klimaanlage',
+  vor_ort_konferenzraum:          'Konferenzraum',
+  vor_ort_kreativ:                'Kreativ',
+  vor_ort_kreislaufschrank:       'Kreislaufschrank',
+  vor_ort_lastenfahrrad:          'Lastenfahrrad',
+  vor_ort_lese_naschgarten:       'Lese- und Naschgarten',
+  vor_ort_lesegarten:             'Lesegarten',
+  vor_ort_musik:                  'Musik',
+  vor_ort_raeume:                 'Räume',
+  vor_ort_stadtteilinfo:          'Stadtteilinfo',
+  vor_ort_studio:                 'Studio',
+  vor_ort_wickeltisch:            'Wickeltisch',
+  vor_ort_zum_mitnehmen:          'Zum Mitnehmen',
+};
+
+const HOUR_DAYS = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
+
+function normalizeName(name) {
+  return name.startsWith(NAME_PREFIX) ? name.slice(NAME_PREFIX.length) : name;
+}
+
+async function loadCsv(path) {
+  const res = await fetch(path, { cache: 'no-store' });
+  const text = await res.text();
+  return Papa.parse(text, { header: true, skipEmptyLines: true }).data;
+}
+
+function seriesByName(rows, valueCol) {
+  const byName = {};
+  for (const r of rows) {
+    const key = r['bibliothek'];
+    if (!byName[key]) byName[key] = [];
+    byName[key].push({ monat: r['jahr_monat'], wert: parseInt(r[valueCol], 10) });
+  }
+  for (const v of Object.values(byName)) v.sort((a, b) => a.monat.localeCompare(b.monat));
+  return byName;
+}
+
+function servicesFromRow(row) {
+  const results = [];
+  for (const [col, meta] of Object.entries(SERVICE_CSV_COLUMNS)) {
+    const value = (row[col] || '').trim();
+    if (!value) continue;
+    results.push({ slug: meta.slug, label: meta.label, text: value === 'ja' ? '' : value });
+  }
+  return results;
+}
+
+function ausstattungFromRow(row) {
+  const items = [];
+  for (const [col, titel] of Object.entries(VOR_ORT_COLUMNS)) {
+    const value = (row[col] || '').trim();
+    if (!value) continue;
+    items.push({ titel, text: value === 'ja' ? '' : value });
+  }
+  return items;
+}
+
+// Port von scripts/enrich_standorte.py::parse_hours_field() (build_data.py hatte
+// dieselbe Funktion). Parst z.B. "Di – Fr: 10.00 – 19.00 Uhr" -> [{tage, von, bis}].
+function parseHoursField(raw, defaultDay = null) {
+  if (!raw) return [];
+  const rules = [];
+  for (let part of raw.split(';')) {
+    part = part.trim();
+    if (!part) continue;
+    const m = part.match(/^([^0-9]*?):?\s*(\d{1,2})[.:](\d{2})\s*[–-]\s*(\d{1,2})[.:](\d{2})\s*(?:Uhr)?$/);
+    if (!m) throw new Error(`unparsable: ${part}`);
+    let [, daypart, h1, m1, h2, m2] = m;
+    daypart = daypart.trim().replace(/:$/, '').trim();
+
+    let days;
+    if (!daypart) {
+      if (defaultDay === null) throw new Error(`kein Tag und kein defaultDay: ${part}`);
+      days = [defaultDay];
+    } else if (daypart.includes('–') || daypart.includes('-')) {
+      const [start, end] = daypart.split(/[–-]/);
+      const i1 = HOUR_DAYS.indexOf(start.trim()), i2 = HOUR_DAYS.indexOf(end.trim());
+      days = [];
+      if (i1 <= i2) { for (let i = i1; i <= i2; i++) days.push(i); }
+      else { for (let i = i1; i < 7; i++) days.push(i); for (let i = 0; i <= i2; i++) days.push(i); }
+    } else {
+      days = daypart.split(',').map(x => HOUR_DAYS.indexOf(x.trim()));
+    }
+
+    rules.push({ tage: days, von: `${String(parseInt(h1, 10)).padStart(2, '0')}:${m1}`, bis: `${String(parseInt(h2, 10)).padStart(2, '0')}:${m2}` });
+  }
+  return rules;
+}
+
+function buildOeffnungszeiten(row) {
+  try {
+    return parseHoursField(row['oeffnungszeiten_wochentags'])
+      .concat(parseHoursField(row['oeffnungszeiten_samstag'], 5));
+  } catch (e) {
+    console.warn('Öffnungszeiten nicht parsbar für', row['bib_name'], '-', e.message);
+    return [];
+  }
+}
+
+async function loadData() {
+  const [standorte, besuche, bestand, entleihungen] = await Promise.all([
+    loadCsv('data/standorte.csv'),
+    loadCsv('data/besucherzahlen.csv'),
+    loadCsv('data/bestand.csv'),
+    loadCsv('data/entleihungen.csv'),
+  ]);
+
+  const besucheByName = seriesByName(besuche, 'anzahl_besuche');
+  const bestandByName = seriesByName(bestand, 'anzahl_exemplare');
+  const entleihungenByName = seriesByName(entleihungen, 'anzahl_entleihungen');
+
+  const result = [];
+  for (const row of standorte) {
+    if (!INCLUDED_TYPES.has(row['bib_type'])) continue;
+    const norm = normalizeName(row['bib_name']);
+
+    result.push({
+      name: row['bib_name'],
+      typ: row['bib_type'],
+      kuerzel: row['bib_abkuerzung'],
+      strasse: row['bib_strasse'],
+      plz: row['bib_plz'],
+      lat: parseFloat(row['lat']),
+      lon: parseFloat(row['lon']),
+      publikumsflaeche: row['publikumsflaeche'] ? parseInt(row['publikumsflaeche'], 10) : null,
+      arbeitsplaetze: row['anzahl_arbeitsplaetze'] ? parseInt(row['anzahl_arbeitsplaetze'], 10) : null,
+      webseite: row['webseite'],
+      open_library: row['open_library'] === 'JA',
+      barrierefreiheit: row['barrierefreiheit'],
+      barrierefreiheit_detail: row['barrierefreiheit_detail'] || '',
+      email: row['email'] || '',
+      telefon: row['telefon'] || '',
+      rueckgabezeiten: row['rueckgabezeiten'] || '',
+      services: servicesFromRow(row),
+      dauerhaft_geschlossen: (row['dauerhaft_geschlossen'] || '').trim().toLowerCase() === 'ja',
+      besuche: besucheByName[norm] || [],
+      bestand: bestandByName[norm] || [],
+      entleihungen: entleihungenByName[norm] || [],
+      oeffnungszeiten: buildOeffnungszeiten(row),
+      aktuelle_meldung: row['aktuell_titel'] ? { titel: row['aktuell_titel'], text: row['aktuell_text'] } : null,
+      ausstattung: ausstattungFromRow(row),
+      bild_url: row['bild_url'] || '',
+    });
+  }
+  return result;
+}
+
+function destroyCharts() {
+  charts.forEach(c => c.destroy());
+  charts = [];
+}
+
+function formatNumber(n) {
+  return n.toLocaleString('de-DE');
+}
+
+function monthLabel(ym) {
+  const [y, m] = ym.split('-');
+  const names = ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];
+  return names[parseInt(m, 10) - 1] + ' ' + y.slice(2);
+}
+
+// tage: 0=Mo .. 6=So (passend zu den Kennzahlen-Rohdaten aus build_data.py)
+function getStatus(bib) {
+  if (bib.dauerhaft_geschlossen) {
+    return { open: false, label: 'Dauerhaft geschlossen', today: null };
+  }
+
+  const rules = bib.oeffnungszeiten;
+  if (!rules || !rules.length) return { open: null, label: 'Keine Angabe', today: null };
+
+  const now = new Date();
+  const day = (now.getDay() + 6) % 7; // JS: 0=So..6=Sa -> 0=Mo..6=So
+  const minutes = now.getHours() * 60 + now.getMinutes();
+  const todayRules = rules.filter(r => r.tage.includes(day));
+  const todayText = todayRules.length
+    ? todayRules.map(r => `${r.von} – ${r.bis} Uhr`).join(', ')
+    : 'heute geschlossen';
+
+  for (const r of todayRules) {
+    const [vh, vm] = r.von.split(':').map(Number);
+    const [bh, bm] = r.bis.split(':').map(Number);
+    if (minutes >= vh * 60 + vm && minutes < bh * 60 + bm) {
+      return { open: true, label: `Geöffnet bis ${r.bis} Uhr`, today: todayText };
+    }
+  }
+  return { open: false, label: todayRules.length ? 'Geschlossen' : 'Heute geschlossen', today: todayText };
+}
+
+function markerColor(bib) {
+  const status = getStatus(bib);
+  if (status.open === null) return '#9a8a63';
+  return status.open ? '#1e8a52' : '#c0272d';
+}
+
+function statusPillHtml(status) {
+  if (status.open === null) return `<span class="status-pill is-closed">–</span>`;
+  return status.open
+    ? `<span class="status-pill is-open">Geöffnet</span>`
+    : `<span class="status-pill is-closed">Geschlossen</span>`;
+}
+
+function toggleFilter(slug) {
+  if (activeFilters.has(slug)) activeFilters.delete(slug);
+  else activeFilters.add(slug);
+  renderList();
+}
+window.toggleFilter = toggleFilter;
+
+function renderList() {
+  destroyCharts();
+  const inner = document.getElementById('panel-inner');
+  const openCount = allBibs.filter(b => getStatus(b).open === true).length;
+
+  // Nur Filter-Chips fuer Services zeigen, die auch tatsaechlich irgendwo vorkommen -
+  // UND die nicht ohnehin an allen Standorten vorhanden sind (Fund 2026-08-02: WLAN
+  // und International haben alle 24 Standorte, filtern also nie irgendwas aus).
+  // Die Service-Badges im Steckbrief selbst bleiben davon unberuehrt.
+  const FILTER_EXCLUDE_SLUGS = new Set(['wifi', 'globe']);
+  const availableSlugs = new Set();
+  allBibs.forEach(b => b.services.forEach(s => availableSlugs.add(s.slug)));
+
+  const filtered = sortBibs(allBibs.filter(bib => {
+    if (activeFilters.size === 0) return true;
+    const bibSlugs = new Set(bib.services.map(s => s.slug));
+    return [...activeFilters].every(f => bibSlugs.has(f));
+  }));
+
+  let html = `
+    <div id="list-head">
+      <h2 class="display">Alle Standorte</h2>
+      <span class="count">${openCount} / ${allBibs.length} geöffnet</span>
+    </div>
+    <div id="sort-bar">
+      <span class="sort-label">Sortieren:</span>
+      ${Object.entries(SORT_OPTIONS).map(([key, opt]) => `
+        <span class="sort-chip ${sortBy === key ? 'active' : ''}" onclick="setSort('${key}')">${opt.label}${sortBy === key ? (sortDir === 'asc' ? ' ↑' : ' ↓') : ''}</span>
+      `).join('')}
+    </div>
+    <div id="filter-bar">
+      ${Object.entries(SERVICE_ICONS)
+        .filter(([slug]) => availableSlugs.has(slug) && !FILTER_EXCLUDE_SLUGS.has(slug))
+        .map(([slug, s]) => `
+          <span class="filter-chip ${activeFilters.has(slug) ? 'active' : ''}" onclick="toggleFilter('${slug}')">${s.icon} ${s.label}</span>
+        `).join('')}
+    </div>
+  `;
+
+  if (filtered.length === 0) {
+    html += `<div style="font-size:.85rem;color:var(--ink-dim);padding:1rem 0">Keine Standorte mit dieser Kombination.</div>`;
+  }
+
+  filtered.forEach(bib => {
+    const status = getStatus(bib);
+    const dotColor = status.open === null ? '#9a8a63' : (status.open ? 'var(--status-open)' : 'var(--status-closed)');
+    const sortVal = sortBy === 'name' ? '' : SORT_OPTIONS[sortBy].get(bib);
+    const sortValLabel = sortVal == null ? '' : (sortBy === 'flaeche' ? `${formatNumber(sortVal)} m²` : formatNumber(sortVal));
+    html += `
+      <div class="lib-row" data-name="${bib.name}">
+        <span class="status-dot" style="background:${dotColor}"></span>
+        <span class="lib-name">${bib.name.replace(/^Stadtteilbibliothek /,'').replace(/^Stadtbibliothek im /,'')}<small>${sortValLabel || status.today || ''}</small></span>
+        ${bib.aktuelle_meldung ? `<span class="notice-badge">⚠</span>` : ''}
+        ${statusPillHtml(status)}
+      </div>
+    `;
+  });
+
+  inner.innerHTML = html;
+  inner.querySelectorAll('.lib-row').forEach(row => {
+    row.addEventListener('click', () => {
+      const bib = allBibs.find(b => b.name === row.dataset.name);
+      if (bib) {
+        renderDetail(bib);
+        if (markersByName[bib.name]) map.panTo(markersByName[bib.name].getLatLng());
+      }
+    });
+  });
+}
+
+function renderDetail(bib) {
+  destroyCharts();
+  const inner = document.getElementById('panel-inner');
+  const status = getStatus(bib);
+
+  let html = `
+    <button class="back-link" onclick="renderList()">← Alle Standorte</button>
+    ${bib.bild_url ? `<img class="steckbrief-bild" src="${bib.bild_url}" alt="${bib.name}" loading="lazy">` : ''}
+    <h2 class="display name">${bib.name}</h2>
+    <div class="typ-row">
+      <div class="typ">${bib.typ} · ${bib.strasse}, ${bib.plz} München${bib.telefon ? `, <a href="tel:${bib.telefon.replace(/\s/g,'')}">${bib.telefon}</a>` : ''}${bib.email ? `, <a href="mailto:${bib.email}">${bib.email}</a>` : ''}</div>
+    </div>
+    ${statusPillHtml(status)} <span style="font-size:.78rem;color:var(--ink-dim);margin-left:.4rem">${status.open === null ? '' : status.label}${status.today ? ' · heute ' + status.today : ''}</span>
+    ${bib.rueckgabezeiten ? `<div style="font-size:.78rem;color:var(--ink-dim);margin-top:.3rem">Rückgabe: ${bib.rueckgabezeiten}</div>` : ''}
+
+    ${bib.aktuelle_meldung ? `
+      <div class="notice-banner">
+        <span class="icon">⚠</span>
+        <div>
+          <div class="title">${bib.aktuelle_meldung.titel}</div>
+          <div class="text">${bib.aktuelle_meldung.text}</div>
+        </div>
+      </div>
+    ` : ''}
+
+    <div class="facts" style="margin-top:1rem">
+      <div><div class="label">Publikumsfläche</div><div class="value">${bib.publikumsflaeche ? bib.publikumsflaeche.toLocaleString('de-DE') + ' m²' : '–'}</div></div>
+      <div><div class="label">Arbeitsplätze</div><div class="value">${bib.arbeitsplaetze ?? '–'}</div></div>
+      <div><div class="label">Open Library</div><div class="value">${bib.open_library ? 'Ja' : 'Nein'}</div></div>
+      <div><div class="label">Barrierefreiheit</div><div class="value">${bib.barrierefreiheit || '–'}</div></div>
+    </div>
+    ${bib.barrierefreiheit_detail ? `
+      <div class="service-item" style="margin-top:.6rem">
+        <div class="titel">♿ Barrierefreiheit</div>
+        <div class="text">${bib.barrierefreiheit_detail}</div>
+      </div>
+    ` : ''}
+
+    ${bib.services && bib.services.length ? `
+      <div class="services-block">
+        <div class="section-label">Services</div>
+        ${bib.services.map(s => {
+          const meta = SERVICE_ICONS[s.slug] || { icon: '•', label: s.label };
+          return `
+            <div class="service-item">
+              <div class="titel">${meta.icon} ${meta.label}</div>
+              ${s.text ? `<div class="text">${s.text}</div>` : ''}
+            </div>
+          `;
+        }).join('')}
+      </div>
+    ` : ''}
+
+    ${bib.ausstattung && bib.ausstattung.length ? `
+      <div class="ausstattung-block">
+        <div class="section-label">Vor Ort</div>
+        ${bib.ausstattung.map(a => `
+          <div class="ausstattung-item">
+            <div class="titel">${a.titel}</div>
+            ${a.text ? `<div class="text">${a.text}</div>` : ''}
+          </div>
+        `).join('')}
+      </div>
+    ` : ''}
+  `;
+
+  METRICS.forEach(m => {
+    const series = bib[m.key];
+    if (!series || series.length === 0) return;
+    const latest = series[series.length - 1];
+    html += `
+      <div class="chart-block">
+        <h3><span class="dot" style="background:${m.color}"></span>${m.label}</h3>
+        <div class="latest">${formatNumber(latest.wert)}<span> · ${monthLabel(latest.monat)}</span></div>
+        <canvas id="chart-${m.key}"></canvas>
+      </div>
+    `;
+  });
+
+  if (bib.webseite) {
+    html += `<a class="website-link" href="${bib.webseite}" target="_blank" rel="noopener">Zur Bibliothekswebseite →</a>`;
+  }
+
+  inner.innerHTML = html;
+
+  METRICS.forEach(m => {
+    const series = bib[m.key];
+    if (!series || series.length === 0) return;
+    const ctx = document.getElementById(`chart-${m.key}`);
+    if (!ctx) return;
+
+    const chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: series.map(s => monthLabel(s.monat)),
+        datasets: [{
+          data: series.map(s => s.wert),
+          borderColor: m.color,
+          backgroundColor: m.color + '26',
+          borderWidth: 2.2,
+          pointRadius: 0,
+          pointHoverRadius: 4,
+          pointHoverBackgroundColor: m.color,
+          fill: true,
+          tension: 0.25,
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (item) => formatNumber(item.parsed.y),
+            },
+          },
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { maxTicksLimit: 6, font: { size: 9 }, color: '#9a8a63' } },
+          y: { grid: { color: 'rgba(36,23,5,.07)' }, ticks: { font: { size: 9 }, color: '#9a8a63' }, beginAtZero: true },
+        },
+      },
+    });
+    charts.push(chart);
+  });
+}
+window.renderList = renderList;
+
+loadData()
+  .then(data => {
+    allBibs = data;
+
+    data.forEach(bib => {
+      const isZentral = bib.typ === 'Zentralbibliothek';
+      const marker = L.circleMarker([bib.lat, bib.lon], {
+        radius: isZentral ? 9 : 6,
+        fillColor: markerColor(bib),
+        color: '#fff',
+        weight: 1.5,
+        fillOpacity: 0.95,
+      }).addTo(map);
+
+      marker.bindTooltip(bib.name, { direction: 'top', offset: [0, -6] });
+      marker.on('click', () => renderDetail(bib));
+      markersByName[bib.name] = marker;
+    });
+
+    renderList();
+    // Status ist zeitabhängig - alle 60s neu rendern (nur wenn Liste sichtbar ist)
+    setInterval(() => {
+      if (document.getElementById('list-head')) renderList();
+      data.forEach(bib => {
+        const marker = markersByName[bib.name];
+        if (marker) marker.setStyle({ fillColor: markerColor(bib) });
+      });
+    }, 60000);
+  })
+  .catch(err => {
+    console.error('Fehler beim Laden der Daten:', err);
+    document.getElementById('map').insertAdjacentHTML('beforeend',
+      '<div id="empty-hint">Daten konnten nicht geladen werden – läuft die Seite über einen lokalen Server (nicht file://)?</div>');
+  });
+</script>
+
+</body>
+</html>
