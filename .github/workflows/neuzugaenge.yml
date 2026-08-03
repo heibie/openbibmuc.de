@@ -14,7 +14,14 @@ jobs:
   fetch:
     runs-on: ubuntu-latest
     steps:
+      # Push mit dem Default-GITHUB_TOKEN loest laut GitHub keine weiteren
+      # Workflows aus (Schutz vor Endlosschleifen) - der Deploy-Workflow wuerde
+      # dann nie anspringen. Deshalb PAT statt Default-Token (Test 2026-08-03:
+      # Nacht-Lauf hat 2026-08-02 korrekt committet+gepusht, aber kein Deploy
+      # ausgeloest, Daten blieben live nicht sichtbar).
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
 
       - uses: actions/setup-python@v5
         with:
