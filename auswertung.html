@@ -89,10 +89,10 @@
       font-variant-numeric: tabular-nums;
     }
     table.auswertung th {
-      text-align: right; font-size: 0.66rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.03em;
+      text-align: right; font-size: 0.64rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.02em;
       color: var(--text-dim);
-      padding: 10px 12px;
+      padding: 8px 7px;
       border-bottom: 2px solid var(--border);
       background: #fafaf5;
       white-space: nowrap;
@@ -101,13 +101,15 @@
     }
     table.auswertung th:first-child { text-align: left; }
     table.auswertung th:hover { color: var(--text); }
+    table.auswertung th .unit { display: block; font-weight: 400; text-transform: none; opacity: 0.75; }
     table.auswertung th .arrow { display: inline-block; width: 0.8em; opacity: 0.4; }
     table.auswertung th.sorted .arrow { opacity: 1; }
     table.auswertung td {
-      padding: 10px 12px;
+      padding: 8px 7px;
       border-bottom: 1px solid var(--border);
       text-align: right;
       white-space: nowrap;
+      font-size: 0.78rem;
     }
     table.auswertung td:first-child { text-align: left; font-weight: 600; }
     table.auswertung tr:last-child td { border-bottom: none; }
@@ -317,7 +319,7 @@ function renderTable(data, sortKey = 'besuche', sortDir = -1) {
   const body = document.getElementById('tbl-body');
   body.innerHTML = sorted.map(d => `
     <tr>
-      <td>${d.name}${d.typ === 'Zentralbibliothek' ? '<span class="typ-badge">Zentral</span>' : ''}</td>
+      <td>${normalizeName(d.name)}${d.typ === 'Zentralbibliothek' ? '<span class="typ-badge">Zentral</span>' : ''}</td>
       <td>${fmt(d.flaeche)}</td>
       <td>${fmt(d.besuche)}</td>
       <td>${fmt(d.bestand)}</td>
