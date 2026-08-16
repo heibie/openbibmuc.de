@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auswertung – Münchner Stadtbibliothek</title>
+  <meta name="description" content="Vergleich aller Standorte der Münchner Stadtbibliothek anhand abgeleiteter Kennzahlen aus Fläche, Bestand, Besuchen und Entleihungen.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      /* Aus der Sommerferien-Leseclub-Kampagnengrafik der MSB, wie index.html/daten.html */
+      --magenta:   #DD0244;
+      --teal:      #63B7AA;
+      --orange:    #E84E0D;
+      --brand:     #D14900;
+
+      --bg: #faf8f2;
+      --surface: #fff;
+      --text: #241705;
+      --text-dim: #7a6a4a;
+      --border: #ece5d2;
+    }
+    body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .display { font-family: 'Fira Sans Condensed', Tahoma, sans-serif; font-weight: 700; }
+
+    header {
+      background: var(--brand); color: #fff;
+      padding: 0 24px; height: 58px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    header a  { display: flex; align-items: baseline; gap: 12px; text-decoration: none; color: inherit; }
+    header h1 { font-size: 1.15rem; }
+    header span { font-size: .8rem; opacity: .9; }
+    header .nav-links { margin-left: auto; display: flex; gap: 1rem; }
+    header .nav-links a { font-size: .75rem; color: #fff; opacity: .85; text-decoration: none; white-space: nowrap; }
+    header .nav-links a:hover { opacity: 1; text-decoration: underline; }
+
+    .back-nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 24px;
+      font-size: 0.8rem;
+    }
+    .back-nav a { color: var(--magenta); text-decoration: none; }
+    .back-nav a:hover { text-decoration: underline; }
+
+    main { max-width: 1200px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 6px; }
+    .page-intro { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 20px; max-width: 760px; }
+
+    .method-note {
+      background: #f0faf6;
+      border: 1px solid #b2ddc9;
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+      max-width: 760px;
+    }
+    .method-note strong { color: var(--text); }
+
+    h3 { font-size: 1.05rem; font-weight: 700; margin: 40px 0 4px; }
+    .section-note { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 18px; max-width: 700px; }
+
+    .chart-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 20px;
+      margin-bottom: 12px;
+    }
+    .chart-wrap { position: relative; height: 460px; }
+
+    /* Tabelle */
+    .table-wrap { overflow-x: auto; margin-bottom: 12px; }
+    table.auswertung {
+      width: 100%; border-collapse: collapse;
+      background: var(--surface);
+      font-size: 0.8rem;
+      border: 1px solid var(--border);
+      font-variant-numeric: tabular-nums;
+    }
+    table.auswertung th {
+      text-align: right; font-size: 0.66rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.03em;
+      color: var(--text-dim);
+      padding: 10px 12px;
+      border-bottom: 2px solid var(--border);
+      background: #fafaf5;
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+    }
+    table.auswertung th:first-child { text-align: left; }
+    table.auswertung th:hover { color: var(--text); }
+    table.auswertung th .arrow { display: inline-block; width: 0.8em; opacity: 0.4; }
+    table.auswertung th.sorted .arrow { opacity: 1; }
+    table.auswertung td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      text-align: right;
+      white-space: nowrap;
+    }
+    table.auswertung td:first-child { text-align: left; font-weight: 600; }
+    table.auswertung tr:last-child td { border-bottom: none; }
+    table.auswertung tr:hover td { background: #fafaf5; }
+    table.auswertung .typ-badge {
+      display: inline-block;
+      font-size: 0.62rem; font-weight: 700; text-transform: uppercase;
+      color: var(--brand); margin-left: 6px;
+    }
+
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 12px 24px;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: center;
+    }
+    footer a { color: var(--text-dim); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+    footer .copy { margin-right: auto; }
+
+    @media (max-width: 700px) {
+      main { padding: 24px 16px 60px; }
+      .chart-wrap { height: 360px; }
+    }
+  </style>
+
+  <!-- Matomo -->
+  <script>
+    var _paq = window._paq = window._paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="https://piwik.bielinski.de/";
+      _paq.push(['setTrackerUrl', u+'matomo.php']);
+      _paq.push(['setSiteId', '14']);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+  <!-- End Matomo Code -->
+</head>
+<body>
+
+<header>
+  <a href="/">
+    <h1 class="display">Münchner Stadtbibliothek</h1>
+    <span>Auswertung</span>
+  </a>
+  <nav class="nav-links">
+    <a href="neuzugaenge.html">Neuzugänge</a>
+    <a href="auswertung.html">Auswertung</a>
+    <a href="daten.html">Daten &amp; FAQ</a>
+    <a href="impressum.html">Impressum</a>
+  </nav>
+</header>
+
+<div class="back-nav">
+  <a href="/">← Zurück zur Karte</a>
+</div>
+
+<main>
+  <h2>Auswertung</h2>
+  <p class="page-intro">
+    Wie hängen Fläche, Bestand, Besuche und Entleihungen der 24 Standorte zusammen? Die folgenden
+    Kennzahlen setzen die vier Rohwerte zueinander ins Verhältnis, um Standorte über ihre reine
+    Größe hinaus vergleichbar zu machen.
+  </p>
+
+  <div class="method-note">
+    <strong>Methodik:</strong> Besuche und Entleihungen sind Jahressummen 2024 (das einzige
+    vollständige Kalenderjahr in den Daten, die bis Juni 2025 reichen). Bestand ist der Stand
+    Dezember 2024. Fläche ist die Publikumsfläche aus dem Standort-Datensatz. Bücherbusse (keine
+    feste Fläche) sowie die Sonderbibliotheken Jura und Monacensia (keine Besuchs-/Ausleihzahlen
+    vorhanden) sind nicht enthalten – wie schon in der Kartenansicht.
+  </div>
+
+  <h3>Ausleihen pro Besuch × Besuche pro m²</h3>
+  <p class="section-note">
+    Jeder Punkt ein Standort. Rechts = viele Ausleihen pro Besuch (klassische "Vielleiher"-
+    Bibliothek), oben = hohe Publikumsdichte im Verhältnis zur Fläche.
+  </p>
+  <div class="chart-card">
+    <div class="chart-wrap"><canvas id="scatter"></canvas></div>
+  </div>
+
+  <h3>Alle Standorte im Vergleich</h3>
+  <p class="section-note">Spaltenkopf klicken zum Sortieren.</p>
+  <div class="table-wrap">
+    <table class="auswertung" id="tbl">
+      <thead>
+        <tr>
+          <th data-key="name" data-type="str">Standort</th>
+          <th data-key="flaeche" data-type="num">Fläche <span class="unit">(m²)</span></th>
+          <th data-key="besuche" data-type="num">Besuche <span class="unit">2024</span></th>
+          <th data-key="bestand" data-type="num">Bestand <span class="unit">12/2024</span></th>
+          <th data-key="entleihungen" data-type="num">Entleihungen <span class="unit">2024</span></th>
+          <th data-key="umschlag" data-type="num">Umschlag<span class="unit">Ausl./Best.</span></th>
+          <th data-key="ausleihenProBesuch" data-type="num">Ausl./Besuch</th>
+          <th data-key="besucheProM2" data-type="num">Besuche/m²</th>
+          <th data-key="bestandProM2" data-type="num">Bestand/m²</th>
+          <th data-key="besucheProBestand" data-type="num">Besuche/Bestand</th>
+        </tr>
+      </thead>
+      <tbody id="tbl-body">
+        <tr><td colspan="10" style="text-align:center; color: var(--text-dim); padding: 30px;">Lade Daten …</td></tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<footer>
+  <span class="copy">© 2026 Münchner Stadtbibliothek – Standort-Dashboard</span>
+  <a href="/">Karte</a>
+  <a href="impressum.html">Impressum</a>
+</footer>
+
+<script>
+const INCLUDED_TYPES = new Set(['Zentralbibliothek', 'Stadtteilbibliothek']);
+const NAME_PREFIX = 'Stadtteilbibliothek ';
+
+function normalizeName(name) {
+  return name.startsWith(NAME_PREFIX) ? name.slice(NAME_PREFIX.length) : name;
+}
+
+async function loadCsv(path) {
+  const res = await fetch(path, { cache: 'no-store' });
+  const text = await res.text();
+  return Papa.parse(text, { header: true, skipEmptyLines: true }).data;
+}
+
+// Summe aller 2024er Monate (Besuche/Entleihungen) bzw. Wert Dezember 2024 (Bestand, Lagerbestand
+// statt Flussgröße - Jahressumme ergäbe keinen sinnvollen Wert).
+function aggregateByName(rows, valueCol, mode) {
+  const byName = {};
+  for (const r of rows) {
+    const key = r['bibliothek'];
+    const monat = r['jahr_monat'];
+    const wert = parseInt(r[valueCol], 10);
+    if (Number.isNaN(wert)) continue;
+    if (mode === 'sum2024') {
+      if (!monat.startsWith('2024')) continue;
+      byName[key] = (byName[key] || 0) + wert;
+    } else if (mode === 'snapshot') {
+      if (monat === '2024-12') byName[key] = wert;
+    }
+  }
+  return byName;
+}
+
+function fmt(n, digits = 0) {
+  if (n === null || n === undefined || Number.isNaN(n)) return '–';
+  return n.toLocaleString('de-DE', { minimumFractionDigits: digits, maximumFractionDigits: digits });
+}
+
+async function loadData() {
+  const [standorte, besucheRows, bestandRows, entleihungenRows] = await Promise.all([
+    loadCsv('data/standorte.csv'),
+    loadCsv('data/besucherzahlen.csv'),
+    loadCsv('data/bestand.csv'),
+    loadCsv('data/entleihungen.csv'),
+  ]);
+
+  const besucheByName = aggregateByName(besucheRows, 'anzahl_besuche', 'sum2024');
+  const bestandByName = aggregateByName(bestandRows, 'anzahl_exemplare', 'snapshot');
+  const entleihungenByName = aggregateByName(entleihungenRows, 'anzahl_entleihungen', 'sum2024');
+
+  const result = [];
+  for (const row of standorte) {
+    if (!INCLUDED_TYPES.has(row['bib_type'])) continue;
+    const norm = normalizeName(row['bib_name']);
+
+    const flaeche = row['publikumsflaeche'] ? parseInt(row['publikumsflaeche'], 10) : null;
+    const besuche = besucheByName[norm] ?? null;
+    const bestand = bestandByName[norm] ?? null;
+    const entleihungen = entleihungenByName[norm] ?? null;
+
+    if (besuche === null || bestand === null || entleihungen === null) continue;
+
+    result.push({
+      name: row['bib_name'],
+      typ: row['bib_type'],
+      flaeche,
+      besuche,
+      bestand,
+      entleihungen,
+      umschlag: bestand ? entleihungen / bestand : null,
+      ausleihenProBesuch: besuche ? entleihungen / besuche : null,
+      besucheProM2: flaeche ? besuche / flaeche : null,
+      bestandProM2: flaeche ? bestand / flaeche : null,
+      besucheProBestand: bestand ? besuche / bestand : null,
+    });
+  }
+  return result;
+}
+
+function renderTable(data, sortKey = 'besuche', sortDir = -1) {
+  const sorted = [...data].sort((a, b) => {
+    const va = a[sortKey], vb = b[sortKey];
+    if (va === null) return 1;
+    if (vb === null) return -1;
+    if (typeof va === 'string') return va.localeCompare(vb) * sortDir;
+    return (va - vb) * sortDir;
+  });
+
+  const body = document.getElementById('tbl-body');
+  body.innerHTML = sorted.map(d => `
+    <tr>
+      <td>${d.name}${d.typ === 'Zentralbibliothek' ? '<span class="typ-badge">Zentral</span>' : ''}</td>
+      <td>${fmt(d.flaeche)}</td>
+      <td>${fmt(d.besuche)}</td>
+      <td>${fmt(d.bestand)}</td>
+      <td>${fmt(d.entleihungen)}</td>
+      <td>${fmt(d.umschlag, 2)}</td>
+      <td>${fmt(d.ausleihenProBesuch, 2)}</td>
+      <td>${fmt(d.besucheProM2, 1)}</td>
+      <td>${fmt(d.bestandProM2, 1)}</td>
+      <td>${fmt(d.besucheProBestand, 2)}</td>
+    </tr>
+  `).join('');
+
+  document.querySelectorAll('#tbl th').forEach(th => {
+    th.classList.toggle('sorted', th.dataset.key === sortKey);
+    const existingArrow = th.querySelector('.arrow');
+    if (existingArrow) existingArrow.remove();
+    const arrow = document.createElement('span');
+    arrow.className = 'arrow';
+    arrow.textContent = th.dataset.key === sortKey ? (sortDir === 1 ? '↑' : '↓') : '↕';
+    th.appendChild(arrow);
+  });
+}
+
+function renderScatter(data) {
+  const points = data.filter(d => d.ausleihenProBesuch !== null && d.besucheProM2 !== null);
+  new Chart(document.getElementById('scatter'), {
+    type: 'scatter',
+    data: {
+      datasets: [{
+        data: points.map(d => ({ x: d.ausleihenProBesuch, y: d.besucheProM2, name: d.name })),
+        backgroundColor: points.map(d => d.typ === 'Zentralbibliothek' ? '#DD024488' : '#63B7AA99'),
+        borderColor: points.map(d => d.typ === 'Zentralbibliothek' ? '#DD0244' : '#63B7AA'),
+        borderWidth: 1.5,
+        radius: 6,
+        hoverRadius: 8,
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: (item) => {
+              const p = item.raw;
+              return `${p.name}: ${p.x.toFixed(2)} Ausl./Besuch, ${p.y.toFixed(1)} Besuche/m²`;
+            },
+          },
+        },
+      },
+      scales: {
+        x: {
+          title: { display: true, text: 'Ausleihen pro Besuch', color: '#7a6a4a', font: { size: 11 } },
+          grid: { color: 'rgba(36,23,5,.07)' },
+          ticks: { color: '#9a8a63' },
+        },
+        y: {
+          title: { display: true, text: 'Besuche pro m² (2024)', color: '#7a6a4a', font: { size: 11 } },
+          grid: { color: 'rgba(36,23,5,.07)' },
+          ticks: { color: '#9a8a63' },
+        },
+      },
+    },
+  });
+}
+
+let currentSortKey = 'besuche';
+let currentSortDir = -1;
+
+loadData()
+  .then(data => {
+    renderScatter(data);
+    renderTable(data, currentSortKey, currentSortDir);
+
+    document.querySelectorAll('#tbl th').forEach(th => {
+      th.addEventListener('click', () => {
+        const key = th.dataset.key;
+        if (currentSortKey === key) {
+          currentSortDir *= -1;
+        } else {
+          currentSortKey = key;
+          currentSortDir = th.dataset.type === 'str' ? 1 : -1;
+        }
+        renderTable(data, currentSortKey, currentSortDir);
+      });
+    });
+  })
+  .catch(err => {
+    document.getElementById('tbl-body').innerHTML =
+      `<tr><td colspan="10" style="text-align:center; color: var(--magenta); padding: 30px;">Fehler beim Laden der Daten: ${err.message}</td></tr>`;
+  });
+</script>
+
+</body>
+</html>
