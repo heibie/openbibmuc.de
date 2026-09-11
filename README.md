@@ -23,8 +23,9 @@ ist gitignored und liegt nur lokal + manuell hochgeladen auf dem Server, niemals
 1. **Neuzugänge abholen** (`.github/workflows/neuzugaenge.yml`, taeglich 3 Uhr UTC):
    läuft als GitHub-Actions-Workflow (nicht auf All-Inkl, da dort kein Python verfügbar ist —
    deshalb ist `check_sources.php` ja überhaupt erst in PHP portiert worden). Ruft
-   `scripts/fetch_neuzugaenge.py` ohne Argument auf (= "gestern"), committet das Ergebnis
-   nach `data/neuzugaenge/`, was automatisch den Deploy-Workflow anstößt.
+   `scripts/fetch_neuzugaenge.py` ohne Argument auf (= rollierendes 14-Tage-Fenster, siehe
+   unten), committet geänderte Tagesdateien nach `data/neuzugaenge/`, was automatisch den
+   Deploy-Workflow anstößt.
 2. **Quellen-Status-Check** (`cron/check_sources.php`): läuft SERVERSEITIG auf All-Inkl per
    KAS-Cronjob (im All-Inkl-Kundenmenü selbst einzurichten, empfohlen wöchentlich), URL:
    `https://openbibmuc.de/cron/check_sources.php?token=<CRON_TOKEN>`. Committet
@@ -103,7 +104,13 @@ OAI-PMH-Schnittstelle: `https://data-bib.muenchen.de/oai-pmh` — komplette bibl
 
 Zeigt neu katalogisierte Medien, ein Tag pro Archiv-Datei (`data/neuzugaenge/<TAG>.csv`, Liste der Tage in `data/neuzugaenge/index.json`). **BETA-Status** (Badge im Header + Hinweis im Intro-Text) — bewusst so gekennzeichnet, kann kaputtgehen oder Datenfehler enthalten.
 
-**Warum ein Tag statt eines rollierenden Fensters:** ein 7-Tage-Fenster über den Gesamtbestand ergibt schon 900+ Treffer, jedes Mal alles neu abzurufen wäre Verschwendung. Ein Tag pro Lauf + Archivierung baut stattdessen mit der Zeit eine vollständige lokale Historie auf, ohne je einen Tag doppelt abzufragen (`fetch_neuzugaenge.py` prüft `data/neuzugaenge/<TAG>.csv` auf Existenz, idempotent).
+**Was "neu" heißt — Filter über MARC 008 (seit 2026-09-09):** Der OAI-Datumsfilter `from`/`until` greift auf den *datestamp* = letzte Änderung des Datensatzes. Jede Nachbearbeitung (Re-Indexierung, Bestandsänderung, Normdaten) hebt ihn — dadurch tauchten massenweise Uralt-Titel als "Neuzugänge" auf (Rückmeldung der Stadtbibliothek 2026-09: eine Zeitschrift von 1934; Messung 2026-09-08: nur 143 von 948 = 15 % wirklich neu). Lösung (Hinweis der Bibliothek): **MARC-Controlfield 008, Pos. 00–05 = Erfassungsdatum (JJMMTT)**, ändert sich nach der Neuaufnahme nie. Der neue Ablauf:
+- Weiterhin per datestamp harvesten (die API kann nicht nach 008 filtern), aber ein **rollierendes 14-Tage-Fenster** — der datestamp eines neu erfassten Satzes kommt teils Tage nach dem 008-Datum.
+- Pro Datensatz das 008-Datum parsen (Century-Pivot `JJ<70 → 20JJ`) und nur behalten, wenn es aktuell ist (Standardlauf: ≤ heute und höchstens `KEEP_MAX_AGE_DAYS` = 45 Tage alt).
+- **Einsortieren nach 008-Datum, nicht nach Harvest-Tag.** Tagesdateien werden **gemergt** (Dedup über MARC-001 + OPAC-URL), nicht "überspringen wenn vorhanden" — ein Tag bekommt bei Folgeläufen noch Nachzügler. Cover nur für wirklich neue Zeilen.
+- CSV hat zwei neue Spalten: `id` (MARC-001), `created` (008-Datum). Das Frontend nutzt nur den Dateinamen, keine Anpassung nötig.
+
+Aufrufvarianten: ohne Argument (rollierend, Cron), `YYYY-MM-DD` (einen datestamp-Tag nachholen), `--rebuild` (Historie neu aufbauen: alte Tagesdateien löschen, breit harvesten ab `REBUILD_FLOOR` = 2026-07-26), `YYYY-MM-DD YYYY-MM-DD` (expliziter Bereich).
 
 **Medienart kommt aus MARC-Feld `245$h`** (allgemeine Materialbenennung, z.B. "[Buch + CD]", "[DVD-Video]"), nicht aus dem MARC-Leader-Code — deutlich feinkörniger. Der MSB-OPAC selbst übersetzt diese Rohwerte nochmal in freundlichere Labels (z.B. "Druckschrift" → "Buch", "Buch + CD" → "Medienkombination") — per Stichprobe an 11 Datensätzen manuell im OPAC nachgeschaut und in `GMD_DISPLAY_LABELS` nachgebaut. MARC-Leader-Code bleibt nur Fallback für den seltenen Fall, dass `245$h` mal fehlt.
 

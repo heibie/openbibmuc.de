@@ -33,7 +33,7 @@ jobs:
         run: |
           echo "GOOGLE_BOOKS_API_KEY = \"$GOOGLE_BOOKS_API_KEY\"" > scripts/_secrets.py
 
-      - name: Neuzugänge von gestern holen
+      - name: Neuzugänge holen (rollierendes 14-Tage-Fenster, Filter über MARC 008)
         run: python3 scripts/fetch_neuzugaenge.py
 
       - name: Ergebnis committen und pushen
@@ -43,8 +43,8 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/neuzugaenge/
           if git diff --staged --quiet; then
-            echo "Keine neuen Daten (Tag evtl. schon archiviert oder noch keine Treffer)."
+            echo "Keine neuen Datensätze."
           else
-            git commit -m "data: Neuzugänge $(date -u -d 'yesterday' +%Y-%m-%d) archiviert"
+            git commit -m "data: Neuzugänge aktualisiert ($(date -u +%Y-%m-%d))"
             git push
           fi
