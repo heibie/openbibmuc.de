@@ -164,14 +164,23 @@ function check_ckan(string $dataset, array $prev): array
     $ctx = stream_context_create([
         'http' => ['timeout' => 20, 'header' => "User-Agent: openbibmuc-source-check\r\n"],
     ]);
-    $raw = @file_get_contents($url, false, $ctx);
-    if ($raw === false) {
-        return ['status' => 'unknown', 'detail' => 'CKAN-Abruf fehlgeschlagen (keine Antwort).'];
+    // Mehrere Versuche: das Portal hat um Mitternacht (Cron-Zeitpunkt) gelegentlich
+    // einzelne Aussetzer (2026-11-08 + 11-15 je eine von vier Abfragen ohne Antwort).
+    $attempts = 3;
+    $data     = null;
+    for ($i = 1; $i <= $attempts; $i++) {
+        $raw  = @file_get_contents($url, false, $ctx);
+        $data = $raw === false ? null : json_decode($raw, true);
+        if ($data['success'] ?? false) {
+            break;
+        }
+        if ($i < $attempts) {
+            sleep(5 * $i);
+        }
     }
-    $data = json_decode($raw, true);
     if (!($data['success'] ?? false)) {
-        $msg = $data['error']['message'] ?? 'unbekannter Fehler';
-        return ['status' => 'unknown', 'detail' => "CKAN-Abruf fehlgeschlagen: {$msg}"];
+        $msg = $data === null ? 'keine Antwort' : ($data['error']['message'] ?? 'unbekannter Fehler');
+        return ckan_failure($prev, "CKAN-Abruf nach {$attempts} Versuchen fehlgeschlagen ({$msg}).");
     }
     $result = $data['result'];
     $extras = [];
@@ -205,6 +214,18 @@ function check_ckan(string $dataset, array $prev): array
             ? "Quelle wurde seit letzter Prüfung aktualisiert (laut {$field})."
             : "Laut Portal zuletzt geändert am {$sourceModified} ({$field}), keine Änderung seit letzter Prüfung.",
     ];
+}
+
+// Bei einem Fehlschlag den zuletzt bekannten Stand behalten - sonst fehlt beim nächsten
+// Lauf der Vergleichswert und eine echte Änderung würde nur als "ok" durchrutschen.
+function ckan_failure(array $prev, string $detail): array
+{
+    $result = ['status' => 'unknown', 'detail' => $detail];
+    if (isset($prev['source_modified'])) {
+        $result['source_modified'] = $prev['source_modified'];
+        $result['detail']         .= " Zuletzt bekannter Stand: {$prev['source_modified']}.";
+    }
+    return $result;
 }
 
 function check_heuristic(array $src, array $prev): array
