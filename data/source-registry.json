@@ -1,5 +1,5 @@
 {
-  "_comment": "Registry aller Datenquellen für quellen.html. 'used_in' verlinkt auf Kartenbereiche, 'check' definiert wie cron/check_sources.php Live-Änderungen der Originalquelle prüft. Status-Ergebnisse landen in data/source-status.json (von check_sources.php generiert, nicht manuell pflegen).",
+  "_comment": "Registry aller Datenquellen für quellen.html. 'used_in' verlinkt auf Kartenbereiche, 'check' definiert wie cron/check_sources.php Live-Änderungen der Originalquelle prüft; 'imported_source_modified' = Portal-Stand der Version, die in unserer CSV steckt (beim Übernehmen neuer Daten hochsetzen). Status-Ergebnisse landen in data/source-status.json (von check_sources.php generiert, nicht manuell pflegen).",
   "categories": [
     {
       "title": "Standorte",
@@ -16,7 +16,7 @@
           "original_source": { "label": "OpenData LHM – Standortliste der Münchner Stadtbibliothek", "href": "https://opendata.muenchen.de/dataset/standortliste-der-muenchner-stadtbibliothek" },
           "license": "DL-DE-BY 2.0",
           "turnus": "unregelmäßig",
-          "check": { "method": "ckan", "dataset": "standortliste-der-muenchner-stadtbibliothek" },
+          "check": { "method": "ckan", "dataset": "standortliste-der-muenchner-stadtbibliothek", "imported_source_modified": "2025-06-03T06:08:23.993138" },
           "note": "Liefert bib_type, bib_name, bib_abkuerzung, bib_strasse, bib_plz, lat, lon, publikumsflaeche, anzahl_arbeitsplaetze, webseite, open_library, barrierefreiheit. Alle übrigen Spalten in standorte.csv sind Anreicherungen aus der MSB-Website (siehe unten)."
         }
       ]
@@ -34,7 +34,7 @@
           "original_source": { "label": "OpenData LHM – Bibliothekskennzahlen: Besucherzahlen", "href": "https://opendata.muenchen.de/dataset/bibliothekskennzahlen-der-muenchner-stadtbibliothek-besucherzahlen" },
           "license": "DL-DE-BY 2.0",
           "turnus": "monatlich",
-          "check": { "method": "ckan", "dataset": "bibliothekskennzahlen-der-muenchner-stadtbibliothek-besucherzahlen" }
+          "check": { "method": "ckan", "dataset": "bibliothekskennzahlen-der-muenchner-stadtbibliothek-besucherzahlen", "imported_source_modified": "2025-09-01T09:59:48.866425" }
         },
         {
           "id": "bestand",
@@ -46,7 +46,7 @@
           "original_source": { "label": "OpenData LHM – Bibliothekskennzahlen: Bestand", "href": "https://opendata.muenchen.de/dataset/bibliothekskennzahlen-der-muenchner-stadtbibliothek-bestand" },
           "license": "DL-DE-BY 2.0",
           "turnus": "monatlich",
-          "check": { "method": "ckan", "dataset": "bibliothekskennzahlen-der-muenchner-stadtbibliothek-bestand" }
+          "check": { "method": "ckan", "dataset": "bibliothekskennzahlen-der-muenchner-stadtbibliothek-bestand", "imported_source_modified": "2025-09-01T08:55:37.726745" }
         },
         {
           "id": "entleihungen",
@@ -58,7 +58,7 @@
           "original_source": { "label": "OpenData LHM – Bibliothekskennzahlen: Entleihungen", "href": "https://opendata.muenchen.de/dataset/bibliothekskennzahlen-der-muenchner-stadtbibliothek-entleihungen" },
           "license": "DL-DE-BY 2.0",
           "turnus": "monatlich",
-          "check": { "method": "ckan", "dataset": "bibliothekskennzahlen-der-muenchner-stadtbibliothek-entleihungen" }
+          "check": { "method": "ckan", "dataset": "bibliothekskennzahlen-der-muenchner-stadtbibliothek-entleihungen", "imported_source_modified": "2025-09-01T10:01:31.864180" }
         }
       ]
     },

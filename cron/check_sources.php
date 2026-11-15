@@ -10,9 +10,10 @@
  *   1. data/source-status.json wird bei JEDEM Lauf neu berechnet und automatisch direkt
  *      nach main committet (rein informative Ampel auf daten.html, ändert keine
  *      Kartendaten, daher unkritisch für Auto-Commit).
- *   2. Erkennt der Check bei einer "ckan"-Quelle eine echte Änderung gegenüber dem letzten
- *      bekannten Stand, wird zusätzlich ein GitHub Issue angelegt ("Quelle X hat sich
- *      geändert: alt -> neu"). Es wird NICHT versucht, die betroffene CSV automatisch neu
+ *   2. Ist eine "ckan"-Quelle auf dem Portal neuer als der übernommene Stand (Registry-Feld
+ *      check.imported_source_modified), bleibt der Status "changed", bis die CSV aktualisiert
+ *      und das Feld hochgesetzt wurde. Bei jeder neuen Portalversion wird einmalig ein
+ *      GitHub Issue angelegt ("Quelle X hat sich geändert: alt -> neu"). Es wird NICHT versucht, die betroffene CSV automatisch neu
  *      zu erzeugen - die Übernahme von OpenData-Rohdaten in unsere Struktur ist pro Quelle
  *      unterschiedlich, falsch übernommene Werte sollen nicht ungeprüft in die Karte wandern.
  *      Die CSV-Aktualisierung bleibt ein manueller Schritt.
@@ -61,8 +62,10 @@ try {
             $prev   = $prevStatus[$id] ?? [];
 
             if ($method === 'ckan') {
-                $result = check_ckan($src['check']['dataset'], $prev);
-                if ($result['status'] === 'changed') {
+                $result = check_ckan($src['check'], $prev);
+                // Issue nur einmal pro neuer Portalversion, nicht bei jedem Lauf, solange
+                // die Daten noch nicht übernommen sind (Status bleibt dann "changed").
+                if ($result['status'] === 'changed' && ($result['new_since_last_check'] ?? false)) {
                     $changed[] = ['id' => $id, 'title' => $src['title'], 'result' => $result, 'prev' => $prev];
                 }
             } elseif ($method === 'heuristic') {
@@ -71,6 +74,7 @@ try {
                 $result = ['status' => 'unknown', 'detail' => "Unbekannte Prüfmethode: {$method}"];
             }
 
+            unset($result['new_since_last_check']);
             $result['method']        = $method;
             $result['checked_at']    = $now;
             $result['local_updated'] = $result['local_updated'] ?? ($prev['local_updated'] ?? null);
@@ -148,18 +152,20 @@ function normalize_json(string $json): ?string
 function issue_body(array $c): string
 {
     $r   = $c['result'];
-    $old = $c['prev']['source_modified'] ?? '(unbekannt, erster Check)';
+    $old = $c['result']['local_updated'] ?? $c['prev']['source_modified'] ?? '(unbekannt, erster Check)';
     $new = $r['source_modified'] ?? '(unbekannt)';
-    return "Automatischer Wochen-Check hat eine Änderung an der Quelle **{$c['title']}** erkannt.\n\n"
-         . "- Zuletzt bekannt: `{$old}`\n"
+    return "Automatischer Wochen-Check hat eine neue Version der Quelle **{$c['title']}** erkannt.\n\n"
+         . "- Übernommen bzw. zuletzt bekannt: `{$old}`\n"
          . "- Jetzt laut Portal: `{$new}`\n\n"
          . "Bitte in der [Quellen-Übersicht](https://openbibmuc.de/daten.html) gegenprüfen "
-         . "und die betroffene CSV bei Bedarf manuell aktualisieren. Dieses Issue danach schließen.\n\n"
+         . "und die betroffene CSV bei Bedarf manuell aktualisieren. Danach in `data/source-registry.json` "
+         . "`imported_source_modified` auf den neuen Stand setzen (sonst bleibt der Status rot) und dieses Issue schließen.\n\n"
          . "_Automatisch erstellt von `cron/check_sources.php`._";
 }
 
-function check_ckan(string $dataset, array $prev): array
+function check_ckan(array $check, array $prev): array
 {
+    $dataset = $check['dataset'];
     $url = 'https://opendata.muenchen.de/api/3/action/package_show?id=' . urlencode($dataset);
     $ctx = stream_context_create([
         'http' => ['timeout' => 20, 'header' => "User-Agent: openbibmuc-source-check\r\n"],
@@ -205,15 +211,35 @@ function check_ckan(string $dataset, array $prev): array
     }
 
     $prevModified = $prev['source_modified'] ?? null;
-    $isChanged    = $prevModified !== null && $prevModified !== $sourceModified;
+    $newSinceLast = $prevModified !== null && $prevModified !== $sourceModified;
 
-    return [
-        'status'          => $isChanged ? 'changed' : 'ok',
-        'source_modified' => $sourceModified,
-        'detail'          => $isChanged
+    // Verglichen wird mit dem Portal-Stand, der in unserer CSV steckt (Registry-Feld
+    // imported_source_modified), nicht nur mit dem letzten Lauf - sonst kippt "changed"
+    // nach einer Woche auf "ok", obwohl die neuen Daten nie übernommen wurden.
+    $imported = $check['imported_source_modified'] ?? null;
+    if ($imported === null) {
+        $isChanged = $newSinceLast;
+        $detail    = $isChanged
             ? "Quelle wurde seit letzter Prüfung aktualisiert (laut {$field})."
-            : "Laut Portal zuletzt geändert am {$sourceModified} ({$field}), keine Änderung seit letzter Prüfung.",
+            : "Laut Portal zuletzt geändert am {$sourceModified} ({$field}), keine Änderung seit letzter Prüfung.";
+    } else {
+        $isChanged = $sourceModified !== null && $sourceModified > $imported;
+        $detail    = $isChanged
+            ? "Neuere Version auf dem Portal (Stand {$sourceModified}), übernommen ist Stand {$imported}."
+            : "Übernommener Stand {$imported} entspricht dem Portal ({$field}).";
+    }
+
+    $result = [
+        'status'               => $isChanged ? 'changed' : 'ok',
+        'source_modified'      => $sourceModified,
+        'detail'               => $detail,
+        'new_since_last_check' => $newSinceLast || ($prevModified === null && $isChanged),
     ];
+    if ($imported !== null) {
+        $result['local_updated']         = $imported;
+        $result['local_updated_precise'] = true;
+    }
+    return $result;
 }
 
 // Bei einem Fehlschlag den zuletzt bekannten Stand behalten - sonst fehlt beim nächsten
@@ -221,6 +247,9 @@ function check_ckan(string $dataset, array $prev): array
 function ckan_failure(array $prev, string $detail): array
 {
     $result = ['status' => 'unknown', 'detail' => $detail];
+    if (isset($prev['local_updated_precise'])) {
+        $result['local_updated_precise'] = $prev['local_updated_precise'];
+    }
     if (isset($prev['source_modified'])) {
         $result['source_modified'] = $prev['source_modified'];
         $result['detail']         .= " Zuletzt bekannter Stand: {$prev['source_modified']}.";
