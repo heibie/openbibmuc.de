@@ -332,7 +332,7 @@
 
   <header>
     <h1 class="display">Münchner Stadtbibliothek</h1>
-    <span>Standorte, Besuche, Bestand &amp; Entleihungen · Jan 2024–Jun 2025</span>
+    <span>Standorte, Besuche, Bestand &amp; Entleihungen · Jan 2024–Sep 2026</span>
     <nav class="nav-links">
       <a href="neuzugaenge.html">Neuzugänge</a>
       <a href="auswertung.html">Auswertung</a>
@@ -458,8 +458,12 @@ const SERVICE_ICONS = {
 // scripts/build_data.py erzeugt hat - der ganze Rest von index.html
 // (getStatus/renderList/renderDetail) bleibt dadurch unveraendert.
 
-const INCLUDED_TYPES = new Set(['Zentralbibliothek', 'Stadtteilbibliothek']);
+// 'Pop-up-Bibliothek' = bibBox Freimann, manuell in standorte.csv ergaenzt (2026-11-18,
+// fehlt in der offiziellen OpenData-Standortliste von 06/2025).
+const INCLUDED_TYPES = new Set(['Zentralbibliothek', 'Stadtteilbibliothek', 'Pop-up-Bibliothek']);
 const NAME_PREFIX = 'Stadtteilbibliothek ';
+// Standortname -> Name in den Kennzahlen-CSVs, wo beide nicht ueber NAME_PREFIX zusammenpassen.
+const KENNZAHLEN_NAME_ALIAS = { 'bibBox Freimann': 'Neufreimann' };
 
 // Muss zu SERVICE_COLUMNS in scripts/enrich_standorte.py passen.
 const SERVICE_CSV_COLUMNS = {
@@ -494,6 +498,7 @@ const VOR_ORT_COLUMNS = {
 const HOUR_DAYS = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
 
 function normalizeName(name) {
+  if (KENNZAHLEN_NAME_ALIAS[name]) return KENNZAHLEN_NAME_ALIAS[name];
   return name.startsWith(NAME_PREFIX) ? name.slice(NAME_PREFIX.length) : name;
 }
 

@@ -17,7 +17,7 @@
           "license": "DL-DE-BY 2.0",
           "turnus": "unregelmäßig",
           "check": { "method": "ckan", "dataset": "standortliste-der-muenchner-stadtbibliothek", "imported_source_modified": "2025-06-03T06:08:23.993138" },
-          "note": "Liefert bib_type, bib_name, bib_abkuerzung, bib_strasse, bib_plz, lat, lon, publikumsflaeche, anzahl_arbeitsplaetze, webseite, open_library, barrierefreiheit. Alle übrigen Spalten in standorte.csv sind Anreicherungen aus der MSB-Website (siehe unten)."
+          "note": "Liefert bib_type, bib_name, bib_abkuerzung, bib_strasse, bib_plz, lat, lon, publikumsflaeche, anzahl_arbeitsplaetze, webseite, open_library, barrierefreiheit. Alle übrigen Spalten in standorte.csv sind Anreicherungen aus der MSB-Website (siehe unten). Ausnahme: die bibBox Freimann (Self-Service-Pop-up-Bibliothek) fehlt in der Standortliste (Stand 06/2025) und ist komplett von Hand nach muenchner-stadtbibliothek.de/bibbox ergänzt; in den Kennzahlen heißt sie „Neufreimann“."
         }
       ]
     },
@@ -34,7 +34,7 @@
           "original_source": { "label": "OpenData LHM – Bibliothekskennzahlen: Besucherzahlen", "href": "https://opendata.muenchen.de/dataset/bibliothekskennzahlen-der-muenchner-stadtbibliothek-besucherzahlen" },
           "license": "DL-DE-BY 2.0",
           "turnus": "monatlich",
-          "check": { "method": "ckan", "dataset": "bibliothekskennzahlen-der-muenchner-stadtbibliothek-besucherzahlen", "imported_source_modified": "2025-09-01T09:59:48.866425" }
+          "check": { "method": "ckan", "dataset": "bibliothekskennzahlen-der-muenchner-stadtbibliothek-besucherzahlen", "imported_source_modified": "2026-11-13T14:13:29.198371" }
         },
         {
           "id": "bestand",
@@ -46,7 +46,8 @@
           "original_source": { "label": "OpenData LHM – Bibliothekskennzahlen: Bestand", "href": "https://opendata.muenchen.de/dataset/bibliothekskennzahlen-der-muenchner-stadtbibliothek-bestand" },
           "license": "DL-DE-BY 2.0",
           "turnus": "monatlich",
-          "check": { "method": "ckan", "dataset": "bibliothekskennzahlen-der-muenchner-stadtbibliothek-bestand", "imported_source_modified": "2025-09-01T08:55:37.726745" }
+          "check": { "method": "ckan", "dataset": "bibliothekskennzahlen-der-muenchner-stadtbibliothek-bestand", "imported_source_modified": "2026-11-13T14:15:43.347924" },
+          "note": "Die Portal-Datei (Stand 13.11.2026) hat fälschlich den Spaltenkopf anzahl_entleihungen – die Werte sind aber der Bestand (Exemplare). Beim Übernehmen in anzahl_exemplare umbenannt."
         },
         {
           "id": "entleihungen",
@@ -58,7 +59,7 @@
           "original_source": { "label": "OpenData LHM – Bibliothekskennzahlen: Entleihungen", "href": "https://opendata.muenchen.de/dataset/bibliothekskennzahlen-der-muenchner-stadtbibliothek-entleihungen" },
           "license": "DL-DE-BY 2.0",
           "turnus": "monatlich",
-          "check": { "method": "ckan", "dataset": "bibliothekskennzahlen-der-muenchner-stadtbibliothek-entleihungen", "imported_source_modified": "2025-09-01T10:01:31.864180" }
+          "check": { "method": "ckan", "dataset": "bibliothekskennzahlen-der-muenchner-stadtbibliothek-entleihungen", "imported_source_modified": "2026-11-18T06:58:08.071336" }
         }
       ]
     },

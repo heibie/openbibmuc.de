@@ -39,6 +39,14 @@ HOURS_URL = (
     "29,30,31,34,32,33,23,1,3,4,5,6,8,7,9,39,38,10,11,12,13,14,24,15,16,17,18,27,19,20,21,22"
 )
 
+# Standorte, die NICHT aus der OpenData-Standortliste kommen und deren Zeile in
+# standorte.csv komplett von Hand gepflegt wird (Quelle: jeweilige MSB-Unterseite).
+# Werden von diesem Skript uebersprungen, damit ein Re-Run die Werte nicht leert.
+# bibBox Freimann (2026-11-18): Self-Service-Pop-up-Bibliothek, in der Standortliste
+# von 06/2025 noch nicht enthalten, in den Kennzahlen als "Neufreimann" (Sigel 135);
+# Infos von https://www.muenchner-stadtbibliothek.de/bibbox, Koordinaten aus ?type=951.
+MANUAL_ROWS = {"bibBox Freimann"}
+
 PREFIXES = ["Stadtteilbibliothek ", "Stadtbibliothek im ", "Stadtbibliothek "]
 
 # slug (aus dem FontAwesome-Icon-Klassennamen der Standort-Unterseite,
@@ -300,6 +308,9 @@ def main():
     unknown_titles = set()
     print(f"Hole Kontakt/Oeffnungszeiten/Services/Ausstattung/#aktuell von {len(rows)} Standort-Unterseiten ...")
     for row in rows:
+        if row["bib_name"] in MANUAL_ROWS:
+            # komplett von Hand gepflegt, siehe MANUAL_ROWS oben - nicht anfassen
+            continue
         norm = normalize(row["bib_name"])
         info = by_norm.get(norm)
         if not info:

@@ -1,541 +1,1015 @@
 ﻿jahr_monat,bibliothekssigel,bibliothek,anzahl_entleihungen
 2024-01,19,Stadtbibliothek im Motorama,63178
-2024-02,19,Stadtbibliothek im Motorama,63115
-2024-03,19,Stadtbibliothek im Motorama,65582
-2024-04,19,Stadtbibliothek im Motorama,62284
-2024-05,19,Stadtbibliothek im Motorama,62430
-2024-06,19,Stadtbibliothek im Motorama,54956
-2024-07,19,Stadtbibliothek im Motorama,60551
-2024-08,19,Stadtbibliothek im Motorama,57835
-2024-09,19,Stadtbibliothek im Motorama,59575
-2024-10,19,Stadtbibliothek im Motorama,66186
-2024-11,19,Stadtbibliothek im Motorama,64093
-2024-12,19,Stadtbibliothek im Motorama,59641
-2025-01,19,Stadtbibliothek im Motorama,67780
-2025-02,19,Stadtbibliothek im Motorama,59223
-2025-03,19,Stadtbibliothek im Motorama,65121
-2025-04,19,Stadtbibliothek im Motorama,60312
-2025-05,19,Stadtbibliothek im Motorama,61018
-2025-06,19,Stadtbibliothek im Motorama,53149
 2024-01,51,Stadtbibliothek im HP8,34443
-2024-02,51,Stadtbibliothek im HP8,32206
-2024-03,51,Stadtbibliothek im HP8,32765
-2024-04,51,Stadtbibliothek im HP8,32434
-2024-05,51,Stadtbibliothek im HP8,32284
-2024-06,51,Stadtbibliothek im HP8,28959
-2024-07,51,Stadtbibliothek im HP8,30878
-2024-08,51,Stadtbibliothek im HP8,28743
-2024-09,51,Stadtbibliothek im HP8,30153
-2024-10,51,Stadtbibliothek im HP8,33024
-2024-11,51,Stadtbibliothek im HP8,31501
-2024-12,51,Stadtbibliothek im HP8,30181
-2025-01,51,Stadtbibliothek im HP8,32702
-2025-02,51,Stadtbibliothek im HP8,29742
-2025-03,51,Stadtbibliothek im HP8,30287
-2025-04,51,Stadtbibliothek im HP8,27973
-2025-05,51,Stadtbibliothek im HP8,28455
-2025-06,51,Stadtbibliothek im HP8,24739
 2024-01,111,Berg am Laim,15117
-2024-02,111,Berg am Laim,15296
-2024-03,111,Berg am Laim,15290
-2024-04,111,Berg am Laim,15270
-2024-05,111,Berg am Laim,15043
-2024-06,111,Berg am Laim,7994
-2024-07,111,Berg am Laim,1100
-2024-08,111,Berg am Laim,81
-2024-09,111,Berg am Laim,107
-2024-10,111,Berg am Laim,53
-2024-11,111,Berg am Laim,8492
-2024-12,111,Berg am Laim,10377
-2025-01,111,Berg am Laim,12146
-2025-02,111,Berg am Laim,10963
-2025-03,111,Berg am Laim,11757
-2025-04,111,Berg am Laim,12494
-2025-05,111,Berg am Laim,12377
-2025-06,111,Berg am Laim,11017
 2024-01,112,Waldtrudering,34250
-2024-02,112,Waldtrudering,33939
-2024-03,112,Waldtrudering,36227
-2024-04,112,Waldtrudering,36063
-2024-05,112,Waldtrudering,36788
-2024-06,112,Waldtrudering,31241
-2024-07,112,Waldtrudering,36426
-2024-08,112,Waldtrudering,35446
-2024-09,112,Waldtrudering,32266
-2024-10,112,Waldtrudering,39453
-2024-11,112,Waldtrudering,34801
-2024-12,112,Waldtrudering,31285
-2025-01,112,Waldtrudering,41162
-2025-02,112,Waldtrudering,37027
-2025-03,112,Waldtrudering,38641
-2025-04,112,Waldtrudering,37712
-2025-05,112,Waldtrudering,36180
-2025-06,112,Waldtrudering,30117
 2024-01,115,Riem,17982
-2024-02,115,Riem,17518
-2024-03,115,Riem,18063
-2024-04,115,Riem,17408
-2024-05,115,Riem,17774
-2024-06,115,Riem,15451
-2024-07,115,Riem,17534
-2024-08,115,Riem,18594
-2024-09,115,Riem,17323
-2024-10,115,Riem,6646
-2024-11,115,Riem,291
-2024-12,115,Riem,213
-2025-01,115,Riem,169
-2025-02,115,Riem,104
-2025-03,115,Riem,64
-2025-04,115,Riem,117
-2025-05,115,Riem,15483
-2025-06,115,Riem,14286
 2024-01,117,Moosach,28505
-2024-02,117,Moosach,27933
-2024-03,117,Moosach,28798
-2024-04,117,Moosach,28834
-2024-05,117,Moosach,29446
-2024-06,117,Moosach,24894
-2024-07,117,Moosach,30764
-2024-08,117,Moosach,28035
-2024-09,117,Moosach,29652
-2024-10,117,Moosach,34216
-2024-11,117,Moosach,29868
-2024-12,117,Moosach,28223
-2025-01,117,Moosach,33950
-2025-02,117,Moosach,30734
-2025-03,117,Moosach,32146
-2025-04,117,Moosach,31606
-2025-05,117,Moosach,32394
-2025-06,117,Moosach,27969
 2024-01,118,Westend,16678
-2024-02,118,Westend,16360
-2024-03,118,Westend,17130
-2024-04,118,Westend,15831
-2024-05,118,Westend,16182
-2024-06,118,Westend,13240
-2024-07,118,Westend,15458
-2024-08,118,Westend,14842
-2024-09,118,Westend,14546
-2024-10,118,Westend,16799
-2024-11,118,Westend,14484
-2024-12,118,Westend,14063
-2025-01,118,Westend,18504
-2025-02,118,Westend,16246
-2025-03,118,Westend,16332
-2025-04,118,Westend,15528
-2025-05,118,Westend,15747
-2025-06,118,Westend,13415
 2024-01,123,Fürstenried,39260
-2024-02,123,Fürstenried,37806
-2024-03,123,Fürstenried,40897
-2024-04,123,Fürstenried,40829
-2024-05,123,Fürstenried,40979
-2024-06,123,Fürstenried,35572
-2024-07,123,Fürstenried,39803
-2024-08,123,Fürstenried,38144
-2024-09,123,Fürstenried,38827
-2024-10,123,Fürstenried,43157
-2024-11,123,Fürstenried,38213
-2024-12,123,Fürstenried,36852
-2025-01,123,Fürstenried,45697
-2025-02,123,Fürstenried,40371
-2025-03,123,Fürstenried,42396
-2025-04,123,Fürstenried,41659
-2025-05,123,Fürstenried,42209
-2025-06,123,Fürstenried,36136
 2024-01,125,Am Westkreuz,22000
-2024-02,125,Am Westkreuz,21064
-2024-03,125,Am Westkreuz,22765
-2024-04,125,Am Westkreuz,22019
-2024-05,125,Am Westkreuz,23097
-2024-06,125,Am Westkreuz,21289
-2024-07,125,Am Westkreuz,24200
-2024-08,125,Am Westkreuz,23349
-2024-09,125,Am Westkreuz,23631
-2024-10,125,Am Westkreuz,27909
-2024-11,125,Am Westkreuz,25737
-2024-12,125,Am Westkreuz,23039
-2025-01,125,Am Westkreuz,27170
-2025-02,125,Am Westkreuz,24772
-2025-03,125,Am Westkreuz,26008
-2025-04,125,Am Westkreuz,25075
-2025-05,125,Am Westkreuz,25067
-2025-06,125,Am Westkreuz,21743
 2024-01,126,Maxvorstadt,19949
-2024-02,126,Maxvorstadt,19123
-2024-03,126,Maxvorstadt,19926
-2024-04,126,Maxvorstadt,19623
-2024-05,126,Maxvorstadt,19697
-2024-06,126,Maxvorstadt,17174
-2024-07,126,Maxvorstadt,19901
-2024-08,126,Maxvorstadt,17759
-2024-09,126,Maxvorstadt,19119
-2024-10,126,Maxvorstadt,20589
-2024-11,126,Maxvorstadt,610
-2024-12,126,Maxvorstadt,719
-2025-01,126,Maxvorstadt,20753
-2025-02,126,Maxvorstadt,18136
-2025-03,126,Maxvorstadt,19213
-2025-04,126,Maxvorstadt,14624
-2025-05,126,Maxvorstadt,12614
-2025-06,126,Maxvorstadt,16138
 2024-01,128,Bogenhausen,44289
-2024-02,128,Bogenhausen,43776
-2024-03,128,Bogenhausen,44010
-2024-04,128,Bogenhausen,45527
-2024-05,128,Bogenhausen,45383
-2024-06,128,Bogenhausen,40461
-2024-07,128,Bogenhausen,45185
-2024-08,128,Bogenhausen,43402
-2024-09,128,Bogenhausen,40391
-2024-10,128,Bogenhausen,46903
-2024-11,128,Bogenhausen,44799
-2024-12,128,Bogenhausen,39096
-2025-01,128,Bogenhausen,48909
-2025-02,128,Bogenhausen,41986
-2025-03,128,Bogenhausen,43023
-2025-04,128,Bogenhausen,43100
-2025-05,128,Bogenhausen,42514
-2025-06,128,Bogenhausen,37028
 2024-01,129,Neuperlach,24614
-2024-02,129,Neuperlach,24027
-2024-03,129,Neuperlach,24256
-2024-04,129,Neuperlach,24106
-2024-05,129,Neuperlach,24670
-2024-06,129,Neuperlach,21320
-2024-07,129,Neuperlach,24040
-2024-08,129,Neuperlach,23557
-2024-09,129,Neuperlach,22995
-2024-10,129,Neuperlach,27544
-2024-11,129,Neuperlach,23334
-2024-12,129,Neuperlach,21145
-2025-01,129,Neuperlach,25939
-2025-02,129,Neuperlach,23938
-2025-03,129,Neuperlach,24025
-2025-04,129,Neuperlach,24148
-2025-05,129,Neuperlach,23634
-2025-06,129,Neuperlach,21124
 2024-01,130,Milbertshofen,17623
-2024-02,130,Milbertshofen,18192
-2024-03,130,Milbertshofen,17992
-2024-04,130,Milbertshofen,18301
-2024-05,130,Milbertshofen,18032
-2024-06,130,Milbertshofen,14819
-2024-07,130,Milbertshofen,16664
-2024-08,130,Milbertshofen,15873
-2024-09,130,Milbertshofen,16562
-2024-10,130,Milbertshofen,17967
-2024-11,130,Milbertshofen,17736
-2024-12,130,Milbertshofen,16665
-2025-01,130,Milbertshofen,18619
-2025-02,130,Milbertshofen,17053
-2025-03,130,Milbertshofen,17700
-2025-04,130,Milbertshofen,17118
-2025-05,130,Milbertshofen,17469
-2025-06,130,Milbertshofen,14679
 2024-01,132,Hadern,19512
-2024-02,132,Hadern,18440
-2024-03,132,Hadern,18657
-2024-04,132,Hadern,19849
-2024-05,132,Hadern,18906
-2024-06,132,Hadern,17458
-2024-07,132,Hadern,19141
-2024-08,132,Hadern,18493
-2024-09,132,Hadern,17319
-2024-10,132,Hadern,20623
-2024-11,132,Hadern,18776
-2024-12,132,Hadern,17076
-2025-01,132,Hadern,21436
-2025-02,132,Hadern,19181
-2025-03,132,Hadern,18901
-2025-04,132,Hadern,19478
-2025-05,132,Hadern,19063
-2025-06,132,Hadern,16466
 2024-01,133,Allach-Untermenzing,25196
-2024-02,133,Allach-Untermenzing,23997
-2024-03,133,Allach-Untermenzing,25981
-2024-04,133,Allach-Untermenzing,24944
-2024-05,133,Allach-Untermenzing,25356
-2024-06,133,Allach-Untermenzing,22564
-2024-07,133,Allach-Untermenzing,7712
-2024-08,133,Allach-Untermenzing,173
-2024-09,133,Allach-Untermenzing,775
-2024-10,133,Allach-Untermenzing,76
-2024-11,133,Allach-Untermenzing,67
-2024-12,133,Allach-Untermenzing,109
-2025-01,133,Allach-Untermenzing,38
-2025-02,133,Allach-Untermenzing,10
-2025-03,133,Allach-Untermenzing,4
-2025-04,133,Allach-Untermenzing,15
-2025-05,133,Allach-Untermenzing,4
-2025-06,133,Allach-Untermenzing,4275
 2024-01,134,Hasenbergl,24421
-2024-02,134,Hasenbergl,23822
-2024-03,134,Hasenbergl,24041
-2024-04,134,Hasenbergl,23628
-2024-05,134,Hasenbergl,24453
-2024-06,134,Hasenbergl,20216
-2024-07,134,Hasenbergl,22920
-2024-08,134,Hasenbergl,22140
-2024-09,134,Hasenbergl,23561
-2024-10,134,Hasenbergl,26281
-2024-11,134,Hasenbergl,24830
-2024-12,134,Hasenbergl,21052
-2025-01,134,Hasenbergl,26394
-2025-02,134,Hasenbergl,23120
-2025-03,134,Hasenbergl,25032
-2025-04,134,Hasenbergl,23547
-2025-05,134,Hasenbergl,25309
-2025-06,134,Hasenbergl,21067
 2024-01,141,Schwabing,35688
-2024-02,141,Schwabing,36322
-2024-03,141,Schwabing,39190
-2024-04,141,Schwabing,36925
-2024-05,141,Schwabing,37028
-2024-06,141,Schwabing,32870
-2024-07,141,Schwabing,36554
-2024-08,141,Schwabing,35119
-2024-09,141,Schwabing,34522
-2024-10,141,Schwabing,40963
-2024-11,141,Schwabing,39160
-2024-12,141,Schwabing,33935
-2025-01,141,Schwabing,41649
-2025-02,141,Schwabing,36918
-2025-03,141,Schwabing,37870
-2025-04,141,Schwabing,36246
-2025-05,141,Schwabing,36942
-2025-06,141,Schwabing,30907
 2024-01,143,Sendling,48757
-2024-02,143,Sendling,47453
-2024-03,143,Sendling,48312
-2024-04,143,Sendling,46647
-2024-05,143,Sendling,47301
-2024-06,143,Sendling,41352
-2024-07,143,Sendling,46118
-2024-08,143,Sendling,41839
-2024-09,143,Sendling,43535
-2024-10,143,Sendling,50176
-2024-11,143,Sendling,42110
-2024-12,143,Sendling,38798
-2025-01,143,Sendling,49163
-2025-02,143,Sendling,43843
-2025-03,143,Sendling,44289
-2025-04,143,Sendling,46050
-2025-05,143,Sendling,44104
-2025-06,143,Sendling,39400
 2024-01,144,Ramersdorf,12861
-2024-02,144,Ramersdorf,12080
-2024-03,144,Ramersdorf,11927
-2024-04,144,Ramersdorf,12592
-2024-05,144,Ramersdorf,12811
-2024-06,144,Ramersdorf,11472
-2024-07,144,Ramersdorf,12910
-2024-08,144,Ramersdorf,11814
-2024-09,144,Ramersdorf,12814
-2024-10,144,Ramersdorf,15221
-2024-11,144,Ramersdorf,12471
-2024-12,144,Ramersdorf,12679
-2025-01,144,Ramersdorf,14927
-2025-02,144,Ramersdorf,13474
-2025-03,144,Ramersdorf,13769
-2025-04,144,Ramersdorf,13530
-2025-05,144,Ramersdorf,13410
-2025-06,144,Ramersdorf,8416
 2024-01,145,Giesing,51922
-2024-02,145,Giesing,52042
-2024-03,145,Giesing,51820
-2024-04,145,Giesing,50929
-2024-05,145,Giesing,52309
-2024-06,145,Giesing,43593
-2024-07,145,Giesing,51451
-2024-08,145,Giesing,49192
-2024-09,145,Giesing,48110
-2024-10,145,Giesing,55235
-2024-11,145,Giesing,48943
-2024-12,145,Giesing,48079
-2025-01,145,Giesing,57810
-2025-02,145,Giesing,50845
-2025-03,145,Giesing,51839
-2025-04,145,Giesing,49981
-2025-05,145,Giesing,50198
-2025-06,145,Giesing,44282
 2024-01,146,Pasing,39863
-2024-02,146,Pasing,39463
-2024-03,146,Pasing,40154
-2024-04,146,Pasing,39823
-2024-05,146,Pasing,40179
-2024-06,146,Pasing,13004
-2024-07,146,Pasing,25820
-2024-08,146,Pasing,41214
-2024-09,146,Pasing,39188
-2024-10,146,Pasing,39062
-2024-11,146,Pasing,23751
-2024-12,146,Pasing,33903
-2025-01,146,Pasing,45225
-2025-02,146,Pasing,40196
-2025-03,146,Pasing,40131
-2025-04,146,Pasing,42081
-2025-05,146,Pasing,40602
-2025-06,146,Pasing,35145
 2024-01,147,Isarvorstadt,20871
-2024-02,147,Isarvorstadt,20939
-2024-03,147,Isarvorstadt,21716
-2024-04,147,Isarvorstadt,19971
-2024-05,147,Isarvorstadt,19233
-2024-06,147,Isarvorstadt,17659
-2024-07,147,Isarvorstadt,20586
-2024-08,147,Isarvorstadt,18874
-2024-09,147,Isarvorstadt,18645
-2024-10,147,Isarvorstadt,20984
-2024-11,147,Isarvorstadt,19733
-2024-12,147,Isarvorstadt,17025
-2025-01,147,Isarvorstadt,21049
-2025-02,147,Isarvorstadt,19604
-2025-03,147,Isarvorstadt,19451
-2025-04,147,Isarvorstadt,19309
-2025-05,147,Isarvorstadt,18941
-2025-06,147,Isarvorstadt,15316
 2024-01,148,Neuhausen,52374
-2024-02,148,Neuhausen,53324
-2024-03,148,Neuhausen,54024
-2024-04,148,Neuhausen,52720
-2024-05,148,Neuhausen,53015
-2024-06,148,Neuhausen,45106
-2024-07,148,Neuhausen,53327
-2024-08,148,Neuhausen,50330
-2024-09,148,Neuhausen,49111
-2024-10,148,Neuhausen,57047
-2024-11,148,Neuhausen,52085
-2024-12,148,Neuhausen,45274
-2025-01,148,Neuhausen,58439
-2025-02,148,Neuhausen,51390
-2025-03,148,Neuhausen,51793
-2025-04,148,Neuhausen,52346
-2025-05,148,Neuhausen,52496
-2025-06,148,Neuhausen,31789
 2024-01,150,Laim,39405
-2024-02,150,Laim,37704
-2024-03,150,Laim,37669
-2024-04,150,Laim,37113
-2024-05,150,Laim,37786
-2024-06,150,Laim,33052
-2024-07,150,Laim,37191
-2024-08,150,Laim,35842
-2024-09,150,Laim,34747
-2024-10,150,Laim,38860
-2024-11,150,Laim,33165
-2024-12,150,Laim,31430
-2025-01,150,Laim,39204
-2025-02,150,Laim,34465
-2025-03,150,Laim,35862
-2025-04,150,Laim,34770
-2025-05,150,Laim,35314
-2025-06,150,Laim,27542
 2024-01,170,Bücherbusse,303
-2024-02,170,Bücherbusse,371
-2024-03,170,Bücherbusse,380
-2024-04,170,Bücherbusse,381
-2024-05,170,Bücherbusse,358
-2024-06,170,Bücherbusse,283
-2024-07,170,Bücherbusse,267
-2024-08,170,Bücherbusse,159
-2024-09,170,Bücherbusse,271
-2024-10,170,Bücherbusse,391
-2024-11,170,Bücherbusse,414
-2024-12,170,Bücherbusse,260
-2025-01,170,Bücherbusse,387
-2025-02,170,Bücherbusse,463
-2025-03,170,Bücherbusse,511
-2025-04,170,Bücherbusse,443
-2025-05,170,Bücherbusse,381
-2025-06,170,Bücherbusse,373
 2024-01,171,Bücherbus 1 Bunt,10006
-2024-02,171,Bücherbus 1 Bunt,10431
-2024-03,171,Bücherbus 1 Bunt,10162
-2024-04,171,Bücherbus 1 Bunt,10279
-2024-05,171,Bücherbus 1 Bunt,7451
-2024-06,171,Bücherbus 1 Bunt,9824
-2024-07,171,Bücherbus 1 Bunt,7567
-2024-08,171,Bücherbus 1 Bunt,464
-2024-09,171,Bücherbus 1 Bunt,6251
-2024-10,171,Bücherbus 1 Bunt,10131
-2024-11,171,Bücherbus 1 Bunt,12157
-2024-12,171,Bücherbus 1 Bunt,8633
-2025-01,171,Bücherbus 1 Bunt,3412
-2025-02,171,Bücherbus 1 Bunt,10998
-2025-03,171,Bücherbus 1 Bunt,9753
-2025-04,171,Bücherbus 1 Bunt,6702
-2025-05,171,Bücherbus 1 Bunt,9759
-2025-06,171,Bücherbus 1 Bunt,5875
 2024-01,172,Bücherbus 2 Gold,13026
-2024-02,172,Bücherbus 2 Gold,8851
-2024-03,172,Bücherbus 2 Gold,11739
-2024-04,172,Bücherbus 2 Gold,13124
-2024-05,172,Bücherbus 2 Gold,8297
-2024-06,172,Bücherbus 2 Gold,11897
-2024-07,172,Bücherbus 2 Gold,9109
-2024-08,172,Bücherbus 2 Gold,604
-2024-09,172,Bücherbus 2 Gold,9117
-2024-10,172,Bücherbus 2 Gold,11969
-2024-11,172,Bücherbus 2 Gold,15285
-2024-12,172,Bücherbus 2 Gold,10924
-2025-01,172,Bücherbus 2 Gold,15041
-2025-02,172,Bücherbus 2 Gold,13164
-2025-03,172,Bücherbus 2 Gold,8739
-2025-04,172,Bücherbus 2 Gold,10136
-2025-05,172,Bücherbus 2 Gold,12263
-2025-06,172,Bücherbus 2 Gold,8146
 2024-01,173,Bücherbus 3 Rot,13028
-2024-02,173,Bücherbus 3 Rot,9172
-2024-03,173,Bücherbus 3 Rot,11202
-2024-04,173,Bücherbus 3 Rot,13392
-2024-05,173,Bücherbus 3 Rot,6798
-2024-06,173,Bücherbus 3 Rot,11434
-2024-07,173,Bücherbus 3 Rot,6977
-2024-08,173,Bücherbus 3 Rot,132
-2024-09,173,Bücherbus 3 Rot,5768
-2024-10,173,Bücherbus 3 Rot,15340
-2024-11,173,Bücherbus 3 Rot,14466
-2024-12,173,Bücherbus 3 Rot,7415
-2025-01,173,Bücherbus 3 Rot,15383
-2025-02,173,Bücherbus 3 Rot,14486
-2025-03,173,Bücherbus 3 Rot,10294
-2025-04,173,Bücherbus 3 Rot,9829
-2025-05,173,Bücherbus 3 Rot,14698
-2025-06,173,Bücherbus 3 Rot,8708
 2024-01,174,Bücherbus 4 Dunkelrot,10794
-2024-02,174,Bücherbus 4 Dunkelrot,10046
-2024-03,174,Bücherbus 4 Dunkelrot,8950
-2024-04,174,Bücherbus 4 Dunkelrot,10225
-2024-05,174,Bücherbus 4 Dunkelrot,6820
-2024-06,174,Bücherbus 4 Dunkelrot,10670
-2024-07,174,Bücherbus 4 Dunkelrot,8110
-2024-08,174,Bücherbus 4 Dunkelrot,330
-2024-09,174,Bücherbus 4 Dunkelrot,8070
-2024-10,174,Bücherbus 4 Dunkelrot,11538
-2024-11,174,Bücherbus 4 Dunkelrot,11240
-2024-12,174,Bücherbus 4 Dunkelrot,7336
-2025-01,174,Bücherbus 4 Dunkelrot,10401
-2025-02,174,Bücherbus 4 Dunkelrot,11056
-2025-03,174,Bücherbus 4 Dunkelrot,9172
-2025-04,174,Bücherbus 4 Dunkelrot,7343
-2025-05,174,Bücherbus 4 Dunkelrot,11107
-2025-06,174,Bücherbus 4 Dunkelrot,5905
 2024-01,175,Bücherbus 5 Grün,14033
+2024-02,19,Stadtbibliothek im Motorama,63115
+2024-02,51,Stadtbibliothek im HP8,32206
+2024-02,111,Berg am Laim,15296
+2024-02,112,Waldtrudering,33939
+2024-02,115,Riem,17518
+2024-02,117,Moosach,27933
+2024-02,118,Westend,16360
+2024-02,123,Fürstenried,37806
+2024-02,125,Am Westkreuz,21064
+2024-02,126,Maxvorstadt,19123
+2024-02,128,Bogenhausen,43776
+2024-02,129,Neuperlach,24027
+2024-02,130,Milbertshofen,18192
+2024-02,132,Hadern,18440
+2024-02,133,Allach-Untermenzing,23997
+2024-02,134,Hasenbergl,23822
+2024-02,141,Schwabing,36322
+2024-02,143,Sendling,47453
+2024-02,144,Ramersdorf,12080
+2024-02,145,Giesing,52042
+2024-02,146,Pasing,39463
+2024-02,147,Isarvorstadt,20939
+2024-02,148,Neuhausen,53324
+2024-02,150,Laim,37704
+2024-02,170,Bücherbusse,371
+2024-02,171,Bücherbus 1 Bunt,10431
+2024-02,172,Bücherbus 2 Gold,8851
+2024-02,173,Bücherbus 3 Rot,9172
+2024-02,174,Bücherbus 4 Dunkelrot,10046
 2024-02,175,Bücherbus 5 Grün,9672
+2024-03,19,Stadtbibliothek im Motorama,65582
+2024-03,51,Stadtbibliothek im HP8,32765
+2024-03,111,Berg am Laim,15290
+2024-03,112,Waldtrudering,36227
+2024-03,115,Riem,18063
+2024-03,117,Moosach,28798
+2024-03,118,Westend,17130
+2024-03,123,Fürstenried,40897
+2024-03,125,Am Westkreuz,22765
+2024-03,126,Maxvorstadt,19926
+2024-03,128,Bogenhausen,44010
+2024-03,129,Neuperlach,24256
+2024-03,130,Milbertshofen,17992
+2024-03,132,Hadern,18657
+2024-03,133,Allach-Untermenzing,25981
+2024-03,134,Hasenbergl,24041
+2024-03,141,Schwabing,39190
+2024-03,143,Sendling,48312
+2024-03,144,Ramersdorf,11927
+2024-03,145,Giesing,51820
+2024-03,146,Pasing,40154
+2024-03,147,Isarvorstadt,21716
+2024-03,148,Neuhausen,54024
+2024-03,150,Laim,37669
+2024-03,170,Bücherbusse,380
+2024-03,171,Bücherbus 1 Bunt,10162
+2024-03,172,Bücherbus 2 Gold,11739
+2024-03,173,Bücherbus 3 Rot,11202
+2024-03,174,Bücherbus 4 Dunkelrot,8950
 2024-03,175,Bücherbus 5 Grün,11122
+2024-04,19,Stadtbibliothek im Motorama,62284
+2024-04,51,Stadtbibliothek im HP8,32434
+2024-04,111,Berg am Laim,15270
+2024-04,112,Waldtrudering,36063
+2024-04,115,Riem,17408
+2024-04,117,Moosach,28834
+2024-04,118,Westend,15831
+2024-04,123,Fürstenried,40829
+2024-04,125,Am Westkreuz,22019
+2024-04,126,Maxvorstadt,19623
+2024-04,128,Bogenhausen,45527
+2024-04,129,Neuperlach,24106
+2024-04,130,Milbertshofen,18301
+2024-04,132,Hadern,19849
+2024-04,133,Allach-Untermenzing,24944
+2024-04,134,Hasenbergl,23628
+2024-04,141,Schwabing,36925
+2024-04,143,Sendling,46647
+2024-04,144,Ramersdorf,12592
+2024-04,145,Giesing,50929
+2024-04,146,Pasing,39823
+2024-04,147,Isarvorstadt,19971
+2024-04,148,Neuhausen,52720
+2024-04,150,Laim,37113
+2024-04,170,Bücherbusse,381
+2024-04,171,Bücherbus 1 Bunt,10279
+2024-04,172,Bücherbus 2 Gold,13124
+2024-04,173,Bücherbus 3 Rot,13392
+2024-04,174,Bücherbus 4 Dunkelrot,10225
 2024-04,175,Bücherbus 5 Grün,13375
+2024-05,19,Stadtbibliothek im Motorama,62430
+2024-05,51,Stadtbibliothek im HP8,32284
+2024-05,111,Berg am Laim,15043
+2024-05,112,Waldtrudering,36788
+2024-05,115,Riem,17774
+2024-05,117,Moosach,29446
+2024-05,118,Westend,16182
+2024-05,123,Fürstenried,40979
+2024-05,125,Am Westkreuz,23097
+2024-05,126,Maxvorstadt,19697
+2024-05,128,Bogenhausen,45383
+2024-05,129,Neuperlach,24670
+2024-05,130,Milbertshofen,18032
+2024-05,132,Hadern,18906
+2024-05,133,Allach-Untermenzing,25356
+2024-05,134,Hasenbergl,24453
+2024-05,141,Schwabing,37028
+2024-05,143,Sendling,47301
+2024-05,144,Ramersdorf,12811
+2024-05,145,Giesing,52309
+2024-05,146,Pasing,40179
+2024-05,147,Isarvorstadt,19233
+2024-05,148,Neuhausen,53015
+2024-05,150,Laim,37786
+2024-05,170,Bücherbusse,358
+2024-05,171,Bücherbus 1 Bunt,7451
+2024-05,172,Bücherbus 2 Gold,8297
+2024-05,173,Bücherbus 3 Rot,6798
+2024-05,174,Bücherbus 4 Dunkelrot,6820
 2024-05,175,Bücherbus 5 Grün,9280
+2024-06,19,Stadtbibliothek im Motorama,54956
+2024-06,51,Stadtbibliothek im HP8,28959
+2024-06,111,Berg am Laim,7994
+2024-06,112,Waldtrudering,31241
+2024-06,115,Riem,15451
+2024-06,117,Moosach,24894
+2024-06,118,Westend,13240
+2024-06,123,Fürstenried,35572
+2024-06,125,Am Westkreuz,21289
+2024-06,126,Maxvorstadt,17174
+2024-06,128,Bogenhausen,40461
+2024-06,129,Neuperlach,21320
+2024-06,130,Milbertshofen,14819
+2024-06,132,Hadern,17458
+2024-06,133,Allach-Untermenzing,22564
+2024-06,134,Hasenbergl,20216
+2024-06,141,Schwabing,32870
+2024-06,143,Sendling,41352
+2024-06,144,Ramersdorf,11472
+2024-06,145,Giesing,43593
+2024-06,146,Pasing,13004
+2024-06,147,Isarvorstadt,17659
+2024-06,148,Neuhausen,45106
+2024-06,150,Laim,33052
+2024-06,170,Bücherbusse,283
+2024-06,171,Bücherbus 1 Bunt,9824
+2024-06,172,Bücherbus 2 Gold,11897
+2024-06,173,Bücherbus 3 Rot,11434
+2024-06,174,Bücherbus 4 Dunkelrot,10670
 2024-06,175,Bücherbus 5 Grün,11915
+2024-07,19,Stadtbibliothek im Motorama,60551
+2024-07,51,Stadtbibliothek im HP8,30878
+2024-07,111,Berg am Laim,1100
+2024-07,112,Waldtrudering,36426
+2024-07,115,Riem,17534
+2024-07,117,Moosach,30764
+2024-07,118,Westend,15458
+2024-07,123,Fürstenried,39803
+2024-07,125,Am Westkreuz,24200
+2024-07,126,Maxvorstadt,19901
+2024-07,128,Bogenhausen,45185
+2024-07,129,Neuperlach,24040
+2024-07,130,Milbertshofen,16664
+2024-07,132,Hadern,19141
+2024-07,133,Allach-Untermenzing,7712
+2024-07,134,Hasenbergl,22920
+2024-07,141,Schwabing,36554
+2024-07,143,Sendling,46118
+2024-07,144,Ramersdorf,12910
+2024-07,145,Giesing,51451
+2024-07,146,Pasing,25820
+2024-07,147,Isarvorstadt,20586
+2024-07,148,Neuhausen,53327
+2024-07,150,Laim,37191
+2024-07,170,Bücherbusse,267
+2024-07,171,Bücherbus 1 Bunt,7567
+2024-07,172,Bücherbus 2 Gold,9109
+2024-07,173,Bücherbus 3 Rot,6977
+2024-07,174,Bücherbus 4 Dunkelrot,8110
 2024-07,175,Bücherbus 5 Grün,8493
+2024-08,19,Stadtbibliothek im Motorama,57835
+2024-08,51,Stadtbibliothek im HP8,28743
+2024-08,111,Berg am Laim,81
+2024-08,112,Waldtrudering,35446
+2024-08,115,Riem,18594
+2024-08,117,Moosach,28035
+2024-08,118,Westend,14842
+2024-08,123,Fürstenried,38144
+2024-08,125,Am Westkreuz,23349
+2024-08,126,Maxvorstadt,17759
+2024-08,128,Bogenhausen,43402
+2024-08,129,Neuperlach,23557
+2024-08,130,Milbertshofen,15873
+2024-08,132,Hadern,18493
+2024-08,133,Allach-Untermenzing,173
+2024-08,134,Hasenbergl,22140
+2024-08,141,Schwabing,35119
+2024-08,143,Sendling,41839
+2024-08,144,Ramersdorf,11814
+2024-08,145,Giesing,49192
+2024-08,146,Pasing,41214
+2024-08,147,Isarvorstadt,18874
+2024-08,148,Neuhausen,50330
+2024-08,150,Laim,35842
+2024-08,170,Bücherbusse,159
+2024-08,171,Bücherbus 1 Bunt,464
+2024-08,172,Bücherbus 2 Gold,604
+2024-08,173,Bücherbus 3 Rot,132
+2024-08,174,Bücherbus 4 Dunkelrot,330
 2024-08,175,Bücherbus 5 Grün,370
+2024-09,19,Stadtbibliothek im Motorama,59575
+2024-09,51,Stadtbibliothek im HP8,30153
+2024-09,111,Berg am Laim,107
+2024-09,112,Waldtrudering,32266
+2024-09,115,Riem,17323
+2024-09,117,Moosach,29652
+2024-09,118,Westend,14546
+2024-09,123,Fürstenried,38827
+2024-09,125,Am Westkreuz,23631
+2024-09,126,Maxvorstadt,19119
+2024-09,128,Bogenhausen,40391
+2024-09,129,Neuperlach,22995
+2024-09,130,Milbertshofen,16562
+2024-09,132,Hadern,17319
+2024-09,133,Allach-Untermenzing,775
+2024-09,134,Hasenbergl,23561
+2024-09,141,Schwabing,34522
+2024-09,143,Sendling,43535
+2024-09,144,Ramersdorf,12814
+2024-09,145,Giesing,48110
+2024-09,146,Pasing,39188
+2024-09,147,Isarvorstadt,18645
+2024-09,148,Neuhausen,49111
+2024-09,150,Laim,34747
+2024-09,170,Bücherbusse,271
+2024-09,171,Bücherbus 1 Bunt,6251
+2024-09,172,Bücherbus 2 Gold,9117
+2024-09,173,Bücherbus 3 Rot,5768
+2024-09,174,Bücherbus 4 Dunkelrot,8070
 2024-09,175,Bücherbus 5 Grün,9730
+2024-10,19,Stadtbibliothek im Motorama,66186
+2024-10,51,Stadtbibliothek im HP8,33024
+2024-10,111,Berg am Laim,53
+2024-10,112,Waldtrudering,39453
+2024-10,115,Riem,6646
+2024-10,117,Moosach,34216
+2024-10,118,Westend,16799
+2024-10,123,Fürstenried,43157
+2024-10,125,Am Westkreuz,27909
+2024-10,126,Maxvorstadt,20589
+2024-10,128,Bogenhausen,46903
+2024-10,129,Neuperlach,27544
+2024-10,130,Milbertshofen,17967
+2024-10,132,Hadern,20623
+2024-10,133,Allach-Untermenzing,76
+2024-10,134,Hasenbergl,26281
+2024-10,135,Neufreimann,7
+2024-10,141,Schwabing,40963
+2024-10,143,Sendling,50176
+2024-10,144,Ramersdorf,15221
+2024-10,145,Giesing,55235
+2024-10,146,Pasing,39062
+2024-10,147,Isarvorstadt,20984
+2024-10,148,Neuhausen,57047
+2024-10,150,Laim,38860
+2024-10,170,Bücherbusse,391
+2024-10,171,Bücherbus 1 Bunt,10131
+2024-10,172,Bücherbus 2 Gold,11969
+2024-10,173,Bücherbus 3 Rot,15340
+2024-10,174,Bücherbus 4 Dunkelrot,11538
 2024-10,175,Bücherbus 5 Grün,14195
+2024-11,19,Stadtbibliothek im Motorama,64093
+2024-11,51,Stadtbibliothek im HP8,31501
+2024-11,111,Berg am Laim,8492
+2024-11,112,Waldtrudering,34801
+2024-11,115,Riem,291
+2024-11,117,Moosach,29868
+2024-11,118,Westend,14484
+2024-11,123,Fürstenried,38213
+2024-11,125,Am Westkreuz,25737
+2024-11,126,Maxvorstadt,610
+2024-11,128,Bogenhausen,44799
+2024-11,129,Neuperlach,23334
+2024-11,130,Milbertshofen,17736
+2024-11,132,Hadern,18776
+2024-11,133,Allach-Untermenzing,67
+2024-11,134,Hasenbergl,24830
+2024-11,135,Neufreimann,459
+2024-11,141,Schwabing,39160
+2024-11,143,Sendling,42110
+2024-11,144,Ramersdorf,12471
+2024-11,145,Giesing,48943
+2024-11,146,Pasing,23751
+2024-11,147,Isarvorstadt,19733
+2024-11,148,Neuhausen,52085
+2024-11,150,Laim,33165
+2024-11,170,Bücherbusse,414
+2024-11,171,Bücherbus 1 Bunt,12157
+2024-11,172,Bücherbus 2 Gold,15285
+2024-11,173,Bücherbus 3 Rot,14466
+2024-11,174,Bücherbus 4 Dunkelrot,11240
 2024-11,175,Bücherbus 5 Grün,9966
+2024-12,19,Stadtbibliothek im Motorama,59641
+2024-12,51,Stadtbibliothek im HP8,30181
+2024-12,111,Berg am Laim,10377
+2024-12,112,Waldtrudering,31285
+2024-12,115,Riem,213
+2024-12,117,Moosach,28223
+2024-12,118,Westend,14063
+2024-12,123,Fürstenried,36852
+2024-12,125,Am Westkreuz,23039
+2024-12,126,Maxvorstadt,719
+2024-12,128,Bogenhausen,39096
+2024-12,129,Neuperlach,21145
+2024-12,130,Milbertshofen,16665
+2024-12,132,Hadern,17076
+2024-12,133,Allach-Untermenzing,109
+2024-12,134,Hasenbergl,21052
+2024-12,135,Neufreimann,670
+2024-12,141,Schwabing,33935
+2024-12,143,Sendling,38798
+2024-12,144,Ramersdorf,12679
+2024-12,145,Giesing,48079
+2024-12,146,Pasing,33903
+2024-12,147,Isarvorstadt,17025
+2024-12,148,Neuhausen,45274
+2024-12,150,Laim,31430
+2024-12,170,Bücherbusse,260
+2024-12,171,Bücherbus 1 Bunt,8633
+2024-12,172,Bücherbus 2 Gold,10924
+2024-12,173,Bücherbus 3 Rot,7415
+2024-12,174,Bücherbus 4 Dunkelrot,7336
 2024-12,175,Bücherbus 5 Grün,11223
+2025-01,19,Stadtbibliothek im Motorama,67780
+2025-01,51,Stadtbibliothek im HP8,32702
+2025-01,111,Berg am Laim,12146
+2025-01,112,Waldtrudering,41162
+2025-01,115,Riem,169
+2025-01,117,Moosach,33950
+2025-01,118,Westend,18504
+2025-01,123,Fürstenried,45697
+2025-01,125,Am Westkreuz,27170
+2025-01,126,Maxvorstadt,20753
+2025-01,128,Bogenhausen,48909
+2025-01,129,Neuperlach,25939
+2025-01,130,Milbertshofen,18619
+2025-01,132,Hadern,21436
+2025-01,133,Allach-Untermenzing,38
+2025-01,134,Hasenbergl,26394
+2025-01,135,Neufreimann,1027
+2025-01,141,Schwabing,41649
+2025-01,143,Sendling,49163
+2025-01,144,Ramersdorf,14927
+2025-01,145,Giesing,57810
+2025-01,146,Pasing,45225
+2025-01,147,Isarvorstadt,21049
+2025-01,148,Neuhausen,58439
+2025-01,150,Laim,39204
+2025-01,170,Bücherbusse,387
+2025-01,171,Bücherbus 1 Bunt,3412
+2025-01,172,Bücherbus 2 Gold,15041
+2025-01,173,Bücherbus 3 Rot,15383
+2025-01,174,Bücherbus 4 Dunkelrot,10401
 2025-01,175,Bücherbus 5 Grün,14254
+2025-02,19,Stadtbibliothek im Motorama,59223
+2025-02,51,Stadtbibliothek im HP8,29742
+2025-02,111,Berg am Laim,10963
+2025-02,112,Waldtrudering,37027
+2025-02,115,Riem,104
+2025-02,117,Moosach,30734
+2025-02,118,Westend,16246
+2025-02,123,Fürstenried,40371
+2025-02,125,Am Westkreuz,24772
+2025-02,126,Maxvorstadt,18136
+2025-02,128,Bogenhausen,41986
+2025-02,129,Neuperlach,23938
+2025-02,130,Milbertshofen,17053
+2025-02,132,Hadern,19181
+2025-02,133,Allach-Untermenzing,10
+2025-02,134,Hasenbergl,23120
+2025-02,135,Neufreimann,952
+2025-02,141,Schwabing,36918
+2025-02,143,Sendling,43843
+2025-02,144,Ramersdorf,13474
+2025-02,145,Giesing,50846
+2025-02,146,Pasing,40196
+2025-02,147,Isarvorstadt,19604
+2025-02,148,Neuhausen,51390
+2025-02,150,Laim,34465
+2025-02,170,Bücherbusse,463
+2025-02,171,Bücherbus 1 Bunt,10998
+2025-02,172,Bücherbus 2 Gold,13164
+2025-02,173,Bücherbus 3 Rot,14486
+2025-02,174,Bücherbus 4 Dunkelrot,11056
 2025-02,175,Bücherbus 5 Grün,12840
+2025-03,19,Stadtbibliothek im Motorama,65121
+2025-03,51,Stadtbibliothek im HP8,30287
+2025-03,111,Berg am Laim,11757
+2025-03,112,Waldtrudering,38641
+2025-03,115,Riem,64
+2025-03,117,Moosach,32146
+2025-03,118,Westend,16332
+2025-03,123,Fürstenried,42396
+2025-03,125,Am Westkreuz,26008
+2025-03,126,Maxvorstadt,19213
+2025-03,128,Bogenhausen,43023
+2025-03,129,Neuperlach,24025
+2025-03,130,Milbertshofen,17700
+2025-03,132,Hadern,18901
+2025-03,133,Allach-Untermenzing,4
+2025-03,134,Hasenbergl,25032
+2025-03,135,Neufreimann,1122
+2025-03,141,Schwabing,37870
+2025-03,143,Sendling,44289
+2025-03,144,Ramersdorf,13769
+2025-03,145,Giesing,51839
+2025-03,146,Pasing,40131
+2025-03,147,Isarvorstadt,19451
+2025-03,148,Neuhausen,51793
+2025-03,150,Laim,35862
+2025-03,170,Bücherbusse,511
+2025-03,171,Bücherbus 1 Bunt,9753
+2025-03,172,Bücherbus 2 Gold,8739
+2025-03,173,Bücherbus 3 Rot,10294
+2025-03,174,Bücherbus 4 Dunkelrot,9172
 2025-03,175,Bücherbus 5 Grün,7880
+2025-04,19,Stadtbibliothek im Motorama,60312
+2025-04,51,Stadtbibliothek im HP8,27973
+2025-04,111,Berg am Laim,12494
+2025-04,112,Waldtrudering,37712
+2025-04,115,Riem,117
+2025-04,117,Moosach,31606
+2025-04,118,Westend,15528
+2025-04,123,Fürstenried,41659
+2025-04,125,Am Westkreuz,25075
+2025-04,126,Maxvorstadt,14624
+2025-04,128,Bogenhausen,43100
+2025-04,129,Neuperlach,24148
+2025-04,130,Milbertshofen,17118
+2025-04,132,Hadern,19478
+2025-04,133,Allach-Untermenzing,15
+2025-04,134,Hasenbergl,23547
+2025-04,135,Neufreimann,1012
+2025-04,141,Schwabing,36246
+2025-04,143,Sendling,46050
+2025-04,144,Ramersdorf,13530
+2025-04,145,Giesing,49983
+2025-04,146,Pasing,42081
+2025-04,147,Isarvorstadt,19309
+2025-04,148,Neuhausen,52346
+2025-04,150,Laim,34770
+2025-04,170,Bücherbusse,443
+2025-04,171,Bücherbus 1 Bunt,6702
+2025-04,172,Bücherbus 2 Gold,10136
+2025-04,173,Bücherbus 3 Rot,9829
+2025-04,174,Bücherbus 4 Dunkelrot,7343
 2025-04,175,Bücherbus 5 Grün,8962
+2025-05,19,Stadtbibliothek im Motorama,61018
+2025-05,51,Stadtbibliothek im HP8,28455
+2025-05,111,Berg am Laim,12377
+2025-05,112,Waldtrudering,36180
+2025-05,115,Riem,15483
+2025-05,117,Moosach,32394
+2025-05,118,Westend,15747
+2025-05,123,Fürstenried,42209
+2025-05,125,Am Westkreuz,25067
+2025-05,126,Maxvorstadt,12614
+2025-05,128,Bogenhausen,42514
+2025-05,129,Neuperlach,23634
+2025-05,130,Milbertshofen,17469
+2025-05,132,Hadern,19063
+2025-05,133,Allach-Untermenzing,4
+2025-05,134,Hasenbergl,25309
+2025-05,135,Neufreimann,1134
+2025-05,141,Schwabing,36942
+2025-05,143,Sendling,44104
+2025-05,144,Ramersdorf,13410
+2025-05,145,Giesing,50199
+2025-05,146,Pasing,40602
+2025-05,147,Isarvorstadt,18941
+2025-05,148,Neuhausen,52496
+2025-05,150,Laim,35314
+2025-05,170,Bücherbusse,381
+2025-05,171,Bücherbus 1 Bunt,9759
+2025-05,172,Bücherbus 2 Gold,12263
+2025-05,173,Bücherbus 3 Rot,14698
+2025-05,174,Bücherbus 4 Dunkelrot,11107
 2025-05,175,Bücherbus 5 Grün,10283
+2025-06,19,Stadtbibliothek im Motorama,53149
+2025-06,51,Stadtbibliothek im HP8,24739
+2025-06,111,Berg am Laim,11017
+2025-06,112,Waldtrudering,30117
+2025-06,115,Riem,14286
+2025-06,117,Moosach,27969
+2025-06,118,Westend,13415
+2025-06,123,Fürstenried,36136
+2025-06,125,Am Westkreuz,21743
+2025-06,126,Maxvorstadt,16138
+2025-06,128,Bogenhausen,37028
+2025-06,129,Neuperlach,21124
+2025-06,130,Milbertshofen,14679
+2025-06,132,Hadern,16466
+2025-06,133,Allach-Untermenzing,4275
+2025-06,134,Hasenbergl,21067
+2025-06,135,Neufreimann,1067
+2025-06,141,Schwabing,30907
+2025-06,143,Sendling,39400
+2025-06,144,Ramersdorf,8416
+2025-06,145,Giesing,44282
+2025-06,146,Pasing,35145
+2025-06,147,Isarvorstadt,15316
+2025-06,148,Neuhausen,31789
+2025-06,150,Laim,27542
+2025-06,170,Bücherbusse,373
+2025-06,171,Bücherbus 1 Bunt,5875
+2025-06,172,Bücherbus 2 Gold,8146
+2025-06,173,Bücherbus 3 Rot,8708
+2025-06,174,Bücherbus 4 Dunkelrot,5905
 2025-06,175,Bücherbus 5 Grün,7912
+2025-07,19,Stadtbibliothek im Motorama,58686
+2025-07,51,Stadtbibliothek im HP8,28628
+2025-07,111,Berg am Laim,13525
+2025-07,112,Waldtrudering,36911
+2025-07,115,Riem,18005
+2025-07,117,Moosach,30435
+2025-07,118,Westend,17012
+2025-07,123,Fürstenried,44034
+2025-07,125,Am Westkreuz,24212
+2025-07,126,Maxvorstadt,20304
+2025-07,128,Bogenhausen,46126
+2025-07,129,Neuperlach,25201
+2025-07,130,Milbertshofen,18046
+2025-07,132,Hadern,20766
+2025-07,133,Allach-Untermenzing,19169
+2025-07,134,Hasenbergl,25512
+2025-07,135,Neufreimann,1102
+2025-07,141,Schwabing,40152
+2025-07,143,Sendling,46566
+2025-07,144,Ramersdorf,11993
+2025-07,145,Giesing,52627
+2025-07,146,Pasing,42247
+2025-07,147,Isarvorstadt,21371
+2025-07,148,Neuhausen,52629
+2025-07,150,Laim,35601
+2025-07,170,Bücherbusse,436
+2025-07,171,Bücherbus 1 Bunt,8736
+2025-07,172,Bücherbus 2 Gold,10606
+2025-07,173,Bücherbus 3 Rot,11358
+2025-07,174,Bücherbus 4 Dunkelrot,9748
+2025-07,175,Bücherbus 5 Grün,10501
+2025-08,19,Stadtbibliothek im Motorama,60013
+2025-08,51,Stadtbibliothek im HP8,27551
+2025-08,111,Berg am Laim,13331
+2025-08,112,Waldtrudering,35503
+2025-08,115,Riem,16362
+2025-08,117,Moosach,28206
+2025-08,118,Westend,16080
+2025-08,123,Fürstenried,41076
+2025-08,125,Am Westkreuz,24328
+2025-08,126,Maxvorstadt,18585
+2025-08,128,Bogenhausen,43732
+2025-08,129,Neuperlach,22613
+2025-08,130,Milbertshofen,14100
+2025-08,132,Hadern,19979
+2025-08,133,Allach-Untermenzing,21113
+2025-08,134,Hasenbergl,24073
+2025-08,135,Neufreimann,1057
+2025-08,141,Schwabing,38164
+2025-08,143,Sendling,42177
+2025-08,144,Ramersdorf,11835
+2025-08,145,Giesing,47626
+2025-08,146,Pasing,39286
+2025-08,147,Isarvorstadt,18555
+2025-08,148,Neuhausen,51020
+2025-08,150,Laim,33737
+2025-08,170,Bücherbusse,281
+2025-08,171,Bücherbus 1 Bunt,647
+2025-08,172,Bücherbus 2 Gold,664
+2025-08,173,Bücherbus 3 Rot,220
+2025-08,174,Bücherbus 4 Dunkelrot,470
+2025-08,175,Bücherbus 5 Grün,390
+2025-09,19,Stadtbibliothek im Motorama,54679
+2025-09,51,Stadtbibliothek im HP8,26924
+2025-09,111,Berg am Laim,12720
+2025-09,112,Waldtrudering,33814
+2025-09,115,Riem,12881
+2025-09,117,Moosach,27358
+2025-09,118,Westend,15616
+2025-09,123,Fürstenried,40071
+2025-09,125,Am Westkreuz,23812
+2025-09,126,Maxvorstadt,19465
+2025-09,128,Bogenhausen,42670
+2025-09,129,Neuperlach,22534
+2025-09,130,Milbertshofen,16640
+2025-09,132,Hadern,20451
+2025-09,133,Allach-Untermenzing,20387
+2025-09,134,Hasenbergl,23787
+2025-09,135,Neufreimann,860
+2025-09,141,Schwabing,36671
+2025-09,143,Sendling,42888
+2025-09,144,Ramersdorf,11637
+2025-09,145,Giesing,47263
+2025-09,146,Pasing,36791
+2025-09,147,Isarvorstadt,18528
+2025-09,148,Neuhausen,47629
+2025-09,150,Laim,33476
+2025-09,170,Bücherbusse,377
+2025-09,171,Bücherbus 1 Bunt,4838
+2025-09,172,Bücherbus 2 Gold,5450
+2025-09,173,Bücherbus 3 Rot,5235
+2025-09,174,Bücherbus 4 Dunkelrot,4196
+2025-09,175,Bücherbus 5 Grün,7263
+2025-10,19,Stadtbibliothek im Motorama,59729
+2025-10,51,Stadtbibliothek im HP8,27196
+2025-10,111,Berg am Laim,13094
+2025-10,112,Waldtrudering,33439
+2025-10,115,Riem,17014
+2025-10,117,Moosach,28175
+2025-10,118,Westend,16152
+2025-10,123,Fürstenried,41196
+2025-10,125,Am Westkreuz,25466
+2025-10,126,Maxvorstadt,20096
+2025-10,128,Bogenhausen,43381
+2025-10,129,Neuperlach,22910
+2025-10,130,Milbertshofen,17930
+2025-10,132,Hadern,19851
+2025-10,133,Allach-Untermenzing,23598
+2025-10,134,Hasenbergl,24606
+2025-10,135,Neufreimann,879
+2025-10,141,Schwabing,38624
+2025-10,143,Sendling,44832
+2025-10,144,Ramersdorf,12386
+2025-10,145,Giesing,49702
+2025-10,146,Pasing,39398
+2025-10,147,Isarvorstadt,19735
+2025-10,148,Neuhausen,49569
+2025-10,150,Laim,34280
+2025-10,170,Bücherbusse,413
+2025-10,171,Bücherbus 1 Bunt,10583
+2025-10,172,Bücherbus 2 Gold,14504
+2025-10,173,Bücherbus 3 Rot,13817
+2025-10,174,Bücherbus 4 Dunkelrot,11620
+2025-10,175,Bücherbus 5 Grün,14062
+2025-11,19,Stadtbibliothek im Motorama,57821
+2025-11,51,Stadtbibliothek im HP8,27290
+2025-11,111,Berg am Laim,12922
+2025-11,112,Waldtrudering,18898
+2025-11,115,Riem,17164
+2025-11,117,Moosach,27734
+2025-11,118,Westend,15845
+2025-11,123,Fürstenried,39784
+2025-11,125,Am Westkreuz,25345
+2025-11,126,Maxvorstadt,19697
+2025-11,128,Bogenhausen,42062
+2025-11,129,Neuperlach,22321
+2025-11,130,Milbertshofen,18181
+2025-11,132,Hadern,19167
+2025-11,133,Allach-Untermenzing,21953
+2025-11,134,Hasenbergl,23077
+2025-11,135,Neufreimann,776
+2025-11,141,Schwabing,9615
+2025-11,143,Sendling,42591
+2025-11,144,Ramersdorf,12287
+2025-11,145,Giesing,49305
+2025-11,146,Pasing,22440
+2025-11,147,Isarvorstadt,18554
+2025-11,148,Neuhausen,47249
+2025-11,150,Laim,32519
+2025-11,170,Bücherbusse,308
+2025-11,171,Bücherbus 1 Bunt,4220
+2025-11,172,Bücherbus 2 Gold,8791
+2025-11,173,Bücherbus 3 Rot,9611
+2025-11,174,Bücherbus 4 Dunkelrot,6455
+2025-11,175,Bücherbus 5 Grün,8447
+2025-12,19,Stadtbibliothek im Motorama,48016
+2025-12,51,Stadtbibliothek im HP8,21515
+2025-12,111,Berg am Laim,9509
+2025-12,112,Waldtrudering,20068
+2025-12,115,Riem,13645
+2025-12,117,Moosach,21217
+2025-12,118,Westend,11517
+2025-12,123,Fürstenried,31475
+2025-12,125,Am Westkreuz,20042
+2025-12,126,Maxvorstadt,13492
+2025-12,128,Bogenhausen,29912
+2025-12,129,Neuperlach,16445
+2025-12,130,Milbertshofen,12443
+2025-12,132,Hadern,14230
+2025-12,133,Allach-Untermenzing,15238
+2025-12,134,Hasenbergl,17585
+2025-12,135,Neufreimann,752
+2025-12,141,Schwabing,25539
+2025-12,143,Sendling,31918
+2025-12,144,Ramersdorf,8722
+2025-12,145,Giesing,38380
+2025-12,146,Pasing,22537
+2025-12,147,Isarvorstadt,13682
+2025-12,148,Neuhausen,35505
+2025-12,150,Laim,24997
+2025-12,170,Bücherbusse,258
+2025-12,171,Bücherbus 1 Bunt,6561
+2025-12,172,Bücherbus 2 Gold,9304
+2025-12,173,Bücherbus 3 Rot,10079
+2025-12,174,Bücherbus 4 Dunkelrot,7417
+2025-12,175,Bücherbus 5 Grün,9626
+2026-01,19,Stadtbibliothek im Motorama,62032
+2026-01,51,Stadtbibliothek im HP8,29049
+2026-01,111,Berg am Laim,10851
+2026-01,112,Waldtrudering,33114
+2026-01,115,Riem,16964
+2026-01,117,Moosach,29155
+2026-01,118,Westend,16762
+2026-01,123,Fürstenried,43192
+2026-01,125,Am Westkreuz,25796
+2026-01,126,Maxvorstadt,20401
+2026-01,128,Bogenhausen,45138
+2026-01,129,Neuperlach,24000
+2026-01,130,Milbertshofen,18257
+2026-01,132,Hadern,17949
+2026-01,133,Allach-Untermenzing,23918
+2026-01,134,Hasenbergl,26468
+2026-01,135,Neufreimann,872
+2026-01,141,Schwabing,36378
+2026-01,143,Sendling,47170
+2026-01,144,Ramersdorf,13551
+2026-01,145,Giesing,50693
+2026-01,146,Pasing,39154
+2026-01,147,Isarvorstadt,20097
+2026-01,148,Neuhausen,52571
+2026-01,150,Laim,35740
+2026-01,170,Bücherbusse,339
+2026-01,171,Bücherbus 1 Bunt,7129
+2026-01,172,Bücherbus 2 Gold,11353
+2026-01,173,Bücherbus 3 Rot,11865
+2026-01,174,Bücherbus 4 Dunkelrot,8851
+2026-01,175,Bücherbus 5 Grün,11908
+2026-02,19,Stadtbibliothek im Motorama,57215
+2026-02,51,Stadtbibliothek im HP8,26339
+2026-02,111,Berg am Laim,656
+2026-02,112,Waldtrudering,29535
+2026-02,115,Riem,15637
+2026-02,117,Moosach,24923
+2026-02,118,Westend,14993
+2026-02,123,Fürstenried,38908
+2026-02,125,Am Westkreuz,23758
+2026-02,126,Maxvorstadt,18079
+2026-02,128,Bogenhausen,39817
+2026-02,129,Neuperlach,22188
+2026-02,130,Milbertshofen,16419
+2026-02,132,Hadern,18025
+2026-02,133,Allach-Untermenzing,20917
+2026-02,134,Hasenbergl,22178
+2026-02,135,Neufreimann,853
+2026-02,141,Schwabing,33908
+2026-02,143,Sendling,41129
+2026-02,144,Ramersdorf,12796
+2026-02,145,Giesing,47088
+2026-02,146,Pasing,35317
+2026-02,147,Isarvorstadt,16689
+2026-02,148,Neuhausen,46292
+2026-02,150,Laim,31382
+2026-02,170,Bücherbusse,474
+2026-02,171,Bücherbus 1 Bunt,3663
+2026-02,172,Bücherbus 2 Gold,8105
+2026-02,173,Bücherbus 3 Rot,9775
+2026-02,174,Bücherbus 4 Dunkelrot,5992
+2026-02,175,Bücherbus 5 Grün,6813
+2026-03,19,Stadtbibliothek im Motorama,64854
+2026-03,51,Stadtbibliothek im HP8,28788
+2026-03,111,Berg am Laim,240
+2026-03,112,Waldtrudering,33306
+2026-03,115,Riem,17440
+2026-03,117,Moosach,29657
+2026-03,118,Westend,16311
+2026-03,123,Fürstenried,43949
+2026-03,125,Am Westkreuz,26810
+2026-03,126,Maxvorstadt,20575
+2026-03,128,Bogenhausen,45485
+2026-03,129,Neuperlach,23836
+2026-03,130,Milbertshofen,18516
+2026-03,132,Hadern,19974
+2026-03,133,Allach-Untermenzing,22998
+2026-03,134,Hasenbergl,26267
+2026-03,135,Neufreimann,1068
+2026-03,141,Schwabing,38212
+2026-03,143,Sendling,46532
+2026-03,144,Ramersdorf,14350
+2026-03,145,Giesing,51579
+2026-03,146,Pasing,40372
+2026-03,147,Isarvorstadt,19576
+2026-03,148,Neuhausen,51769
+2026-03,150,Laim,34061
+2026-03,170,Bücherbusse,475
+2026-03,171,Bücherbus 1 Bunt,9777
+2026-03,172,Bücherbus 2 Gold,12702
+2026-03,173,Bücherbus 3 Rot,12663
+2026-03,174,Bücherbus 4 Dunkelrot,8497
+2026-03,175,Bücherbus 5 Grün,12333
+2026-04,19,Stadtbibliothek im Motorama,54767
+2026-04,51,Stadtbibliothek im HP8,25558
+2026-04,111,Berg am Laim,49
+2026-04,112,Waldtrudering,30599
+2026-04,115,Riem,15467
+2026-04,117,Moosach,26371
+2026-04,118,Westend,14494
+2026-04,123,Fürstenried,38730
+2026-04,125,Am Westkreuz,23124
+2026-04,126,Maxvorstadt,17435
+2026-04,128,Bogenhausen,40087
+2026-04,129,Neuperlach,21943
+2026-04,130,Milbertshofen,17049
+2026-04,132,Hadern,18576
+2026-04,133,Allach-Untermenzing,22330
+2026-04,134,Hasenbergl,22852
+2026-04,135,Neufreimann,899
+2026-04,141,Schwabing,34197
+2026-04,143,Sendling,41963
+2026-04,144,Ramersdorf,12674
+2026-04,145,Giesing,45198
+2026-04,146,Pasing,35449
+2026-04,147,Isarvorstadt,17288
+2026-04,148,Neuhausen,45786
+2026-04,150,Laim,27496
+2026-04,170,Bücherbusse,384
+2026-04,171,Bücherbus 1 Bunt,7419
+2026-04,172,Bücherbus 2 Gold,9030
+2026-04,173,Bücherbus 3 Rot,11183
+2026-04,174,Bücherbus 4 Dunkelrot,7796
+2026-04,175,Bücherbus 5 Grün,9013
+2026-05,19,Stadtbibliothek im Motorama,56671
+2026-05,51,Stadtbibliothek im HP8,26058
+2026-05,111,Berg am Laim,100
+2026-05,112,Waldtrudering,27339
+2026-05,115,Riem,15602
+2026-05,117,Moosach,26795
+2026-05,118,Westend,13764
+2026-05,123,Fürstenried,38667
+2026-05,125,Am Westkreuz,23586
+2026-05,126,Maxvorstadt,18519
+2026-05,128,Bogenhausen,39364
+2026-05,129,Neuperlach,19402
+2026-05,130,Milbertshofen,15876
+2026-05,132,Hadern,18593
+2026-05,133,Allach-Untermenzing,21397
+2026-05,134,Hasenbergl,22612
+2026-05,135,Neufreimann,941
+2026-05,141,Schwabing,33454
+2026-05,143,Sendling,40749
+2026-05,144,Ramersdorf,12943
+2026-05,145,Giesing,39548
+2026-05,146,Pasing,34783
+2026-05,147,Isarvorstadt,16482
+2026-05,148,Neuhausen,44521
+2026-05,150,Laim,28785
+2026-05,170,Bücherbusse,249
+2026-05,171,Bücherbus 1 Bunt,6412
+2026-05,172,Bücherbus 2 Gold,9569
+2026-05,173,Bücherbus 3 Rot,8129
+2026-05,174,Bücherbus 4 Dunkelrot,6845
+2026-05,175,Bücherbus 5 Grün,6770
+2026-06,19,Stadtbibliothek im Motorama,50716
+2026-06,51,Stadtbibliothek im HP8,24010
+2026-06,111,Berg am Laim,38
+2026-06,112,Waldtrudering,26716
+2026-06,115,Riem,14062
+2026-06,117,Moosach,23855
+2026-06,118,Westend,13128
+2026-06,123,Fürstenried,35280
+2026-06,125,Am Westkreuz,20889
+2026-06,126,Maxvorstadt,17332
+2026-06,128,Bogenhausen,37358
+2026-06,129,Neuperlach,21017
+2026-06,130,Milbertshofen,15429
+2026-06,132,Hadern,17075
+2026-06,133,Allach-Untermenzing,20137
+2026-06,134,Hasenbergl,21018
+2026-06,135,Neufreimann,897
+2026-06,141,Schwabing,30332
+2026-06,143,Sendling,38283
+2026-06,144,Ramersdorf,11814
+2026-06,145,Giesing,40685
+2026-06,146,Pasing,32484
+2026-06,147,Isarvorstadt,16385
+2026-06,148,Neuhausen,42662
+2026-06,150,Laim,27427
+2026-06,170,Bücherbusse,278
+2026-06,171,Bücherbus 1 Bunt,7724
+2026-06,172,Bücherbus 2 Gold,7669
+2026-06,173,Bücherbus 3 Rot,9990
+2026-06,174,Bücherbus 4 Dunkelrot,7225
+2026-06,175,Bücherbus 5 Grün,6512
+2026-07,19,Stadtbibliothek im Motorama,55102
+2026-07,51,Stadtbibliothek im HP8,25506
+2026-07,111,Berg am Laim,31
+2026-07,112,Waldtrudering,31779
+2026-07,115,Riem,17256
+2026-07,117,Moosach,27044
+2026-07,118,Westend,15639
+2026-07,123,Fürstenried,39895
+2026-07,125,Am Westkreuz,24203
+2026-07,126,Maxvorstadt,19581
+2026-07,128,Bogenhausen,44603
+2026-07,129,Neuperlach,23768
+2026-07,130,Milbertshofen,16864
+2026-07,132,Hadern,19969
+2026-07,133,Allach-Untermenzing,21927
+2026-07,134,Hasenbergl,22995
+2026-07,135,Neufreimann,1016
+2026-07,141,Schwabing,35733
+2026-07,143,Sendling,43511
+2026-07,144,Ramersdorf,12967
+2026-07,145,Giesing,46638
+2026-07,146,Pasing,38798
+2026-07,147,Isarvorstadt,19427
+2026-07,148,Neuhausen,47862
+2026-07,150,Laim,32363
+2026-07,170,Bücherbusse,746
+2026-07,171,Bücherbus 1 Bunt,6222
+2026-07,172,Bücherbus 2 Gold,5702
+2026-07,173,Bücherbus 3 Rot,8972
+2026-07,174,Bücherbus 4 Dunkelrot,7942
+2026-07,175,Bücherbus 5 Grün,9186
+2026-08,19,Stadtbibliothek im Motorama,53656
+2026-08,51,Stadtbibliothek im HP8,25522
+2026-08,111,Berg am Laim,17
+2026-08,112,Waldtrudering,27120
+2026-08,115,Riem,16747
+2026-08,117,Moosach,26080
+2026-08,118,Westend,13087
+2026-08,123,Fürstenried,38360
+2026-08,125,Am Westkreuz,24134
+2026-08,126,Maxvorstadt,17171
+2026-08,128,Bogenhausen,39586
+2026-08,129,Neuperlach,20756
+2026-08,130,Milbertshofen,14248
+2026-08,132,Hadern,19050
+2026-08,133,Allach-Untermenzing,19952
+2026-08,134,Hasenbergl,21522
+2026-08,135,Neufreimann,1195
+2026-08,141,Schwabing,32659
+2026-08,143,Sendling,39742
+2026-08,144,Ramersdorf,11595
+2026-08,145,Giesing,46722
+2026-08,146,Pasing,35549
+2026-08,147,Isarvorstadt,17061
+2026-08,148,Neuhausen,44158
+2026-08,150,Laim,29438
+2026-08,170,Bücherbusse,204
+2026-08,171,Bücherbus 1 Bunt,408
+2026-08,172,Bücherbus 2 Gold,423
+2026-08,173,Bücherbus 3 Rot,189
+2026-08,174,Bücherbus 4 Dunkelrot,227
+2026-08,175,Bücherbus 5 Grün,241
+2026-09,19,Stadtbibliothek im Motorama,53768
+2026-09,51,Stadtbibliothek im HP8,23165
+2026-09,111,Berg am Laim,18
+2026-09,112,Waldtrudering,27495
+2026-09,115,Riem,16152
+2026-09,117,Moosach,26024
+2026-09,118,Westend,13837
+2026-09,123,Fürstenried,38470
+2026-09,125,Am Westkreuz,23589
+2026-09,126,Maxvorstadt,17485
+2026-09,128,Bogenhausen,38947
+2026-09,129,Neuperlach,21948
+2026-09,130,Milbertshofen,12041
+2026-09,132,Hadern,19538
+2026-09,133,Allach-Untermenzing,20822
+2026-09,134,Hasenbergl,21904
+2026-09,135,Neufreimann,1057
+2026-09,141,Schwabing,33299
+2026-09,143,Sendling,38911
+2026-09,144,Ramersdorf,11885
+2026-09,145,Giesing,38099
+2026-09,146,Pasing,36041
+2026-09,147,Isarvorstadt,17179
+2026-09,148,Neuhausen,44827
+2026-09,150,Laim,30598
+2026-09,170,Bücherbusse,331
+2026-09,171,Bücherbus 1 Bunt,4663
+2026-09,172,Bücherbus 2 Gold,6514
+2026-09,173,Bücherbus 3 Rot,4816
+2026-09,174,Bücherbus 4 Dunkelrot,3787
+2026-09,175,Bücherbus 5 Grün,5472
