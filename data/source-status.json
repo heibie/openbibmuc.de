@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-11-18T18:25:49+01:00",
+    "generated_at": "2026-11-22T00:00:02+01:00",
     "sources": {
         "standorte-basis": {
             "status": "ok",
@@ -8,7 +8,7 @@
             "local_updated": "2025-06-03T06:08:23.993138",
             "local_updated_precise": true,
             "method": "ckan",
-            "checked_at": "2026-11-18T18:25:49+01:00"
+            "checked_at": "2026-11-22T00:00:02+01:00"
         },
         "besucherzahlen": {
             "status": "ok",
@@ -17,16 +17,16 @@
             "local_updated": "2026-11-13T14:13:29.198371",
             "local_updated_precise": true,
             "method": "ckan",
-            "checked_at": "2026-11-18T18:25:49+01:00"
+            "checked_at": "2026-11-22T00:00:02+01:00"
         },
         "bestand": {
-            "status": "ok",
-            "source_modified": "2026-11-13T14:15:43.347924",
-            "detail": "Übernommener Stand 2026-11-13T14:15:43.347924 entspricht dem Portal (resource last_modified/created).",
+            "status": "changed",
+            "source_modified": "2026-11-19T05:56:54.357004",
+            "detail": "Neuere Version auf dem Portal (Stand 2026-11-19T05:56:54.357004), übernommen ist Stand 2026-11-13T14:15:43.347924.",
             "local_updated": "2026-11-13T14:15:43.347924",
             "local_updated_precise": true,
             "method": "ckan",
-            "checked_at": "2026-11-18T18:25:49+01:00"
+            "checked_at": "2026-11-22T00:00:02+01:00"
         },
         "entleihungen": {
             "status": "ok",
@@ -35,35 +35,35 @@
             "local_updated": "2026-11-18T06:58:08.071336",
             "local_updated_precise": true,
             "method": "ckan",
-            "checked_at": "2026-11-18T18:25:49+01:00"
+            "checked_at": "2026-11-22T00:00:02+01:00"
         },
         "oeffnungszeiten-kontakt": {
             "status": "manual",
             "local_updated": null,
             "detail": "Kein automatischer Änderungscheck möglich (keine Live-API, kein fester Turnus). Turnus: manuell (Re-Run von scripts/enrich_standorte.py bei Bedarf)",
             "method": "heuristic",
-            "checked_at": "2026-11-18T18:25:49+01:00"
+            "checked_at": "2026-11-22T00:00:02+01:00"
         },
         "services": {
             "status": "manual",
             "local_updated": null,
             "detail": "Kein automatischer Änderungscheck möglich (keine Live-API, kein fester Turnus). Turnus: manuell (Re-Run von scripts/enrich_standorte.py bei Bedarf)",
             "method": "heuristic",
-            "checked_at": "2026-11-18T18:25:49+01:00"
+            "checked_at": "2026-11-22T00:00:02+01:00"
         },
         "vor-ort": {
             "status": "manual",
             "local_updated": null,
             "detail": "Kein automatischer Änderungscheck möglich (keine Live-API, kein fester Turnus). Turnus: manuell (Re-Run von scripts/enrich_standorte.py bei Bedarf)",
             "method": "heuristic",
-            "checked_at": "2026-11-18T18:25:49+01:00"
+            "checked_at": "2026-11-22T00:00:02+01:00"
         },
         "aktuell": {
             "status": "manual",
             "local_updated": null,
             "detail": "Kein automatischer Änderungscheck möglich (keine Live-API, kein fester Turnus). Turnus: manuell, bei Verdacht auf neue/behobene Schließung erneut laufen lassen",
             "method": "heuristic",
-            "checked_at": "2026-11-18T18:25:49+01:00"
+            "checked_at": "2026-11-22T00:00:02+01:00"
         }
     }
 }
